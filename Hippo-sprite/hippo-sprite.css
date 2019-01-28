@@ -1,0 +1,12 @@
+#hippo-sprite {
+  background: url('Hipposprite-01.png') left center;
+  width: 300px;
+  height: 306px;
+}
+#hippo-sprite:hover{
+  animation: play 1.5s steps(10) infinite;
+
+}
+@keyframes play {
+   100% { background-position: -3000px; }
+}
