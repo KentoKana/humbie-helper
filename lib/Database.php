@@ -48,16 +48,22 @@ class Database {
 	public function execute()
 	{  
 		return $this->stmt->execute();  
-		echo "New record created successfully";
+		// echo "New record created successfully";
 	}  
 }
 
+
+//Test Script
+//Instantiate database object.
 $conn = new Database();
+//Define query
 $conn->query("INSERT INTO students VALUES (null, :fname, :lname, :email, :phone)");
+//Bind query parameters with values.
 $conn->bind(':fname', 'kento');
 $conn->bind(':lname', 'kanazawa');
 $conn->bind(':email', 'john@example.com');
 $conn->bind(':phone', '2002432342');
+//Execute sql statement
 $conn->execute();
 
 
