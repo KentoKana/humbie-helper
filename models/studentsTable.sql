@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 19, 2019 at 03:30 AM
+-- Generation Time: Feb 19, 2019 at 07:48 PM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -29,19 +29,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `students` (
-  `studentId` int(11) NOT NULL,
-  `studentfname` varchar(50) NOT NULL,
-  `studentlname` varchar(50) NOT NULL,
-  `studentemail` varchar(50) NOT NULL,
-  `studentphone` varchar(50) NOT NULL
+  `id` int(11) NOT NULL,
+  `student_fname` varchar(50) NOT NULL,
+  `student_lname` varchar(50) NOT NULL,
+  `student_email` varchar(50) NOT NULL,
+  `student_phone` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`studentId`, `studentfname`, `studentlname`, `studentemail`, `studentphone`) VALUES
-(4, 'kento', 'kanazawa', 'john@example.com', '2002432342');
+INSERT INTO `students` (`id`, `student_fname`, `student_lname`, `student_email`, `student_phone`) VALUES
+(1, 'Kento', 'Kanazawa', '123@eg.com', '00000000000'),
+(2, 'Kento', 'Kanazawa', '123@eg.com', '1231231234'),
+(3, 'Kento', 'Kanazawa', '123@eg.com', '1231231234'),
+(4, 'Kento', 'Kanazawa', '123@eg.com', '1231231234'),
+(5, 'Kento', 'Kanazawa', '123@eg.com', '9999999999'),
+(6, 'Kento', 'Kanazawa', '123@eg.com', '9999999999');
 
 --
 -- Indexes for dumped tables
@@ -51,7 +56,7 @@ INSERT INTO `students` (`studentId`, `studentfname`, `studentlname`, `studentema
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
-  ADD PRIMARY KEY (`studentId`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -61,7 +66,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
