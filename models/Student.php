@@ -1,32 +1,40 @@
 <?php
 require_once('Database.php');
 
-class Student extends Database
+class Student
 {
-	private static $insertStmt = "INSERT INTO students VALUES (null, :fname, :lname, :email, :phone)";
+	private $dbh;
 
-	public function getStudent($fname, $lname, $email, $phone) 
+	function __construct($dbh) 
 	{
-		//Define query
-		$this->query(self::$insertStmt);
-		$this->bind(':fname', $fname);
-		$this->bind(':lname', $lname);
-		$this->bind(':email', $email);
-		$this->bind(':phone', $phone);
+		$this->dbh = $dbh;
 	}
 
-	public function addStudent() 
+	public function addStudent($fname, $lname, $email, $phone) 
 	{
-		echo 'Student added.';
-		return $this->execute();
-	}
+		$insertStmt = "INSERT INTO students VALUES (null, :fname, :lname, :email, :phone)";
+		//Define query (in this case, reference the insertStmt)
+		$stmt = $this->dbh->prepare($insertStmt);  
 
+		//Bind param with values
+		$stmt->bindValue(':fname', $fname);
+		$stmt->bindValue(':lname', $lname);
+		$stmt->bindValue(':email', $email);
+		$stmt->bindValue(':phone', $phone);
+		return $stmt->execute();  
+	}
+	
+	public function deleteStudent($studentId) 
+	{
+		$deleteStmt = "DELETE FROM students WHERE studentID = :studentID";
+		$this->query(self::$deleteStmt);
+		$this->bind(':studentID', $studentId);
+	}
 }
 
-$student = new Student();
+$student = new Student(Database::getDatabase());
 
 //Test Scripts
-$student->getStudent('Kento', 'Kanazawa', '123@eg.com', '2343333333');
-$student->addStudent();
+$student->addStudent('Kento', 'Kanazawa', '123@eg.com', '9999999999');
 
 ?>
