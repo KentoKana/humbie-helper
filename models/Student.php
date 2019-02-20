@@ -18,9 +18,9 @@ class Student
 		return $stmt->fetchAll();
 	}
 
-	public function addStudent($fname, $lname, $email, $phone) 
+	public function addStudent($fname, $lname, $email, $phone, $username, $password) 
 	{
-		$insertStmt = "INSERT INTO students VALUES (null, :fname, :lname, :email, :phone)";
+		$insertStmt = "INSERT INTO students VALUES (null, :fname, :lname, :email, :phone, :username, :password)";
 		//Define query (in this case, reference the insertStmt)
 		$stmt = $this->dbh->prepare($insertStmt);  
 
@@ -29,13 +29,15 @@ class Student
 		$stmt->bindParam(':lname', $lname);
 		$stmt->bindParam(':email', $email);
 		$stmt->bindParam(':phone', $phone);
+		$stmt->bindParam(':username', $username);
+		$stmt->bindParam(':password', $password);
 
 		return $stmt->execute();  
 	}
 
-	public function updateStudent($fname, $lname, $email, $phone, $studentId) 
+	public function updateStudent($fname, $lname, $email, $phone, $username, $password, $studentId) 
 	{
-		$updateStmt = "UPDATE students SET student_fname = :fname, student_lname = :lname, student_email = :email, student_phone = :phone WHERE id = :id";
+		$updateStmt = "UPDATE students SET student_fname = :fname, student_lname = :lname, student_email = :email, student_phone = :phone, username = :username, password = :password WHERE id = :id";
 		//Define query (in this case, reference the insertStmt)
 		$stmt = $this->dbh->prepare($updateStmt);  
 
@@ -44,6 +46,8 @@ class Student
 		$stmt->bindParam(':lname', $lname);
 		$stmt->bindParam(':email', $email);
 		$stmt->bindParam(':phone', $phone);
+		$stmt->bindParam(':username', $username);
+		$stmt->bindParam(':passowrd', $password);
 		$stmt->bindParam(':id', $studentId);
 
 		return $stmt->execute();  
@@ -61,7 +65,7 @@ class Student
 $student = new Student(Database::getDatabase());
 
 //Test Scripts
-$student->updateStudent('Kento', 'Kanazawa', '123@eg.com', '2222222222', 1);
+$student->addStudent('Kento', 'Kanazawa', '123@eg.com', '1111111111', 'kento', 'password');
 foreach ($student->listStudents() as $row) {
 	echo $row['student_fname'] . "<br />" . 
 		 $row['student_lname'] . "<br />" . 

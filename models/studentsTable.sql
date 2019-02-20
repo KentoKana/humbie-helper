@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 19, 2019 at 07:48 PM
+-- Generation Time: Feb 20, 2019 at 08:10 PM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -33,20 +33,18 @@ CREATE TABLE `students` (
   `student_fname` varchar(50) NOT NULL,
   `student_lname` varchar(50) NOT NULL,
   `student_email` varchar(50) NOT NULL,
-  `student_phone` varchar(50) NOT NULL
+  `student_phone` varchar(50) NOT NULL,
+  `username` varchar(80) NOT NULL,
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `student_fname`, `student_lname`, `student_email`, `student_phone`) VALUES
-(1, 'Kento', 'Kanazawa', '123@eg.com', '00000000000'),
-(2, 'Kento', 'Kanazawa', '123@eg.com', '1231231234'),
-(3, 'Kento', 'Kanazawa', '123@eg.com', '1231231234'),
-(4, 'Kento', 'Kanazawa', '123@eg.com', '1231231234'),
-(5, 'Kento', 'Kanazawa', '123@eg.com', '9999999999'),
-(6, 'Kento', 'Kanazawa', '123@eg.com', '9999999999');
+INSERT INTO `students` (`id`, `student_fname`, `student_lname`, `student_email`, `student_phone`, `username`, `password`) VALUES
+(1, 'Kento', 'Kanazawa', '123@eg.com', '2222222222', 'kento', 'password'),
+(2, 'Kento', 'Kanazawa', '123@eg.com', '1111111111', 'kento', 'password');
 
 --
 -- Indexes for dumped tables
@@ -66,7 +64,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
