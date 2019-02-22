@@ -1,5 +1,5 @@
 <footer>
-&copy; BSB and Jenna
+&copy;2019 Humbie Helper
 <?php // TODO: waiting for footer design ?>
 <?php include 'inc/js-assets.php'; ?>
 </footer>

@@ -1,3 +1,27 @@
+* {
+  box-sizing: border-box;
+}
 
+body nav {
+  background-color: #1c2833;
+  font-size: 20px;
+}
+body nav a {
+  color: white;
+}
+body nav a:hover {
+  color: #4ec5c1;
+}
+body nav #nav__logo {
+  width: 150px;
+}
+body footer {
+  display: flex;
+  background-color: #1c2833;
+  color: white;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+}
 
 /*# sourceMappingURL=universal-styles.css.map */

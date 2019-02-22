@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Humber Web Development Assistant <?php // TODO: create the poage title dynamically ?></title>
+    <title>Humber Web Development Assistant <?php // TODO: create the page title dynamically ?></title>
     <?php include 'inc/css-assets.php';?>
   </head>
   <body>

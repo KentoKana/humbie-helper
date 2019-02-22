@@ -1,4 +1,39 @@
-$primary-color: #000;
-$secondary-color: #fff;
+$primary-color: #1c2833;
+$secondary-color: #4ec5c1;
 $default-padding: 20px;
 $center-block: 0 auto;
+
+@mixin general-padding {
+	padding: 1em 2em;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	nav{
+		background-color: $primary-color;
+		font-size: 20px;
+
+		a {
+			color: white;			
+
+			&:hover {
+				color: $secondary-color;
+			}
+		}
+		#nav__logo {
+			width: 150px;
+		}
+	}
+
+	footer {
+		display: flex;
+		background-color: $primary-color;
+		color: white;
+		height: 100px;
+		align-items: center;
+		justify-content: center;
+	}
+}
