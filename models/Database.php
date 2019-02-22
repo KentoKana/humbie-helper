@@ -2,7 +2,8 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-class Database {
+class Database 
+{
 	//Data Source Name
 	private static $dsn = "mysql:host=localhost;dbname=HumbieHelper";
 	private static $username = "root";
@@ -34,6 +35,7 @@ class Database {
 			catch(PDOException $e)
 			{
 				self::$errMsg = $e->getMessage();
+				exit();
 			}
 		}
 		return self::$dbh;

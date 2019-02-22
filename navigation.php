@@ -1,4 +1,6 @@
-<?php // TODO: create a dynamically generated nav menu that will be retrieved from the database ?>
+<?php
+// TODO: create a dynamically generated nav menu that will be retrieved from the database 
+?>
 <header>
   <?php // TODO: logo placement ?>
   <nav class="navbar navbar-expand-lg ">
@@ -18,14 +20,6 @@
         <li class="nav-item px-2">
           <a class="nav-link" href="#">FAQ</a>
         </li>
-<!--    <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Resources
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-          </div>
-        </li> -->
         <li class="nav-item px-2">
           <a class="nav-link" href="#">LOG IN</a>
         </li>
