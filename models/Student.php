@@ -1,7 +1,6 @@
 <?php
 require_once('Database.php');
 //Direct to another page if this URL is detected.
-header('Location: ../../index.php');
 
 class Student
 {
@@ -39,19 +38,19 @@ class Student
 		return $this->email;
 	}
 	public function setPhone($phone) {
-		$this->phone = filter_var($phone, FILTER_SANITIZE_STRING);;
+		$this->phone = filter_var($phone, FILTER_SANITIZE_STRING);
 	}
 	public function getPhone() {
 		return $this->phone;
 	}
 	public function setUsername($username) {
-		$this->username = filter_var($username, FILTER_SANITIZE_STRING);;
+		$this->username = filter_var($username, FILTER_SANITIZE_STRING);
 	}
 	public function getUsername() {
 		return $this->username;
 	}
 	public function setPassword($password) {
-		$this->password = filter_var($password, FILTER_SANITIZE_STRING);;
+		$this->password = sha1($password);
 	}
 	public function getPassword() {
 		return $this->password;

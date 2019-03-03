@@ -68,7 +68,7 @@ ini_set('display_errors', 1);
                     <label for="form__password">Password:</label>
                 </div>
                 <input type="password" id="form__password" class="form__input text-center" name="password"
-                    placeholder="Password" value="<?= $student->getStudent($_GET['id'])['password']; ?>">
+                    placeholder="Password">
             </div>
 
             <div>
