@@ -1,8 +1,11 @@
 <?php
 require_once('Database.php');
+//Direct to another page if this URL is detected.
+header('Location: ../../index.php');
 
 class Student
 {
+	//Member Variables
 	private $dbh;
 	private $fname;
 	private $lname;
