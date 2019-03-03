@@ -17,7 +17,7 @@ class Database
 	private function __construct() 
 	{	
 	}
-
+	
 	public static function getDatabase() 
 	{	
 		if(!isset(self::$dbh))
