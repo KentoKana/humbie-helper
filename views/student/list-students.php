@@ -19,27 +19,27 @@ include '../../header.php';
 </div>
 
 <main id="index-listStudents">
-    <h1>Student List</h1>
-    <div>
-        <table>
+    <h1 class="text-center m-3">Student List</h1>
+    <div class="text-center p-5">
+        <table class="table table-striped">
             <tbody>
                 <tr>
-                    <th> Student First Name </th>
-                    <th> Student Last Name </th>
-                    <th> Student Email </th>
-                    <th> Student Phone Number </th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th> First Name </th>
+                    <th> Last Name </th>
+                    <!-- <th> Email </th>
+                    <th> Phone Number </th> -->
+                    <th> Edit </th>
+                    <th> Delete </th>
                 </tr>
                 <form action="#" method="POST">
                     <?php 
                     $student->listStudents();
                     foreach ($student->listStudents() as $row) {
                         echo "<tr>" .
-                        "<td>" . $row['student_fname'] . "</td>" . 
+                        "<td class='m-3'>" . $row['student_fname'] . "</td>" . 
                         "<td>" . $row['student_lname'] . "</td>" . 
-                        "<td>" . $row['student_email'] . "</td>" .
-                        "<td>" . $row['student_phone'] . "</td>" . 
+                        // "<td>" . $row['student_email'] . "</td>" .
+                        // "<td>" . $row['student_phone'] . "</td>" . 
                         "<td>" . "<a href='/views/student/edit-student.php?id=" . $row['id'] . "'>Edit</a></td>" . 
                         "<input type='hidden' name='delId' value='" . $row['id'] . "'>" .
                         "<td>" . "<button type='submit' name='deleteStudent'>Delete</button></td>" . 
