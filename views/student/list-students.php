@@ -10,9 +10,9 @@ include '../../header.php';
     <?php
         if (isset($_GET['addStat'])) {
             if ($_GET['addStat'] === "success") {
-                echo Student::genStatusMsg("success","Your profile has been added!");
+                echo genStatusMsg("success","Your profile has been added!");
             } else {
-                echo Student::genStatusMsg("danger", "Something went wrong! Please try again later.");
+                echo genStatusMsg("danger", "Something went wrong! Please try again later.");
             }
         }
         ?>
@@ -51,6 +51,5 @@ include '../../header.php';
         </table>
     </div>
 </main>
-
 
 <?php include '../../footer.php'; ?>

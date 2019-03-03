@@ -11,9 +11,9 @@ ini_set('display_errors', 1);
         <?php
         if (isset($_GET['updateStat'])) {
             if ($_GET['updateStat'] === "success") {
-                echo Student::genStatusMsg("success","Your profile has been updated!");
+                echo genStatusMsg("success","Your profile has been updated!");
             } else {
-                echo Student::genStatusMsg("danger", "Something went wrong! Please try again later.");
+                echo genStatusMsg("danger", "Something went wrong! Please try again later.");
             }
         }
         ?>
