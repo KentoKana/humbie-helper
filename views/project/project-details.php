@@ -75,10 +75,29 @@ ini_set('display_errors', 1);
                                 <ul class="list-group list-group-flush text-center">
                                     <li class="list-group-item" style="background-color: lightCyan"><a href="#"> + Add
                                             Student to Project</a></li>
-                                    <li class="list-group-item"><a href="#">Jenna BreenGerg</a></li>
-                                    <li class="list-group-item"><a href="#">Markus Martinez</a></li>
-                                    <li class="list-group-item"><a href="#">Can't-o CanIZawa</a></li>
-                                    <li class="list-group-item"><a href="#">Ryarn Robinsoup</a></li>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="#">Jenna BreenGerg</a></td>
+                                                <td><a href="#">&times;</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Markus Martinez</a></td>
+                                                <td><a href="#">&times;</a></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Can't-o CanIZawa</a></td>
+                                                <td><a href="#">&times;</a></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Ryarn Robinsoup</a></td>
+                                                <td><a href="#">&times;</a></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
                                 </ul>
                             </div>
                         </div>
