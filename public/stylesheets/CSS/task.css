@@ -1,0 +1,39 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.tasklist__wrapper {
+  background: #ccc;
+  border-radius: 20px;
+  border-radius: 1px #d1d1d1 solid;
+  padding: 20px 10px 10px;
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  pointer: move;
+}
+
+.card {
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: move;
+}
+
+.tasklist__title h2 {
+  margin: 0 0 10px;
+}
+
+.options {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+/*# sourceMappingURL=task.css.map */
