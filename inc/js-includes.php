@@ -1,5 +1,5 @@
 <?php
-// this is where we all put the required javascript assets for the project 
+// this is where we all put the required javascript assets for the project
 ?>
 
 <!-- Bootstrap 4.0 CDN -->
@@ -8,3 +8,5 @@
 <script src="../../public/js/bootstrap/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <!-- Javascript functions -->
 <script src="../../public/js/script.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="../../public/js/jg-script.js"></script>

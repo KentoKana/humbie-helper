@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css?family=Amaranth|Titillium+Web");
+body {
+  background-color: #4ec5c1;
+}
+body #jg-main {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+body .jg-button-primary {
+  background-color: #ec576b;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  margin: 10px auto;
+  display: block;
+}
+body .jg-button-primary:hover {
+  background-color: #4ec5c1;
+  font-weight: bold;
+  color: #1c2833;
+}
+body #jg-humbie-button-img {
+  width: 10%;
+  height: auto;
+  display: inline-block;
+}
+body table .jg_table__thead {
+  background-color: #1c2833;
+  color: #e5e338;
+}
+body table .jg_table__tbody {
+  color: #1c2833;
+  border-bottom: 2px solid #4ec5c1;
+}
+body table .jg_table__tbody:hover {
+  color: #ec576b;
+}
+body form .jg_form__upload {
+  text-align: center;
+  margin: 10px 0 0 2em;
+}
+body form .jg-form__submit {
+  background-color: #ec576b;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  margin: 10px auto;
+  display: block;
+}
+body form .jg-form__submit:hover {
+  background-color: #4ec5c1;
+  font-weight: bold;
+  color: #1c2833;
+}
+body .jg-humbie-title {
+  color: #ec576b;
+  font-family: "Amaranth", sans-serif;
+  text-align: center;
+  margin: 0 auto;
+}
+body .jg-hippo-sprite {
+  background-color: #1c2833;
+}
+body #jg-hippo-sprite__image {
+  background: url("../../../assets/images/Hipposprite2-01.png") left center;
+  width: 196px;
+  height: 200px;
+  margin: 0 auto;
+}
+body #jg-hippo-sprite__image:hover {
+  animation: play 2s steps(20) infinite;
+}
+@keyframes play {
+  100% {
+    background-position: -3934px;
+  }
+}
+body #jg-hippo-sprite__text {
+  background-color: #ec576b;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 0.5em;
+  width: 50%;
+  text-align: center;
+}
+
+/*# sourceMappingURL=jg-styles.css.map */

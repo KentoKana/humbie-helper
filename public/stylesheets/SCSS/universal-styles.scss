@@ -1,3 +1,10 @@
+//importing fonts
+@import url('https://fonts.googleapis.com/css?family=Amaranth|Titillium+Web');
+
+//font variabls
+$headline-font: 'Amaranth', sans-serif;
+$body-font: 'Titillium Web', sans-serif;
+
 $primary-color: #1c2833;
 $secondary-color: #4ec5c1;
 $default-padding: 20px;
@@ -12,12 +19,18 @@ $center-block: 0 auto;
 }
 
 body {
+	font-family: $body-font;
+
+	h1,h2{
+		font-family:$headline-font;
+	}
 	nav{
 		background-color: $primary-color;
 		font-size: 20px;
+		font-family: $headline-font;
 
 		a {
-			color: white;			
+			color: white;
 
 			&:hover {
 				color: $secondary-color;
@@ -34,5 +47,6 @@ body {
 		height: 100px;
 		align-items: center;
 		justify-content: center;
+		font-family: $headline-font;
 	}
 }
