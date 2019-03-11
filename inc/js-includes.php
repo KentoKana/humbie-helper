@@ -14,8 +14,3 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="../../public/js/jg-script.js"></script>
 <!-- Javascript functions -->
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 10eac3d23811a21b13d23790ec332034abe38507
