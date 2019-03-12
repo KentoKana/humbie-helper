@@ -1,3 +1,4 @@
+<?php require_once '../../header.php'; ?>
 <div class="col-md-6 col-lg-6">
   <button type="button" name="button" class="btn btn-success float-right">Add new minutes</button>
   <h2>Minutes</h2>
@@ -28,3 +29,4 @@
     </tbody>
   </table>
 </div>
+<?php require_once '../../footer.php'; ?>
