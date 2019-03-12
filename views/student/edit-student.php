@@ -18,7 +18,7 @@ ini_set('display_errors', 1);
         }
         ?>
     </div>
-    <main class="form form-group text-center">
+    <div class="form form-group text-center">
         <h1 class="m-3">Update Student</h1>
 
         <form action="" method="POST">
@@ -75,6 +75,6 @@ ini_set('display_errors', 1);
                 <button class="m-3" type="submit" name="editStudent">Update!</button>
             </div>
         </form>
-    </main>
+    </div>
 </main>
 <?php include '../../footer.php'; ?>

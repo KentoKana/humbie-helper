@@ -1,12 +1,16 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/header.php';
-require_once('/controllers/student-controller.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-echo $_SERVER['DOCUMENT_ROOT'].'/header.php';
+// echo $_SERVER['DOCUMENT_ROOT'].'/header.php';
+require_once('../../lib/functions.php');
 ?>
 
 <main id="add-student-main">
+    <!-- Dismissable Motivational Quote -->
+    <?= genStatusMsg('primary',  "'You either die a hero, or live long enough to see yourself become Chuck Norris.' -<em> Shakespeare,
+            probably.</em>")?>
+
     <h1 class="text-center m-3">Project Name Here.</h1>
     <div class="container">
         <div class="row">
@@ -26,6 +30,11 @@ echo $_SERVER['DOCUMENT_ROOT'].'/header.php';
                             <a class="nav-link" id="pills-students-tab" data-toggle="pill" href="#pills-students"
                                 role="tab" aria-controls="pills-students" aria-selected="false">Students</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-projectDetails-tab" data-toggle="pill"
+                                href="#pills-projectDetails" role="tab" aria-controls="pills-projectDetails"
+                                aria-selected="false">Project Details</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -36,42 +45,48 @@ echo $_SERVER['DOCUMENT_ROOT'].'/header.php';
                     <div class="tab-pane fade show active" id="pills-project" role="tabpanel"
                         aria-labelledby="pills-project-tab">
                         <div class="options">
-                          <button type="button" name="addTask" class="btn btn-success">Add a Task List</button>
+                            <button type="button" name="addTask" class="btn btn-success">Add a Task List</button>
                         </div>
                         <div class="tasklist">
-                          <div class="tasklist__wrapper">
-                              <div class="tasklist__header">
-                                  <div class="tasklist__title"><h2>To do:</h2></div>
-                              </div>
-                              <div class="tasklist__body tasklist__nested">
-                                  <div class="card" data-index="1"> Item 1 </div>
-                                  <div class="card" data-index="2"> Item 2 </div>
-                                  <div class="card" data-index="3"> Item 3 </div>
-                                  <div class="card" data-index="4"> Item 4 </div>
-                              </div>
-                              <div class="tasklist__footer">
-                                  <button type="button" name="new_card" value="1">Add new card</button>
-                              </div>
-                          </div>
-                          <div class="tasklist__wrapper">
-                              <div class="tasklist__header">
-                                  <div class="tasklist__title"><h2>Doing:</h2></div>
-                              </div>
-                              <div class="tasklist__body tasklist__nested"></div>
-                              <div class="tasklist__footer">
-                                  <button type="button" name="new_card" value="2">Add new card</button>
-                              </div>
-                          </div>
-                          <div class="tasklist__wrapper">
-                              <div class="tasklist__header">
-                                  <div class="tasklist__title"><h2>Done:</h2></div>
-                              </div>
-                              <div class="tasklist__body tasklist__nested"></div>
-                              <div class="tasklist__footer">
-                                  <button type="button" name="new_card" value="3">Add new card</button>
-                              </div>
-                          </div>
-                      </div>
+                            <div class="tasklist__wrapper">
+                                <div class="tasklist__header">
+                                    <div class="tasklist__title">
+                                        <h2>To do:</h2>
+                                    </div>
+                                </div>
+                                <div class="tasklist__body tasklist__nested">
+                                    <div class="card" data-index="1"> Item 1 </div>
+                                    <div class="card" data-index="2"> Item 2 </div>
+                                    <div class="card" data-index="3"> Item 3 </div>
+                                    <div class="card" data-index="4"> Item 4 </div>
+                                </div>
+                                <div class="tasklist__footer">
+                                    <button type="button" name="new_card" value="1">Add new card</button>
+                                </div>
+                            </div>
+                            <div class="tasklist__wrapper">
+                                <div class="tasklist__header">
+                                    <div class="tasklist__title">
+                                        <h2>Doing:</h2>
+                                    </div>
+                                </div>
+                                <div class="tasklist__body tasklist__nested"></div>
+                                <div class="tasklist__footer">
+                                    <button type="button" name="new_card" value="2">Add new card</button>
+                                </div>
+                            </div>
+                            <div class="tasklist__wrapper">
+                                <div class="tasklist__header">
+                                    <div class="tasklist__title">
+                                        <h2>Done:</h2>
+                                    </div>
+                                </div>
+                                <div class="tasklist__body tasklist__nested"></div>
+                                <div class="tasklist__footer">
+                                    <button type="button" name="new_card" value="3">Add new card</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- Announcements Tab  -->
                     <div class="tab-pane fade" id="pills-announcements" role="tabpanel"
@@ -106,73 +121,67 @@ echo $_SERVER['DOCUMENT_ROOT'].'/header.php';
                     <!-- Student Tab  -->
                     <div class="tab-pane fade" id="pills-students" role="tabpanel" aria-labelledby="pills-student-tab">
                         <div class="card" style="width: 18rem;">
-                            <div class="card" style="width: 18rem;">
-                                <ul class="list-group list-group-flush text-center">
-                                    <li class="list-group-item" style="background-color: lightCyan"><a href="#"> + Add
-                                            Student to Project</a></li>
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td><a href="#">Jenna BreenGerg</a></td>
-                                                <td><a href="#">&times;</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Markus Martinez</a></td>
-                                                <td><a href="#">&times;</a></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Can't-o CanIZawa</a></td>
-                                                <td><a href="#">&times;</a></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Ryarn Robinsoup</a></td>
-                                                <td><a href="#">&times;</a></td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#helpfulTipsModal">
-            Need Help?
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="helpfulTipsModal" tabindex="-1" role="dialog" aria-labelledby="helpfulTips"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="helpfulTips">Helpful Tips!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body m-auto">
-                        <div class="col m-auto">
-                            <!-- The list will be generated from FAQ table -->
-                            <ul class="list-unstyled">
-                                <li><a href="#">Cras justo odio</a></li>
-                                <li><a href="#">Cras justo odio</a></li>
-                                <li><a href="#">Cras justo odio</a></li>
+                            <ul class="list-group list-group-flush text-center">
+                                <li class="list-group-item" style="background-color: lightCyan"><a href="#"> + Add
+                                        Student to Project</a></li>
+                                <li class="list-group-item"><a href="#">Jenna BreenGerg</a></li>
+                                <li class="list-group-item"><a href="#">Markus Martinez</a></li>
+                                <li class="list-group-item"><a href="#">Can't-o CanIZawa</a></li>
+                                <li class="list-group-item"><a href="#">Ryarn Robinsoup</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary m-auto" data-dismiss="modal">Close</button>
+
+                    <!-- Project Details -->
+                    <div class="tab-pane fade" id="pills-projectDetails" role="tabpanel"
+                        aria-labelledby="pills-projectDetails-tab">
+                        <div class="card text-center" style="width: 20rem;">
+                            <h5 class="card-title">Project Details</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Project Description</h6>
+                            <p class="card-text">Description of the project goes here.</p>
+                            <a href="#">Edit This Project</a>
+                            <a href="#" class="text-danger">Delete This Project</a>
+                            <a href="#"></a>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#helpfulTipsModal">
+        Need Help?
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="helpfulTipsModal" tabindex="-1" role="dialog" aria-labelledby="helpfulTips"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="helpfulTips">Helpful Tips!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body m-auto">
+                    <div class="col m-auto">
+                        <!-- The list will be generated from FAQ table -->
+                        <ul class="list-unstyled">
+                            <li><a href="#">Cras justo odio</a></li>
+                            <li><a href="#">Cras justo odio</a></li>
+                            <li><a href="#">Cras justo odio</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary m-auto" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </main>
 
