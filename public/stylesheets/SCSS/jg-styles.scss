@@ -1,0 +1,123 @@
+//importing fonts
+@import url('https://fonts.googleapis.com/css?family=Amaranth|Titillium+Web');
+
+//font variables
+$headline-font: 'Amaranth', sans-serif;
+$body-font: 'Titillium Web', sans-serif;
+
+
+//color variables
+$navy: #1c2833;
+$light-blue: #4ec5c1;
+$pink: #ec576b;
+$yellow: #e5e338;
+$base: #f2f2f2;
+
+body{
+  background-color: $light-blue;
+
+
+  #jg-main{
+    background-color:$base;
+    border-radius: 5px;
+  }
+
+  .jg-button-primary{
+    background-color:$pink;
+    color:white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 10px auto;
+    display: block;
+
+    &:hover{
+      background-color: $light-blue;
+      font-weight: bold;
+      color:$navy;
+    }
+  }
+
+  #jg-humbie-button-img{
+    width:10%;
+    height:auto;
+    display:inline-block;
+  }
+
+  table{
+    .jg_table__thead{
+      background-color: $navy;
+      color: $yellow;
+    }
+
+    .jg_table__tbody{
+      color: $navy;
+      border-bottom: 2px solid $light-blue;
+
+      &:hover{
+        color:$pink;
+      }
+    }
+  }
+
+  form{
+    .jg_form__upload{
+      text-align: center;
+      margin: 10px 0 0 2em;
+    }
+    .jg-form__submit{
+      background-color:$pink;
+      color:white;
+      font-weight: bold;
+      border-radius: 5px;
+      margin: 10px auto;
+      display: block;
+
+      &:hover{
+        background-color: $light-blue;
+        font-weight: bold;
+        color:$navy;
+      }
+    }
+  }
+
+    // CSS for the hippo hippo-sprite
+
+    .jg-humbie-title {
+      color: $pink;
+      font-family:$headline-font;
+      text-align:center;
+      margin: 0 auto;
+    }
+
+    .jg-hippo-sprite{
+      background-color: $navy;
+
+    }
+    #jg-hippo-sprite__image {
+      background: url('../../../assets/images/Hipposprite2-01.png') left center;
+      width: 196px;
+      height: 200px;
+      margin:0 auto;
+
+      &:hover{
+        animation: play 2s steps(20) infinite;
+      }
+      @keyframes play {
+       100% { background-position: -3934px; }
+     }
+    }
+
+    #jg-hippo-sprite__text{
+      background-color:$pink;
+      color:white;
+      font-weight: bold;
+      border-radius: 5px;
+      margin: 0 auto;
+      padding:0.5em;
+      width:50%;
+      text-align:center;
+
+
+
+    }
+}

@@ -8,6 +8,9 @@
 <script src="../../public/js/bootstrap/bootstrap.min.js"></script>
 <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-<!-- Javascript functions -->
 <!-- <script type="text/javascript" src="./public/js/script.js"></script> -->
 <script type="text/javascript" src="../../public/js/task-script.js"></script>
+<script src="../../public/js/script.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="../../public/js/jg-script.js"></script>
+<!-- Javascript functions -->
