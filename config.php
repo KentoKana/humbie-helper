@@ -1,8 +1,8 @@
 <?php
 $path = realpath(__DIR__);
-$altpath= "http://localhost/bsb-humber-web-dev-assistant";
+$altpath= "http://localhost/project-backstreet-boys-and-jenna";
 // uncomment if you are using port 8080
-// $altpath= "http://localhost:8080/bsb-humber-web-dev-assistant";
+// $altpath= "http://localhost:8080/project-backstreet-boys-and-jenna";
 
 // config files for the app
 define('BASE', "$altpath\\");
