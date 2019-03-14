@@ -6,7 +6,6 @@
 // TODO: user design and functionality
 include 'header.php';
 ?>
-<!-- <main id="index-main"> -->
 <div class="container filler">
 	<main class="d-flex align-content-center justify-content-center flex-wrap h-100">
 		<div class="row">
