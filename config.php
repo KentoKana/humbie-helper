@@ -5,6 +5,7 @@ $altpath= "http://localhost/bsb-humber-web-dev-assistant";
 // $altpath= "http://localhost:8080/bsb-humber-web-dev-assistant";
 
 // config files for the app
+define('BASE', "$altpath\\");
 define('CSS', "$altpath\public\stylesheets");
 define('IMG', "$altpath\assets");
 define('JS', "$altpath\public\js");

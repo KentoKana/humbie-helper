@@ -1,6 +1,6 @@
 <?php require_once '../../header.php'; ?>
-<div class="col-md-8">
-  <div class="col-md-6 mx-auto">
+<div class="container">
+  <div class="col-8 mx-auto">
     <h1>Create Minutes of the Meeting</h1>
     <form action="" method="post" class="mt-3">
       <div class="form-group">
