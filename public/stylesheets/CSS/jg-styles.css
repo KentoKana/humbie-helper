@@ -19,10 +19,32 @@ body .jg-button-primary:hover {
   font-weight: bold;
   color: #1c2833;
 }
-body #jg-humbie-button-img {
-  width: 10%;
-  height: auto;
-  display: inline-block;
+body #jg-side-column {
+  border-right: 2px solid #1c2833;
+}
+body #jg-side-column h1 {
+  font-size: 1.1em;
+  text-transform: uppercase;
+}
+body #jg-side-column ul {
+  list-style: none;
+  padding: 0;
+}
+body #jg-side-column a {
+  color: black;
+}
+body #jg-side-column:hover {
+  color: #1c2833;
+}
+body .jg-accordion__header {
+  background-color: #1c2833;
+}
+body .jg-accordion__header button {
+  color: #e5e338;
+  font-family: "Amaranth", sans-serif;
+}
+body .jg-accordion__header button:hover {
+  color: #ec576b;
 }
 body table .jg_table__thead {
   background-color: #1c2833;
@@ -34,6 +56,12 @@ body table .jg_table__tbody {
 }
 body table .jg_table__tbody:hover {
   color: #ec576b;
+}
+body table .jg_table__tbody .jg_table__align-bottom {
+  vertical-align: bottom;
+}
+body table .jg_table__tbody .jg_table__column-width {
+  width: 75%;
 }
 body form .jg_form__upload {
   text-align: center;
@@ -51,6 +79,13 @@ body form .jg-form__submit:hover {
   background-color: #4ec5c1;
   font-weight: bold;
   color: #1c2833;
+}
+body form .jg_form__answer-div label {
+  font-size: 1.5em;
+  color: #ec576b;
+}
+body form .jg_form__answer-div textarea {
+  width: 100%;
 }
 body .jg-humbie-title {
   color: #ec576b;
@@ -84,6 +119,15 @@ body #jg-hippo-sprite__text {
   padding: 0.5em;
   width: 50%;
   text-align: center;
+}
+body #jg-humbie-button {
+  transform: rotate(-90deg);
+  right: 0;
+}
+body #jg-humbie-button-img {
+  width: 10%;
+  height: auto;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=jg-styles.css.map */

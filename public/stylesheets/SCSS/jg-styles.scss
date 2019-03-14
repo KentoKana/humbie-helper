@@ -17,6 +17,7 @@ body{
   background-color: $light-blue;
 
 
+//main layout styles
   #jg-main{
     background-color:$base;
     border-radius: 5px;
@@ -37,12 +38,44 @@ body{
     }
   }
 
-  #jg-humbie-button-img{
-    width:10%;
-    height:auto;
-    display:inline-block;
-  }
+//side menu bar
+#jg-side-column{
+  border-right: 2px solid $navy;
 
+  h1{
+    font-size:1.1em;
+    text-transform: uppercase;
+  }
+  ul{
+    list-style: none;
+    padding:0;
+  }
+  a{
+    color:black;
+  }
+  &:hover{
+    color:$navy;
+  }
+}
+
+//accordion styles
+
+.jg-accordion__header{
+  background-color: $navy;
+
+  button{
+    color:$yellow;
+    font-family: $headline-font;
+    &:hover{
+      color:$pink;
+    }
+  }
+}
+
+
+
+
+//table styles
   table{
     .jg_table__thead{
       background-color: $navy;
@@ -56,9 +89,17 @@ body{
       &:hover{
         color:$pink;
       }
+      .jg_table__align-bottom{
+        vertical-align:bottom;
+      }
+      .jg_table__column-width{
+        width:75%;
+      }
     }
   }
 
+
+  //form styles
   form{
     .jg_form__upload{
       text-align: center;
@@ -78,7 +119,22 @@ body{
         color:$navy;
       }
     }
+    .jg_form__answer-div{
+
+      label{
+        font-size:1.5em;
+        color:$pink;
+      }
+
+      textarea{
+        width:100%;
+      }
+    }
   }
+
+
+
+
 
     // CSS for the hippo hippo-sprite
 
@@ -117,7 +173,16 @@ body{
       width:50%;
       text-align:center;
 
+    }
+    #jg-humbie-button{
+      transform: rotate(-90deg);
+      right:0;  
+    }
 
 
+    #jg-humbie-button-img{
+      width:10%;
+      height:auto;
+      display:inline-block;
     }
 }
