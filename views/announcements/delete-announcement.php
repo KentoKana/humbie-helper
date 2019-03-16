@@ -14,7 +14,8 @@ ini_set('display_errors', 1);
       </ul>
     </div>
     <div class="form-group">
-      <input type="submit" class="btn btn-primary" name="delete-quote" value="Delete Announcement">
+      <input type="submit" class="btn btn-primary" name="delete-quote" value="Delete">
+      <input type="submit" class="btn btn-primary" name="delete-quote-cancel" value="Cancel">
     </div>
   </form>
 </main>

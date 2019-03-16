@@ -61,3 +61,4 @@ ini_set('display_errors', 1);
       <?php// }?>
     </table>
 </main>
+<?php require_once '../../footer.php'; ?>
