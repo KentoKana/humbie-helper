@@ -4,7 +4,7 @@
 * Author:
 */
 // TODO: user design and functionality
-include 'header.php';
+require_once 'header.php';
 ?>
 <div class="container">
     <main id="jg-main" class="d-flex align-content-center justify-content-center flex-wrap h-100 m-4">
