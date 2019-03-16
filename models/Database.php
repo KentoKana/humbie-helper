@@ -32,12 +32,12 @@ class Database
 			{
 			//DBH: Database Handle
 				self::$dbh = new PDO(self::$dsn, self::$username, self:: $password, $options);
-				echo "it works!";
+				// echo "it works!";
 			}
 			catch(PDOException $e)
 			{
 				self::$errMsg = $e->getMessage();
-				echo "not working";
+				// echo "not working";
 				exit();
 			}
 		}

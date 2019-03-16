@@ -30,8 +30,8 @@ if (isset($_POST['addStudent'])) {
         $student->addStudent($fname, $lname, $email, $phone, $username, $password);    
         header("Location:/views/student/list-students.php" . "?addStat=success");
     } catch (PDOException $e){
-        // header("Location:/views/student/list-students.php?id=" . "?addStat=failure");
-        echo $e;
+        header("Location:/views/student/list-students.php?id=" . "?addStat=failure");
+        // echo $e;
     }
 }
 
