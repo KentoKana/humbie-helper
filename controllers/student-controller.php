@@ -26,12 +26,12 @@ if (isset($_POST['addStudent'])) {
     $password = $student->getPassword();
 
     //Execute Add Student
-
     try {
         $student->addStudent($fname, $lname, $email, $phone, $username, $password);    
         header("Location:/views/student/list-students.php" . "?addStat=success");
     } catch (PDOException $e){
-        header("Location:/views/student/list-students.php?id=" . "?addStat=failure");
+        // header("Location:/views/student/list-students.php?id=" . "?addStat=failure");
+        echo $e;
     }
 }
 

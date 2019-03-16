@@ -18,7 +18,7 @@ include '../../header.php';
         ?>
 </div>
 
-<main id="index-listStudents">
+<main id="jg-main" class="m-4">
     <h1 class="text-center m-3">Student List</h1>
     <div class="text-center p-5">
         <table class="table table-striped">

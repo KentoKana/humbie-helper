@@ -5,11 +5,11 @@ ini_set('display_errors', 1);
 // echo $_SERVER['DOCUMENT_ROOT'].'/header.php';
 require_once('../../lib/functions.php');
 ?>
-
-<main id="add-student-main">
-    <!-- Dismissable Motivational Quote -->
-    <?= genStatusMsg('primary',  "'You either die a hero, or live long enough to see yourself become Chuck Norris.' -<em> Shakespeare,
+<?= genStatusMsg('primary',  "'You either die a hero, or live long enough to see yourself become Chuck Norris.' -<em> Shakespeare,
             probably.</em>")?>
+<main id="jg-main" class="m-4">
+    <!-- Dismissable Motivational Quote -->
+
 
     <h1 class="text-center m-3">Project Name Here.</h1>
     <div class="container">

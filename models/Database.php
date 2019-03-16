@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 class Database 
 {
 	//Data Source Name
-	private static $dsn = "mysql:host=localhost;dbname=HumbieHelper";
+	private static $dsn = "mysql:host=localhost;dbname=humbiehelper";
 	private static $username = "root";
 	private static $password = "root";
 	private static $errMsg;
@@ -32,14 +32,18 @@ class Database
 			{
 			//DBH: Database Handle
 				self::$dbh = new PDO(self::$dsn, self::$username, self:: $password, $options);
+				echo "it works!";
 			}
 			catch(PDOException $e)
 			{
 				self::$errMsg = $e->getMessage();
+				echo "not working";
 				exit();
 			}
 		}
 		return self::$dbh;
 	}
 }
+
+// Database::getDatabase();
 ?>

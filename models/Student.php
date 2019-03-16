@@ -78,7 +78,7 @@ class Student
 	//Add Student Method
 	public function addStudent($fname, $lname, $email, $phone, $username, $password) 
 	{
-		$insertStmt = "INSERT INTO students VALUES (null, :fname, :lname, :email, :phone, :username, :password)";
+		$insertStmt = "INSERT INTO students VALUES (null, :fname, :lname, :email, :phone, :username, :pass)";
 		//Define query (in this case, reference the insertStmt)
 		$stmt = $this->dbh->prepare($insertStmt);  
 
@@ -88,7 +88,7 @@ class Student
 		$stmt->bindParam(':email', $email);
 		$stmt->bindParam(':phone', $phone);
 		$stmt->bindParam(':username', $username);
-		$stmt->bindParam(':password', $password);
+		$stmt->bindParam(':pass', $password);
 
 		return $stmt->execute();  
 	}
