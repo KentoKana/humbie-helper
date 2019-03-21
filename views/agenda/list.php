@@ -1,4 +1,16 @@
-<?php require_once '../../header.php'; ?>
+<?php
+require_once '../../header.php';
+require_once '../../models/Database.php';
+
+$dbContext = Database::getDatabase();
+$query = "SELECT a.id, agenda_title, agenda_date FROM agendas a LEFT JOIN projects_students p ON a.project_id = p.project_id WHERE p.student_id = :student_id";
+$stmt = $dbContext->prepare($query);
+$studID = 8;
+$stmt->bindParam(":student_id", $studID);
+$stmt->execute();
+
+$result = $stmt->fetchAll(PDO::FETCH_OBJ);
+?>
 <div class="container">
   <div class="col-10 mx-auto my-5">
     <button type="button" name="button" class="btn btn-success float-right">Add new agenda</button>
@@ -12,21 +24,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">Agenda #1</th>
-          <td scope="row" class="text-md-center">01-07-2019, 08:00:55</td>
-          <td  scope="row" class="text-md-right"><a href="#" class="btn btn-dark">Edit</a> <a href="#" class="btn btn-primary">Send</a> <a href="#" class="btn btn-danger">Delete</a></td>
-        </tr>
-        <tr>
-          <th scope="row">Agenda #2</th>
-          <td scope="row" class="text-md-center">01-14-2019 07:55:34</td>
-          <td scope="row" class="text-md-right"><a href="#" class="btn btn-dark">Edit</a> <a href="#" class="btn btn-primary">Send</a> <a href="#" class="btn btn-danger">Delete</a></td>
-        </tr>
-        <tr>
-          <th scope="row">Agenda #3</th>
-          <td scope="row" class="text-md-center">01-21-2019 07:43:00</td>
-          <td scope="row" class="text-md-right"><a href="#" class="btn btn-dark">Edit</a> <a href="#" class="btn btn-primary">Send</a> <a href="#" class="btn btn-danger">Delete</a></td>
-        </tr>
+        <?php
+        if($result)
+        {
+          foreach($result as $key => $val)
+          {
+            echo "<tr>";
+            echo sprintf('<td scope="row">%s</td>', $val->agenda_title );
+            echo sprintf('<td scope="row" class="text-md-center">%s</td>', $val->agenda_date );
+            echo sprintf('<td  scope="row" class="text-md-right"><a href="#%d" class="btn btn-dark">Edit</a> <a href="#" class="btn btn-primary">Send</a> <a href="#" class="btn btn-danger">Delete</a></td>', $val->id );
+            echo "</tr>";
+          }
+        }
+        ?>
       </tbody>
     </table>
   </div>

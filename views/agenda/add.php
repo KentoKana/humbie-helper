@@ -1,4 +1,45 @@
-<?php require_once '../../header.php'; ?>
+<?php
+require_once '../../header.php';
+require_once '../../models/Database.php';
+
+if(isset($_POST['save_button']))
+{
+    $agenda = $_POST['agenda_title'];
+    $old_business = explode("|", $_POST['old_business']);
+    $new_business = explode("|", $_POST['new_business']);
+    $other_business = explode("|", $_POST['other_business']);
+
+    $data = array(
+        "agenda_date" => $_POST['agenda_date'],
+        "agenda_time" => $_POST['agenda_time'],
+        "agenda_location" => $_POST['agenda_location'],
+        "old_business" => $old_business,
+        "new_business" => $new_business,
+        "other_business" => $other_business,
+    );
+
+    $agenda_description = json_encode($data);
+    $project_id = 1;
+
+    $dbContext = Database::getDatabase();
+    $query = "INSERT INTO agendas (agenda_title, agenda_description, project_id) VALUES (:agenda_title, :agenda_description, :project_id)";
+    $stmt = $dbContext->prepare($query);
+    $stmt->bindParam(":agenda_title", $agenda);
+    $stmt->bindParam(":agenda_description", $agenda_description);
+    $stmt->bindParam(":project_id", $project_id);
+
+    $result = $stmt->execute();
+
+    if($result)
+    {
+        echo "Success!";
+    }
+    else
+    {
+        echo "Failed!";
+    }
+}
+?>
 <div class="container">
   <div class="col-8 mx-auto">
     <h1>Create an Agenda</h1>
@@ -34,7 +75,7 @@
         <textarea name="other_business" rows="8" cols="80" class="form-control"></textarea>
       </div>
       <div class="form-group text-md-right">
-        <button type="button" name="save_button" class="btn btn-primary">Save</button>
+        <button type="submit" name="save_button" class="btn btn-primary">Save</button>
         <button type="button" name="cancel_button" class="btn btn-danger">Cancel</button>
       </div>
     </form>
