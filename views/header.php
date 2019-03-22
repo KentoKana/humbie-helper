@@ -1,3 +1,7 @@
+<<<<<<< HEAD:views/header.php
+=======
+
+>>>>>>> 602bf9c052caad32ce5add1c84522849dcbe82cb:views/header.php
 <!DOCTYPE html>
 <html lang="en">
 <head>

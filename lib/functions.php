@@ -10,5 +10,24 @@
                 <span aria-hidden='true'>&times;</span>
             </button>
         </div> ";
-	}
+    }
+
+    function HandleStatusMsg()
+    {
+        if (isset($_GET['addStat'])) {
+            if ($_GET['addStat'] === "success") {
+                return genStatusMsg("success","Your profile has been added!");
+            } else {
+                return genStatusMsg("danger", "Something went wrong! Please try again later.");
+            }
+        }
+        if (isset($_GET['delStat'])) {
+            if ($_GET['delStat'] === "success") {
+                return genStatusMsg("success","Your profile has been deleted!");
+            } else {
+                return genStatusMsg("danger", "Something went wrong! Please try again later.");
+            }
+        }
+    }    
+   
 ?>

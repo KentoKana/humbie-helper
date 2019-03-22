@@ -4,7 +4,9 @@
 * Author:
 */
 // TODO: user design and functionality
-require_once 'header.php';
+require 'config.php';
+require_once VIEWS.'/header.php';
+require_once CONTROLLERS.'/home-controller.php';
 ?>
 <div class="container">
     <main id="jg-main" class="d-flex align-content-center justify-content-center flex-wrap h-100 m-4">
@@ -14,23 +16,29 @@ require_once 'header.php';
             </div>
             <div class="col-sm-4 mx-auto border bg-light rounded text-center m-4">
                 <h2 class="m-2">Log In</h2>
-                <form>
+                <span class="text-danger"><?php echo $errorMsg;?></span>
+                <form action="" method="POST">
                     <div class="form-group">
                         <label for="user-input">Username: </label>
-                        <input type="text" class="form__input-field form-control" id="user-input"
-                            placeholder="Username">
+                        <input type="text" name="username" class="form__input-field form-control" id="user-input"
+                            placeholder="Username"
+                            value="<?php if(isset($_POST['login'])) { echo $_POST['username']; }?>"
+                            >
                     </div>
                     <div class="form-group">
                         <label for="password-input">Password: </label>
-                        <input type="text" class="form__input-field form-control" id="password-input"
-                            placeholder="Password">
+                        <input type="password" name="password" class="form__input-field form-control"
+                            id="password-input" placeholder="Password"
+                            value="<?php if(isset($_POST['login'])) { echo $_POST['password']; }?>"
+                            >
                     </div>
                     <div class="form-group">
-                        <button type="submit" id="form__submit-button" class="btn btn-primary">Log In</button>
+                        <button type="submit" id="form__submit-button" class="btn btn-primary" name="login">Log
+                            In</button>
                     </div>
                 </form>
             </div>
         </div>
     </main>
 </div>
-<?php include 'footer.php'; ?>
+<?php include VIEWS.'/footer.php'; ?>
