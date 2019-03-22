@@ -22,7 +22,7 @@ if(isset($_POST['details'])){
 
 if(isset($_POST['delete'])){
   $_SESSION['project_id'] = $_POST['project_id'];
-  header('Location: edit-project.php');
+  header('Location: delete-project.php');
 }
 
 
@@ -64,7 +64,7 @@ $projects = $p->listProjects($student_id, $db);
                     </td>
                     <td><form action="" method='post'>
                           <input type='hidden' name="project_id" value="<?=$project->id?>" />
-                          <input class='jg-table__button' type='submit' name='Delete' value='Delete Project' />
+                          <input class='jg-table__button' type='submit' name='delete' value='Delete Project' />
                         </form>
                     </td>
                 </tr>
