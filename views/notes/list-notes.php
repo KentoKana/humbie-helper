@@ -1,4 +1,8 @@
-<?php include '../../header.php';?>
+<?php require './../../config.php';
+include VIEWS.'/header.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
 <main id="jg-main" class="m-4">
   <h1 class="text-center pt-3">All Notes</h1>
     <div class="text-center px-5 py-2">
@@ -31,4 +35,4 @@
     </div>
 </main>
 
-<?php include '../../footer.php';?>
+<?php include VIEWS.'/footer.php'; ?>
