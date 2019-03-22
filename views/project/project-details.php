@@ -1,9 +1,21 @@
 <?php
-require '../../config.php';
+require './../../config.php';
 include VIEWS.'/header.php';
+//require_once CONTROLLERS.'/student-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require LIB.'/functions.php';
+
+require_once LIB . '/functions.php';
+require_once MODELS . '/Database.php';
+require_once  MODELS .'/Project.php';
+
+$project_id = $_SESSION['project_id'];
+$db = Database::getDatabase();
+$p = new Project();
+$project = $p->singleProject($project_id, $db);
+$students = $p->listStudentsInProject($project_id, $db);
+
+
 ?>
 <?= genStatusMsg('primary',  "'You either die a hero, or live long enough to see yourself become Chuck Norris.' -<em> Shakespeare,
             probably.</em>")?>
@@ -11,7 +23,7 @@ require LIB.'/functions.php';
     <!-- Dismissable Motivational Quote -->
 
 
-    <h1 class="text-center m-3">Project Name Here.</h1>
+    <h1 class="text-center m-3"><?=$project->project_name?></h1>
     <div class="container">
         <div class="row">
             <div class="col-lg-12 d-flex justify-content-center">
@@ -122,12 +134,11 @@ require LIB.'/functions.php';
                     <div class="tab-pane fade" id="pills-students" role="tabpanel" aria-labelledby="pills-student-tab">
                         <div class="card" style="width: 18rem;">
                             <ul class="list-group list-group-flush text-center">
-                                <li class="list-group-item" style="background-color: lightCyan"><a href="#"> + Add
+                                <li class="list-group-item" style="background-color: lightCyan"><a href="project-student-list.php"> + Add
                                         Student to Project</a></li>
-                                <li class="list-group-item"><a href="#">Jenna BreenGerg</a></li>
-                                <li class="list-group-item"><a href="#">Markus Martinez</a></li>
-                                <li class="list-group-item"><a href="#">Can't-o CanIZawa</a></li>
-                                <li class="list-group-item"><a href="#">Ryarn Robinsoup</a></li>
+                                <?php foreach($students as $student):?>
+                                  <li class="jg-list"> <?=$student->student_fname . ' ' . $student->student_lname?> </li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </div>
@@ -136,11 +147,10 @@ require LIB.'/functions.php';
                     <div class="tab-pane fade" id="pills-projectDetails" role="tabpanel"
                         aria-labelledby="pills-projectDetails-tab">
                         <div class="card text-center" style="width: 20rem;">
-                            <h5 class="card-title">Project Details</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Project Description</h6>
-                            <p class="card-text">Description of the project goes here.</p>
-                            <a href="#">Edit This Project</a>
-                            <a href="#" class="text-danger">Delete This Project</a>
+                            <h5 class="card-title">Project Description</h5>
+                            <p class="card-text"><?=$project->project_description?></p>
+                            <a href="edit-project.php">Edit This Project</a>
+                            <a href="delete-project.php" class="text-danger">Delete This Project</a>
                             <a href="#"></a>
 
                         </div>

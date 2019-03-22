@@ -43,8 +43,8 @@ if (isset($_POST['addStudent'])) {
             $student->addStudent($fname, $lname, $email, $phone, $username, $password);    
             header("Location:/project-backstreet-boys-and-jenna/views/student/list-students.php" . "?addStat=success");
         } catch (PDOException $e){
-            header("Location:/project-backstreet-boys-and-jenna/views/student/list-students.php" . "?addStat=failure");
-            // echo $e;
+            // header("Location:/project-backstreet-boys-and-jenna/views/student/list-students.php" . "?addStat=failure");
+            echo $e;
         }
     } 
 }
@@ -74,6 +74,7 @@ if (isset($_POST['editStudent'])) {
         header("Location:/project-backstreet-boys-and-jenna/views/student/edit-student.php?id=" . $_GET['id'] . "&updateStat=success");
     } catch (PDOException $e){
         header("Location:/project-backstreet-boys-and-jenna/views/student/edit-student.php?id=" . $_GET['id'] . "&updateStat=failure");
+        // echo $e;
     }
 }
 

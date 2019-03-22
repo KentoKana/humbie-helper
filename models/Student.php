@@ -133,7 +133,7 @@ class Student
 	//Add Student Method
 	public function addStudent($fname, $lname, $email, $phone, $username, $password) 
 	{
-		$insertStmt = "INSERT INTO students VALUES (null, :fname, :lname, :email, :phone, :username, :pass, 1)";
+		$insertStmt = "INSERT INTO students VALUES (null, :fname, :lname, :email, :phone, :username, :pass, 1,0)";
 		//Define query (in this case, reference the insertStmt)
 		$stmt = $this->dbh->prepare($insertStmt);  
 

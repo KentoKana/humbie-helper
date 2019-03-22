@@ -1,22 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Mar 13, 2019 at 01:13 AM
--- Server version: 5.6.34-log
--- PHP Version: 7.2.1
+-- Host: localhost:8889
+-- Generation Time: Mar 21, 2019 at 11:38 PM
+-- Server version: 5.7.23
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `humbiehelper`
@@ -167,8 +159,28 @@ CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `project_name` varchar(50) NOT NULL,
   `project_description` varchar(225) NOT NULL,
-  `student_id` int(11) NOT NULL
+  `student_id` int(11) NOT NULL,
+  `is_deleted?` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `projects`
+--
+
+INSERT INTO `projects` (`id`, `project_name`, `project_description`, `student_id`, `is_deleted?`) VALUES
+(2, 'Test 123', '  Testing my project  ', 1, 0),
+(3, 'Another one', 'blahblahblah', 1, 0),
+(4, '555', '1234354', 1, 0),
+(5, '78910', 'blah blah blah', 1, 0),
+(6, '78910', 'blah blah blah', 1, 0);
+
+--
+-- Triggers `projects`
+--
+DELIMITER $$
+CREATE TRIGGER `new_project_trigger` AFTER INSERT ON `projects` FOR EACH ROW INSERT INTO projects_students VALUES(null, NEW.id, NEW.student_id)
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -181,6 +193,17 @@ CREATE TABLE `projects_students` (
   `project_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `projects_students`
+--
+
+INSERT INTO `projects_students` (`id`, `project_id`, `student_id`) VALUES
+(3, 2, 1),
+(4, 2, 2),
+(5, 3, 1),
+(7, 3, 4),
+(17, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -235,9 +258,20 @@ CREATE TABLE `students` (
   `student_email` varchar(50) NOT NULL,
   `student_phone` varchar(50) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `role_id` int(11) DEFAULT NULL
+  `password` varchar(225) NOT NULL,
+  `role_id` int(11) DEFAULT NULL,
+  `is_deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `student_fname`, `student_lname`, `student_email`, `student_phone`, `username`, `password`, `role_id`, `is_deleted`) VALUES
+(1, 'Jenna', 'Bess', 'jbg@gmail.com', '1234567890', 'jennabg', 'abcd', NULL, 0),
+(2, 'Nick', 'G', 'ngg@gmail.com', '111111111', 'ngg', 'test', NULL, 0),
+(3, 'Jamie', 'MG', 'JMG@123.com', '1231212', 'jmg_93', 'elvis', NULL, 0),
+(4, 'Avi', 'R', 'avi@test.com', '1232425', 'avroth16', '5678', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -429,96 +463,115 @@ ALTER TABLE `timers`
 --
 ALTER TABLE `agendas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `cards`
 --
 ALTER TABLE `cards`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `faq`
 --
 ALTER TABLE `faq`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `faq_categories`
 --
 ALTER TABLE `faq_categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `minutes`
 --
 ALTER TABLE `minutes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `motivational_quotes`
 --
 ALTER TABLE `motivational_quotes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `projects_students`
 --
 ALTER TABLE `projects_students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `project_deadlines`
 --
 ALTER TABLE `project_deadlines`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `tasklists`
 --
 ALTER TABLE `tasklists`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `task_cards`
 --
 ALTER TABLE `task_cards`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `timers`
 --
 ALTER TABLE `timers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Constraints for dumped tables
 --
@@ -619,8 +672,3 @@ ALTER TABLE `task_cards`
 ALTER TABLE `timers`
   ADD CONSTRAINT `timers_ibfk_1` FOREIGN KEY (`card_id`) REFERENCES `cards` (`id`),
   ADD CONSTRAINT `timers_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
