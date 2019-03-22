@@ -1,4 +1,7 @@
-<?php require_once '../../header.php'; ?>
+<?php require '../../config.php';
+include VIEWS.'/header.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);?>
 <div class="container">
   <div class="col-8 mx-auto">
     <h1>Create Minutes of the Meeting</h1>
