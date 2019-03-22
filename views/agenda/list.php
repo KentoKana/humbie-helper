@@ -1,6 +1,7 @@
 <?php
-require_once '../../header.php';
-require_once '../../models/Database.php';
+require_once '../../config.php';
+require_once VIEWS . '/header.php';
+require_once MODELS . '/Database.php';
 
 $dbContext = Database::getDatabase();
 $query = "SELECT a.id, agenda_title, agenda_date FROM agendas a LEFT JOIN projects_students p ON a.project_id = p.project_id WHERE p.student_id = :student_id";
@@ -41,4 +42,4 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
     </table>
   </div>
 </div>
-<?php require_once '../../footer.php'; ?>
+<?php require_once VIEWS . '/footer.php'; ?>

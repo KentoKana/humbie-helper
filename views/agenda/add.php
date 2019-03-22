@@ -1,6 +1,7 @@
 <?php
-require_once '../../header.php';
-require_once '../../models/Database.php';
+require_once '../../config.php';
+require_once VIEWS . '/header.php';
+require_once MODELS . '/Database.php';
 
 if(isset($_POST['save_button']))
 {
@@ -81,4 +82,4 @@ if(isset($_POST['save_button']))
     </form>
   </div>
 </div>
-<?php require_once '../../footer.php'; ?>
+<?php require_once VIEWS . '/footer.php'; ?>
