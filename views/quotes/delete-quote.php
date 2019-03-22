@@ -1,6 +1,7 @@
 <?php
 require '../../config.php';
 include VIEWS.'/header.php';
+require_once CONTROLLERS.'/quote-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
@@ -14,7 +15,10 @@ ini_set('display_errors', 1);
             </ul>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" name="delete-quote" value="Delete Quote">
+            <input type="submit" class="jg-form__submit" name="delete" value="Delete Quote">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="jg-form__submit" name="cancel" value="Delete Quote">
         </div>
   </form>
 </main>
