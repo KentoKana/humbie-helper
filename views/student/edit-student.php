@@ -1,9 +1,11 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/header.php';
-require_once('../../controllers/student-controller.php');
+require '../../config.php';
+include VIEWS.'/header.php';
+require_once CONTROLLERS.'/student-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
+
 <main id="edit-student-main">
 
     <!--If GET is set for updateStat, display this content.  -->
@@ -77,4 +79,4 @@ ini_set('display_errors', 1);
         </form>
     </div>
 </main>
-<?php include '../../footer.php'; ?>
+<?php include VIEWS.'/footer.php'; ?>

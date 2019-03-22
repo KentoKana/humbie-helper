@@ -1,13 +1,12 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/header.php';
-require_once('../../controllers/student-controller.php');
+require '../../config.php';
+include VIEWS.'/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-// echo $_SERVER['DOCUMENT_ROOT'].'/header.php';
+var_dump($_SESSION['studentId']);
 ?>
-
-<main id="add-student-main">
-    <h1 class="text-center m-3">Student Name</h1>
+<main id="jg-main" class="m-4">
+    <h1 class="text-center m-3">Welcome, <?= $_SESSION['username'];?>!</h1>
 
     <div class="container">
         <div class="row">
@@ -87,4 +86,4 @@ ini_set('display_errors', 1);
 
 </main>
 
-<?php include '../../footer.php'; ?>
+<?php include VIEWS.'/footer.php'; ?>

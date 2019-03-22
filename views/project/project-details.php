@@ -1,9 +1,9 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/header.php';
+require '../../config.php';
+include VIEWS.'/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-// echo $_SERVER['DOCUMENT_ROOT'].'/header.php';
-require_once('../../lib/functions.php');
+require LIB.'/functions.php';
 ?>
 <?= genStatusMsg('primary',  "'You either die a hero, or live long enough to see yourself become Chuck Norris.' -<em> Shakespeare,
             probably.</em>")?>
@@ -185,4 +185,4 @@ require_once('../../lib/functions.php');
     </div>
 </main>
 
-<?php include '../../footer.php'; ?>
+<?php include VIEWS.'/footer.php'; ?>

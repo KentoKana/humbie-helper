@@ -20,40 +20,68 @@ class Student
 	
 	//Setters & Getters
 	public function setFName($fname) {
+		if($fname === "") {
+			return false;
+		}
 		$this->fname = filter_var($fname, FILTER_SANITIZE_STRING);
 	}
 	public function getFName() {
 		return $this->fname;
 	}
 	public function setLName($lname) {
+		if($lname === "") {
+			return false;
+		}
 		$this->lname = filter_var($lname, FILTER_SANITIZE_STRING);
 	}
 	public function getLName() {
-		return $this->fname;
+		return $this->lname;
 	}
 	public function setEmail($email) {
-		$this->email = filter_var($email, FILTER_SANITIZE_EMAIL);
+		if(filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            $this->email =  filter_var($email, FILTER_SANITIZE_EMAIL);
+        } else {
+			return false;
+		}
 	}
 	public function getEmail() {
 		return $this->email;
 	}
 	public function setPhone($phone) {
-		$this->phone = filter_var($phone, FILTER_SANITIZE_STRING);
+        if (preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phone)) {
+            $this->phone = $phone;
+		} else {
+			return false;
+		}
 	}
 	public function getPhone() {
 		return $this->phone;
 	}
 	public function setUsername($username) {
+		if($username === "") {
+			return false;
+		}
 		$this->username = filter_var($username, FILTER_SANITIZE_STRING);
 	}
 	public function getUsername() {
 		return $this->username;
 	}
 	public function setPassword($password) {
-		$this->password = sha1($password);
+		if($password === "") {
+			return false;
+		}
+		$this->password = $hash = password_hash($password, PASSWORD_DEFAULT);
 	}
 	public function getPassword() {
 		return $this->password;
+	}
+
+	//Validation message for adding/editing students.
+	public static function validateData($setter, $msg) {
+		if($setter === false) {
+			return "<div class='text-danger'>" . $msg . "</div>";
+		}
 	}
 
 	//List Student Method
@@ -63,6 +91,33 @@ class Student
 		$stmt = $this->dbh->prepare($selectStmt);
 		$stmt->execute();
 		return $stmt->fetchAll();
+	}
+
+	public function getStudentPass($username) {
+		$selectStmt = "SELECT password FROM students WHERE (username = :username)";
+		$stmt = $this->dbh->prepare($selectStmt);
+		$stmt->bindParam(':username', $username);
+		$stmt->execute();
+		return $stmt->fetch();
+	}
+
+	public function getStudentIdByUserName($username) 
+	{
+		$selectStmt = "SELECT id FROM students WHERE username = :username";
+		$stmt = $this->dbh->prepare($selectStmt);
+		$stmt->bindParam(':username', $username);
+		$stmt->execute();
+		return $stmt->fetch();
+	}
+
+	public function studentLogin($username, $password) {
+		$selectStmt = "SELECT * FROM students WHERE (username = :username) AND (password = :pass)";
+		$stmt = $this->dbh->prepare($selectStmt);
+		$stmt->bindParam(':username', $username);
+		$stmt->bindParam(':pass', $password);
+
+		$stmt->execute();
+		return $stmt->fetch();
 	}
 
 	//Get Single Student Method
