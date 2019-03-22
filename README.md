@@ -1,9 +1,9 @@
-Humbie Helper
-Version 1.0
+# Humbie Helper
+## Version 1.0
 ===================================
-A helper for students of Humber College Web Development Program!
+## A helper for students of Humber College Web Development Program!
 
-Developers
+### Developers
 ===================================
 -Jenna G.
 -Roengten Mark M.
@@ -11,7 +11,7 @@ Developers
 -Ryan R.
 
 
-What this project is
+## What this project is
 ===================================
 Humbie Helper is a web application specifically created to help the future students of Humber College Web Development Program. You can:
     -Register
@@ -23,15 +23,15 @@ Humbie Helper is a web application specifically created to help the future stude
 
 The app is currently in the development stage. Please read the "Milestones" section for more details.
 
-Milestones (Last update: March 21 2019)
+## Milestones (Last update: March 21 2019)
 ===================================
-Kento
--Added student registration
+### Kento
+### -Added student registration
     -A student can register through the form available on add-student.php.
     -Server-side validation is implemented on the registration fields. 
     -Can view a list of all the students registered.
 
--Login Feature
+### -Login Feature
     -Once registered, it allows the user to login through the home page.
     -Validation added to the login form. 
     -If username and password match, the user will be redirected to the profile view.
