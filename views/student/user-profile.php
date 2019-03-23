@@ -1,11 +1,6 @@
 <?php
-<<<<<<< HEAD
-include '../../header.php';
-require_once('../../controllers/student-controller.php');
-=======
 require '../../config.php';
-include VIEWS.'/header.php';
->>>>>>> 602bf9c052caad32ce5add1c84522849dcbe82cb
+include VIEWS . '/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 var_dump($_SESSION['studentId']);
@@ -91,8 +86,4 @@ var_dump($_SESSION['studentId']);
 
 </main>
 
-<<<<<<< HEAD
-<?php include '../../footer.php'; ?>
-=======
 <?php include VIEWS.'/footer.php'; ?>
->>>>>>> 602bf9c052caad32ce5add1c84522849dcbe82cb

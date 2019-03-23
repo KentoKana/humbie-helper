@@ -27,7 +27,7 @@ if(isset($_POST['delete'])){
 
 
 
-$_SESSION['student_id']= 1;
+$_SESSION['student_id'] = 9;
 $student_id = $_SESSION['student_id'];
 $db = Database::getDatabase();
 $p = new Project();

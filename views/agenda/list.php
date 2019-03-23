@@ -2,19 +2,40 @@
 require_once '../../config.php';
 require_once VIEWS . '/header.php';
 require_once MODELS . '/Database.php';
-
-$dbContext = Database::getDatabase();
-$query = "SELECT a.id, agenda_title, agenda_date FROM agendas a LEFT JOIN projects_students p ON a.project_id = p.project_id WHERE p.student_id = :student_id";
-$stmt = $dbContext->prepare($query);
-$studID = 8;
-$stmt->bindParam(":student_id", $studID);
-$stmt->execute();
-
-$result = $stmt->fetchAll(PDO::FETCH_OBJ);
+require_once MODELS . '/Agenda.php';
+require_once CONTROLLERS . '/agenda-controller.php';
+require_once LIB . '/functions.php';
 ?>
 <div class="container">
+  <div id="msg">
+    <?php
+      if(isset($_GET['deleted']))
+      {
+        if($_GET['deleted'] == 'success')
+        {
+          echo genStatusMsg("success", "Successfully Deleted!");
+        }
+        else
+        {
+          echo genStatusMsg("danger", "Unknown error was encountered, please try again!");
+        }
+      }
+
+      if(isset($_GET['added']))
+      {
+        if($_GET['deleted'] == 'success')
+        {
+          echo genStatusMsg("success", "Successfully Deleted!");
+        }
+        else
+        {
+          echo genStatusMsg("danger", "Unknown error was encountered, please try again!");
+        }
+      }
+    ?>
+  </div>
   <div class="col-10 mx-auto my-5">
-    <button type="button" name="button" class="btn btn-success float-right">Add new agenda</button>
+    <a href="add.php" class="btn btn-success float-right">Add new agenda</a>
     <h2>Agendas</h2>
     <table class="table">
       <thead class="thead-dark">
@@ -26,17 +47,9 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
       </thead>
       <tbody>
         <?php
-        if($result)
-        {
-          foreach($result as $key => $val)
-          {
-            echo "<tr>";
-            echo sprintf('<td scope="row">%s</td>', $val->agenda_title );
-            echo sprintf('<td scope="row" class="text-md-center">%s</td>', $val->agenda_date );
-            echo sprintf('<td  scope="row" class="text-md-right"><a href="#%d" class="btn btn-dark">Edit</a> <a href="#" class="btn btn-primary">Send</a> <a href="#" class="btn btn-danger">Delete</a></td>', $val->id );
-            echo "</tr>";
-          }
-        }
+          // this should be session but since our modules aren't integrated yet I using an Id tied to my user account
+          $id = 7;
+          echo generateList($id);
         ?>
       </tbody>
     </table>

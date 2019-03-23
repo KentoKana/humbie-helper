@@ -1,12 +1,7 @@
 <?php
-<<<<<<< HEAD
-include '../../header.php';
-require_once('../../controllers/student-controller.php');
-=======
 require '../../config.php';
 include VIEWS.'/header.php';
 require_once CONTROLLERS.'/student-controller.php';
->>>>>>> 602bf9c052caad32ce5add1c84522849dcbe82cb
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
@@ -84,8 +79,4 @@ ini_set('display_errors', 1);
         </form>
     </div>
 </main>
-<<<<<<< HEAD
-<?php include '../../footer.php'; ?>
-=======
 <?php include VIEWS.'/footer.php'; ?>
->>>>>>> 602bf9c052caad32ce5add1c84522849dcbe82cb

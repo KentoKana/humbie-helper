@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['studentId'] = $s->getStudentIdByUserName($_POST['username'])[0];
             //get student id as well!
-            header("Location:/project-backstreet-boys-and-jenna/views/student/user-profile.php");
+            header("Location:". RVIEWS ."/student/user-profile.php");
         }
 }
 

@@ -10,6 +10,10 @@
 - Kento K.
 - Ryan R.
 
+### Current Bugs
+- Session not persisting
+- Mysql Server Error : Mysql has gone away
+  - I already reported this bug in my hosting (Mark)
 
 ## What this project is
 
@@ -28,13 +32,23 @@ The app is currently in the development stage. Please read the "Milestones" sect
 ### Kento
 ### - Added student registration
 - A student can register through the form available on add-student.php.
-- Server-side validation is implemented on the registration fields. 
+- Server-side validation is implemented on the registration fields.
 - Can view a list of all the students registered.
 
 ### -Login Feature
 - Once registered, it allows the user to login through the home page.
-- Validation added to the login form. 
+- Validation added to the login form.
 - If username and password match, the user will be redirected to the profile view.
 - Server-side session is set once the user successfully logs in.
 - If there is no match between the user and the password, the user will be redirected back to the login form with an error message.
 
+### Mark
+### - Agenda Feature
+- Login Credentials:
+- username: porkalmighty
+- password: 123456
+
+- adding an agenda is currently tied to my account id (7) because of session bug.
+- CRUD is working properly,
+- When agenda title is not specified when adding or deleting an agenda, it will return an error
+- Email function is not yet implemented

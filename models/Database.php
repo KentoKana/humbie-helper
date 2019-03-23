@@ -6,9 +6,9 @@ ini_set('display_errors', 1);
 class Database
 {
 	//Data Source Name
-	private static $dsn = "mysql:host=localhost;dbname=humbiehelper";
-	private static $username = "root";
-	private static $password = "";
+	private static $dsn = "mysql:host=skriptkaiju.com:3306;dbname=skrip748_humbiehelper";
+	private static $username = "skrip748_humbie";
+	private static $password = "_ys(2[JV.S;M";
 	private static $errMsg;
 
 	//Database Handler
