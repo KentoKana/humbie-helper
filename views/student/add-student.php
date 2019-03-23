@@ -21,7 +21,6 @@ ini_set('display_errors', 1);
                     value="<?php if(isset($_POST['addStudent'])) { echo $_POST['fname'];}?>" placeholder="First Name">
                 <?php if(isset($_POST['addStudent'])) {echo Student::validateData($student->setFName($_POST['fname']), "Invalid First Name." );} ?>
             </div>
-
             <div class="mt-2">
             <!-- Last Name -->
                 <div>

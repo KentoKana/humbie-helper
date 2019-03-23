@@ -42,7 +42,7 @@ ini_set('display_errors', 1);
             "<td>" . $row['student_lname'] . "</td>" . 
             // "<td>" . $row['student_email'] . "</td>" .
             // "<td>" . $row['student_phone'] . "</td>" . 
-            "<td>" . "<a href='/views/student/edit-student.php?id=" . $row['id'] . "'>Edit</a></td>" . 
+            "<td>" . "<a href='/project-backstreet-boys-and-jenna/views/student/edit-student.php?id=" . $row['id'] . "'>Edit</a></td>" . 
             "<input type='hidden' name='delId' value='" . $row['id'] . "'>" .
             "<td>" . "<button type='submit' name='deleteStudent'>Delete</button></td>" . 
             "</tr>";

@@ -1,5 +1,6 @@
 # Humbie Helper
 ## Version 1.0
+![alt text](https://github.com/2019-Winter-HTTP-5202-0NB/project-backstreet-boys-and-jenna/blob/master/assets/images/Humbie.png)
 
 ## A helper for students of Humber College Web Development Program!
 
@@ -31,7 +32,7 @@ The app is currently in the development stage. Please read the "Milestones" sect
 - Server-side validation is implemented on the registration fields. 
 - Can view a list of all the students registered.
 
-### -Login Feature
+### - Login Feature
 - Once registered, it allows the user to login through the home page.
 - Validation added to the login form. 
 - If username and password match, the user will be redirected to the profile view.
