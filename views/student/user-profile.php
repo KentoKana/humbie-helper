@@ -4,13 +4,33 @@ require VIEWS . '/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once CONTROLLERS.'/student-controller.php';
+require_once MODELS. '/Project.php';
+$ps = new Project();
+$db = Database::getDatabase();
 
 if(!isset($_SESSION['username'])) {
     header("Location:/project-backstreet-boys-and-jenna");
 }
 
-var_dump($_SESSION['studentId']);
 $s = $student->getStudent($_SESSION['studentId']);
+$db = Database::getDatabase();
+$p = new Project();
+$projects = $p->listProjects($_SESSION['studentId'], $db);
+
+if(isset($_POST['edit'])){
+    $_SESSION['project_id'] = $_POST['project_id'];
+    header('Location:'.RVIEWS.'/project/edit-project.php');
+  }
+  
+  if(isset($_POST['details'])){
+    $_SESSION['project_id'] = $_POST['project_id'];
+    header('Location:'.RVIEWS. '/project/project-details.php');
+  }
+  
+  if(isset($_POST['delete'])){
+    $_SESSION['project_id'] = $_POST['project_id'];
+    header('Location:'.RVIEWS.'/project/delete-project.php');
+  }
 ?>
 <main id="jg-main" class="m-4">
     <h1 class="text-center m-3">Welcome, <?= $_SESSION['username'];?>!</h1>
@@ -44,36 +64,49 @@ $s = $student->getStudent($_SESSION['studentId']);
                     <div class="tab-pane fade show active" id="pills-currentProjects" role="tabpanel"
                         aria-labelledby="pills-currentProjects-tab">
 
-                        <div class="card" style="width: 18rem;">
-                            <ul class="list-group list-group-flush text-center">
-                                <li class="list-group-item" style="background-color: lightCyan"><a href="#">&plus; Start
-                                        A New Project</a></li>
-                            </ul>
-
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td><a href="#">Project Management</a></td>
-                                        <td><a href="#">&times;</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">Web Application Development </a></td>
-                                        <td><a href="#">&times;</a></td>
-
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">Mobile Development</a></td>
-                                        <td><a href="#">&times;</a></td>
-
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">Security and Quality Assurance</a></td>
-                                        <td><a href="#">&times;</a></td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
+                        <ul class="list-group list-group-flush text-center">
+                            <li class="list-group-item" style="background-color: lightCyan"><a
+                                    href="<?= RVIEWS."/project/add-project.php"?>">&plus; Start
+                                    A New Project</a></li>
+                        </ul>
+                        <table class="table">
+                            <thead class="jg_table__thead text center">
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th> Details </th>
+                                    <th> Edit </th>
+                                    <th> Delete </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($projects as $project):?>
+                                <tr class="jg_table__tbody">
+                                    <td><?=$project->project_name?></td>
+                                    <td>
+                                        <form action="" method='post'>
+                                            <input type='hidden' name="project_id" value="<?=$project->id?>" />
+                                            <input class='jg-table__button' type='submit' name='details'
+                                                value='Project Details' />
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="" method='post'>
+                                            <input type='hidden' name="project_id" value="<?=$project->id?>" />
+                                            <input class='jg-table__button' type='submit' name='edit'
+                                                value='Edit Project' />
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="" method='post'>
+                                            <input type='hidden' name="project_id" value="<?=$project->id?>" />
+                                            <input class='jg-table__button' type='submit' name='delete'
+                                                value='Delete Project' />
+                                        </form>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
                     </div>
 
                     <!-- Your Info Tab  -->
@@ -101,7 +134,9 @@ $s = $student->getStudent($_SESSION['studentId']);
                                             <td><?= $s['student_phone'];?></td>
                                         </tr>
                                         <tr>
-                                            <td class="text-center" colspan="2"> <a href="<?=RVIEWS."/student/edit-student.php"?>">Edit your profile</a></td>
+                                            <td class="text-center" colspan="2"> <a
+                                                    href="<?=RVIEWS."/student/edit-student.php"?>">Edit your profile</a>
+                                            </td>
                                         </tr>
 
                                     </tbody>

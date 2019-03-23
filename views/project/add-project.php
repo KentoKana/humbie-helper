@@ -8,13 +8,16 @@ require_once LIB . '/functions.php';
 require_once MODELS . '/Database.php';
 require_once  MODELS .'/Project.php';
 
-$_SESSION['student_id'] = 1;
+//Hi Jenna, 
+//I changed the session to studentId instead of student_id since that was the name of my session.
+//Thanks! -Kento
 
+$_SESSION['studentId'];
 
   if(isset($_POST['addProj'])){
     $project_name = $_POST['project-name'];
     $project_description = $_POST['project-description'];
-    $student_id = $_SESSION['student_id'];
+    $student_id = $_SESSION['studentId'];
     $db = Database::getDatabase();
     $p = new Project();
     $c = $p->addProject($project_name, $project_description, $student_id, $db);
