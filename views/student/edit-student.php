@@ -4,9 +4,15 @@ include VIEWS.'/header.php';
 require_once CONTROLLERS.'/student-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+if(!isset($_SESSION['username'])) {
+    header("Location:/project-backstreet-boys-and-jenna");
+}
+
+$id = $_SESSION['studentId'];
 ?>
 
-<main id="edit-student-main">
+<main id="jg-main" class="m-4">
 
     <!--If GET is set for updateStat, display this content.  -->
     <div>
@@ -30,7 +36,7 @@ ini_set('display_errors', 1);
                     <label for="form__fname">First Name:</label>
                 </div>
                 <input type="text" id="form__fname" class="form__input text-center" name="fname"
-                    placeholder="First Name" value="<?= $student->getStudent($_GET['id'])['student_fname']; ?>">
+                    placeholder="First Name" value="<?= $student->getStudent($id)['student_fname']; ?>">
             </div>
 
             <div class="mt-2">
@@ -38,7 +44,7 @@ ini_set('display_errors', 1);
                     <label for="form__lname">Last Name:</label>
                 </div>
                 <input type="text" id="form__lname" class="form__input text-center" name="lname" placeholder="Last Name"
-                    value="<?= $student->getStudent($_GET['id'])['student_lname']; ?>">
+                    value="<?= $student->getStudent($_SESSION['studentId'])['student_lname']; ?>">
             </div>
 
             <div class="mt-2">
@@ -46,7 +52,7 @@ ini_set('display_errors', 1);
                     <label for="form__email">Email:</label>
                 </div>
                 <input type="text" id="form__email" class="form__input text-center" name="email" placeholder="Email"
-                    value="<?= $student->getStudent($_GET['id'])['student_email']; ?>">
+                    value="<?= $student->getStudent($id)['student_email']; ?>">
             </div>
 
             <div class="mt-2">
@@ -54,7 +60,7 @@ ini_set('display_errors', 1);
                     <label for="form_phone">Phone Number:</label>
                 </div>
                 <input type="text" id="form__phone" class="form__input text-center" name="phone"
-                    placeholder="Phone Number" value="<?= $student->getStudent($_GET['id'])['student_phone']; ?>">
+                    placeholder="Phone Number" value="<?= $student->getStudent($id)['student_phone']; ?>">
             </div>
 
             <div class="mt-2">
@@ -62,7 +68,7 @@ ini_set('display_errors', 1);
                     <label for="form__username">Username:</label>
                 </div>
                 <input type="text" id="form__username" class="form__input text-center" name="username"
-                    placeholder="Username" value="<?= $student->getStudent($_GET['id'])['username']; ?>">
+                    placeholder="Username" value="<?= $student->getStudent($id)['username']; ?>">
             </div>
 
             <div class="mt-2">

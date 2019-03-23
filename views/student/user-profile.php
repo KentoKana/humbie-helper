@@ -1,9 +1,16 @@
 <?php
 require '../../config.php';
-include VIEWS . '/header.php';
+require VIEWS . '/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+require_once CONTROLLERS.'/student-controller.php';
+
+if(!isset($_SESSION['username'])) {
+    header("Location:/project-backstreet-boys-and-jenna");
+}
+
 var_dump($_SESSION['studentId']);
+$s = $student->getStudent($_SESSION['studentId']);
 ?>
 <main id="jg-main" class="m-4">
     <h1 class="text-center m-3">Welcome, <?= $_SESSION['username'];?>!</h1>
@@ -71,7 +78,37 @@ var_dump($_SESSION['studentId']);
 
                     <!-- Your Info Tab  -->
                     <div class="tab-pane fade" id="pills-yourInfo" role="tabpanel" aria-labelledby="pills-yourInfo-tab">
-                        <!-- Populate Data using sessions and student table -->
+                        <div class="card mt-2" style="width: 20rem;">
+                            <div class="card-body text-left">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Full Name:</td>
+                                            <td><?= $s['student_fname'] . " " . $s['student_lname'];?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Username:</td>
+                                            <td><?= $s['username'];?></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>E-mail:</td>
+                                            <td><?= $s['student_email'];?></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Phone Number:</td>
+                                            <td><?= $s['student_phone'];?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center" colspan="2"> <a href="<?=RVIEWS."/student/edit-student.php"?>">Edit your profile</a></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Timesheet Tab  -->

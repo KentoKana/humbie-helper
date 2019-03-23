@@ -6,20 +6,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
 
-
-<!--If GET is set for updateStat, display this content.  -->
-<div>
-  <?php
-    if (isset($_GET['addStat'])) {
-      if ($_GET['addStat'] === "success") {
-        echo genStatusMsg("success","Your profile has been added!");
-      } else {
-        echo genStatusMsg("danger", "Something went wrong! Please try again later.");
-      }
-    }
-    ?>
-</div>
-
 <main id="jg-main" class="m-4">
   <h1 class="text-center m-3">Student List</h1>
   <div class="text-center p-5">

@@ -26,7 +26,7 @@
                       endif;
                     ?>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item px-2">
                     <a class="nav-link" href="/project-backstreet-boys-and-jenna">Home</span></a>
                 </li>
                 <li class="nav-item px-2">

@@ -29,9 +29,6 @@ if(isset($_POST['addStudents'])){
 //var_dump ($student_id);
 
 }
-
-
-
 ?>
 
 
