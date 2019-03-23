@@ -19,7 +19,7 @@ if(isset($_SESSION['project_id'])){
   $count = $p->deleteProject($project_id, $db);
 
   if($count){
-    header("Location: liststudents.php");
+    header("Location: list-projects.php");
   }else {
     "Problem deleting project";
   }
