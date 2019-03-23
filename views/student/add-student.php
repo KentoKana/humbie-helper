@@ -14,7 +14,9 @@ if (isset($_SESSION['username'])) {
 
 <main id="jg-main" class="m-4">
     <h1 class="text-center m-3">Register Student</h1>
-    <p class="text-center">Fields marked with <span class="text-danger">*</span> are required fields.</p>
+    <p class="text-center"><em>Fields marked with <span class="text-danger">*</span> are required fields.</em></p>
+    <p class="text-center"><em>You cannot change your username once you register.</em> </p>
+
     <div class="form form-group text-center">
         <form action="" method="POST">
 

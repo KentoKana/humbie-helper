@@ -71,7 +71,7 @@ class Student
 		if($password === "") {
 			return false;
 		}
-		$this->password = $hash = password_hash($password, PASSWORD_DEFAULT);
+		return $this->password = password_hash($password, PASSWORD_DEFAULT);
 	}
 	public function getPassword() {
 		return $this->password;
@@ -149,9 +149,9 @@ class Student
 	}
 
 	//Update Student Method
-	public function updateStudent($fname, $lname, $email, $phone, $username, $password, $id) 
+	public function updateStudent($fname, $lname, $email, $phone, $password, $id) 
 	{
-		$updateStmt = "UPDATE students SET student_fname = :fname, student_lname = :lname, student_email = :email, student_phone = :phone, username = :username, password = :pass WHERE id = :id";
+		$updateStmt = "UPDATE students SET student_fname = :fname, student_lname = :lname, student_email = :email, student_phone = :phone, password = :pass WHERE id = :id";
 		//Define query (in this case, reference the insertStmt)
 		$stmt = $this->dbh->prepare($updateStmt);  
 
@@ -160,7 +160,7 @@ class Student
 		$stmt->bindParam(':lname', $lname);
 		$stmt->bindParam(':email', $email);
 		$stmt->bindParam(':phone', $phone);
-		$stmt->bindParam(':username', $username);
+		// $stmt->bindParam(':username', $username);
 		$stmt->bindParam(':pass', $password);
 		$stmt->bindParam(':id', $id);
 

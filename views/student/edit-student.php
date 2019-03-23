@@ -9,6 +9,7 @@ if(!isset($_SESSION['username'])) {
     header("Location:/project-backstreet-boys-and-jenna");
 }
 
+// echo $student->getStudentPass($_SESSION['username'])[0];
 $id = $_SESSION['studentId'];
 ?>
 
@@ -65,18 +66,13 @@ $id = $_SESSION['studentId'];
 
             <div class="mt-2">
                 <div>
-                    <label for="form__username">Username:</label>
-                </div>
-                <input type="text" id="form__username" class="form__input text-center" name="username"
-                    placeholder="Username" value="<?= $student->getStudent($id)['username']; ?>">
-            </div>
-
-            <div class="mt-2">
-                <div>
                     <label for="form__password">Password:</label>
                 </div>
                 <input type="password" id="form__password" class="form__input text-center" name="password"
                     placeholder="Password">
+            </div>
+            <div>
+                <em>N.B. If you leave the password field blank, your password will not be updated.</em>
             </div>
 
             <div>

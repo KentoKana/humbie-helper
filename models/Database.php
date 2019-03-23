@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 //Direct to another page if this URL is detected.
@@ -10,15 +9,12 @@ class Database
 	private static $username = "skrip748_humbie";
 	private static $password = "_ys(2[JV.S;M";
 	private static $errMsg;
-
 	//Database Handler
 	private static $dbh;
-
 	//private constructor
 	private function __construct()
 	{
 	}
-
 	public static function getDatabase()
 	{
 		if(!isset(self::$dbh))
@@ -44,6 +40,5 @@ class Database
 		return self::$dbh;
 	}
 }
-
 // Database::getDatabase();
 ?>

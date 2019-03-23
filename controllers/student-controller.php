@@ -3,12 +3,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once(MODELS.'/Student.php');
 require_once(LIB. '/functions.php');
-// $_POST['fname'] = null;
-// $_POST['lname'] = null;
-// $_POST['email'] = null;
-// $_POST['phone'] = null;
-// $_POST['username'] = null;
-// $_POST['password'] = null;
 
 $student = new Student(Database::getDatabase());
 
@@ -50,36 +44,48 @@ if (isset($_POST['addStudent'])) {
             $_SESSION['studentId'] = Database::getDatabase()->lastInsertId();
             header("Location:". RVIEWS ."/student/user-profile.php");
         } catch (PDOException $e){
-            header("Location: project-backstreet-boys-and-jenna?addStat=failure");
-            //echo $e;
+            // header("Location: /project-backstreet-boys-and-jenna?addStat=failure");
+            echo $e;
         }
     }
 }
 
 /*------ Edit Student Logic ---------*/
+// N.B. Cannot change username once set.
 if (isset($_POST['editStudent'])) {
     $student->setFName($_POST['fname']);
     $student->setLName($_POST['lname']);
     $student->setEmail($_POST['email']);
     $student->setPhone($_POST['phone']);
-    $student->setUsername($_POST['username']);
-    $student->setPassword($_POST['password']);
+    $password = "";
+    
+    //If password field is left empty in the edit view, get the existing password of the user.
+    //Otherwise, set a new password.
+    //https://stackoverflow.com/questions/9154719/check-whether-post-value-is-empty
+    if(trim($_POST['password']) === "") {
+        $password = $student->getStudentPass($_SESSION['username'])[0];
+
+        var_dump($password);
+     } else {
+        $student->setPassword($_POST['password']);
+        $password = $student->getPassword();
+    }
 
     // Assign var to post items
     $fname = $student->getFName();
     $lname = $student->getLName();
     $email = $student->getEmail();
     $phone = $student->getPhone();
-    $username = $student->getUsername();
-    $password = $student->getPassword();
+    // $username = $student->getUsername();
 
     //ID from URL Querystring
-    $id = $_GET['id'];
+    $id = $_SESSION['studentId'];
 
     //Try catch for updating student.
     try {
-        $student->updateStudent($fname, $lname, $email, $phone, $username, $password, $id);
-        header("Location:". RVIEWS ."/student/edit-student.php?id=" . $_GET['id'] . "&updateStat=success");
+        $student->updateStudent($fname, $lname, $email, $phone, $password, $id);
+        header("Location:". RVIEWS ."/student/edit-student.php?id=" . $_SESSION['id'] . "&updateStat=success");
+
     } catch (PDOException $e){
         header("Location:". RVIEWS ."/student/edit-student.php?id=" . $_GET['id'] . "&updateStat=failure");
         // echo $e;
