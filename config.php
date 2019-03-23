@@ -18,6 +18,7 @@ define('IMG', "$altpath/assets");
 define('JS', "$altpath/public/js");
 define('MODELS', "$path/models");
 define('VIEWS', "$path/views");
+define('RVIEWS', "$altpath/views");
 define('CONTROLLERS', "$path/controllers");
 define('INC', "$path/inc");
 define('LIB', "$path/lib");

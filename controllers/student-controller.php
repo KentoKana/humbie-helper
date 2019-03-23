@@ -32,7 +32,7 @@ if (isset($_POST['addStudent'])) {
     $password = $student->getPassword();
 
     //Execute Add Student
-    if ($setFName !== false && 
+    if ($setFName !== false &&
         $setLName !== false &&
         $setEmail !== false &&
         $setPhone !== false &&
@@ -40,13 +40,13 @@ if (isset($_POST['addStudent'])) {
         $setPassword !== false
     ) {
         try {
-            $student->addStudent($fname, $lname, $email, $phone, $username, $password);    
-            header("Location:/project-backstreet-boys-and-jenna/views/student/list-students.php" . "?addStat=success");
+            $student->addStudent($fname, $lname, $email, $phone, $username, $password);
+            header("Location:". RVIEWS ."/student/list-students.php" . "?addStat=success");
         } catch (PDOException $e){
-            // header("Location:/project-backstreet-boys-and-jenna/views/student/list-students.php" . "?addStat=failure");
-            echo $e;
+            header("Location:". RVIEWS ."/student/list-students.php" . "?addStat=failure");
+            //echo $e;
         }
-    } 
+    }
 }
 
 if (isset($_POST['editStudent'])) {
@@ -67,13 +67,13 @@ if (isset($_POST['editStudent'])) {
 
     //ID from URL Querystring
     $id = $_GET['id'];
-    
+
     //Try catch for updating student.
     try {
         $student->updateStudent($fname, $lname, $email, $phone, $username, $password, $id);
-        header("Location:/project-backstreet-boys-and-jenna/views/student/edit-student.php?id=" . $_GET['id'] . "&updateStat=success");
+        header("Location:". RVIEWS ."/student/edit-student.php?id=" . $_GET['id'] . "&updateStat=success");
     } catch (PDOException $e){
-        header("Location:/project-backstreet-boys-and-jenna/views/student/edit-student.php?id=" . $_GET['id'] . "&updateStat=failure");
+        header("Location:". RVIEWS ."/student/edit-student.php?id=" . $_GET['id'] . "&updateStat=failure");
         // echo $e;
     }
 }
@@ -81,8 +81,8 @@ if (isset($_POST['editStudent'])) {
 /*------ Delete Student Logic ---------*/
 if (isset($_POST['deleteStudent'])) {
     $id = $_POST['delId'];
-    $student->deleteStudent($id);    
-    header("Location:/project-backstreet-boys-and-jenna/views/student/list-students.php" . "?delStat=success");
+    $student->deleteStudent($id);
+    header("Location:". RVIEWS ."/student/list-students.php" . "?delStat=success");
 }
 
 ?>

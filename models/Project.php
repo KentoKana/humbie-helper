@@ -62,7 +62,7 @@ class Project
     $sql = "SELECT projects.id, project_name FROM projects join
     projects_students ON projects.id = projects_students.project_id
     JOIN students ON projects_students.student_id = students.id
-    WHERE students.id = :student_id";
+    WHERE students.id = :student_id AND projects.is_deleted = 0";
 
     $pst = $db->prepare($sql);
     $pst->bindParam(':student_id', $student_id);
@@ -77,7 +77,7 @@ class Project
             set project_name = :project_name,
             project_description = :project_description
             WHERE id = :project_id";
-            
+
     $pst = $db->prepare($sql);
     $pst->bindParam(':project_name', $project_name);
     $pst->bindParam(':project_description', $project_description);
@@ -89,7 +89,9 @@ class Project
 
   public function deleteProject($project_id, $db)
   {
-    $sql = "DELETE FROM projects WHERE id = :project_id";
+    $sql = "UPDATE projects
+    set is_deleted = 1
+    WHERE id = :project_id";
     $pst = $db->prepare($sql);
     $pst->bindParam(':project_id', $project_id);
     $count = $pst->execute();

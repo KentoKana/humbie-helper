@@ -8,7 +8,7 @@ require_once LIB . '/functions.php';
 require_once MODELS . '/Database.php';
 require_once  MODELS .'/Project.php';
 
-$_SESSION['student_id'] = 001;
+$_SESSION['student_id'] = 1;
 
 
   if(isset($_POST['addProj'])){

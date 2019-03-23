@@ -1,34 +1,31 @@
-<?php require_once '../../header.php'; ?>
+<?php
+require_once '../../config.php';
+require_once VIEWS . '/header.php';
+require_once MODELS . '/Agenda.php';
+require_once MODELS . '/Database.php';
+require_once CONTROLLERS . '/agenda-controller.php';
+
+if(isset($_GET['a']) && isset($_GET['p']))
+{
+    $agendaid = $_GET['a'];
+    $projectid = $_GET['p'];
+}
+else
+{
+    header("Location: " . RVIEWS. "/agenda/list.php");
+}
+?>
 <div class="container">
   <div class="col-10 mx-auto">
     <div class="options text-md-right">
-      <a href="#" class="btn btn-dark">Edit</a>
+      <a href="edit.php?a=<?=$agendaid;?>&p=<?=$projectid;?>" class="btn btn-dark">Edit</a>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#send_agenda">Send</button>
-      <a href="#" class="btn btn-danger">Delete</a>
+      <a href="delete.php?a=<?=$agendaid;?>&p=<?=$projectid;?>" class="btn btn-danger">Delete</a>
     </div>
     <div class="agenda col-md-6 mx-auto">
-        <div class="agenda__header">
-            <h1>Agenda Title</h1>
-            <span class="d-block">Date: <strong>February 10, 2019</strong></span>
-            <span class="d-block">Location: <strong>M100</strong></span>
-        </div>
-        <div class="agenda__body mt-4">
-          <h2>Old Business</h2>
-          <ul>
-            <li>Old Agenda 1</li>
-            <li>Old Agenda 2</li>
-          </ul>
-          <h2>New Business</h2>
-          <ul>
-            <li>Agenda Item 1</li>
-            <li>Agenda Item 2</li>
-          </ul>
-          <h2>Other Business</h2>
-          <ul>
-            <li>Other Agenda Item 1</li>
-            <li>Other Agenda Item 2</li>
-          </ul>
-        </div>
+      <?php
+        echo generateView($agendaid, $projectid);
+       ?>
     </div>
   </div>
   <div class="modal" tabindex="-1" role="dialog" id="send_agenda">
@@ -56,4 +53,4 @@
     </div>
   </div>
 </div>
-<?php require_once '../../footer.php'; ?>
+<?php require_once VIEWS . '/footer.php'; ?>
