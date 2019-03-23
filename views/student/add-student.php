@@ -4,6 +4,12 @@ include VIEWS.'/header.php';
 require_once CONTROLLERS.'/student-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+//If user is signed in, redirect to user's profile. Cannot register student while signed in.
+if (isset($_SESSION['username'])) {
+    header("Location:". RVIEWS ."/student/user-profile.php");
+}
+
 ?>
 
 <main id="jg-main" class="m-4">

@@ -27,7 +27,7 @@
                     ?>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/project-backstreet-boys-and-jenna">Home</span></a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link" href="#">FAQ</a>

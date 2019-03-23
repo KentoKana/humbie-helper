@@ -7,7 +7,24 @@
 require 'config.php';
 require_once VIEWS.'/header.php';
 require_once CONTROLLERS.'/home-controller.php';
+
+//if user is logged in, redirect to user's profile instead of the login page.
+if (isset($_SESSION['username'])) {
+    header("Location:". RVIEWS ."/student/user-profile.php");
+}
+
 ?>
+
+<div>
+    <?php
+    if (isset($_GET['addStat'])) {
+      if ($_GET['addStat'] === "failure") {
+        echo genStatusMsg("danger", "Something went wrong! Please try again later.");
+      }
+    }
+    ?>
+</div>
+
 <div class="container">
     <main id="jg-main" class="d-flex align-content-center justify-content-center flex-wrap h-100 m-4">
         <div class="row">
@@ -22,15 +39,13 @@ require_once CONTROLLERS.'/home-controller.php';
                         <label for="user-input">Username: </label>
                         <input type="text" name="username" class="form__input-field form-control" id="user-input"
                             placeholder="Username"
-                            value="<?php if(isset($_POST['login'])) { echo $_POST['username']; }?>"
-                            >
+                            value="<?php if(isset($_POST['login'])) { echo $_POST['username']; }?>">
                     </div>
                     <div class="form-group">
                         <label for="password-input">Password: </label>
                         <input type="password" name="password" class="form__input-field form-control"
                             id="password-input" placeholder="Password"
-                            value="<?php if(isset($_POST['login'])) { echo $_POST['password']; }?>"
-                            >
+                            value="<?php if(isset($_POST['login'])) { echo $_POST['password']; }?>">
                     </div>
                     <div class="form-group">
                         <button type="submit" id="form__submit-button" class="btn btn-primary" name="login">Log

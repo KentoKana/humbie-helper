@@ -32,6 +32,7 @@ if (isset($_POST['addStudent'])) {
     $password = $student->getPassword();
 
     //Execute Add Student
+    //I'll find a better way to check if the inputs are invalid. -Kento.
     if ($setFName !== false &&
         $setLName !== false &&
         $setEmail !== false &&
@@ -41,14 +42,21 @@ if (isset($_POST['addStudent'])) {
     ) {
         try {
             $student->addStudent($fname, $lname, $email, $phone, $username, $password);
-            header("Location:". RVIEWS ."/student/list-students.php" . "?addStat=success");
+
+            //Once student is registered, user is automatically logged in as that registered student.
+            $_SESSION['username'] = $username;
+            //Get last inserted ID
+            //https://stackoverflow.com/questions/10680943/pdo-get-the-last-id-inserted
+            $_SESSION['studentId'] = Database::getDatabase()->lastInsertId();
+            header("Location:". RVIEWS ."/student/user-profile.php");
         } catch (PDOException $e){
-            header("Location:". RVIEWS ."/student/list-students.php" . "?addStat=failure");
+            header("Location: project-backstreet-boys-and-jenna?addStat=failure");
             //echo $e;
         }
     }
 }
 
+/*------ Edit Student Logic ---------*/
 if (isset($_POST['editStudent'])) {
     $student->setFName($_POST['fname']);
     $student->setLName($_POST['lname']);
