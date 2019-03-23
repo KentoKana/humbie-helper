@@ -1,6 +1,7 @@
 # Humbie Helper
 ## Version 1.0
-![alt text](https://github.com/2019-Winter-HTTP-5202-0NB/project-backstreet-boys-and-jenna/blob/master/assets/images/Humbie.png) {:height="150px" width="150px"}
+![alt text](https://github.com/2019-Winter-HTTP-5202-0NB/project-backstreet-boys-and-jenna/blob/master/assets/images/Humbie.png?s=200)
+
 
 ## A helper for students of Humber College Web Development Program!
 
