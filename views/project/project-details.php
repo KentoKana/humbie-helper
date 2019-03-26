@@ -1,19 +1,13 @@
 <?php
 require './../../config.php';
 include VIEWS.'/header.php';
+require_once CONTROLLERS.'/project-controller.php';
 //require_once CONTROLLERS.'/student-controller.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-require_once LIB . '/functions.php';
-require_once MODELS . '/Database.php';
-require_once  MODELS .'/Project.php';
-
 $project_id = $_SESSION['project_id'];
-$db = Database::getDatabase();
-$p = new Project();
-$project = $p->singleProject($project_id, $db);
-$students = $p->listStudentsInProject($project_id, $db);
+
+
+$single_project = $project->singleProject($project_id, $db);
+$students = $project->listStudentsInProject($project_id, $db);
 
 
 ?>
@@ -23,7 +17,7 @@ $students = $p->listStudentsInProject($project_id, $db);
     <!-- Dismissable Motivational Quote -->
 
 
-    <h1 class="text-center m-3"><?=$project->project_name?></h1>
+    <h1 class="text-center m-3"><?=$single_project->project_name?></h1>
     <div class="container">
         <div class="row">
             <div class="col-lg-12 d-flex justify-content-center">
@@ -148,7 +142,7 @@ $students = $p->listStudentsInProject($project_id, $db);
                         aria-labelledby="pills-projectDetails-tab">
                         <div class="card text-center" style="width: 20rem;">
                             <h5 class="card-title">Project Description</h5>
-                            <p class="card-text"><?=$project->project_description?></p>
+                            <p class="card-text"><?=$single_project->project_description?></p>
                             <a href="edit-project.php">Edit This Project</a>
                             <a href="delete-project.php" class="text-danger">Delete This Project</a>
                             <a href="#"></a>

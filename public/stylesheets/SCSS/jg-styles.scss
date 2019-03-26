@@ -16,6 +16,9 @@ $base: #f2f2f2;
 body{
   background-color: $light-blue;
 
+  ul{
+    list-style: none;
+  }
 
 //main layout styles
   #jg-main{
@@ -176,7 +179,7 @@ body{
     }
     #jg-humbie-button{
       transform: rotate(-90deg);
-      right:0;  
+      right:0;
     }
 
 

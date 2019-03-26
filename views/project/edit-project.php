@@ -1,31 +1,12 @@
 <?php
 require './../../config.php';
 include VIEWS.'/header.php';
+require_once CONTROLLERS.'/project-controller.php';
 //require_once CONTROLLERS.'/student-controller.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-require_once LIB . '/functions.php';
-require_once MODELS . '/Database.php';
-require_once  MODELS .'/Project.php';
-
 $project_id = $_SESSION['project_id'];
-$db = Database::getDatabase();
-$p = new Project();
-
-$project= $p->singleProject($project_id, $db);
-
-
-$description = $project->project_description;
-$name = $project->project_name;
-
-
-if(isset($_POST['updateProj'])){
-  $project_name = $_POST['project-name'];
-  $project_description = $_POST['project-description'];
-  $c = $p->editProject($project_id, $project_name, $project_description, $db);
-  header('Location:project-details.php');
-}
+$single_project= $project->singleProject($project_id, $db);
+$description = $single_project->project_description;
+$name = $single_project->project_name;
 
 
 ?>
@@ -39,13 +20,13 @@ if(isset($_POST['updateProj'])){
                     <label for="project-name">Project Name:</label>
                 </div>
                 <div>
-                    <input type="text" class="form__input-field" name="project-name" value="<?=$name?>">
+                    <input type="text" class="form__input-field" name="edit-name" value="<?=$name?>">
                 </div>
                 <div>
                     <label for="project-description">Project Description:</label>
                 </div>
                 <div>
-                    <textarea class="form__textarea" name="project-description"> <?=$description?> </textarea>
+                    <textarea class="form__textarea" name="edit-description"> <?=$description?> </textarea>
                 </div>
                 <button class="jg-form__submit" name="updateProj" type="submit">Submit</button>
             </form>
