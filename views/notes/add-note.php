@@ -8,7 +8,7 @@ if(isset($_POST['addNote'])){
   $content = $_POST['content'];
 
   echo $title;
-  echo $content;
+  //var_dump($content);
 }
 ?>
 <main id="jg-main" class="m-4">
@@ -20,10 +20,10 @@ if(isset($_POST['addNote'])){
         <input type="text" class="jg_form__text" name="notename" />
       </div>
       <div>
-        <input name="content" type="hidden">
-        <div id="editor" class="pt-2 pl-5 pr-5">
-          <!--<textarea name="content" class="jg_form__textarea"> Type note here </textarea>-->
-        </div>
+        <!--<input name="content" type="hidden">
+        <div id="editor" class="pt-2 pl-5 pr-5">-->
+          <textarea id="tinymce" name="content" class="jg_form__textarea"> Type note here </textarea>
+        <!--</div>-->
       </div>
       <button class="jg-form__submit" type="submit" name="addNote">Save Note!</button>
     </form>
