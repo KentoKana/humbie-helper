@@ -2,6 +2,9 @@
 body {
   background-color: #4ec5c1;
 }
+body ul {
+  list-style: none;
+}
 body #jg-main {
   background-color: #f2f2f2;
   border-radius: 5px;

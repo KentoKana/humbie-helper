@@ -1,29 +1,7 @@
 <?php require './../../config.php';
 include VIEWS.'/header.php';
-//require_once CONTROLLERS.'/student-controller.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-require_once LIB . '/functions.php';
-require_once MODELS . '/Database.php';
-require_once  MODELS .'/Project.php';
-
-//Hi Jenna, 
-//I changed the session to studentId instead of student_id since that was the name of my session.
-//Thanks! -Kento
-
+require_once CONTROLLERS.'/project-controller.php';
 $_SESSION['studentId'];
-
-  if(isset($_POST['addProj'])){
-    $project_name = $_POST['project-name'];
-    $project_description = $_POST['project-description'];
-    $student_id = $_SESSION['studentId'];
-    $db = Database::getDatabase();
-    $p = new Project();
-    $c = $p->addProject($project_name, $project_description, $student_id, $db);
-    header('Location:list-projects.php');
-  }
-
 
 ?>
 

@@ -3,46 +3,68 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once(MODELS.'/Quote.php');
 
-//entering a new quote to database
+//database connection to list quotes
+$dbcon = Database::getDatabase();
+$q = new Quote();
+$myquote =  $q->getAllQuotes(Database::getDatabase());
 
+//entering a new quote to database
+<<<<<<< HEAD
+
+=======
+if(isset($_POST['addquote'])){
+    $author = $_POST['quote_author'];
+    $content = $_POST['quote'];
+    
+    $db = Database::getDatabase();
+    $q = new Quote();
+    $c = $q->addQuote($author, $content, $db);
+//checking is quote was added
+    if($c){
+        header('Location:' . RVIEWS . '/quotes/list-quotes.php');
+    } else {
+        echo "Error adding quote.";
+    }
+}
+>>>>>>> 9dc49dd52d0802b154400ce0f025b4fd9e3a42c4
 //editing existing quote
-$author = $content = "";
+$quote_author = $quote = "";
 //finding quote to be edit and filling feilds
 if(isset($_POST['id'])){
   $id = $_POST['id'];
-  $db = Database::getDb();
+  $db = Database::getDatabase();
 
   $q = new Quote();
   $quote = $q->getQuoteById($id, $db);
 
-  $author = $quote->author;
-  $content = $quote->content;
+  $quote_author = $quote->quote_author;
+  $quote = $quote->quote;
 }
 //updating quote with new values
 if(isset($_POST['updatequote'])){
   $id= $_POST['id'];
-  $author = $_POST['author'];
-  $content = $_POST['content'];
+  $author = $_POST['quote_author'];
+  $content = $_POST['quote'];
 
-  $db = Database::getDb();
+  $db = Database::getDatabases();
   $q = new Quote();
-  $count = $q->editQuote($id, $author, $content, $db);
+  $count = $q->editQuote($id, $quote_author, $quote, $db);
 
   if($count){
-     header('Location: list.php');
+     header('Location: list-quotes.php');
   } else {
       echo "problem";
   }
 }
 //delete quote
-if(isset($_POST['id'])){
-    $id = $_POST['id'];
-    $db = database::getDb();
+if(isset($_POST['deletequote'])){
+    $id = $_GET['id'];
+    $db = database::getDatabase();
     $q = new Quote();
     $count = $q->deleteQuote($id, $db);
 
     if($count){
-        echo "Quote Deleted.";
+        header('Location: list-quotes.php');
     } else {
         echo "Problem deleting quote.";
     }
