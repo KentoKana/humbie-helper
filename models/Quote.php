@@ -1,4 +1,5 @@
 <?php
+require_once('Database.php');
 class Quote
 {
     //Return Specified Quote Method
@@ -19,22 +20,22 @@ class Quote
         return $quotes;
     }
     //Create New Quote Method
-    public function addQuote($author, $content, $db)
+    public function addQuote($quote_author, $quote, $db)
     {
-        $sql = "INSERT INTO motivational_quotes (author, content) VALUES (:author, :content) ";
+        $sql = "INSERT INTO motivational_quotes (quote_author, quote) VALUES (:quote_author, :quote) ";
         $pst = $db->prepare($sql);
-        $pst->bindParam(':author', $author);
-        $pst->bindParam(':content', $content);
+        $pst->bindParam(':quote_author', $quote_author);
+        $pst->bindParam(':quote', $quote);
         $count = $pst->execute();
         return $count;
     }
     //Update Quote Method
-    public function editQuote($id, $author, $content, $db)
+    public function editQuote($id, $quote_author, $quote, $db)
     {
-        $query = "UPDATE motivational_quotes SET author = :author, content = :content WHERE id = :id";
+        $query = "UPDATE motivational_quotes SET quote_author = :quote_author, author = :author WHERE id = :id";
         $statement = $db->prepare($query);
-        $statement->bindParam(':author', $author);
-        $statement->bindParam(':content', $content);
+        $statement->bindParam(':quote_author', $quote_author);
+        $statement->bindParam(':quote', $quote);
         $statement->bindParam(':id', $id);
         $count = $statement->execute();
         return $count;
