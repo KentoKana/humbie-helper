@@ -2,8 +2,13 @@
 require '../../config.php';
 include VIEWS.'/header.php';
 require_once CONTROLLERS.'/quote-controller.php';
+require_once MODELS . '/Quote.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+$dbcon = Database::getDatabase();
+$q = new Quote();
+$myquote =  $q->getAllQuotes(Database::getDatabase());
 ?>
 <main class="container filler">
     <h1 class="my-4">List of Quotes</h1>
