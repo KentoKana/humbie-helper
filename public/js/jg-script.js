@@ -1,3 +1,1 @@
-tinymce.init({
-  selector: '#tinymce'
-});
+CKEDITOR.replace( 'editor1' );

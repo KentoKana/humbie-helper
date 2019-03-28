@@ -1,12 +1,18 @@
 <?php require './../../config.php';
 include VIEWS.'/header.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+require_once CONTROLLERS.'/note-controller.php';
+
+$_SESSION['project_id'];
+
+$note_id = $_SESSION['note_id'];
+$note= $n->getNote($note_id, $db);
+
+
 ?>
 <main id="jg-main" class="m-4">
-  <h1 class="text-center pt-3">Name of Note</h1>
-  <div class="text-center p-2">
-    Note stored in database goes here.
+  <h1 class="text-center pt-3"><?=$note->notes_title?></h1>
+  <div class="m-5 p-3">
+    <?=$note->notes_content?>
   </div>
 </main>
 

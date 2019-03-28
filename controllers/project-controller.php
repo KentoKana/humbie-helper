@@ -6,6 +6,7 @@ require_once(LIB. '/functions.php');
 
 $db = Database::getDatabase();
 $project = new Project();
+$errormsg = "";
 
 // Logic for adding a student
   if(isset($_POST['addProj'])){
@@ -44,7 +45,8 @@ if(isset($_POST['addStudents'])){
   if($c){
     header('Location:project-details.php');
   }else{
-    echo "Problem adding students";
+    $errormsg .= "That student is already in the project";
+    return $errormsg;
   }
 
 //var_dump ($student_id);

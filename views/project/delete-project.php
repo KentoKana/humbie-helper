@@ -9,7 +9,6 @@ require_once LIB . '/functions.php';
 require_once MODELS . '/Database.php';
 require_once  MODELS .'/Project.php';
 
-// to do add a isdeleted column in the database and pull only items where status is false
 
 
 if(isset($_SESSION['project_id'])){

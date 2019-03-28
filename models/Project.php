@@ -20,15 +20,26 @@ class Project
 
   public function addStudentsToProject($project_id,$student_id, $db)
   {
-    $sql = "INSERT INTO projects_students(project_id, student_id)
-            VALUES (:project_id, :student_id)";
+
+    $sql = "SELECT COUNT(*) FROM projects_students
+    WHERE student_id= :student_id";
     $pst = $db->prepare($sql);
-
-    $pst->bindParam(':project_id', $project_id);
     $pst->bindParam(':student_id', $student_id);
+    $pst->execute();
+    $rows = $pst->fetchColumn();
+    if ($rows[0] > 0) {
+        $errormsg = "This student is already in the project! ";
+    }else{
+      $sql = "INSERT INTO projects_students(project_id, student_id)
+              VALUES (:project_id, :student_id)";
+      $pst = $db->prepare($sql);
 
-    $count = $pst->execute();
-    return $count;
+      $pst->bindParam(':project_id', $project_id);
+      $pst->bindParam(':student_id', $student_id);
+
+      $count = $pst->execute();
+      return $count;
+    }
   }
 
   public function listStudentsInProject($project_id, $db)
