@@ -22,9 +22,10 @@ class Project
   {
 
     $sql = "SELECT COUNT(*) FROM projects_students
-    WHERE student_id= :student_id";
+    WHERE student_id= :student_id AND project_id = :project_id";
     $pst = $db->prepare($sql);
     $pst->bindParam(':student_id', $student_id);
+    $pst->bindParam(':project_id', $project_id);
     $pst->execute();
     $rows = $pst->fetchColumn();
     if ($rows[0] > 0) {

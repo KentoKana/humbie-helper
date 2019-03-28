@@ -12,7 +12,7 @@ $_SESSION['project_id'];
 <main id="jg-main" class="m-4">
     <h1 class="text-center m-3">Student List</h1>
     <div class="text-center p-5">
-      <div class="alert alert-danger" role="alert"><?=$errormsg?></div>
+      <div class="text-danger text-center pt-3"><?=$errormsg?></div>
       <form action="#" method="POST">
         <table class="table table-striped">
             <tbody>

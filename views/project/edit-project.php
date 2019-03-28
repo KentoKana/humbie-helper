@@ -14,6 +14,7 @@ $name = $single_project->project_name;
 <main id="jg-main" class="m-4">
     <div class="text-center p-3">
         <h1>Edit Project</h1>
+        <div class="text-danger text-center pt-3"><?=$errormsg?></div>
         <div class="p-4">
             <form action="" method="POST" class="m-4">
                 <div>
@@ -26,7 +27,7 @@ $name = $single_project->project_name;
                     <label for="project-description">Project Description:</label>
                 </div>
                 <div>
-                    <textarea class="form__textarea" name="edit-description"> <?=$description?> </textarea>
+                    <textarea class="form-control" rows="3" name="edit-description"><?=$description?></textarea>
                 </div>
                 <button class="jg-form__submit" name="updateProj" type="submit">Submit</button>
             </form>

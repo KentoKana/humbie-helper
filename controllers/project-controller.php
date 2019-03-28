@@ -8,16 +8,23 @@ $db = Database::getDatabase();
 $project = new Project();
 $errormsg = "";
 
-// Logic for adding a student
+// Logic for creating a new project.
   if(isset($_POST['addProj'])){
     $project_name = $_POST['project-name'];
     $project_description = $_POST['project-description'];
     $student_id = $_SESSION['studentId'];
-    $c = $project->addProject($project_name, $project_description, $student_id, $db);
-    if($c){
-      header('Location:project-details.php');
+
+    if(empty($project_name) || empty($project_description)){
+      $errormsg .= "You cannot have any empty fields. Please fill
+      in all fields and try again";
     }else{
-      echo "Error adding project";
+      $c = $project->addProject($project_name, $project_description, $student_id, $db);
+      if($c){
+        $_SESSION['project_id'];
+        header('Location:project-details.php');
+      }else{
+        $errormsg.= "Error adding this project, please try again.";
+      }
     }
   }
 
@@ -27,11 +34,17 @@ $errormsg = "";
     $project_id = $_SESSION['project_id'];
     $edit_name = $_POST['edit-name'];
     $edit_description = $_POST['edit-description'];
-    $count = $project->editProject($project_id, $edit_name, $edit_description, $db);
-    if($count){
-      header('Location:project-details.php');
+
+    if(empty($edit_name) || empty($edit_description)){
+      $errormsg .= "You cannot have any empty fields. Please fill
+      in all fields and try again";
     }else{
-      echo "Error adding project";
+      $count = $project->editProject($project_id, $edit_name, $edit_description, $db);
+      if($count){
+        header('Location:project-details.php');
+      }else{
+        echo "Error adding project";
+      }
     }
   }
 

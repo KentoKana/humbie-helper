@@ -29,7 +29,7 @@ Humbie Helper is a web application specifically created to help the future stude
 
 The app is currently in the development stage. Please read the "Milestones" section for more details.
 
-## Milestones (Last update: March 23 2019)
+## Milestones (Last update: March 28 2019)
 
 ### Kento
 ### - Added student registration
@@ -37,7 +37,7 @@ The app is currently in the development stage. Please read the "Milestones" sect
 - Server-side validation is implemented on the registration fields.
 - Can view a list of all the students registered.
 - Once a user registers, they are automatically signed in as that registered user.
-- Added logic to allow users to edit their profile, except for their username. 
+- Added logic to allow users to edit their profile, except for their username.
     - If password is left blank in the edit page, the previous password is kept.
     - If there is a new password present in the field, the new password is set.
 
@@ -52,7 +52,7 @@ The app is currently in the development stage. Please read the "Milestones" sect
 ### - Dynamic navigation feature
 - The navigation dynamically changes based on the user's login status.
 - If logged in:
-    - The "Register" navigation link is replaced with "Hello, [username]". 
+    - The "Register" navigation link is replaced with "Hello, [username]".
     - The "Log In" navigation link is replaced with "Log Out".
 
 ### -Basic routing/restrictions based on sessoins
@@ -65,10 +65,20 @@ The app is currently in the development stage. Please read the "Milestones" sect
 ### Jenna
 ### - Project feature
 - Once a student is registered and logged in they can then create a project.
-- Students can view a list of all the projects they are tied too on their profile page (This page needs to be moved to there eventually)
+- Students can view a list of all the projects they are tied too on their profile page
 - Students can click on a project to be taken to the project details page
-- On the project details page students can add multiple other students to their project at one time
-- Students can also view the project details and edit or delete their project from this page.
+- On the project details page students can add multiple other students to their project at one time.
+- Students cannot add the same student to a project multiple times (Fixed on March 28)
+- Students can also view the project details and edit or delete their project from this page. (Added on March 28)
+- Add and edit project now validates against empty fields.
+
+### - Notes feature
+- Students can add notes to their project.
+- Add and edit notes currently validate against empty fields.
+- Add and edit notes make use of CK Editor to allow for rich text styling. CK Editor saves
+formatting to the database and returns formatting when a single note is viewed.
+- Students can view, edit and delete all notes related to the project page they are currently
+on.
 
 ### Mark
 ### - Agenda feature

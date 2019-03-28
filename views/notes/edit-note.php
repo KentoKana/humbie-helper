@@ -13,6 +13,7 @@ $note= $n->getNote($note_id, $db);
 
 <main id="jg-main" class="m-4">
   <h1 class="text-center pt-3">Notes</h1>
+  <div class="text-danger text-center pt-3"><?=$errormsg?></div>
   <div class="form form-group text-center px-5 py-2">
     <form action="" method="POST">
       <div>
