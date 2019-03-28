@@ -2,12 +2,17 @@
 require '../../config.php';
 include VIEWS.'/header.php';
 require_once CONTROLLERS.'/quote-controller.php';
+require_once MODELS . '/Quote.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+$dbcon = Database::getDatabase();
+$q = new Quote();
+$myquote =  $q->getAllQuotes(Database::getDatabase());
 ?>
 <main class="container filler">
     <h1 class="my-4">List of Quotes</h1>
-    <button type="submit" class="btn btn-primary">Add Quote</button>
+    <a href="add-quote.php" class="btn btn-primary">Add Quote</a>
     <table class="table">
         <tr>
             <th>Author</th>
@@ -17,15 +22,15 @@ ini_set('display_errors', 1);
         </tr>
         <?php foreach($myquote as $quote){?>
         <tr>
-            <td><?php echo $quote->author ?></td>
-            <td><?php echo $quote->content ?></td>
+            <td><?php echo $quote->quote_author ?></td>
+            <td><?php echo $quote->quote ?></td>
             <td><form action="delete.php" method="post">
             <input type="hidden" name="id" value="<?php echo $quote->id ?>">
-            <input type="submit" class="btn btn-primary" value="Delete" />
+            <a href="delete-quote.php?id=<?php echo $quote->id;?>" class="btn btn-primary">Delete</a>
             </form></td>
             <td><form action="edit.php" method="post">
             <input type="hidden" name="id" value="<?php echo $quote->id ?>">
-            <input type="submit" class="btn btn-primary" value="Edit" />
+            <a href="edit-quote.php?id=<?php echo $quote->id;?>" class="btn btn-primary">Edit</a>
             </form></td>
         </tr>
         <?php }?>
