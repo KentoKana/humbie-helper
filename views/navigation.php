@@ -27,7 +27,7 @@
                     ?>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link" href="/project-backstreet-boys-and-jenna">Home</span></a>
+                    <a class="nav-link" href="<?= BASE;?>">Home</span></a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link" href="#">FAQ</a>
@@ -40,15 +40,11 @@
                     <?php
                       else:
                     ?>
-                    <a class="nav-link" href="/project-backstreet-boys-and-jenna">LOG IN</a>
+                    <a class="nav-link" href="<?= BASE;?>">LOG IN</a>
                     <?php
                       endif;
                     ?>
-
                 </li>
-
-
-
             </ul>
         </div>
     </nav>
