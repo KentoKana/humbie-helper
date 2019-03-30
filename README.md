@@ -17,6 +17,10 @@
 - Mysql Server Error : Mysql has gone away
   - I already reported this bug in my hosting (Mark)
 
+### Bug fixes
+- Project ID session is immediately set after creating a project.
+- -Kento, March 30 2019
+
 ## What this project is
 
 Humbie Helper is a web application specifically created to help the future students of Humber College Web Development Program. You can:
@@ -29,9 +33,12 @@ Humbie Helper is a web application specifically created to help the future stude
 
 The app is currently in the development stage. Please read the "Milestones" section for more details.
 
-## Milestones (Last update: March 28 2019)
+## Milestones (Last update: March 30 2019)
 
 ### Kento
+###- Added deadlines feature
+- Student who has access to a specific can see, add, edit, and delete the project specific deadlines.
+
 ### - Added student registration
 - A student can register through the form available on add-student.php.
 - Server-side validation is implemented on the registration fields.
