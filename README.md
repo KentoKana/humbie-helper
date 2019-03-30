@@ -36,7 +36,7 @@ The app is currently in the development stage. Please read the "Milestones" sect
 ## Milestones (Last update: March 30 2019)
 
 ### Kento
-###- Added deadlines feature
+### - Added deadlines feature
 - Student who has access to a specific can see, add, edit, and delete the project specific deadlines through the project details page.
 
 ### - Added student registration
