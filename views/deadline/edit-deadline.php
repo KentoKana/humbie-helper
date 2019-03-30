@@ -29,8 +29,7 @@ $id = $_SESSION['deadlineId'] = $_GET['id'];
                     <label for="deadlineDesc">Deadline Description:</label>
                 </div>
                 <div>
-                    <textarea type="text" class="form-control" name="deadlineDesc"><?php echo $d->getDeadline($id)[0]['event_description'];?>
-                    </textarea>
+                    <textarea type="text" class="form-control" name="deadlineDesc"><?php echo $d->getDeadline($id)[0]['event_description'];?></textarea>
                 </div>
                 <button class="jg-button-primary" name="editDeadline" type="submit">Submit</button>
             </form>

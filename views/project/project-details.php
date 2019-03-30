@@ -38,6 +38,10 @@ $students = $project->listStudentsInProject($project_id, $db);
                                 role="tab" aria-controls="pills-deadlines" aria-selected="false">Deadlines</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" id="pills-tools-tab" data-toggle="pill" href="#pills-tools"
+                                role="tab" aria-controls="pills-tools" aria-selected="false">Tools</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" id="pills-projectDetails-tab" data-toggle="pill"
                                 href="#pills-projectDetails" role="tab" aria-controls="pills-projectDetails"
                                 aria-selected="false">Project Details</a>
@@ -169,6 +173,13 @@ $students = $project->listStudentsInProject($project_id, $db);
                             </div>
                         </div>
                         <?php endforeach; ?>
+                    </div>
+
+                    <!-- Tools Tab -->
+                    <div class="tab-pane fade" id="pills-tools" role="tabpanel" aria-labelledby="pills-tools-tab">
+                        <div class="card" style="width: 18rem;">
+ 
+                        </div>
                     </div>
 
                     <!-- Project Details -->

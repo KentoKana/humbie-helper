@@ -37,7 +37,7 @@ The app is currently in the development stage. Please read the "Milestones" sect
 
 ### Kento
 ###- Added deadlines feature
-- Student who has access to a specific can see, add, edit, and delete the project specific deadlines.
+- Student who has access to a specific can see, add, edit, and delete the project specific deadlines through the project details page.
 
 ### - Added student registration
 - A student can register through the form available on add-student.php.
@@ -66,7 +66,6 @@ The app is currently in the development stage. Please read the "Milestones" sect
 - Added logic for basic restrictions based on the login status.
 - If user is not logged in, they are prohibited from accessing certain pages such as the user profile view.
 - If user is logged in, they will be redirected to the user profile view if they try to navigate to the login page again.
-
 
 
 ### Jenna
