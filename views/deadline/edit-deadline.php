@@ -6,7 +6,7 @@ $id = $_SESSION['deadlineId'] = $_GET['id'];
 
 <main id="jg-main" class="m-4">
     <div class="text-center p-3">
-        <h1>Add New Deadline</h1>
+        <h1>Edit Deadline</h1>
         <div class="p-4">
             <form action="" method="POST" class="m-4">
                 <div>
