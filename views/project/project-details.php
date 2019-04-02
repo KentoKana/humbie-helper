@@ -2,14 +2,11 @@
 require './../../config.php';
 include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
+require_once CONTROLLERS.'/deadline-controller.php';
 //require_once CONTROLLERS.'/student-controller.php';
 $project_id = $_SESSION['project_id'];
-
-
 $single_project = $project->singleProject($project_id, $db);
 $students = $project->listStudentsInProject($project_id, $db);
-
-
 ?>
 <?= genStatusMsg('primary',  "'You either die a hero, or live long enough to see yourself become Chuck Norris.' -<em> Shakespeare,
             probably.</em>")?>
@@ -35,6 +32,14 @@ $students = $project->listStudentsInProject($project_id, $db);
                         <li class="nav-item">
                             <a class="nav-link" id="pills-students-tab" data-toggle="pill" href="#pills-students"
                                 role="tab" aria-controls="pills-students" aria-selected="false">Students</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-deadlines-tab" data-toggle="pill" href="#pills-deadlines"
+                                role="tab" aria-controls="pills-deadlines" aria-selected="false">Deadlines</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-tools-tab" data-toggle="pill" href="#pills-tools"
+                                role="tab" aria-controls="pills-tools" aria-selected="false">Tools</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="pills-projectDetails-tab" data-toggle="pill"
@@ -128,12 +133,52 @@ $students = $project->listStudentsInProject($project_id, $db);
                     <div class="tab-pane fade" id="pills-students" role="tabpanel" aria-labelledby="pills-student-tab">
                         <div class="card" style="width: 18rem;">
                             <ul class="list-group list-group-flush text-center">
-                                <li class="list-group-item" style="background-color: lightCyan"><a href="project-student-list.php"> + Add
+                                <li class="list-group-item" style="background-color: lightCyan"><a
+                                        href="project-student-list.php"> + Add
                                         Student to Project</a></li>
-                                <?php foreach($students as $student):?>
-                                  <li class="jg-list"> <?=$student->student_fname . ' ' . $student->student_lname?> </li>
+                                <?php 
+                                foreach($students as $student):?>
+                                <li class="jg-list"> <?=$student->student_fname . ' ' . $student->student_lname?> </li>
                                 <?php endforeach; ?>
                             </ul>
+                        </div>
+                    </div>
+
+                    <!-- Deadlines tab -->
+                    <div class="tab-pane fade" id="pills-deadlines" role="tabpanel"
+                        aria-labelledby="pills-deadlines-tab">
+                        <div class="card" style="width: 25rem;">
+                            <ul class="list-group list-group-flush text-center">
+                                <li class="list-group-item" style="background-color: lightCyan">
+                                    <a href="../deadline/add-deadline.php">
+                                        + Add New Deadline
+                                    </a></li>
+                            </ul>
+                        </div>
+                        <?php 
+                                $deadlines = $d->listDeadlines($project_id);
+                                foreach($deadlines as $deadline):
+                                ?>
+                        <div class="card mt-2 m-auto" style="width: 18rem;">
+                            <form action="" method="POST">
+                                <input type="hidden" name="deadlineId" value="<?=$deadline['id']?>">
+                                <button name="delDeadline" type="submit">&times;</button>
+                            </form>
+                            <a href="../deadline/edit-deadline.php?id=<?=$deadline['id']?>">Edit</a>
+                            <div class="card-body text-center">
+                                <h5 class="card-title"> <?= $deadline['event_name'] ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    <?= date('Y-m-d', strtotime($deadline['event_date'])); ?></h6>
+                                <p class="card-text"><?= $deadline['event_description'] ?></p>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <!-- Tools Tab -->
+                    <div class="tab-pane fade" id="pills-tools" role="tabpanel" aria-labelledby="pills-tools-tab">
+                        <div class="card" style="width: 18rem;">
+ 
                         </div>
                     </div>
 

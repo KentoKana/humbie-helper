@@ -20,7 +20,9 @@ $errormsg = "";
     }else{
       $c = $project->addProject($project_name, $project_description, $student_id, $db);
       if($c){
-        $_SESSION['project_id'];
+        //Sets project_id session to the last inserted id.
+        //Kento's edit - March 29 2019;
+        $_SESSION['project_id'] = Database::getDatabase()->lastInsertId();;
         header('Location:project-details.php');
       }else{
         $errormsg.= "Error adding this project, please try again.";
