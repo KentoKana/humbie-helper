@@ -17,7 +17,7 @@
                     <?php
                       if (isset($_SESSION['username'])) :
                     ?>
-                    <a class="nav-link" href="#">Hello, <?= $_SESSION['username'];?>!</a>
+                    <a class="nav-link" href="<?= RVIEWS;?>/student/user-profile.php">Hello, <?= $_SESSION['username'];?>!</a>
                     <?php
                       else:
                     ?>

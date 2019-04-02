@@ -1,7 +1,62 @@
-<?php require_once '../../header.php'; ?>
+<?php require_once '../../config.php';
+require_once VIEWS . '/header.php';
+require_once CONTROLLERS . '/minutes-controller.php';
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+$project_id = $student_id = 0;
+$parameters = [];
+
+if(isset($_SESSION))
+{
+  $project_id = $_SESSION['project_id'];
+  $params = [
+    "pId" => $project_id
+  ];
+}
+?>
 <div class="container">
+  <div id="msg">
+    <?php
+      if(isset($_GET['deleted']))
+      {
+        if($_GET['deleted'] == 'success')
+        {
+          echo genStatusMsg("success", "Successfully Deleted!");
+        }
+        else
+        {
+          echo genStatusMsg("danger", "Unknown error was encountered, please try again!");
+        }
+      }
+
+      if(isset($_GET['added']))
+      {
+        if($_GET['added'] == 'success')
+        {
+          echo genStatusMsg("success", "Successfully Added!");
+        }
+        else
+        {
+          echo genStatusMsg("danger", "Unknown error was encountered, please try again!");
+        }
+      }
+
+      if(isset($_GET['edited']))
+      {
+        if($_GET['edited'] == 'success')
+        {
+          echo genStatusMsg("success", "Successfully Edited!");
+        }
+        else
+        {
+          echo genStatusMsg("danger", "Unknown error was encountered, please try again!");
+        }
+      }
+    ?>
+  </div>
   <div class="col-10 mx-auto my-5">
-    <button type="button" name="button" class="btn btn-success float-right">Add new minutes</button>
+    <a href="add.php" class="btn btn-success float-right">Add new minutes</a>
     <h2>Minutes</h2>
     <table class="table">
       <thead class="thead-dark">
@@ -12,23 +67,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">Minutes of the meeting #1</th>
-          <td scope="row" class="text-md-center">01-07-2019, 08:00:55</td>
-          <td  scope="row" class="text-md-right"><a href="#" class="btn btn-dark">Edit</a> <a href="#" class="btn btn-primary">Send</a> <a href="#" class="btn btn-danger">Delete</a></td>
-        </tr>
-        <tr>
-          <th scope="row">Minutes of the meeting #2</th>
-          <td scope="row" class="text-md-center">01-14-2019 07:55:34</td>
-          <td scope="row" class="text-md-right"><a href="#" class="btn btn-dark">Edit</a> <a href="#" class="btn btn-primary">Send</a> <a href="#" class="btn btn-danger">Delete</a></td>
-        </tr>
-        <tr>
-          <th scope="row">Minutes of the meeting #3</th>
-          <td scope="row" class="text-md-center">01-21-2019 07:43:00</td>
-          <td scope="row" class="text-md-right"><a href="#" class="btn btn-dark">Edit</a> <a href="#" class="btn btn-primary">Send</a> <a href="#" class="btn btn-danger">Delete</a></td>
-        </tr>
+        <?php
+           echo listM($params);
+        ?>
       </tbody>
     </table>
   </div>
 </div>
-<?php require_once '../../footer.php'; ?>
+<?php require_once VIEWS . '/footer.php'; ?>
