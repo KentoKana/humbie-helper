@@ -8,12 +8,12 @@
 ### Developers
 
 - Jenna G.
-- Roengten Mark M.
+- Roentgen Mark M.
 - Kento K.
 - Ryan R.
 
 ### Current Bugs
-- Session not persisting
+- ~~Session not persisting~~ FIXED
 - Mysql Server Error : Mysql has gone away
   - I already reported this bug in my hosting (Mark)
 
@@ -87,6 +87,10 @@ formatting to the database and returns formatting when a single note is viewed.
 on.
 
 ### Mark
+### - Minutes feature
+- Removed json_encode as a way to process data for CREATE, UPDATE, and VIEW. I used a WYSIWG editor instead to give more freedom to users.
+- Deleting the agenda deletes the entry permanently, Removed isArchived Flag
+
 ### - Agenda feature
 - Login Credentials:
 - username: porkalmighty
