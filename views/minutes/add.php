@@ -15,16 +15,22 @@ if(isset($_SESSION))
 
 if(isset($_POST['save_button']))
 {
-  // echo filter_var($_POST['editor1'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-  $title = $_POST['minutes_title'];
-  $content = htmlspecialchars($_POST['editor1']);
-  $parameters = [
-    "pId" => $project_id,
-    "title" => $title,
-    "desc" => $content
-  ];
+  if(isset($_POST['minutes_title']) && !empty($_POST['minutes_title']))
+  {
+    $title = $_POST['minutes_title'];
+    $content = htmlspecialchars($_POST['editor1']);
+    $parameters = [
+      "pId" => $project_id,
+      "title" => $title,
+      "desc" => $content
+    ];
 
-  add($parameters);
+    add($parameters);
+  }
+  else
+  {
+    return genStatusMsg("danger", "Menu title is required!");
+  }
 }
 ?>
 <div class="container">
