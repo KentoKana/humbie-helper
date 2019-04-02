@@ -19,7 +19,7 @@
 
 ### Bug fixes
 - Project ID session is immediately set after creating a project.
-- -Kento, March 30 2019
+    - Kento, March 30 2019
 
 ## What this project is
 
@@ -33,9 +33,13 @@ Humbie Helper is a web application specifically created to help the future stude
 
 The app is currently in the development stage. Please read the "Milestones" section for more details.
 
-## Milestones (Last update: March 30 2019)
+## Milestones (Last update: April 2 2019)
 
 ### Kento
+
+### - Started populating the Tools tab in project-details view.
+- Students now have access to the agenda tool through the tools tab.
+
 ### - Added deadlines feature
 - Student who has access to a specific can see, add, edit, and delete the project specific deadlines through the project details page.
 
