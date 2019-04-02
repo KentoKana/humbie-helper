@@ -177,8 +177,10 @@ $students = $project->listStudentsInProject($project_id, $db);
 
                     <!-- Tools Tab -->
                     <div class="tab-pane fade" id="pills-tools" role="tabpanel" aria-labelledby="pills-tools-tab">
-                        <div class="card" style="width: 18rem;">
- 
+                        <div class="card text-center" style="width: 18rem;">
+                            <div>
+                                <a href="<?=RVIEWS . '/agenda/list.php'?>">Agenda Tool</a>
+                            </div>
                         </div>
                     </div>
 
