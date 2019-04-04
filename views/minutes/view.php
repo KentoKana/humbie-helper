@@ -1,46 +1,40 @@
-<?php require_once '../../header.php'; ?>
+<?php require '../../config.php';
+include VIEWS . '/header.php';
+require_once CONTROLLERS . '/minutes-controller.php';
+
+$mID = $piD = 0;
+$params = [];
+if(isset($_GET['m']) && isset($_GET['p']))
+{
+  $mID = $_GET['m'];
+  $pID = $_GET['p'];
+  $params = [
+    "pId" => $pID,
+    "mId" => $mID
+  ];
+}
+else
+{
+  header("Location: " . RVIEWS. "/minutes/list.php");
+}
+?>
 <div class="container">
   <div class="col-10 mx-auto">
-    <div class="options text-md-right">
-      <a href="#" class="btn btn-dark">Edit</a>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#send_minutes">Send</button>
-      <a href="#" class="btn btn-danger">Delete</a>
+    <div class="row">
+      <div class="options text-md-left col-md-6">
+        <a href="list.php" class="btn btn-link">Back to List</a>
+      </div>
+      <div class="options text-md-right col-md-6">
+        <a href="edit.php?m=<?=$mID;?>&p=<?=$pID;?>" class="btn btn-dark">Edit</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#send_minutes">Send</button>
+        <a href="delete.php?m=<?=$mID;?>" class="btn btn-danger">Delete</a>
+      </div>
     </div>
-    <div class="minutes col-md-6 mx-auto">
-        <div class="minutes__header">
-            <h1>Minutes of the meeting - Hospital Website</h1>
-            <span class="d-block">Date: <strong>March 15, 2019</strong></span>
-            <span class="d-block">Time: <strong>8:00 - 8:45</strong></span>
-            <span class="d-block">Location: <strong>M100</strong></span>
-        </div>
-        <div class="minutes__body mt-4">
-          <div class="attendance">
-            <h2>Present Members</h2>
-            <ul>
-              <li>Kento Kanazawa</li>
-              <li>Jenna Greenberg</li>
-              <li>Ryan Robinson</li>
-            </ul>
-            <h2>Absent Members</h2>
-            <ul>
-              <li>Mark Martin</li>
-            </ul>
-          </div>
-          <div class="minutes mt-5">
-            <h2>Minutes</h2>
-            <ul>
-              <li>minutes Item 1</li>
-              <li>minutes Item 2</li>
-            </ul>
-          </div>
-          <div class="action mt-5">
-            <h2>Action Items</h2>
-            <ul>
-              <li>Other minutes Item 1</li>
-              <li>Other minutes Item 2</li>
-            </ul>
-          </div>
-        </div>
+
+    <div class="minutes col-md-8 mx-auto my-5">
+        <?php
+          echo view($params);
+         ?>
     </div>
   </div>
   <div class="modal" tabindex="-1" role="dialog" id="send_minutes">
@@ -68,4 +62,4 @@
     </div>
   </div>
 </div>
-<?php require_once '../../footer.php'; ?>
+<?php require_once VIEWS . '/footer.php'; ?>

@@ -8,18 +8,18 @@
 ### Developers
 
 - Jenna G.
-- Roengten Mark M.
+- Roentgen Mark M.
 - Kento K.
 - Ryan R.
 
 ### Current Bugs
-- Session not persisting
+- ~~Session not persisting~~ FIXED
 - Mysql Server Error : Mysql has gone away
   - I already reported this bug in my hosting (Mark)
 
 ### Bug fixes
 - Project ID session is immediately set after creating a project.
-- -Kento, March 30 2019
+    - Kento, March 30 2019
 
 ## What this project is
 
@@ -33,9 +33,13 @@ Humbie Helper is a web application specifically created to help the future stude
 
 The app is currently in the development stage. Please read the "Milestones" section for more details.
 
-## Milestones (Last update: March 30 2019)
+## Milestones (Last update: April 2 2019)
 
 ### Kento
+
+### - Started populating the Tools tab in project-details view.
+- Students now have access to the agenda tool through the tools tab.
+
 ### - Added deadlines feature
 - Student who has access to a specific can see, add, edit, and delete the project specific deadlines through the project details page.
 
@@ -87,6 +91,10 @@ formatting to the database and returns formatting when a single note is viewed.
 on.
 
 ### Mark
+### - Minutes feature
+- Removed json_encode as a way to process data for CREATE, UPDATE, and VIEW. I used a WYSIWG editor instead to give more freedom to users.
+- Deleting the agenda deletes the entry permanently, Removed isArchived Flag
+
 ### - Agenda feature
 - Login Credentials:
 - username: porkalmighty
@@ -98,3 +106,14 @@ on.
 - When agenda title is not specified when adding or deleting an agenda, it will return an error
 - Deleting an agenda doesn't actually delete the entry, it will only set isArchived status to 1(True)
 - Email function is not yet implemented
+
+### Ryan
+### - Motivational Quotes Feature
+- CRUD for quotes, this would be for admin (Could add quote management to student profile section).
+- Next step: Have a quote from the database display on student's project view and input validation.
+
+### - Announcements Feature
+- This will be part of the projects feature
+- A list of all announcements for a particular project will be displayed in project details
+- Currently signed in student would be able to edit and delete only their own announcements from list
+- Views have been made, working on model and controller

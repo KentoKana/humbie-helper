@@ -29,17 +29,17 @@ $students = $project->listStudentsInProject($project_id, $db);
                                 href="#pills-announcements" role="tab" aria-controls="pills-announcements"
                                 aria-selected="false">Announcements</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" id="pills-students-tab" data-toggle="pill" href="#pills-students"
                                 role="tab" aria-controls="pills-students" aria-selected="false">Students</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" id="pills-deadlines-tab" data-toggle="pill" href="#pills-deadlines"
                                 role="tab" aria-controls="pills-deadlines" aria-selected="false">Deadlines</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-tools-tab" data-toggle="pill" href="#pills-tools"
-                                role="tab" aria-controls="pills-tools" aria-selected="false">Tools</a>
+                            <a class="nav-link" id="pills-tools-tab" data-toggle="pill" href="#pills-tools" role="tab"
+                                aria-controls="pills-tools" aria-selected="false">Tools</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="pills-projectDetails-tab" data-toggle="pill"
@@ -129,21 +129,6 @@ $students = $project->listStudentsInProject($project_id, $db);
                         </div>
                     </div>
 
-                    <!-- Student Tab  -->
-                    <div class="tab-pane fade" id="pills-students" role="tabpanel" aria-labelledby="pills-student-tab">
-                        <div class="card" style="width: 18rem;">
-                            <ul class="list-group list-group-flush text-center">
-                                <li class="list-group-item" style="background-color: lightCyan"><a
-                                        href="project-student-list.php"> + Add
-                                        Student to Project</a></li>
-                                <?php 
-                                foreach($students as $student):?>
-                                <li class="jg-list"> <?=$student->student_fname . ' ' . $student->student_lname?> </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    </div>
-
                     <!-- Deadlines tab -->
                     <div class="tab-pane fade" id="pills-deadlines" role="tabpanel"
                         aria-labelledby="pills-deadlines-tab">
@@ -177,21 +162,51 @@ $students = $project->listStudentsInProject($project_id, $db);
 
                     <!-- Tools Tab -->
                     <div class="tab-pane fade" id="pills-tools" role="tabpanel" aria-labelledby="pills-tools-tab">
-                        <div class="card" style="width: 18rem;">
- 
+                        <div class="card text-center" style="width: 18rem;">
+                            <div>
+                                <div class="timer-col-wrap">
+                                    <h2 id="timer">00 : 00 : 00</h2>
+                                    <div class="timer-buttons">
+                                        <button class="button __button" id="toggle">Start</button>
+                                        <button class="button __button" id="reset">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card text-center" style="width: 18rem;">
+                            <div>
+                                <a href="<?=RVIEWS . '/agenda/list.php'?>">Agenda Tool</a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Project Details -->
                     <div class="tab-pane fade" id="pills-projectDetails" role="tabpanel"
                         aria-labelledby="pills-projectDetails-tab">
-                        <div class="card text-center" style="width: 20rem;">
-                            <h5 class="card-title">Project Description</h5>
-                            <p class="card-text"><?=$single_project->project_description?></p>
-                            <a href="edit-project.php">Edit This Project</a>
-                            <a href="delete-project.php" class="text-danger">Delete This Project</a>
-                            <a href="#"></a>
-
+                        <div class="d-flex flex-row">
+                            <div class="card text-center m-4" style="width: 20rem;">
+                                <h5 class="card-title">Project Description</h5>
+                                <p class="card-text"><?=$single_project->project_description?></p>
+                                <div class="card-footer">
+                                    <a href="edit-project.php">Edit This Project</a>
+                                    <a href="delete-project.php" class="text-danger">Delete This Project</a>
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                            <div class="card m-4 text-center" style="width: 18rem;">
+                                <h5 class="card-title">Students In This Project</h5>
+                                <ul class="list-group list-group-flush text-center">
+                                    <li class="list-group-item" style="background-color: lightCyan"><a
+                                            href="project-student-list.php"> + Add
+                                            Student to Project</a></li>
+                                    <?php 
+                                foreach($students as $student):?>
+                                    <li class="jg-list"> <?=$student->student_fname . ' ' . $student->student_lname?>
+                                    </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

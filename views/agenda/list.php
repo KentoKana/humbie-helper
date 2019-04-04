@@ -23,9 +23,21 @@ require_once LIB . '/functions.php';
 
       if(isset($_GET['added']))
       {
-        if($_GET['deleted'] == 'success')
+        if($_GET['added'] == 'success')
         {
-          echo genStatusMsg("success", "Successfully Deleted!");
+          echo genStatusMsg("success", "Successfully Added!");
+        }
+        else
+        {
+          echo genStatusMsg("danger", "Unknown error was encountered, please try again!");
+        }
+      }
+
+      if(isset($_GET['edited']))
+      {
+        if($_GET['edited'] == 'success')
+        {
+          echo genStatusMsg("success", "Successfully Edited!");
         }
         else
         {

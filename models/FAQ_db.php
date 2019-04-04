@@ -42,7 +42,7 @@ public function add_faq($category_id, $question, $answer, $dbcon)
             VALUES
               (:category_id, :question, :answer)";
   $stm = $dbcon->prepare($query);
-
+\
   $stm -> bindParam(':category_id', $category_id);
   $stm -> bindParam(':question', $question);
   $stm -> bindParam(':answer', $answer);

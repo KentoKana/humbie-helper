@@ -22,7 +22,7 @@ else
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#send_agenda">Send</button>
       <a href="delete.php?a=<?=$agendaid;?>&p=<?=$projectid;?>" class="btn btn-danger">Delete</a>
     </div>
-    <div class="agenda col-md-6 mx-auto">
+    <div class="agenda col-md-8 mx-auto">
       <?php
         echo generateView($agendaid, $projectid);
        ?>
