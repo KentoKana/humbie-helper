@@ -1,6 +1,7 @@
 <?php
+require_once('Database.php');
 
-class Category{
+class Faq_category{
 
 public function get_categories($dbcon){
   $query = 'SELECT * FROM faq_categories ORDER BY id';
@@ -9,6 +10,15 @@ public function get_categories($dbcon){
 
   $categories = $stm -> fetchAll(PDO::FETCH_OBJ);
   return $categories;
+}
+
+public function get_category($id, $db){
+  $sql = 'SELECT * FROM faq_categories WHERE id = :id';
+  $pst = $db->prepare($sql);
+  $pst->bindParam(':id', $id);
+  $pst->execute();
+  $category = $pst-> fetch(PDO::FETCH_OBJ);
+  return $category;
 }
 
 public function add_category($category_name, $db)
@@ -31,7 +41,7 @@ public function delete_category($id, $db)
   $pst->bindParam(':id', $id);
   $count = $pst->execute();
   return $count;
-  
+
 }
 
 }

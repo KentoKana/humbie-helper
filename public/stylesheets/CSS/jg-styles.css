@@ -133,4 +133,40 @@ body #jg-humbie-button-img {
   display: inline-block;
 }
 
+.jg_modal__title {
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+.questions_display {
+  text-align: left;
+}
+.questions_display h1 {
+  text-align: center;
+}
+
+.jg_faq__ul {
+  padding-left: 0.5em;
+  cursor: pointer;
+}
+.jg_faq__ul li:hover {
+  color: #ec576b;
+}
+
+.jg_faq__question {
+  color: #1c2833;
+  font-style: bold;
+  font-size: 1.2em;
+}
+
+.jg_faq__answer {
+  font-size: 0.9em;
+  padding-bottom: 10px;
+}
+
+#close {
+  text-align: right;
+  padding-right: 10px;
+}
+
 /*# sourceMappingURL=jg-styles.css.map */

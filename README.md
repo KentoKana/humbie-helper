@@ -106,3 +106,14 @@ on.
 - When agenda title is not specified when adding or deleting an agenda, it will return an error
 - Deleting an agenda doesn't actually delete the entry, it will only set isArchived status to 1(True)
 - Email function is not yet implemented
+
+### Ryan
+### - Motivational Quotes Feature
+- CRUD for quotes, this would be for admin (Could add quote management to student profile section).
+- Next step: Have a quote from the database display on student's project view and input validation.
+
+### - Announcements Feature
+- This will be part of the projects feature
+- A list of all announcements for a particular project will be displayed in project details
+- Currently signed in student would be able to edit and delete only their own announcements from list
+- Views have been made, working on model and controller

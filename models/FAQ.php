@@ -1,11 +1,11 @@
 <?php
-
-class FAQ
+require_once('Database.php');
+class Faq
 {
 
 
 public function get_all_questions($dbcon){
-  $query = "SELECT * FROM FAQ";
+  $query = "SELECT * FROM faq";
   $stm = $dbcon -> prepare($query);
   $stm -> execute();
 
@@ -15,18 +15,19 @@ public function get_all_questions($dbcon){
 
 public function get_questions_by_category($category_id, $dbcon){
 
-  $query = "SELECT * FROM FAQ WHERE CategoryID = '$category_id' ORDER BY FAQID";
+  $query = "SELECT * FROM faq WHERE category_id = :category_id ORDER BY id";
   $stm = $dbcon -> prepare($query);
+  $stm->bindParam(':category_id', $category_id);
   $stm -> execute();
 
-  $questions_c = $stm-> fetchAll(PDO::FETCH_OBJ);
-  return $questions_c;
+  $questions = $stm-> fetchAll(PDO::FETCH_OBJ);
+  return $questions;
 }
 
 
 public function delete_faq($id, $dbcon){
 
-  $query = "DELETE FROM FAQ WHERE FAQID = :id";
+  $query = "DELETE FROM faq WHERE id = :id";
   $stm = $dbcon->prepare($query);
   $stm->bindParam(':id', $id);
 
@@ -37,12 +38,12 @@ public function delete_faq($id, $dbcon){
 public function add_faq($category_id, $question, $answer, $dbcon)
 {
 
-  $query = "INSERT INTO FAQ
-              (CategoryID, Question, Answer)
+  $query = "INSERT INTO faq
+              (category_id, faq_question, faq_answer)
             VALUES
               (:category_id, :question, :answer)";
   $stm = $dbcon->prepare($query);
-\
+
   $stm -> bindParam(':category_id', $category_id);
   $stm -> bindParam(':question', $question);
   $stm -> bindParam(':answer', $answer);
@@ -54,10 +55,10 @@ public function add_faq($category_id, $question, $answer, $dbcon)
 public function update_faq($id, $category_id, $question, $answer, $dbcon)
 {
 
-  $query = "UPDATE FAQ
+  $query = "UPDATE faq
             set category_id = :category_id,
-            question = :question,
-            answer = :answer
+            faq_question = :question,
+            faq_answer = :answer
             WHERE id= :id";
   $stm = $dbcon->prepare($query);
 
