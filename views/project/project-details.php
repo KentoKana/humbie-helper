@@ -3,6 +3,8 @@ require './../../config.php';
 include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
 require_once CONTROLLERS.'/deadline-controller.php';
+require_once CONTROLLERS.'/timer-controller.php';
+
 //require_once CONTROLLERS.'/student-controller.php';
 $project_id = $_SESSION['project_id'];
 $single_project = $project->singleProject($project_id, $db);
@@ -165,11 +167,25 @@ $students = $project->listStudentsInProject($project_id, $db);
                         <div class="card text-center" style="width: 18rem;">
                             <div>
                                 <div class="timer-col-wrap">
-                                    <h2 id="timer">00 : 00 : 00</h2>
-                                    <div class="timer-buttons">
-                                        <button class="button __button" id="toggle">Start</button>
-                                        <button class="button __button" id="reset">Reset</button>
-                                    </div>
+                                    <form action="" method="POST">
+                                        <h2 id="timer">00 : 00 : 00</h2>
+                                        <div class="timer-buttons">
+                                            <button type="button" class="button __button" id="toggle">Start</button>
+                                            <button type="button" class="button __button" id="reset">Reset</button>
+                                        </div>
+
+                                        <input type="hidden" name="time" id="timeInMilli">
+                                        <input type="hidden" name="studentId" id="studentId" value="<?=$_SESSION['studentId'];?>">
+                                        <button type="submit" id="saveTime">Add to Timesheet</button>
+                                    </form>
+                                </div>
+                                <div>
+                                    <?php
+                                        $timers = $t->listTime();
+                                        foreach($timers as $timer) {
+                                            echo "<div>". $timer['time_taken'] ."</div>";
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>
