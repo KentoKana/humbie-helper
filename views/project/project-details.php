@@ -173,7 +173,9 @@ $students = $project->listStudentsInProject($project_id, $db);
                                             <button type="button" class="button __button" id="toggle">Start</button>
                                             <button type="button" class="button __button" id="reset">Reset</button>
                                         </div>
+
                                         <input type="hidden" name="time" id="timeInMilli">
+                                        <input type="hidden" name="studentId" id="studentId" value="<?=$_SESSION['studentId'];?>">
                                         <button type="submit" id="saveTime">Add to Timesheet</button>
                                     </form>
                                 </div>

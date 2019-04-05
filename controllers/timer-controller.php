@@ -1,5 +1,4 @@
 <?php
-session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 //Had to write the absolute path down. Need to change if not using MAMP.
@@ -13,7 +12,7 @@ $t = new Timer(Database::getDatabase());
 
 if(isset($_POST['time'])) {
     $t->setTime($_POST['time']);
-    $t->setStudentId($_SESSION['studentId']);
+    $t->setStudentId($_POST['studentId']);
 
     $time = $t->getTime();
     $studentId = $t->getStudentId();
