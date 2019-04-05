@@ -13,11 +13,15 @@ $t = new Timer(Database::getDatabase());
 if(isset($_POST['time'])) {
     $t->setTime($_POST['time']);
     $t->setStudentId($_POST['studentId']);
+    $t->setTask($_POST['taskName']);
+    $t->setProjectId($_POST['projectId']);
 
     $time = $t->getTime();
     $studentId = $t->getStudentId();
+    $task = $t->getTask();
+    $projectId = $t->getProjectId();
 
-    $t->addTimer($time, $studentId);
+    $t->addTimer($time, $studentId, $task, $projectId);
 }
 
 ?>

@@ -150,6 +150,8 @@ $('#saveTime').click(function (event) {
 
     let timeSaved = $('#timeInMilli').val();
     let studentId = $('#studentId').val();
+    let projectId = $('#projectId').val();
+    let task = $('#taskName').val();
     console.log(studentId)
     // console.log(timeSaved);
 
@@ -157,6 +159,8 @@ $('#saveTime').click(function (event) {
         {
             time: timeSaved,
             studentId: studentId,
+            projectId: projectId,
+            taskName: task,
         },
         function (data) {
             console.log(data);

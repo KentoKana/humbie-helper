@@ -168,6 +168,9 @@ $students = $project->listStudentsInProject($project_id, $db);
                             <div>
                                 <div class="timer-col-wrap">
                                     <form action="" method="POST">
+                                        <div>
+                                            <input type="text" name="taskName" id="taskName">
+                                        </div>
                                         <h2 id="timer">00 : 00 : 00</h2>
                                         <div class="timer-buttons">
                                             <button type="button" class="button __button" id="toggle">Start</button>
@@ -175,7 +178,10 @@ $students = $project->listStudentsInProject($project_id, $db);
                                         </div>
 
                                         <input type="hidden" name="time" id="timeInMilli">
-                                        <input type="hidden" name="studentId" id="studentId" value="<?=$_SESSION['studentId'];?>">
+                                        <input type="hidden" name="studentId" id="studentId"
+                                            value="<?=$_SESSION['studentId'];?>">
+                                        <input type="hidden" name="projectId" id="projectId"
+                                            value="<?=$_SESSION['project_id'];?>">
                                         <button type="submit" id="saveTime">Add to Timesheet</button>
                                     </form>
                                 </div>

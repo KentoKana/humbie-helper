@@ -7,7 +7,9 @@ class Timer
 	//Member Variables
 	private $dbh;
 	private $time;
-	private $studentId;
+    private $studentId;
+    private $task;
+    private $projectId;
 
 	public function __construct($dbh) 
 	{
@@ -30,7 +32,22 @@ class Timer
 	}
 	public function getStudentId() {
 		return $this->studentId;
+    }
+    public function setTask($task) {
+		if($task === "") {
+			return false;
+		}
+		$this->task = filter_var($task, FILTER_SANITIZE_STRING);
 	}
+	public function getTask() {
+		return $this->task;
+    }
+    public function setProjectId($projectId) {
+		$this->projectId = $projectId;
+	}
+	public function getProjectId() {
+		return $this->projectId;
+    }
 
 	//List Student Method
 	public function listTime() 
@@ -69,15 +86,17 @@ class Timer
 	// }
 
 	//Add Time Method
-	public function addTimer($time, $studentId) 
+	public function addTimer($time, $studentId, $task, $projectId) 
 	{
-		$insertStmt = "INSERT INTO timers (id, time_taken,student_id) VALUES (null, :timetaken, :studentId)";
+		$insertStmt = "INSERT INTO timers (id, time_taken, student_id, task_name, project_id ) VALUES (null, :timetaken, :studentId, :task, :pid)";
 		//Define query (in this case, reference the insertStmt)
 		$stmt = $this->dbh->prepare($insertStmt);  
 
 		//Bind param with values
 		$stmt->bindParam(':timetaken', $time);
 		$stmt->bindParam(':studentId', $studentId);
+		$stmt->bindParam(':task', $task);
+		$stmt->bindParam(':pid', $projectId);
 
 		return $stmt->execute();  
 	}
