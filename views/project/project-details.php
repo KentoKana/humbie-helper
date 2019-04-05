@@ -3,10 +3,13 @@ require './../../config.php';
 include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
 require_once CONTROLLERS.'/deadline-controller.php';
+require_once CONTROLLERS.'/faq-controller.php';
+
 //require_once CONTROLLERS.'/student-controller.php';
 $project_id = $_SESSION['project_id'];
 $single_project = $project->singleProject($project_id, $db);
 $students = $project->listStudentsInProject($project_id, $db);
+$categories = $ca->get_categories($db);
 ?>
 <?= genStatusMsg('primary',  "'You either die a hero, or live long enough to see yourself become Chuck Norris.' -<em> Shakespeare,
             probably.</em>")?>
@@ -140,7 +143,7 @@ $students = $project->listStudentsInProject($project_id, $db);
                                     </a></li>
                             </ul>
                         </div>
-                        <?php 
+                        <?php
                                 $deadlines = $d->listDeadlines($project_id);
                                 foreach($deadlines as $deadline):
                                 ?>
@@ -200,7 +203,7 @@ $students = $project->listStudentsInProject($project_id, $db);
                                     <li class="list-group-item" style="background-color: lightCyan"><a
                                             href="project-student-list.php"> + Add
                                             Student to Project</a></li>
-                                    <?php 
+                                    <?php
                                 foreach($students as $student):?>
                                     <li class="jg-list"> <?=$student->student_fname . ' ' . $student->student_lname?>
                                     </li>
@@ -215,36 +218,41 @@ $students = $project->listStudentsInProject($project_id, $db);
     </div>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#helpfulTipsModal">
-        Need Help?
+    <button id="jg-humbie-button" type="button" class="jg-button-primary" data-toggle="modal" data-target="#exampleModal">
+       Need help?
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="helpfulTipsModal" tabindex="-1" role="dialog" aria-labelledby="helpfulTips"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="helpfulTips">Helpful Tips!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body m-auto">
-                    <div class="col m-auto">
-                        <!-- The list will be generated from FAQ table -->
-                        <ul class="list-unstyled">
-                            <li><a href="#">Cras justo odio</a></li>
-                            <li><a href="#">Cras justo odio</a></li>
-                            <li><a href="#">Cras justo odio</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary m-auto" data-dismiss="modal">Close</button>
-                </div>
+
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <button id="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        <div class="modal-body">
+          <div class="jg-hippo-sprite p-3 mb-3">
+            <div id="jg-hippo-sprite__image"></div>
+            <p id="jg-hippo-sprite__text"> Hi! I'm Humbie, how can I help you? </p>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <h2 class="jg_modal__title"> Categories </h2>
+              <ul class="jg_faq__ul">
+                <?php foreach($categories as $category):?>
+                  <li id="<?=$category->id?>"> <?=$category->category_name?> </li>
+                <?php endforeach; ?>
+              </ul>
             </div>
+            <div class="col-9">
+              <ul class="faqs">
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    </div>
     </div>
     </div>
 </main>

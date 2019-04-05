@@ -33,7 +33,7 @@ Humbie Helper is a web application specifically created to help the future stude
 
 The app is currently in the development stage. Please read the "Milestones" section for more details.
 
-## Milestones (Last update: April 2 2019)
+## Milestones (Last update: April 5 2019)
 
 ### Kento
 
@@ -89,6 +89,12 @@ The app is currently in the development stage. Please read the "Milestones" sect
 formatting to the database and returns formatting when a single note is viewed.
 - Students can view, edit and delete all notes related to the project page they are currently
 on.
+
+## - FAQ Feature
+- New categories and FAQs can be uploaded to the Database
+- Students can access FAQs as a static page from the menu bar or as a modal on the project details page
+- The FAQ page/modal displays a list of categories that a student can select to help them better filter their questions
+- When the student selects a category, ajax calls the questions associated with that category and displays them in the middle of the page without refreshing the whole page
 
 ### Mark
 ### - Minutes feature
