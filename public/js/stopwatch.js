@@ -149,17 +149,13 @@ $('#saveTime').click(function (event) {
     event.preventDefault();
 
     let timeSaved = $('#timeInMilli').val();
-    let studentId = $('#studentId').val();
-    console.log(studentId)
-    // console.log(timeSaved);
 
     $.post('../../controllers/timer-controller.php',
         {
             time: timeSaved,
-            studentId: studentId,
         },
         function (data) {
-            console.log(data);
+            // console.log(data);
         }
     )
 });
