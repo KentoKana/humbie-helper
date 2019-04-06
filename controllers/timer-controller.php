@@ -24,4 +24,8 @@ if(isset($_POST['time'])) {
     $t->addTimer($time, $studentId, $task, $projectId);
 }
 
+if (isset($_POST['delTimeId'])) {
+    $t->deleteTime($_POST['delTimeId']);
+}
+
 ?>

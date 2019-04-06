@@ -151,15 +151,26 @@ if(isset($_POST['edit'])){
                     <!-- Timesheet Tab  -->
                     <div class="tab-pane fade" id="pills-timesheet" role="tabpanel"
                         aria-labelledby="pills-timesheet-tab">
-                        <div class="card mt-2" style="width: 20rem;">
+                        <div class="card mt-2 text-center" style="width: 20rem;">
+                            <h5>View Timer For: </h5>
                             <div class="card-body text-left">
                                 <div>
                                     <?php
-                                        $timers = $t->listTime();
-                                        foreach($timers as $timer) {
-                                            echo "<div>". (string)(round($timer['time_taken']/3600000, 2))." hrs </div>";
-                                        }
+                                        $projectsForTimer = $t->projectListForTimer($_SESSION['studentId']);
+                                        // var_dump($projectsForTimer);
                                     ?>
+                                    <div class="text-center">
+                                        <?php
+                                            foreach($projectsForTimer as $project) {
+
+                                            echo 
+                                                "<div>" .
+                                                    "<a href='" . RVIEWS . "/timer/timer-list.php?projectId=" .$project['id'] . "'>". $project['project_name'] . "</a>" .
+                                                "</div>";
+                                            }
+
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>

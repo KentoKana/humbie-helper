@@ -49,43 +49,44 @@ class Timer
 		return $this->projectId;
     }
 
-	//List Student Method
-	public function listTime() 
+	//List Timers organized by projects
+	public function projectListForTimer($studentId) 
 	{
-		$selectStmt = "SELECT * FROM timers";
-		$stmt = $this->dbh->prepare($selectStmt);
-		$stmt->execute();
-		return $stmt->fetchAll();
-	}
+        $selectStmt = "
+            SELECT p.project_name, p.id FROM timers t
+            JOIN projects p
+            ON t.project_id = p.id
+            WHERE t.student_id = :id
+        ";
+        $stmt = $this->dbh->prepare($selectStmt);
+        $stmt->bindParam(':id', $studentId);
+        $stmt->execute();
+        try{
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            echo $e;
+        }
+    }
+    
+    public function timerListByProject($projectId, $studentId){
+        $selectStmt = "
+            SELECT * FROM timers WHERE (project_id = :projectId) 
+            AND (student_id = :studentId);
+        ";
+        $stmt = $this->dbh->prepare($selectStmt);
+        $stmt->bindParam(':projectId', $projectId);
+        $stmt->bindParam(':studentId', $studentId);
+        $stmt->execute();
+        try{
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            echo $e;
+        }
+   }
 
-	// public function getStudentPass($username) {
-	// 	$selectStmt = "SELECT password FROM students WHERE (username = :username)";
-	// 	$stmt = $this->dbh->prepare($selectStmt);
-	// 	$stmt->bindParam(':username', $username);
-	// 	$stmt->execute();
-	// 	return $stmt->fetch();
-	// }
-
-	// public function getStudentIdByUserName($username) 
-	// {
-	// 	$selectStmt = "SELECT id FROM students WHERE username = :username";
-	// 	$stmt = $this->dbh->prepare($selectStmt);
-	// 	$stmt->bindParam(':username', $username);
-	// 	$stmt->execute();
-	// 	return $stmt->fetch();
-	// }
-
-	// public function studentLogin($username, $password) {
-	// 	$selectStmt = "SELECT * FROM students WHERE (username = :username) AND (password = :pass)";
-	// 	$stmt = $this->dbh->prepare($selectStmt);
-	// 	$stmt->bindParam(':username', $username);
-	// 	$stmt->bindParam(':pass', $password);
-
-	// 	$stmt->execute();
-	// 	return $stmt->fetch();
-	// }
-
-	//Add Time Method
+   //Add Time Method
 	public function addTimer($time, $studentId, $task, $projectId) 
 	{
 		$insertStmt = "INSERT INTO timers (id, time_taken, student_id, task_name, project_id ) VALUES (null, :timetaken, :studentId, :task, :pid)";
@@ -121,24 +122,13 @@ class Timer
 	}
 	
 	//Delete Student Method
-	public function deleteStudent($id) 
+	public function deleteTime($timerId) 
 	{
-		$deleteStmt = "DELETE FROM students WHERE id = :studentID";
+		$deleteStmt = "DELETE FROM timer WHERE id = :timerId";
 		$stmt = $this->dbh->prepare($deleteStmt);  
-		$stmt->bindParam(':studentID', $id);
+		$stmt->bindParam(':timerId', $timerId);
 		return $stmt->execute();
 	}
 }
-
-// $student = new Student(Database::getDatabase());
-
-// Test Scripts
-// $student->updateStudent('Update', 'Kanazawa', '123@eg.com', '1111111111', 'kento', 'password',1);
-// foreach ($student->listStudents() as $row) {
-// 	echo $row['student_fname'] . "<br />" . 
-// 		 $row['student_lname'] . "<br />" . 
-// 		 $row['student_email'] . "<br />" .
-// 		 $row['student_phone'] . "<br /><br />"; 
-// }
 
 ?>

@@ -145,6 +145,7 @@ document.body.onkeydown = function (e) {
 }
 
 //AJAX
+//Save Timer
 $('#saveTime').click(function (event) {
     event.preventDefault();
 
@@ -167,3 +168,22 @@ $('#saveTime').click(function (event) {
         }
     )
 });
+
+
+//Delete Timer
+$('#delTimeRecord').click(function (event) {
+    event.preventDefault();
+
+    let timerId = $('#timerId').val();
+    console.log(timerId)
+
+    $.post('../../controllers/timer-controller.php',
+        {
+            delTimeId: timerId,
+        },
+        function (data) {
+            console.log(data);
+        }
+    )
+});
+
