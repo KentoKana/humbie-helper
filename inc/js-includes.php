@@ -16,4 +16,5 @@
 <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
 <script src="<?= JS?>/jg-script.js"></script>
 <script src="<?=JS?>/stopwatch.js"></script>
+<script src="<?=JS?>/kk-ajax.js"></script>
 <!-- Javascript functions -->

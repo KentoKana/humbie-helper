@@ -53,7 +53,7 @@ class Timer
 	public function projectListForTimer($studentId) 
 	{
         $selectStmt = "
-            SELECT p.project_name, p.id FROM timers t
+            SELECT DISTINCT(p.project_name), p.id FROM timers t
             JOIN projects p
             ON t.project_id = p.id
             WHERE t.student_id = :id
@@ -124,7 +124,7 @@ class Timer
 	//Delete Student Method
 	public function deleteTime($timerId) 
 	{
-		$deleteStmt = "DELETE FROM timer WHERE id = :timerId";
+		$deleteStmt = "DELETE FROM timers WHERE id = :timerId";
 		$stmt = $this->dbh->prepare($deleteStmt);  
 		$stmt->bindParam(':timerId', $timerId);
 		return $stmt->execute();

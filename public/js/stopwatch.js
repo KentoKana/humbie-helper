@@ -153,7 +153,6 @@ $('#saveTime').click(function (event) {
     let studentId = $('#studentId').val();
     let projectId = $('#projectId').val();
     let task = $('#taskName').val();
-    console.log(studentId)
     // console.log(timeSaved);
 
     $.post('../../controllers/timer-controller.php',
@@ -164,11 +163,10 @@ $('#saveTime').click(function (event) {
             taskName: task,
         },
         function (data) {
-            console.log(data);
+            // console.log(data);
         }
     )
 });
-
 
 //Delete Timer
 $('#delTimeRecord').click(function (event) {
