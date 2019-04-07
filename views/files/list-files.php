@@ -2,6 +2,10 @@
 include VIEWS.'/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+$path = './uploaded';
+$files = scandir($path);
+
 ?>
 <main id="jg-main" class="m-4">
   <h1 class="text-center pt-3">All Files</h1>
@@ -13,23 +17,21 @@ ini_set('display_errors', 1);
             <tr>
               <th> File Name </th>
               <th> Date Uploaded </th>
-              <th> Edit </th>
               <th> Delete </th>
             </tr>
           </thead>
           <tbody>
+          <?php foreach ($files as $file) { ?>
             <tr class="jg_table__tbody">
-              <td> Test File </td>
-              <td> Test Date </td>
-              <td> Edit </td>
-              <td> Delete </td>
+                <td><?php print_r($file)?></td>
+                <td>Date</td>
+                <td><form action="delete.php" method="post">
+                        <input type="hidden" name="" value="">
+                        <a href="" class="btn btn-primary">Delete</a>
+                    </form>
+                </td>
             </tr>
-            <tr class="jg_table__tbody">
-              <td> Test File </td>
-              <td> Test Date </td>
-              <td> Edit </td>
-              <td> Delete </td>
-            </tr>
+          <?php } ?>
           </tbody>
         </tbody>
       </table>
