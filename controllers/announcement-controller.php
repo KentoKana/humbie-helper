@@ -3,6 +3,9 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once MODELS . '/announcement_db.php';
 require_once MODELS . '/Project.php';
+$_SESSION['studentId'];
+
+
 
 $db = Database::getDatabase();
 $a = new Announcement();
@@ -11,11 +14,11 @@ $myannounce = $a->getAllAnnouncements(Database::getDatabase());
 $annoucebyid = $a->getAnnouncementById(filter_input(INPUT_GET, 'id'), Database::getDatabase());
 $projects = $p->listProjects($_SESSION['studentId'], $db);
 
-$id = filter_input(INPUT_GET, 'id');
-$student_id = filter_input(INPUT_POST, 'student_id');
-$project_id = filter_input(INPUT_POST, 'project_id');
-$annoucement = filter_input(INPUT_POST, 'announcement');
-$annoucement_time = date("d/m/Y");
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+$student_id = filter_input(INPUT_POST, 'student_id', FILTER_VALIDATE_INT);
+$project_id = filter_input(INPUT_POST, 'project_id', FILTER_VALIDATE_INT);
+$announcement = filter_input(INPUT_POST, 'announcement', FILTER_SANITIZE_STRING);
+$announcement_time = date("d/m/Y");
 
 
 
@@ -29,7 +32,7 @@ if (isset($_POST['annouce'])) {
     }
 }
 //Udate Existing Annoucemenmt
-if (isset($_POST['updatequote'])) {
+if (isset($_POST['updateannounce'])) {
     $c = $a->editAnnouncement($id, $quote_author, $quote, $db);
     if($c){
         header('Location: list-quotes.php');
@@ -38,7 +41,7 @@ if (isset($_POST['updatequote'])) {
   }
 }
 //Deleting Annoucement
-if (isset($_POST['deletequote'])) {
+if (isset($_POST['deleteannounce'])) {
     $c = $a->deleteAnnouncement($id, $db);
     if($c){
         header('Location: list-announcements.php');

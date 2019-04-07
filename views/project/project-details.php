@@ -5,6 +5,7 @@ require_once CONTROLLERS.'/project-controller.php';
 require_once CONTROLLERS.'/deadline-controller.php';
 require_once CONTROLLERS.'/timer-controller.php';
 require_once CONTROLLERS.'/faq-controller.php';
+require_once CONTROLLERS.'/quote-controller.php';
 
 //require_once CONTROLLERS.'/student-controller.php';
 $project_id = $_SESSION['project_id'];

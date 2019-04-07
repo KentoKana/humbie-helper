@@ -42,3 +42,23 @@ if (isset($_POST['deletequote'])) {
         echo "There was a problem deleting quote.";
     }
 }
+
+// $allQuotes = $q->countQuotes($id,$db);
+
+// function getQuoteArrLength($allQuotes) {
+//     $length = "";
+//     foreach ($allQuotes[0] as $key => $length){
+//         return $length;
+//     }
+// }
+
+// $minusArray = getQuoteArrLength($allQuotes) - 1;
+// $quoteSelect = rand (0, $minusArray);
+
+// $randQuote = $q->getRandomQuote($quoteSelect, $id, $db);
+
+// var_dump($randQuote);
+
+$randQuote = $q->randomQuote($id, $db);
+
+echo $randQuote->quote . " - " . $randQuote->quote_author;

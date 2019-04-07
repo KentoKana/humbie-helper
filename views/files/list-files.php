@@ -5,6 +5,7 @@ ini_set('display_errors', 1);
 ?>
 <main id="jg-main" class="m-4">
   <h1 class="text-center pt-3">All Files</h1>
+  <a href="upload-files.php">Upload New File</a>
     <div class="text-center px-5 py-2">
       <table class="table">
         <tbody>
