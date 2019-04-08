@@ -13,8 +13,12 @@ $single_project = $project->singleProject($project_id, $db);
 $students = $project->listStudentsInProject($project_id, $db);
 $categories = $ca->get_categories($db);
 ?>
-<?= genStatusMsg('primary',  "'You either die a hero, or live long enough to see yourself become Chuck Norris.' -<em> Shakespeare,
-            probably.</em>")?>
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+  <?php echo $randQuote->quote . " - " . $randQuote->quote_author; ?>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 <main id="jg-main" class="m-4">
     <!-- Dismissable Motivational Quote -->
 
