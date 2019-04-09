@@ -54,7 +54,7 @@
   .nav-link.active,
   .nav-item.show .nav-link {
     color: $nav-tabs-link-active-color;
-    background-color: $nav-tabs-link-active-bg;
+    background-color: none;
     border-color: $nav-tabs-link-active-border-color;
   }
 
@@ -78,8 +78,8 @@
 
   .nav-link.active,
   .show > .nav-link {
-    color: $nav-pills-link-active-color;
-    background-color: $nav-pills-link-active-bg;
+    color: none;
+    background-color: none;
   }
 }
 

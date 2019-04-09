@@ -3,7 +3,7 @@ require './../../config.php';
 include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
 require_once CONTROLLERS.'/deadline-controller.php';
-require_once CONTROLLERS.'/timer-controller.php';
+//require_once CONTROLLERS.'/timer-controller.php';
 require_once CONTROLLERS.'/faq-controller.php';
 require_once CONTROLLERS.'/quote-controller.php';
 
@@ -19,20 +19,22 @@ $categories = $ca->get_categories($db);
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<main id="jg-main" class="m-4">
+
     <!-- Dismissable Motivational Quote -->
 
 
-    <h1 class="text-center m-3"><?=$single_project->project_name?></h1>
-    <div class="container">
+    <h1 class="text-center m-3 jg_project_title"><?=$single_project->project_name?></h1>
+    <main id="jg-main" class="m-4">
+    <div class="container jg-project-details_container">
         <div class="row">
-            <div class="col-lg-12 d-flex justify-content-center">
+            <div class="col-lg-12 d-flex justify-content-center jg_sub-header">
                 <div>
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="pills-project-tab" data-toggle="pill" href="#pills-project"
                                 role="tab" aria-controls="pills-project" aria-selected="true">Project</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" id="pills-announcements-tab" data-toggle="pill"
                                 href="#pills-announcements" role="tab" aria-controls="pills-announcements"
@@ -138,32 +140,36 @@ $categories = $ca->get_categories($db);
                     <div class="tab-pane fade" id="pills-deadlines" role="tabpanel"
                         aria-labelledby="pills-deadlines-tab">
                         <div class="card" style="width: 25rem;">
+
+                            <?php
+                                    $deadlines = $d->listDeadlines($project_id);
+                                    foreach($deadlines as $deadline):
+                                    ?>
+                            <div class="card mt-2 m-auto" style="width: 18rem;">
+                                <form id="jg-deadline_form" action="" method="POST">
+                                  <a id="jg-deadline_edit" href="../deadline/edit-deadline.php?id=<?=$deadline['id']?>">Edit</a>
+                                    <input type="hidden" name="deadlineId" value="<?=$deadline['id']?>">
+                                    <button name="delDeadline" type="submit">Delete</button>
+
+                                </form>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title"> <?= $deadline['event_name'] ?></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">
+                                        <?= date('Y-m-d', strtotime($deadline['event_date'])); ?></h6>
+                                    <p class="card-text"><?= $deadline['event_description'] ?></p>
+                                </div>
+                            </div>
+
                             <ul class="list-group list-group-flush text-center">
-                                <li class="list-group-item" style="background-color: lightCyan">
+                                <li class="list-group-item jg-add-details">
                                     <a href="../deadline/add-deadline.php">
                                         + Add New Deadline
                                     </a></li>
                             </ul>
+                            <?php endforeach; ?>
                         </div>
-                        <?php
-                                $deadlines = $d->listDeadlines($project_id);
-                                foreach($deadlines as $deadline):
-                                ?>
-                        <div class="card mt-2 m-auto" style="width: 18rem;">
-                            <form action="" method="POST">
-                                <input type="hidden" name="deadlineId" value="<?=$deadline['id']?>">
-                                <button name="delDeadline" type="submit">&times;</button>
-                            </form>
-                            <a href="../deadline/edit-deadline.php?id=<?=$deadline['id']?>">Edit</a>
-                            <div class="card-body text-center">
-                                <h5 class="card-title"> <?= $deadline['event_name'] ?></h5>
-                                <h6 class="card-subtitle mb-2 text-muted">
-                                    <?= date('Y-m-d', strtotime($deadline['event_date'])); ?></h6>
-                                <p class="card-text"><?= $deadline['event_description'] ?></p>
-                            </div>
+
                         </div>
-                        <?php endforeach; ?>
-                    </div>
 
                     <!-- Tools Tab -->
                     <div class="tab-pane fade" id="pills-tools" role="tabpanel" aria-labelledby="pills-tools-tab">
@@ -214,14 +220,15 @@ $categories = $ca->get_categories($db);
                             <div class="card m-4 text-center" style="width: 18rem;">
                                 <h5 class="card-title">Students In This Project</h5>
                                 <ul class="list-group list-group-flush text-center">
-                                    <li class="list-group-item" style="background-color: lightCyan"><a
-                                            href="project-student-list.php"> + Add
-                                            Student to Project</a></li>
+
                                     <?php
                                 foreach($students as $student):?>
                                     <li class="jg-list"> <?=$student->student_fname . ' ' . $student->student_lname?>
                                     </li>
                                     <?php endforeach; ?>
+                                    <li class="list-group-item jg-add-details"><a
+                                            href="project-student-list.php"> + Add
+                                            Student to Project</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -229,19 +236,23 @@ $categories = $ca->get_categories($db);
                 </div>
             </div>
         </div>
-    </div>
+
 
     <!-- Button trigger modal -->
+    <div id="jg-humbie-button-block">
+        <img id="humbie-button-img" src="<?=IMG?>/images/Humbie.png" alt="Humbie the hippo">
     <button id="jg-humbie-button" type="button" class="jg-button-primary" data-toggle="modal" data-target="#exampleModal">
        Need help?
     </button>
+  </div>
 
     <!-- Modal -->
 
     <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <button id="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button id="close" type="button"
+          class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         <div class="modal-body">
@@ -265,6 +276,7 @@ $categories = $ca->get_categories($db);
           </div>
         </div>
       </div>
+    </div>
     </div>
     </div>
     </div>

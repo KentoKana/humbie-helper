@@ -25,6 +25,9 @@ body{
     background-color:$base;
     border-radius: 5px;
   }
+  .card-title{
+    margin-top: 15px;
+  }
 
   .jg-button-primary{
     background-color:$pink;
@@ -40,6 +43,66 @@ body{
       color:$navy;
     }
   }
+// list styles
+
+.jg-add-details{
+  background-color:$pink;
+  margin-top:5px;
+  color:white;
+  a{
+    color:white;
+    text-decoration:none;
+  }
+
+
+  &:hover{
+    background-color:$navy;
+    a{
+      color:$yellow;
+    }
+  }
+
+
+}
+// project-details menu
+.jg_project_title{
+  color:white;
+}
+
+.jg-project-details_container{
+  position:relative;
+  min-height:300px;
+}
+
+.jg_sub-header{
+  border-bottom: solid 2px $navy;
+  padding:0;
+
+  .active{
+    background-color:$base !important;
+    color: $navy !important;
+    text-decoration: underline;
+  }
+
+
+  .nav-link{
+    margin-top:10px;
+    color:$navy;
+    font-size:1.3em;
+    font-family: $headline-font;
+    //text-transform: uppercase;
+  }
+
+  //deadline tools style
+  #jg-deadline_form{
+    display:inline-block;
+  }
+  #jjg-deadline_edit{
+    display:inline-block;
+  }
+
+
+}
 
 //side menu bar
 #jg-side-column{
@@ -177,11 +240,25 @@ body{
       text-align:center;
 
     }
+    #jg-humbie-button-block{
+      //display:inline-block;
+      position: absolute;
+      right:5px;
+      bottom:5px;
+
+
+
+
+    }
     #jg-humbie-button{
-      transform: rotate(-90deg);
-      position: fixed;
-      right:0;
-      bottom:250px;
+      margin:0 auto;
+      padding:0 10px;
+      position:relative;
+      bottom:10px;
+    }
+    #humbie-button-img{
+      width:100px;
+      height:auto;
     }
 
 

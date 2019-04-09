@@ -9,6 +9,9 @@ body #jg-main {
   background-color: #f2f2f2;
   border-radius: 5px;
 }
+body .card-title {
+  margin-top: 15px;
+}
 body .jg-button-primary {
   background-color: #ec576b;
   color: white;
@@ -21,6 +24,49 @@ body .jg-button-primary:hover {
   background-color: #4ec5c1;
   font-weight: bold;
   color: #1c2833;
+}
+body .jg-add-details {
+  background-color: #ec576b;
+  margin-top: 5px;
+  color: white;
+}
+body .jg-add-details a {
+  color: white;
+  text-decoration: none;
+}
+body .jg-add-details:hover {
+  background-color: #1c2833;
+}
+body .jg-add-details:hover a {
+  color: #e5e338;
+}
+body .jg_project_title {
+  color: white;
+}
+body .jg-project-details_container {
+  position: relative;
+  min-height: 300px;
+}
+body .jg_sub-header {
+  border-bottom: solid 2px #1c2833;
+  padding: 0;
+}
+body .jg_sub-header .active {
+  background-color: #f2f2f2 !important;
+  color: #1c2833 !important;
+  text-decoration: underline;
+}
+body .jg_sub-header .nav-link {
+  margin-top: 10px;
+  color: #1c2833;
+  font-size: 1.3em;
+  font-family: "Amaranth", sans-serif;
+}
+body .jg_sub-header #jg-deadline_form {
+  display: inline-block;
+}
+body .jg_sub-header #jjg-deadline_edit {
+  display: inline-block;
 }
 body #jg-side-column {
   border-right: 2px solid #1c2833;
@@ -123,11 +169,20 @@ body #jg-hippo-sprite__text {
   width: 50%;
   text-align: center;
 }
+body #jg-humbie-button-block {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
 body #jg-humbie-button {
-  transform: rotate(-90deg);
-  position: fixed;
-  right: 0;
-  bottom: 250px;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+  bottom: 10px;
+}
+body #humbie-button-img {
+  width: 100px;
+  height: auto;
 }
 body #jg-humbie-button-img {
   width: 10%;

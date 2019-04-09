@@ -3,7 +3,7 @@ require_once('Database.php');
 class Faq
 {
 
-
+// gets everything from the FAQ function and returns all rows as an array
 public function get_all_questions($dbcon){
   $query = "SELECT * FROM faq";
   $stm = $dbcon -> prepare($query);
@@ -13,6 +13,7 @@ public function get_all_questions($dbcon){
   return $questions;
 }
 
+// pulls all rows from the database that have the same category id as the parameter input
 public function get_questions_by_category($category_id, $dbcon){
 
   $query = "SELECT * FROM faq WHERE category_id = :category_id ORDER BY id";
@@ -25,6 +26,7 @@ public function get_questions_by_category($category_id, $dbcon){
 }
 
 
+//deletes a specific id from the database
 public function delete_faq($id, $dbcon){
 
   $query = "DELETE FROM faq WHERE id = :id";
@@ -35,6 +37,7 @@ public function delete_faq($id, $dbcon){
   return $count;
 }
 
+// A user can add an FAQ to the database
 public function add_faq($category_id, $question, $answer, $dbcon)
 {
 
@@ -52,6 +55,7 @@ public function add_faq($category_id, $question, $answer, $dbcon)
   return $count;
 }
 
+// A user can update an FAQ entry in the database 
 public function update_faq($id, $category_id, $question, $answer, $dbcon)
 {
 

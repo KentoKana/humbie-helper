@@ -4,7 +4,7 @@ require VIEWS . '/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once CONTROLLERS.'/student-controller.php';
-require_once CONTROLLERS. '/timer-controller.php';
+//require_once CONTROLLERS. '/timer-controller.php';
 require_once MODELS. '/Project.php';
 require_once MODELS. '/Timer.php';
 $ps = new Project();
@@ -23,12 +23,12 @@ if(isset($_POST['edit'])){
     $_SESSION['project_id'] = $_POST['project_id'];
     header('Location:'.RVIEWS.'/project/edit-project.php');
   }
-  
+
   if(isset($_POST['details'])){
     $_SESSION['project_id'] = $_POST['project_id'];
     header('Location:'.RVIEWS. '/project/project-details.php');
   }
-  
+
   if(isset($_POST['delete'])){
     $_SESSION['project_id'] = $_POST['project_id'];
     header('Location:'.RVIEWS.'/project/delete-project.php');
@@ -163,7 +163,7 @@ if(isset($_POST['edit'])){
                                         <?php
                                             foreach($projectsForTimer as $project) {
 
-                                            echo 
+                                            echo
                                                 "<div>" .
                                                     "<a href='" . RVIEWS . "/timer/timer-list.php?projectId=" .$project['id'] . "'>". $project['project_name'] . "</a>" .
                                                 "</div>";
