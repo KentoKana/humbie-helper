@@ -5,7 +5,7 @@
 
 //Set time to 0 by default in a global var.
 //Declare global variables 'interval' and 'offset'
-//Interval will be passed the setInterval method. It has to be declared globally, as 
+//Interval will be passed the setInterval method. It has to be declared globally, as
 //it needs to be read by both start() and stop() functions.
 //Offset variable will be passed Date.now().
 //variable 'isOn' holds a boolean value, which indicates whether the stopwatch is on or off.
@@ -30,7 +30,7 @@ function start() {
 };
 
 //stop()
-//if the isOn is true (ie if stopwatch is on): 
+//if the isOn is true (ie if stopwatch is on):
 //clear the interval (pass the interval variable) to method.
 //set isOn to false (ie to render the stopwatch to be "off");
 function stop() {
@@ -67,7 +67,7 @@ function update() {
 //the private variable "timePassed" will hold the subtracted value of "now" and the the UTC time initially set by the offset variable defined
 //inside the start() function.
 //now - offset returns 10 milliseconds.
-//offset is then set to the private variable 'now', to ensure that the now - offset always returns 10 milliseconds  
+//offset is then set to the private variable 'now', to ensure that the now - offset always returns 10 milliseconds
 //everytime the function is being called.
 //The function returns the value of timePassed.
 function changeInTime() {
@@ -78,9 +78,9 @@ function changeInTime() {
 }
 
 //timeFormatter()
-//the function takes the parameter "timeInMilliSec", which is the value of the time variable. 
-//pass the parameter inside the new Date object, and pass the respective methods to obtain the 
-//values in minutes, seconds, and milliseconds. 
+//the function takes the parameter "timeInMilliSec", which is the value of the time variable.
+//pass the parameter inside the new Date object, and pass the respective methods to obtain the
+//values in minutes, seconds, and milliseconds.
 //toString() value is passed to the minutes, seconds, and milliseconds, so that you can view the
 //length property of the string of 'time'.
 //if the length of minutes is less than 2 (ie if its smaller than 2 digits), the function adds a '0' in front of minutes.
@@ -151,7 +151,7 @@ $('#saveTime').click(function (event) {
     let timeSaved = $('#timeInMilli').val();
     let studentId = $('#studentId').val();
     console.log(studentId)
-    // console.log(timeSaved);
+    console.log(timeSaved);
 
     $.post('../../controllers/timer-controller.php',
         {

@@ -4,6 +4,8 @@ include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
 require_once CONTROLLERS.'/deadline-controller.php';
 require_once CONTROLLERS.'/timer-controller.php';
+require_once MODELS . '/Timer.php';
+require_once LIB . '/functions.php';
 
 //require_once CONTROLLERS.'/student-controller.php';
 $project_id = $_SESSION['project_id'];
@@ -68,10 +70,10 @@ $students = $project->listStudentsInProject($project_id, $db);
                                     </div>
                                 </div>
                                 <div class="tasklist__body tasklist__nested">
-                                    <div class="card" data-index="1"> Item 1 </div>
-                                    <div class="card" data-index="2"> Item 2 </div>
-                                    <div class="card" data-index="3"> Item 3 </div>
-                                    <div class="card" data-index="4"> Item 4 </div>
+                                    <div class="task-card" data-index="1"> Item 1 </div>
+                                    <div class="task-card" data-index="2"> Item 2 </div>
+                                    <div class="task-card" data-index="3"> Item 3 </div>
+                                    <div class="task-card" data-index="4"> Item 4 </div>
                                 </div>
                                 <div class="tasklist__footer">
                                     <button type="button" name="new_card" value="1">Add new card</button>
@@ -84,9 +86,7 @@ $students = $project->listStudentsInProject($project_id, $db);
                                     </div>
                                 </div>
                                 <div class="tasklist__body tasklist__nested"></div>
-                                <div class="tasklist__footer">
-                                    <button type="button" name="new_card" value="2">Add new card</button>
-                                </div>
+                                <div class="tasklist__footer"></div>
                             </div>
                             <div class="tasklist__wrapper">
                                 <div class="tasklist__header">
@@ -95,9 +95,7 @@ $students = $project->listStudentsInProject($project_id, $db);
                                     </div>
                                 </div>
                                 <div class="tasklist__body tasklist__nested"></div>
-                                <div class="tasklist__footer">
-                                    <button type="button" name="new_card" value="3">Add new card</button>
-                                </div>
+                                <div class="tasklist__footer"></div>
                             </div>
                         </div>
                     </div>
@@ -142,7 +140,7 @@ $students = $project->listStudentsInProject($project_id, $db);
                                     </a></li>
                             </ul>
                         </div>
-                        <?php 
+                        <?php
                                 $deadlines = $d->listDeadlines($project_id);
                                 foreach($deadlines as $deadline):
                                 ?>
@@ -216,7 +214,7 @@ $students = $project->listStudentsInProject($project_id, $db);
                                     <li class="list-group-item" style="background-color: lightCyan"><a
                                             href="project-student-list.php"> + Add
                                             Student to Project</a></li>
-                                    <?php 
+                                    <?php
                                 foreach($students as $student):?>
                                     <li class="jg-list"> <?=$student->student_fname . ' ' . $student->student_lname?>
                                     </li>
