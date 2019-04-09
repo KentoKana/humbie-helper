@@ -125,7 +125,9 @@ body #jg-hippo-sprite__text {
 }
 body #jg-humbie-button {
   transform: rotate(-90deg);
+  position: fixed;
   right: 0;
+  bottom: 250px;
 }
 body #jg-humbie-button-img {
   width: 10%;

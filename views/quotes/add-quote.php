@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
 <main id="jg-main" class="m-4">
-    <h1 class="text-center pt-3">Add Announcement</h2>
+    <h1 class="text-center pt-3">Add Motivation Quote</h2>
     <div class="form form-group text-center px-5 py-2">
     <form action="" method="POST">
         <!--Quote Author Feild -->

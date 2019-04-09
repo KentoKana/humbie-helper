@@ -4,16 +4,26 @@ include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
 require_once CONTROLLERS.'/deadline-controller.php';
 require_once CONTROLLERS.'/timer-controller.php';
+<<<<<<< HEAD
 require_once MODELS . '/Timer.php';
 require_once LIB . '/functions.php';
+=======
+require_once CONTROLLERS.'/faq-controller.php';
+require_once CONTROLLERS.'/quote-controller.php';
+>>>>>>> 31db54218704959fc0411a495092636b7561fa89
 
 //require_once CONTROLLERS.'/student-controller.php';
 $project_id = $_SESSION['project_id'];
 $single_project = $project->singleProject($project_id, $db);
 $students = $project->listStudentsInProject($project_id, $db);
+$categories = $ca->get_categories($db);
 ?>
-<?= genStatusMsg('primary',  "'You either die a hero, or live long enough to see yourself become Chuck Norris.' -<em> Shakespeare,
-            probably.</em>")?>
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+  <?php echo $randQuote->quote . " - " . $randQuote->quote_author; ?>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 <main id="jg-main" class="m-4">
     <!-- Dismissable Motivational Quote -->
 
@@ -166,6 +176,9 @@ $students = $project->listStudentsInProject($project_id, $db);
                             <div>
                                 <div class="timer-col-wrap">
                                     <form action="" method="POST">
+                                        <div>
+                                            <input type="text" name="taskName" id="taskName">
+                                        </div>
                                         <h2 id="timer">00 : 00 : 00</h2>
                                         <div class="timer-buttons">
                                             <button type="button" class="button __button" id="toggle">Start</button>
@@ -173,17 +186,12 @@ $students = $project->listStudentsInProject($project_id, $db);
                                         </div>
 
                                         <input type="hidden" name="time" id="timeInMilli">
-                                        <input type="hidden" name="studentId" id="studentId" value="<?=$_SESSION['studentId'];?>">
+                                        <input type="hidden" name="studentId" id="studentId"
+                                            value="<?=$_SESSION['studentId'];?>">
+                                        <input type="hidden" name="projectId" id="projectId"
+                                            value="<?=$_SESSION['project_id'];?>">
                                         <button type="submit" id="saveTime">Add to Timesheet</button>
                                     </form>
-                                </div>
-                                <div>
-                                    <?php
-                                        $timers = $t->listTime();
-                                        foreach($timers as $timer) {
-                                            echo "<div>". $timer['time_taken'] ."</div>";
-                                        }
-                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -229,36 +237,41 @@ $students = $project->listStudentsInProject($project_id, $db);
     </div>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#helpfulTipsModal">
-        Need Help?
+    <button id="jg-humbie-button" type="button" class="jg-button-primary" data-toggle="modal" data-target="#exampleModal">
+       Need help?
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="helpfulTipsModal" tabindex="-1" role="dialog" aria-labelledby="helpfulTips"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="helpfulTips">Helpful Tips!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body m-auto">
-                    <div class="col m-auto">
-                        <!-- The list will be generated from FAQ table -->
-                        <ul class="list-unstyled">
-                            <li><a href="#">Cras justo odio</a></li>
-                            <li><a href="#">Cras justo odio</a></li>
-                            <li><a href="#">Cras justo odio</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary m-auto" data-dismiss="modal">Close</button>
-                </div>
+
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <button id="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        <div class="modal-body">
+          <div class="jg-hippo-sprite p-3 mb-3">
+            <div id="jg-hippo-sprite__image"></div>
+            <p id="jg-hippo-sprite__text"> Hi! I'm Humbie, how can I help you? </p>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <h2 class="jg_modal__title"> Categories </h2>
+              <ul class="jg_faq__ul">
+                <?php foreach($categories as $category):?>
+                  <li id="<?=$category->id?>"> <?=$category->category_name?> </li>
+                <?php endforeach; ?>
+              </ul>
             </div>
+            <div class="col-9">
+              <ul class="faqs">
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    </div>
     </div>
     </div>
 </main>

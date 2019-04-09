@@ -4,7 +4,9 @@ require VIEWS . '/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once CONTROLLERS.'/student-controller.php';
+require_once CONTROLLERS. '/timer-controller.php';
 require_once MODELS. '/Project.php';
+require_once MODELS. '/Timer.php';
 $ps = new Project();
 $db = Database::getDatabase();
 
@@ -149,7 +151,30 @@ if(isset($_POST['edit'])){
                     <!-- Timesheet Tab  -->
                     <div class="tab-pane fade" id="pills-timesheet" role="tabpanel"
                         aria-labelledby="pills-timesheet-tab">
-                        <!-- Populate Data using sessions and timer table -->
+                        <div class="card mt-2 text-center" style="width: 20rem;">
+                            <h5>View Timer For: </h5>
+                            <div class="card-body text-left">
+                                <div>
+                                    <?php
+                                        $projectsForTimer = $t->projectListForTimer($_SESSION['studentId']);
+                                        // var_dump($projectsForTimer);
+                                    ?>
+                                    <div class="text-center">
+                                        <?php
+                                            foreach($projectsForTimer as $project) {
+
+                                            echo 
+                                                "<div>" .
+                                                    "<a href='" . RVIEWS . "/timer/timer-list.php?projectId=" .$project['id'] . "'>". $project['project_name'] . "</a>" .
+                                                "</div>";
+                                            }
+
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

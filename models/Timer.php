@@ -7,7 +7,9 @@ class Timer
 	//Member Variables
 	private $dbh;
 	private $time;
-	private $studentId;
+    private $studentId;
+    private $task;
+    private $projectId;
 
 	public function __construct($dbh) 
 	{
@@ -30,54 +32,72 @@ class Timer
 	}
 	public function getStudentId() {
 		return $this->studentId;
+    }
+    public function setTask($task) {
+		if($task === "") {
+			return false;
+		}
+		$this->task = filter_var($task, FILTER_SANITIZE_STRING);
 	}
-
-	//List Student Method
-	public function listTime() 
-	{
-		$selectStmt = "SELECT * FROM timers";
-		$stmt = $this->dbh->prepare($selectStmt);
-		$stmt->execute();
-		return $stmt->fetchAll();
+	public function getTask() {
+		return $this->task;
+    }
+    public function setProjectId($projectId) {
+		$this->projectId = $projectId;
 	}
+	public function getProjectId() {
+		return $this->projectId;
+    }
 
-	// public function getStudentPass($username) {
-	// 	$selectStmt = "SELECT password FROM students WHERE (username = :username)";
-	// 	$stmt = $this->dbh->prepare($selectStmt);
-	// 	$stmt->bindParam(':username', $username);
-	// 	$stmt->execute();
-	// 	return $stmt->fetch();
-	// }
-
-	// public function getStudentIdByUserName($username) 
-	// {
-	// 	$selectStmt = "SELECT id FROM students WHERE username = :username";
-	// 	$stmt = $this->dbh->prepare($selectStmt);
-	// 	$stmt->bindParam(':username', $username);
-	// 	$stmt->execute();
-	// 	return $stmt->fetch();
-	// }
-
-	// public function studentLogin($username, $password) {
-	// 	$selectStmt = "SELECT * FROM students WHERE (username = :username) AND (password = :pass)";
-	// 	$stmt = $this->dbh->prepare($selectStmt);
-	// 	$stmt->bindParam(':username', $username);
-	// 	$stmt->bindParam(':pass', $password);
-
-	// 	$stmt->execute();
-	// 	return $stmt->fetch();
-	// }
-
-	//Add Time Method
-	public function addTimer($time, $studentId) 
+	//List Timers organized by projects
+	public function projectListForTimer($studentId) 
 	{
-		$insertStmt = "INSERT INTO timers (id, time_taken,student_id) VALUES (null, :timetaken, :studentId)";
+        $selectStmt = "
+            SELECT DISTINCT(p.project_name), p.id FROM timers t
+            JOIN projects p
+            ON t.project_id = p.id
+            WHERE t.student_id = :id
+        ";
+        $stmt = $this->dbh->prepare($selectStmt);
+        $stmt->bindParam(':id', $studentId);
+        $stmt->execute();
+        try{
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            echo $e;
+        }
+    }
+    
+    public function timerListByProject($projectId, $studentId){
+        $selectStmt = "
+            SELECT * FROM timers WHERE (project_id = :projectId) 
+            AND (student_id = :studentId);
+        ";
+        $stmt = $this->dbh->prepare($selectStmt);
+        $stmt->bindParam(':projectId', $projectId);
+        $stmt->bindParam(':studentId', $studentId);
+        $stmt->execute();
+        try{
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            echo $e;
+        }
+   }
+
+   //Add Time Method
+	public function addTimer($time, $studentId, $task, $projectId) 
+	{
+		$insertStmt = "INSERT INTO timers (id, time_taken, student_id, task_name, project_id ) VALUES (null, :timetaken, :studentId, :task, :pid)";
 		//Define query (in this case, reference the insertStmt)
 		$stmt = $this->dbh->prepare($insertStmt);  
 
 		//Bind param with values
 		$stmt->bindParam(':timetaken', $time);
 		$stmt->bindParam(':studentId', $studentId);
+		$stmt->bindParam(':task', $task);
+		$stmt->bindParam(':pid', $projectId);
 
 		return $stmt->execute();  
 	}
@@ -102,24 +122,13 @@ class Timer
 	}
 	
 	//Delete Student Method
-	public function deleteStudent($id) 
+	public function deleteTime($timerId) 
 	{
-		$deleteStmt = "DELETE FROM students WHERE id = :studentID";
+		$deleteStmt = "DELETE FROM timers WHERE id = :timerId";
 		$stmt = $this->dbh->prepare($deleteStmt);  
-		$stmt->bindParam(':studentID', $id);
+		$stmt->bindParam(':timerId', $timerId);
 		return $stmt->execute();
 	}
 }
-
-// $student = new Student(Database::getDatabase());
-
-// Test Scripts
-// $student->updateStudent('Update', 'Kanazawa', '123@eg.com', '1111111111', 'kento', 'password',1);
-// foreach ($student->listStudents() as $row) {
-// 	echo $row['student_fname'] . "<br />" . 
-// 		 $row['student_lname'] . "<br />" . 
-// 		 $row['student_email'] . "<br />" .
-// 		 $row['student_phone'] . "<br /><br />"; 
-// }
 
 ?>
