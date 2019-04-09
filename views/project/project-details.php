@@ -4,13 +4,8 @@ include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
 require_once CONTROLLERS.'/deadline-controller.php';
 require_once CONTROLLERS.'/timer-controller.php';
-<<<<<<< HEAD
-require_once MODELS . '/Timer.php';
-require_once LIB . '/functions.php';
-=======
 require_once CONTROLLERS.'/faq-controller.php';
 require_once CONTROLLERS.'/quote-controller.php';
->>>>>>> 31db54218704959fc0411a495092636b7561fa89
 
 //require_once CONTROLLERS.'/student-controller.php';
 $project_id = $_SESSION['project_id'];

@@ -151,14 +151,9 @@ $('#saveTime').click(function (event) {
 
     let timeSaved = $('#timeInMilli').val();
     let studentId = $('#studentId').val();
-<<<<<<< HEAD
-    console.log(studentId)
-    console.log(timeSaved);
-=======
     let projectId = $('#projectId').val();
     let task = $('#taskName').val();
     // console.log(timeSaved);
->>>>>>> 31db54218704959fc0411a495092636b7561fa89
 
     $.post('../../controllers/timer-controller.php',
         {
@@ -189,4 +184,3 @@ $('#delTimeRecord').click(function (event) {
         }
     )
 });
-

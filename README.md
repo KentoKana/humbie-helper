@@ -98,6 +98,8 @@ on.
 - When the student selects a category, ajax calls the questions associated with that category and displays them in the middle of the page without refreshing the whole page
 
 ### Mark
+### - Task List Feature
+- WIP
 ### - Minutes feature
 - Removed json_encode as a way to process data for CREATE, UPDATE, and VIEW. I used a WYSIWG editor instead to give more freedom to users.
 - Deleting the agenda deletes the entry permanently, Removed isArchived Flag
