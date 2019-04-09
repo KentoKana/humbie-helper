@@ -31,7 +31,7 @@ if (isset($_POST['updatequote'])) {
         header('Location: list-quotes.php');
     } else {
         echo "There was a problem updating quote.";
-  }
+    }
 }
 //Deleting Existing Quote
 if (isset($_POST['deletequote'])) {
@@ -42,15 +42,5 @@ if (isset($_POST['deletequote'])) {
         echo "There was a problem deleting quote.";
     }
 }
-
-// $allQuotes = $q->countQuotes($id,$db);
-// function getQuoteArrLength($allQuotes) {
-//     $length = "";
-//     foreach ($allQuotes[0] as $key => $length){
-//         return $length;
-//     }
-// $minusArray = getQuoteArrLength($allQuotes) - 1;
-// $quoteSelect = rand (0, $minusArray);
-// $randQuote = $q->getRandomQuote($quoteSelect, $id, $db);
-
+//Getting Random Quote From Database
 $randQuote = $q->randomQuote($id, $db);

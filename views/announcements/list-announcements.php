@@ -5,6 +5,7 @@ require_once MODELS . '/announcement_db.php';
 require_once CONTROLLERS . '/announcement-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 ?>
 <main class="container filler">
     <h1>List of Announcements</h1>

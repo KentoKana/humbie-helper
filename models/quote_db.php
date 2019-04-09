@@ -54,30 +54,6 @@ class Quote
         $count = $statement->execute();
         return $count;
     }
-
-    //Was planning on generating a random number between the count of quotes
-    //then matching that number to an id but I didnt know how to change to the next]
-    //closest id if the one selected had been deleted.
-
-    //Count of All Quotes
-    // public function countQuotes($id, $db)
-    // {
-    //     $query = "SELECT COUNT(*) FROM motivational_quotes";
-    //     $statement = $db->prepare($query);
-    //     $statement->execute();
-    //     $quotes = $statement->fetchAll(PDO::FETCH_OBJ);
-    //     return $quotes;
-    // }
-    // //Return Random Quote
-    // public function getRandomQuote($quoteSelect, $id, $db){
-    //     $query = "SELECT * FROM motivational_quotes
-    //               WHERE id = :id";
-    //     $statement = $db->prepare($query);
-    //     $statement->bindparam(':id', $quoteSelect);
-    //     $statement->execute();
-    //     return $statement->fetch(PDO::FETCH_OBJ);
-    // }
-
     public function randomQuote($id, $db)
     {
         $query = "SELECT * FROM motivational_quotes
