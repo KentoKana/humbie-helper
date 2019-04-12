@@ -201,6 +201,9 @@ $categories = $ca->get_categories($db);
                             <div>
                                 <a href="<?=RVIEWS . '/agenda/list.php'?>">Agenda Tool</a>
                             </div>
+                            <div>
+                                <a href="<?=RVIEWS . '/files/list-files.php'?>">Share Files</a>
+                            </div>
                         </div>
                     </div>
 
