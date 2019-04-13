@@ -7,17 +7,17 @@ require_once MODELS . '/quote_db.php';
 $db = Database::getDatabase();
 $q = new Quote();
 
-
-///Define get all quotes and get quote by id
+//returns all quotes
 $myquote = $q->getAllQuotes(Database::getDatabase());
+//Returns quote by id
 $quotebyid = $q->getQuoteById(filter_input(INPUT_GET, 'id'), Database::getDatabase());
 //Getting Random Quote From Database
-$randQuote = $q->randomQuote($id, $db);
+$randQuote = $q->randomQuote($db);
+
 //Getting User Inputs
 $id = filter_input(INPUT_GET, 'id');
 $quote = filter_input(INPUT_POST, 'quote');
 $quote_author = filter_input(INPUT_POST, 'quote_author');
-
 //Add new quote to database when add button is clicked
 if (isset($_POST['addquote'])) {
     $count = $q->addQuote($quote_author, $quote, $db);

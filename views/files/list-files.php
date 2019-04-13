@@ -15,8 +15,8 @@ $projectId = $_SESSION['project_id'];
                     <th> Upload Name </th>
                     <th> File Name </th>
                     <th> Date Uploaded </th>
-                    <th> Delete </th>
                     <th> Download </th>
+                    <th> Delete </th>
                 </tr>
             </thead>
             <tbody>
@@ -29,15 +29,15 @@ $projectId = $_SESSION['project_id'];
                     <td><?php  echo $file['file_path']; ?></td>
                     <td><?php  echo $file['upload_date']; ?></td>
                     <td>
-                        <form action="delete.php" method="post">
+                        <form action="" method="post">
                             <input type="hidden" name="id" value="<?php echo $file['id']; ?>">
-                            <a href="delete-file.php?id=<?php echo $file['id'];?>" class="btn btn-primary">Delete</a>
+                            <a href="download-file.php?id=<?php echo $file['id'];?>" class="btn btn-primary">Download</a>
                         </form>
                     </td>
                     <td>
-                        <form action="download.php" method="post">
-                            <input type="hidden" name="" value="">
-                            <a href="" class="btn btn-primary">Download</a>
+                        <form action="" method="post">
+                            <input type="hidden" name="id" value="<?php echo $file['id']; ?>">
+                            <a href="delete-file.php?id=<?php echo $file['id'];?>" class="btn btn-primary">Delete</a>
                         </form>
                     </td>
                 </tr>
