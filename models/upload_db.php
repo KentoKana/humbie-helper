@@ -2,6 +2,16 @@
 require_once 'Database.php';
 class File 
 {   
+    // count of total uploads - for pagination
+    public function totalFiles($id, $db)
+    {
+        $query = "SELECT COUNT(*) FROM files";
+        $statement = $db->prepare($query);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+        $count = $statement->fetchAll();
+        return $count;
+    }
     //Return all file references
     public function getAllFiles($projectId, $db)
     {

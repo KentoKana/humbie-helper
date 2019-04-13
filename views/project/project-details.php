@@ -6,6 +6,7 @@ require_once CONTROLLERS.'/deadline-controller.php';
 //require_once CONTROLLERS.'/timer-controller.php';
 require_once CONTROLLERS.'/faq-controller.php';
 require_once CONTROLLERS.'/quote-controller.php';
+require_once CONTROLLERS.'/announcement-controller.php';
 
 //require_once CONTROLLERS.'/student-controller.php';
 $project_id = $_SESSION['project_id'];
@@ -14,10 +15,10 @@ $students = $project->listStudentsInProject($project_id, $db);
 $categories = $ca->get_categories($db);
 ?>
 <div class="alert alert-info alert-dismissible fade show" role="alert">
-  <?php echo $randQuote->quote . " - " . $randQuote->quote_author; ?>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+    <?php echo $randQuote->quote . " - " . $randQuote->quote_author; ?>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 
     <!-- Dismissable Motivational Quote -->
@@ -110,30 +111,20 @@ $categories = $ca->get_categories($db);
                     <div class="tab-pane fade" id="pills-announcements" role="tabpanel"
                         aria-labelledby="pills-announcements-tab">
 
-                        <!-- Only display if admin session is set! -->
+                        <?php foreach ($myAnnounce as $announcement) { ?>
                         <div class="card" style="width: 18rem;">
-                            <h5 class="card-title m-auto"><a href="#">+ Add An Announcement</a></h5>
+                            <h5 class="card-title m-auto"><a href="../announcements/add-announcement.php">+ Add An Announcement</a></h5>
                         </div>
-
-                        <div class="card mt-2" style="width: 18rem;">
+                        <div class="card mt-2" style="width: 30rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Project wireframes due</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Due date: March 27 2019</h6>
-                                <p class="card-text">Requirements: Wireframes for each feature.</p>
-                                <!-- <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a> -->
+                                <h5 class="card-title">Sample Announcement</h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $announcement->announcement_time; ?></h6>
+                                <p class="card-text"><?php echo $announcement->announcement ?></p>
+                                <a href="../announcements/edit-announcement.php?id=<?php echo $announcement->id;?>" class="card btn">Edit</a>
+                                <a href="../announcements/delete-announcement.php?id=<?php echo $announcement->id;?>" class="card btn">Delete</a>
                             </div>
                         </div>
-
-                        <div class="card mt-2" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Project proposal due</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Due date: March 21 2019</h6>
-                                <p class="card-text">Requirements: Proposal for Bernard Monetto!</p>
-                                <!-- <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a> -->
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
 
                     <!-- Deadlines tab -->

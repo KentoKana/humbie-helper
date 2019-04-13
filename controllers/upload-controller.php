@@ -1,32 +1,32 @@
 <?php
-//Found help in these sources
+// help from the following sources:
 //https://www.youtube.com/watch?v=2jxM7IwpiXc
 //https://stackoverflow.com/questions/19041755/how-to-delete-a-file-from-upload-folder
+//https://stackoverflow.com/questions/12094080/download-files-from-server-php
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once MODELS . '/upload_db.php';
 
+// connect and construct
 $db = Database::getDatabase();
 $f = new File();
-//Returns file by id
-$fileById = $f->getFileById(filter_input(INPUT_GET, 'id'), Database::getDatabase());
 
-$id = filter_input(INPUT_GET, 'id');
+// returns file by id
+$fileById = $f->getFileById(filter_input(INPUT_GET, 'id'), Database::getDatabase());
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 if (isset($_FILES['uploadFile'])){
-
-    $fileName = filter_input(INPUT_POST, 'fileName');
+    // get user entered upload name
+    $fileName = filter_input(INPUT_POST, 'fileName', FILTER_SANITIZE_STRING);
+    // get name of file with extension
     $filePath = $_FILES['uploadFile']['name']; 
-    
-    //Define List of Acceptable Extentions
+    // list of accepted file extensions
     $extensions = array('jpg', 'jpeg', 'gif', 'png', 'docx', 'pdf', 'pptx', 'doc', 'txt', 'sql', 'zip');
-
-    //Isolate Extenstion of Uploaded File
+    // isolate extention of upload file
     $fileExt = explode('.',$_FILES['uploadFile']['name']);
     $fileExtension = end($fileExt);
-
-    //Check If Isolated Extension Matches List of Accepted Extentions
-    //And Move To Uploaded File
+    // check if extention matches something in array then move to uploaded folder
     if(!in_array($fileExtension, $extensions)){
         echo 'Invalid file extention. Accepted: jpg, jpeg, gif, png, doc, docx, pptx, ppt, txt, sql, pdf and zip';
     } else {
@@ -40,33 +40,33 @@ if (isset($_FILES['uploadFile'])){
         }
     }
 }
-
+// deleting file
 if (isset($_POST['deleteFile'])) {
-    //File name as uploaded
+    // file name as uploaded
     $filePath = $fileById->file_path;
-    //Path to uploaded folder
+    // path to uploaded folder
     $folderPath = realpath('uploaded/');
-    //Adding above for full path
+    // adding above for full path
     $fullPath = $folderPath . "\\" . $filePath;
-    //Delete file from server
+    // delete file from server
     unlink($fullPath);
-    //Remove entry from Database
-    $count = $f->deleteFile($id, $db);
-    //Check if file deleted
+    // check if file deleted
     if (!unlink($toDelete)) {
         header('Location: list-files.php');
     } else {
         echo "Problem deleting file.";
     }
+    // remove entry from Database
+    $count = $f->deleteFile($id, $db);
 }
-
-//Download file
+// downloading file
 if (isset($_POST['downloadFile'])) {
     $filePath = $fileById->file_path;
     $folderPath = realpath('uploaded/');
     $fullPath = $folderPath . "\\" . $filePath;
-    if(!file_exists($folderPath)){ // file does not exist
-        die('file not found');
+    // check if file exits
+    if(!file_exists($folderPath)){
+        echo "Problem finding file.";
     } else {
         header("Cache-Control: public");
         header("Content-Description: File Transfer");
@@ -78,3 +78,5 @@ if (isset($_POST['downloadFile'])) {
         readfile($filePath);
     }
 }
+// pagination logic
+//$totalFiles = 
