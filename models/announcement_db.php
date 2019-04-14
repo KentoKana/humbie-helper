@@ -2,7 +2,7 @@
 require_once 'Database.php';
 class Announcement
 {
-    //List All Announcements
+    // list All Announcements
     public function getAllAnnouncements($db)
     {
         $query = "SELECT * FROM announcements";
@@ -11,7 +11,7 @@ class Announcement
         $announcements = $statement->fetchAll(PDO::FETCH_OBJ);
         return $announcements;
     }
-    //Return Specified Announcement
+    // return Specified Announcement
     public function getAnnouncementById($id, $db){
         $query = "SELECT * FROM announcements 
                   WHERE id = :id";
@@ -20,7 +20,7 @@ class Announcement
         $statement->execute();
         return $statement->fetch(PDO::FETCH_OBJ);
     }
-    //Create New Announcement
+    // create New Announcement
     public function addAnnouncement($announcementTime, $announcement, $studentId, $projectId, $db)
     {
         $query = "INSERT INTO announcements (announcement_time, announcement, student_id, project_id) 
@@ -32,7 +32,7 @@ class Announcement
         $statement->bindParam(':project_id', $projectId);
         $count = $statement->execute();
     }
-    //Update Announcement
+    // update Announcement
     public function editAnnouncement($id, $announcementTime, $announcement, $studentId, $projectId, $db)
     {
         $query = "UPDATE announcements 
@@ -50,7 +50,7 @@ class Announcement
         $count = $statement->execute();
         return $count;
     }
-    //Delete Announcement
+    // delete Announcement
     public function deleteAnnouncement($id, $db)
     {
         $query = "DELETE FROM announcements 

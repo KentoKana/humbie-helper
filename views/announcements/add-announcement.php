@@ -5,6 +5,7 @@ require_once CONTROLLERS . '/quote-controller.php';
 require_once CONTROLLERS . '/announcement-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+$projectId = $_SESSION['project_id'];
 ?>
 <div class="alert alert-info alert-dismissible fade show" role="alert">
     <?php echo $randQuote->quote . " - " . $randQuote->quote_author; ?>

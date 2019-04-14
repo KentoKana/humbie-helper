@@ -12,7 +12,7 @@ class File
         $count = $statement->fetchAll();
         return $count;
     }
-    //Return all file references
+    // return all file references
     public function getAllFiles($projectId, $db)
     {
         $query = "SELECT * FROM files WHERE project_id = :id";
@@ -22,7 +22,7 @@ class File
         $count = $statement->fetchAll();
         return $count;
     }
-    //Get a file by id
+    // get a file by id
     public function getFileById($id, $db)
     {
         $query = "SELECT * FROM files WHERE id = :id";
@@ -31,7 +31,7 @@ class File
         $statement->execute();
         return $statement->fetch(PDO::FETCH_OBJ);
     }
-    //Add file to the database
+    // add file to the database
     public function addFile($fileName, $filePath, $projectId, $db)
     {
         $query = "INSERT INTO files (file_title, file_path, project_id) 
@@ -43,7 +43,7 @@ class File
         $count = $statement->execute();
         return $count;
     }
-    //Delete file reference from database
+    // delete file reference from database
     public function deleteFile($id, $db)
     {
         $query = "DELETE FROM files 

@@ -19,7 +19,7 @@ $announcementTime = date("Y-m-d H:i:s");
 
 //Adding New Annoucement
 if (isset($_POST['addAnnounce'])) {
-    $count = $a->addAnnouncement($announcementTime, $announcement, $studentId, $projectId, $db);
+    $count = $a->addAnnouncement($announcementTime, $announcement, $studentId, $_SESSION['project_id'], $db);
     if($count){
         header('Location:' . RVIEWS . '/project/project-details.php');
     } else {
@@ -28,7 +28,7 @@ if (isset($_POST['addAnnounce'])) {
 }
 //Udate Existing Annoucemenmt
 if (isset($_POST['editAnnouncement'])) {
-    $count = $a->editAnnouncement($id, $announcementTime, $announcement, $studentId, $projectId, $db);
+    $count = $a->editAnnouncement($id, $announcementTime, $announcement, $studentId, $_SESSION['project_id'], $db);
     if($count){
         header('Location:' . RVIEWS . '/project/project-details.php');
     } else {
