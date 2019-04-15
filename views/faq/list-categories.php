@@ -5,16 +5,10 @@ require_once CONTROLLERS.'/faq-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-
-
-if(isset($_POST['edit'])){
-  $_SESSION['note_id'] = $_POST['note_id'];
-  header('Location:edit-category.php');
-}
-
-
-
-
+// if(isset($_POST['edit'])){
+//   $_SESSION['note_id'] = $_POST['note_id'];
+//   header('Location:edit-category.php');
+// }
 
 $categories= $ca->get_categories($db);
 

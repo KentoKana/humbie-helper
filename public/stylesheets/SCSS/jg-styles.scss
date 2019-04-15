@@ -20,12 +20,23 @@ body{
     list-style: none;
   }
 
+
+
 //main layout styles
   #jg-main{
     background-color:$base;
     border-radius: 5px;
   }
-
+  .card-title{
+    margin-top: 15px;
+  }
+  .announce-btn{
+    background-color:$pink;
+    color:white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 10px auto;
+  }
   .jg-button-primary{
     background-color:$pink;
     color:white;
@@ -33,13 +44,102 @@ body{
     border-radius: 5px;
     margin: 10px auto;
     display: block;
+    a{
+      color:white;
+    }
 
     &:hover{
       background-color: $light-blue;
       font-weight: bold;
       color:$navy;
+
+      a{
+        color:$navy;
+        text-decoration: none;
+      }
     }
   }
+// list styles
+
+.jg-add-details{
+  background-color:$pink;
+  margin-top:5px;
+  color:white;
+  a{
+    color:white;
+    text-decoration:none;
+  }
+
+
+  &:hover{
+    background-color:$navy;
+    a{
+      color:$yellow;
+    }
+  }
+
+
+}
+// project details page styles
+
+.jg-card-footer{
+  //background-color:$pink;
+}
+
+.edit-link{
+  color:$light-blue;
+    &:hover{
+      color:$light-blue
+    }
+}
+// project-details menu
+.jg_project_title{
+  color:white;
+}
+
+.jg-project-details_container{
+  position:relative;
+  min-height:300px;
+}
+
+.jg_sub-header{
+  border-bottom: solid 2px $navy;
+  padding:0;
+
+  .active{
+    background-color:$base !important;
+    color: $navy !important;
+    text-decoration: underline;
+  }
+
+
+  .nav-link{
+    margin-top:10px;
+    color:$navy;
+    font-size:1.3em;
+    font-family: $headline-font;
+    //text-transform: uppercase;
+  }
+
+  .tools-link{
+    color:$pink;
+  }
+
+  //deadline tools style
+  #jg-deadline_form{
+    display:inline-block;
+  }
+  #jg-deadline_edit{
+    display:inline-block;
+    color:$navy !important;
+  }
+  #dedelbutton{
+    color:$light-blue;
+    border:0;
+  }
+
+
+}
 
 //side menu bar
 #jg-side-column{
@@ -177,11 +277,25 @@ body{
       text-align:center;
 
     }
+    #jg-humbie-button-block{
+      //display:inline-block;
+      position: absolute;
+      right:5px;
+      bottom:5px;
+
+
+
+
+    }
     #jg-humbie-button{
-      transform: rotate(-90deg);
-      position: fixed;
-      right:0;
-      bottom:250px;
+      margin:0 auto;
+      padding:0 10px;
+      position:relative;
+      bottom:10px;
+    }
+    #humbie-button-img{
+      width:100px;
+      height:auto;
     }
 
 

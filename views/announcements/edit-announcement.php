@@ -10,18 +10,11 @@ ini_set('display_errors', 1);
     <form action="" method="POST">
         <div class="form-group">
             <label for="form__username-field">Announcement: </label>
-            <input type="text" class="form__username-field form-control" id="form__username-field">
+            <input type="text" class="form__username-field form-control" value="<?php echo $annouceById->announcement ?>" name="announcement">
         </div>
         <div class="form-group">
-        <label for="project_list">Projects (hold <kbd>ctrl</kbd> or <kbd>command ⌘</kbd> key to select multiple projects)</label>
-        <select multiple class="form-control" name="project_list">
-            <option>Project 1</option>
-            <option>Project 2</option>
-            <option>Project 3</option>
-        </select>
-        </div>
-        <div class="form-group">
-            <button type="submit" id="form__submit-button" class="btn btn-primary">Submit</button>
+            <button type="submit" name="editAnnouncement" class="btn btn-primary">Submit</button>
+            <a href="../project/project-details.php"></a>
         </div>
     </form>
 </main>

@@ -2,16 +2,16 @@
 require_once 'Database.php';
 class Announcement
 {
-    //List All Announcements
-    public function getAllAnnouncements($dbcon)
+    // list All Announcements
+    public function getAllAnnouncements($db)
     {
         $query = "SELECT * FROM announcements";
-        $statement = $dbcon->prepare($query);
+        $statement = $db->prepare($query);
         $statement->execute();
         $announcements = $statement->fetchAll(PDO::FETCH_OBJ);
         return $announcements;
     }
-    //Return Specified Announcement
+    // return Specified Announcement
     public function getAnnouncementById($id, $db){
         $query = "SELECT * FROM announcements 
                   WHERE id = :id";
@@ -20,21 +20,20 @@ class Announcement
         $statement->execute();
         return $statement->fetch(PDO::FETCH_OBJ);
     }
-    //Create New Announcement
-    public function addAnnouncement($announcement_time, $announcement, $student_id, $project_id, $db)
+    // create New Announcement
+    public function addAnnouncement($announcementTime, $announcement, $studentId, $projectId, $db)
     {
         $query = "INSERT INTO announcements (announcement_time, announcement, student_id, project_id) 
-                  VALUES (:announcement_time, :announcement, :student_id, project_id) ";
+                  VALUES (:announcement_time, :announcement, :student_id, :project_id) ";
         $statement = $db->prepare($query);
-        $statement->bindParam(':announcement_time', $announcement_time);
+        $statement->bindParam(':announcement_time', $announcementTime);
         $statement->bindParam(':announcement', $announcement);
-        $statement->bindParam(':student_id', $student_id);
-        $statement->bindParam(':project_id', $project_id);
+        $statement->bindParam(':student_id', $studentId);
+        $statement->bindParam(':project_id', $projectId);
         $count = $statement->execute();
-        return $count;
     }
-    //Update Announcement
-    public function editAnnouncement($id, $announcement_time, $announcement, $db)
+    // update Announcement
+    public function editAnnouncement($id, $announcementTime, $announcement, $studentId, $projectId, $db)
     {
         $query = "UPDATE announcements 
                   SET announcement_time = :announcement_time, 
@@ -44,14 +43,14 @@ class Announcement
                   WHERE id = :id";
         $statement = $db->prepare($query);
         $statement->bindParam(':id', $id);
-        $statement->bindParam(':announcement_time', $announcement_time);
+        $statement->bindParam(':announcement_time', $announcementTime);
         $statement->bindParam(':announcement', $announcement);
-        $statement->bindParam(':student_id', $student_id);
-        $statement->bindParam(':project_id', $project_id);
+        $statement->bindParam(':student_id', $studentId);
+        $statement->bindParam(':project_id', $projectId);
         $count = $statement->execute();
         return $count;
     }
-    //Delete Announcement
+    // delete Announcement
     public function deleteAnnouncement($id, $db)
     {
         $query = "DELETE FROM announcements 

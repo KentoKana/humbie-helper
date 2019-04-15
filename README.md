@@ -91,13 +91,15 @@ formatting to the database and returns formatting when a single note is viewed.
 - Students can view, edit and delete all notes related to the project page they are currently
 on.
 
-## - FAQ Feature
+### - FAQ Feature
 - New categories and FAQs can be uploaded to the Database
 - Students can access FAQs as a static page from the menu bar or as a modal on the project details page
 - The FAQ page/modal displays a list of categories that a student can select to help them better filter their questions
 - When the student selects a category, ajax calls the questions associated with that category and displays them in the middle of the page without refreshing the whole page
 
 ### Mark
+### - Task List Feature
+- WIP
 ### - Minutes feature
 - Removed json_encode as a way to process data for CREATE, UPDATE, and VIEW. I used a WYSIWG editor instead to give more freedom to users.
 - Deleting the agenda deletes the entry permanently, Removed isArchived Flag
@@ -116,11 +118,17 @@ on.
 
 ### Ryan
 ### - Motivational Quotes Feature
-- CRUD for quotes, this would be for admin (Could add quote management to student profile section).
-- Next step: Have a quote from the database display on student's project view and input validation.
+- Random quote displays on project view
+- Considering adding to student view
+- CRUD aceess only through url currently
+
+### - File Upload Feature
+- Accessed through "Share Files" link in tools tab of a project
+- Files can be uploaded with name and downloaded/deleted within a given project
+- Currently name is only for user reference
+- Currently deleting one instance of a file with the same upload name as another will delete all instances
 
 ### - Announcements Feature
 - This will be part of the projects feature
 - A list of all announcements for a particular project will be displayed in project details
 - Currently signed in student would be able to edit and delete only their own announcements from list
-- Views have been made, working on model and controller

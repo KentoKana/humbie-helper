@@ -11,14 +11,13 @@ ini_set('display_errors', 1);
     <form action="" method="POST">
         <div class="form-group">
             <ul>
-                <li><?php //project name ?></li>
-                <li><?php //annoucement ?></li>
-                <li><?php //announcement date ?></li>
+                <li><?php echo $annouceById->announcement_time ?></li>
+                <li><?php echo $annouceById->announcement ?></li>
             </ul>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" name="delete-quote" value="Delete">
-            <input type="submit" class="btn btn-primary" name="delete-quote-cancel" value="Cancel">
+            <input type="submit" class="btn btn-primary" name="deleteAnnouncement" value="Delete">
+            <a href="project-details.php" class="btn">Cancel</a>
         </div>
     </form>
 </main>

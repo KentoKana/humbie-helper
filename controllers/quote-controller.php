@@ -7,15 +7,18 @@ require_once MODELS . '/quote_db.php';
 $db = Database::getDatabase();
 $q = new Quote();
 
-///Define get all quotes and get quote by id
+//returns all quotes
 $myquote = $q->getAllQuotes(Database::getDatabase());
+//Returns quote by id
 $quotebyid = $q->getQuoteById(filter_input(INPUT_GET, 'id'), Database::getDatabase());
+//Getting Random Quote From Database
+$randQuote = $q->randomQuote($db);
+
 //Getting User Inputs
 $id = filter_input(INPUT_GET, 'id');
 $quote = filter_input(INPUT_POST, 'quote');
 $quote_author = filter_input(INPUT_POST, 'quote_author');
-
-//Adding New Quote
+//Add new quote to database when add button is clicked
 if (isset($_POST['addquote'])) {
     $count = $q->addQuote($quote_author, $quote, $db);
     if($count){
@@ -24,14 +27,14 @@ if (isset($_POST['addquote'])) {
         echo "There was a problem adding quote.";
     }
 }
-//Updating Existing Quote
+//Update database with edited quote info
 if (isset($_POST['updatequote'])) {
     $count = $q->editQuote($id, $quote_author, $quote, $db);
     if($count){
         header('Location: list-quotes.php');
     } else {
         echo "There was a problem updating quote.";
-  }
+    }
 }
 //Deleting Existing Quote
 if (isset($_POST['deletequote'])) {
@@ -42,15 +45,3 @@ if (isset($_POST['deletequote'])) {
         echo "There was a problem deleting quote.";
     }
 }
-
-// $allQuotes = $q->countQuotes($id,$db);
-// function getQuoteArrLength($allQuotes) {
-//     $length = "";
-//     foreach ($allQuotes[0] as $key => $length){
-//         return $length;
-//     }
-// $minusArray = getQuoteArrLength($allQuotes) - 1;
-// $quoteSelect = rand (0, $minusArray);
-// $randQuote = $q->getRandomQuote($quoteSelect, $id, $db);
-
-$randQuote = $q->randomQuote($id, $db);
