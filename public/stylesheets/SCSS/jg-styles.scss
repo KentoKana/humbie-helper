@@ -20,6 +20,8 @@ body{
     list-style: none;
   }
 
+
+
 //main layout styles
   #jg-main{
     background-color:$base;
@@ -28,7 +30,13 @@ body{
   .card-title{
     margin-top: 15px;
   }
-
+  .announce-btn{
+    background-color:$pink;
+    color:white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 10px auto;
+  }
   .jg-button-primary{
     background-color:$pink;
     color:white;
@@ -36,11 +44,19 @@ body{
     border-radius: 5px;
     margin: 10px auto;
     display: block;
+    a{
+      color:white;
+    }
 
     &:hover{
       background-color: $light-blue;
       font-weight: bold;
       color:$navy;
+
+      a{
+        color:$navy;
+        text-decoration: none;
+      }
     }
   }
 // list styles
@@ -72,6 +88,9 @@ body{
 
 .edit-link{
   color:$light-blue;
+    &:hover{
+      color:$light-blue
+    }
 }
 // project-details menu
 .jg_project_title{
@@ -102,12 +121,21 @@ body{
     //text-transform: uppercase;
   }
 
+  .tools-link{
+    color:$pink;
+  }
+
   //deadline tools style
   #jg-deadline_form{
     display:inline-block;
   }
-  #jjg-deadline_edit{
+  #jg-deadline_edit{
     display:inline-block;
+    color:$navy !important;
+  }
+  #dedelbutton{
+    color:$light-blue;
+    border:0;
   }
 
 
