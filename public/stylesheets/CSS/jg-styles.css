@@ -40,6 +40,9 @@ body .jg-add-details:hover {
 body .jg-add-details:hover a {
   color: #e5e338;
 }
+body .edit-link {
+  color: #4ec5c1;
+}
 body .jg_project_title {
   color: white;
 }

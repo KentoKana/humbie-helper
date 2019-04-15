@@ -211,8 +211,8 @@ $categories = $ca->get_categories($db);
                             <div class="card text-center m-4" style="width: 20rem;">
                                 <h5 class="card-title">Project Description</h5>
                                 <p class="card-text"><?=$single_project->project_description?></p>
-                                <div class="card-footer">
-                                    <a href="edit-project.php">Edit This Project</a>
+                                <div class="jg-card-footer">
+                                    <a href="edit-project.php" class="edit-link">Edit This Project</a> <br />
                                     <a href="delete-project.php" class="text-danger">Delete This Project</a>
                                     <a href="#"></a>
                                 </div>
