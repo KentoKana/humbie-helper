@@ -144,44 +144,4 @@ document.body.onkeydown = function (e) {
     }
 }
 
-//AJAX
-//Save Timer
-$('#saveTime').click(function (event) {
-    event.preventDefault();
-
-    let timeSaved = $('#timeInMilli').val();
-    let studentId = $('#studentId').val();
-    let projectId = $('#projectId').val();
-    let task = $('#taskName').val();
-    // console.log(timeSaved);
-
-    $.post('../../controllers/timer-controller.php',
-        {
-            time: timeSaved,
-            studentId: studentId,
-            projectId: projectId,
-            taskName: task,
-        },
-        function (data) {
-            // console.log(data);
-        }
-    )
-});
-
-//Delete Timer
-$('#delTimeRecord').click(function (event) {
-    event.preventDefault();
-
-    let timerId = $('#timerId').val();
-    console.log(timerId)
-
-    $.post('../../controllers/timer-controller.php',
-        {
-            delTimeId: timerId,
-        },
-        function (data) {
-            console.log(data);
-        }
-    )
-});
 

@@ -152,7 +152,7 @@ if(isset($_POST['edit'])){
                     <div class="tab-pane fade" id="pills-timesheet" role="tabpanel"
                         aria-labelledby="pills-timesheet-tab">
                         <div class="card mt-2 text-center" style="width: 20rem;">
-                            <h5>View Timer For: </h5>
+                            <h5>View Timesheet For: </h5>
                             <div class="card-body text-left">
                                 <div>
                                     <?php
