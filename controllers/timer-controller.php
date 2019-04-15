@@ -1,12 +1,15 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-//Had to write the absolute path down. Need to change if not using MAMP.
-require_once(realpath(dirname(__DIR__).'\models\Timer.php'));
-require_once(realpath(dirname(__DIR__).'\lib\functions.php'));
 
-// require_once(MODELS.'/Timer.php');
-// require_once(LIB.'/functions.php');
+if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+    require_once(realpath(dirname(__DIR__).'\models\Timer.php'));
+    require_once(realpath(dirname(__DIR__).'\lib\functions.php'));
+} else {
+    require_once(MODELS.'/Timer.php');
+    require_once(LIB.'/functions.php');
+}
+
 
 $t = new Timer(Database::getDatabase());
 
