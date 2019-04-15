@@ -17,6 +17,7 @@ ini_set('display_errors', 1);
                 <th></th>
                 <th></th>
             </tr>
+            <!-- myquote is select * from quotes query-->
             <?php foreach($myquote as $quote){?>
             <tr>
                 <td><?php echo $quote->quote_author ?></td>

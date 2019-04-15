@@ -54,7 +54,7 @@ class Quote
         $count = $statement->execute();
         return $count;
     }
-    public function randomQuote($id, $db)
+    public function randomQuote($db)
     {
         $query = "SELECT * FROM motivational_quotes
                   ORDER BY rand()
