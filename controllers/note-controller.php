@@ -8,6 +8,11 @@ $db = Database::getDatabase();
 $n = new Note();
 $errormsg = "";
 
+// controller file that writes all the logic for the view pages and grabs the required information from the models
+
+// Grabbing the project_id session if it is set
+$_SESSION['project_id'];
+$project_id = $_SESSION['project_id'];
 
 //Logic for adding a new note
 
@@ -52,6 +57,23 @@ if(isset($_POST['editNote'])){
 
 //function to list all notes associated with a project
 
-$notes
+$notes= $n->listNotes($project_id, $db);
+
+
+// after all notes are listed these are the options you can do with each note: edit a note, view a note or delete a note.
+if(isset($_POST['edit'])){
+  $_SESSION['note_id'] = $_POST['note_id'];
+  header('Location:edit-note.php');
+}
+
+if(isset($_POST['view'])){
+  $_SESSION['note_id'] = $_POST['note_id'];
+  header('Location:view-note.php');
+}
+
+  if(isset($_POST['delete'])){
+    $_SESSION['note_id'] = $_POST['note_id'];
+    header('Location:delete-note.php');
+  }
 
  ?>

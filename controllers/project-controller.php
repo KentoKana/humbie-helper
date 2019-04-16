@@ -1,12 +1,14 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once(MODELS.'/Project.php');
-require_once(LIB. '/functions.php');
+require_once LIB . '/functions.php';
+require_once MODELS . '/Database.php';
+require_once  MODELS .'/Project.php';
 
 $db = Database::getDatabase();
 $project = new Project();
 $errormsg = "";
+
 
 // Logic for creating a new project.
   if(isset($_POST['addProj'])){
@@ -68,7 +70,21 @@ if(isset($_POST['addStudents'])){
 
 }
 
+// logic for the list projects page to allow students to pick an option on the table --> edit, view details or delete
+if(isset($_POST['edit'])){
+    $_SESSION['project_id'] = $_POST['project_id'];
+    header('Location:'.RVIEWS.'/project/edit-project.php');
+  }
 
+  if(isset($_POST['details'])){
+    $_SESSION['project_id'] = $_POST['project_id'];
+    header('Location:'.RVIEWS. '/project/project-details.php');
+  }
+
+  if(isset($_POST['delete'])){
+    $_SESSION['project_id'] = $_POST['project_id'];
+    header('Location:'.RVIEWS.'/project/delete-project.php');
+  }
 
 
 

@@ -5,34 +5,16 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once CONTROLLERS.'/student-controller.php';
 require_once CONTROLLERS. '/timer-controller.php';
-require_once MODELS. '/Project.php';
+require_once CONTROLLERS. '/project-controller.php';
 require_once MODELS. '/Timer.php';
-$ps = new Project();
-$db = Database::getDatabase();
+
 
 if(!isset($_SESSION['username'])) {
     header("Location:/project-backstreet-boys-and-jenna");
 }
 
 $s = $student->getStudent($_SESSION['studentId']);
-$db = Database::getDatabase();
-$p = new Project();
-$projects = $p->listProjects($_SESSION['studentId'], $db);
-
-if(isset($_POST['edit'])){
-    $_SESSION['project_id'] = $_POST['project_id'];
-    header('Location:'.RVIEWS.'/project/edit-project.php');
-  }
-
-  if(isset($_POST['details'])){
-    $_SESSION['project_id'] = $_POST['project_id'];
-    header('Location:'.RVIEWS. '/project/project-details.php');
-  }
-
-  if(isset($_POST['delete'])){
-    $_SESSION['project_id'] = $_POST['project_id'];
-    header('Location:'.RVIEWS.'/project/delete-project.php');
-  }
+$projects = $project->listProjects($_SESSION['studentId'], $db);
 ?>
 <main id="jg-main" class="m-4">
     <h1 class="text-center m-3">Welcome, <?= $_SESSION['username'];?>!</h1>

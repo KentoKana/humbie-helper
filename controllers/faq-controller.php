@@ -36,8 +36,7 @@ if(isset($_POST['delete'])){
     $errormsg .= "Problem delteting the category. Please try again.";
   }
 }
-
-//TO DO: Editing a category
+// controller file that writes all the logic for the view pages and grabs the required information from the models 
 
 
 //Logic for adding a new FAQ to FAQ table

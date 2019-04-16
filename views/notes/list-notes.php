@@ -9,27 +9,9 @@ ini_set('display_errors', 1);
 $_SESSION['project_id'];
 $project_id = $_SESSION['project_id'];
 
-if(isset($_POST['edit'])){
-  $_SESSION['note_id'] = $_POST['note_id'];
-  header('Location:edit-note.php');
-}
-
-if(isset($_POST['view'])){
-  $_SESSION['note_id'] = $_POST['note_id'];
-  header('Location:view-note.php');
-}
-
-  if(isset($_POST['delete'])){
-    $_SESSION['note_id'] = $_POST['note_id'];
-    header('Location:delete-note.php');
-  }
-
-
-
-$notes= $n->listNotes($project_id, $db);
-
 ?>
 <main id="jg-main" class="m-4">
+  <!--Here is a table to display all notes associated with a project -->
   <h1 class="text-center pt-3">All Notes</h1>
     <div class="text-center px-5 py-2">
       <table class="table">

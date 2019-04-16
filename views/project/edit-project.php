@@ -14,6 +14,7 @@ $name = $single_project->project_name;
 <main id="jg-main" class="m-4">
     <div class="text-center p-3">
         <h1>Edit Project</h1>
+        <!-- Form to edit a project -->
         <div class="text-danger text-center pt-3"><?=$errormsg?></div>
         <div class="p-4">
             <form action="" method="POST" class="m-4">

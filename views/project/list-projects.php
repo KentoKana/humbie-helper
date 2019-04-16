@@ -1,37 +1,16 @@
 <?php
 require './../../config.php';
 include VIEWS.'/header.php';
+require_once CONTROLLERS.'/project-controller.php';
+
 //require_once CONTROLLERS.'/student-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require_once LIB . '/functions.php';
-require_once MODELS . '/Database.php';
-require_once  MODELS .'/Project.php';
 
+$student_id = $_SESSION['studentId'];
 
-if(isset($_POST['edit'])){
-  $_SESSION['project_id'] = $_POST['project_id'];
-  header('Location: edit-project.php');
-}
-
-if(isset($_POST['details'])){
-  $_SESSION['project_id'] = $_POST['project_id'];
-  header('Location: project-details.php');
-}
-
-if(isset($_POST['delete'])){
-  $_SESSION['project_id'] = $_POST['project_id'];
-  header('Location: delete-project.php');
-}
-
-
-
-$_SESSION['student_id'] = 1;
-$student_id = $_SESSION['student_id'];
-$db = Database::getDatabase();
-$p = new Project();
-$projects = $p->listProjects($student_id, $db);
+$projects = $project->listProjects($student_id, $db);
 
 
 ?>

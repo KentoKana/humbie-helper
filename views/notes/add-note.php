@@ -11,6 +11,8 @@ $project_id = $_SESSION['project_id'];
 
 ?>
 <main id="jg-main" class="m-4">
+  <!--Form to add a new note to the database -->
+
   <h1 class="text-center pt-3">Notes</h1>
   <div class="text-danger text-center pt-3"><?=$errormsg?></div>
   <div class="form form-group text-center px-5 py-2">
