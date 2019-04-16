@@ -39,7 +39,7 @@ if(isset($_POST['edit'])){
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 d-flex justify-content-center">
+            <div class="col-lg-12 d-flex justify-content-center jg_sub-header">
                 <div>
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
@@ -66,11 +66,7 @@ if(isset($_POST['edit'])){
                     <div class="tab-pane fade show active" id="pills-currentProjects" role="tabpanel"
                         aria-labelledby="pills-currentProjects-tab">
 
-                        <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item" style="background-color: lightCyan"><a
-                                    href="<?= RVIEWS."/project/add-project.php"?>">&plus; Start
-                                    A New Project</a></li>
-                        </ul>
+
                         <table class="table">
                             <thead class="jg_table__thead text center">
                                 <tr>
@@ -109,6 +105,11 @@ if(isset($_POST['edit'])){
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <ul class="list-group list-group-flush text-center">
+                            <li class="list-group-item jg-add-details" style="width: 50%; margin: 0 auto;"><a
+                                    href="<?= RVIEWS."/project/add-project.php"?>">&plus; Start
+                                    A New Project</a></li>
+                        </ul>
                     </div>
 
                     <!-- Your Info Tab  -->

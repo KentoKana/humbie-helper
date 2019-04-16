@@ -11,7 +11,7 @@ $(document).ready(function(){
       {
         $('.questions_display').html(data);
         $('.faqs').html(data);
-        console.log(data);
+        //console.log(data);
       }
     });
   }

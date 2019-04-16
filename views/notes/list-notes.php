@@ -70,6 +70,7 @@ $notes= $n->listNotes($project_id, $db);
           </tbody>
         </tbody>
       </table>
+      <button class="jg-button-primary"><a href="<?=RVIEWS . '/notes/add-note.php'?>">Add New Note </a></button>
     </div>
 </main>
 

@@ -7,6 +7,7 @@ $body-font: 'Titillium Web', sans-serif;
 
 $primary-color: #1c2833;
 $secondary-color: #4ec5c1;
+$yellow: #e5e338;
 $default-padding: 20px;
 $center-block: 0 auto;
 
@@ -33,7 +34,7 @@ body {
 			color: white;
 
 			&:hover {
-				color: $secondary-color;
+				color: $yellow;
 			}
 		}
 		#nav__logo {

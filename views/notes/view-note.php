@@ -14,6 +14,9 @@ $note= $n->getNote($note_id, $db);
   <div class="m-5 p-3">
     <?=$note->notes_content?>
   </div>
+  <div class="p-2">
+    <button class="jg-button-primary text-center"><a href="<?=RVIEWS . '/notes/list-notes.php'?>">View All Notes </a></button>
+  </div>
 </main>
 
 <?php include VIEWS.'/footer.php'; ?>

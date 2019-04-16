@@ -30,7 +30,7 @@
                     <a class="nav-link" href="<?= BASE;?>">Home</span></a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link" href="#">FAQ</a>
+                    <a class="nav-link" href="<?= RVIEWS."/faq/list-faq-page.php";?>">FAQ</a>
                 </li>
                 <li class="nav-item px-2">
                     <?php

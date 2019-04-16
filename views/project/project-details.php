@@ -163,9 +163,10 @@ $categories = $ca->get_categories($db);
 
                     <!-- Tools Tab -->
                     <div class="tab-pane fade" id="pills-tools" role="tabpanel" aria-labelledby="pills-tools-tab">
-                        <div class="card text-center" style="width: 18rem;">
+                        <div class="card text-center" style="width: 18rem; display: inline-block">
                             <div>
                                 <div class="timer-col-wrap">
+                                  <h5 class="card-title">Time Tracker</h5>
                                     <form action="" method="POST">
                                         <div>
                                             <input type="text" name="taskName" id="taskName">
@@ -187,12 +188,16 @@ $categories = $ca->get_categories($db);
                             </div>
                         </div>
 
-                        <div class="card text-center" style="width: 18rem;">
+                        <div class="card text-center" style="width: 18rem; display: inline-block">
+                          <h5 class="card-title">More Tools</h5>
                             <div>
                                 <a href="<?=RVIEWS . '/agenda/list.php'?>">Agenda Tool</a>
                             </div>
                             <div>
                                 <a href="<?=RVIEWS . '/files/list-files.php'?>">Share Files</a>
+                            </div>
+                            <div>
+                                <a href="<?=RVIEWS . '/notes/list-notes.php'?>">Notes Tool</a>
                             </div>
                         </div>
                     </div>
