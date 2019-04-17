@@ -110,18 +110,19 @@ $categories = $ca->get_categories($db);
                     <!-- Announcements Tab  -->
                     <div class="tab-pane fade" id="pills-announcements" role="tabpanel"
                         aria-labelledby="pills-announcements-tab">
-
+                        <ul class="list-group list-group-flush text-center">
+                            <li class="list-group-item jg-add-details">
+                                <a href="../announcements/add-announcement.php"> + Add New Announcement </a>
+                            </li>
+                        </ul>
                         <?php foreach ($myAnnounce as $announcement) { ?>
-                        <div class="card" style="width: 18rem;">
-                            <h5 class="card-title m-auto"><a href="../announcements/add-announcement.php">+ Add An Announcement</a></h5>
-                        </div>
                         <div class="card mt-2" style="width: 30rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Sample Announcement</h5>
+                                <h5 class="card-title"><?php echo $announcement->announcement_title; ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $announcement->announcement_time; ?></h6>
                                 <p class="card-text"><?php echo $announcement->announcement ?></p>
-                                <a href="../announcements/edit-announcement.php?id=<?php echo $announcement->id;?>" class="card btn">Edit</a>
-                                <a href="../announcements/delete-announcement.php?id=<?php echo $announcement->id;?>" class="card btn">Delete</a>
+                                <a href="../announcements/edit-announcement.php?id=<?php echo $announcement->id;?>" class="jg-add-details btn">Edit</a>
+                                <a href="../announcements/delete-announcement.php?id=<?php echo $announcement->id;?>" class="jg-add-details btn">Delete</a>
                             </div>
                         </div>
                         <?php } ?>

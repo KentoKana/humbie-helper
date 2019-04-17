@@ -10,16 +10,17 @@ $projectId = $_SESSION['project_id'];
 
 $db = Database::getDatabase();
 $a = new Announcement();
-$myAnnounce = $a->getAllAnnouncements(Database::getDatabase());
-$annouceById = $a->getAnnouncementById(filter_input(INPUT_GET, 'id'), Database::getDatabase());
+$myAnnounce = $a->getAllAnnouncements($projectId, Database::getDatabase());
+$annouceById = $a->getAnnouncementById(filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT), Database::getDatabase());
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 $announcement = filter_input(INPUT_POST, 'announcement', FILTER_SANITIZE_STRING);
 $announcementTime = date("Y-m-d H:i:s");
+$announcementTitle = filter_input(INPUT_POST, 'announcementTitle', FILTER_SANITIZE_STRING);
 
 //Adding New Annoucement
 if (isset($_POST['addAnnounce'])) {
-    $count = $a->addAnnouncement($announcementTime, $announcement, $studentId, $_SESSION['project_id'], $db);
+    $count = $a->addAnnouncement($announcementTime, $announcement, $announcementTitle, $studentId, $_SESSION['project_id'], $db);
     if($count){
         header('Location:' . RVIEWS . '/project/project-details.php');
     } else {
@@ -28,7 +29,7 @@ if (isset($_POST['addAnnounce'])) {
 }
 //Udate Existing Annoucemenmt
 if (isset($_POST['editAnnouncement'])) {
-    $count = $a->editAnnouncement($id, $announcementTime, $announcement, $studentId, $_SESSION['project_id'], $db);
+    $count = $a->editAnnouncement($id, $announcementTime, $announcement, $announcementTitle, $studentId, $_SESSION['project_id'], $db);
     if($count){
         header('Location:' . RVIEWS . '/project/project-details.php');
     } else {
