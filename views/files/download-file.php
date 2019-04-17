@@ -14,10 +14,10 @@ ini_set('display_errors', 1);
     </ul>
     <form action="" method="POST">
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" name="downloadFile" value="Download">
+            <input type="submit" class="jg-form__submit" name="downloadFile" value="Download">
         </div>
         <div class="form-group">
-            <a href="list-files.php" class="btn btn-primary">Cancel</a>
+            <a href="list-files.php" class="">Cancel</a>
         </div>
   </form>
 </main>

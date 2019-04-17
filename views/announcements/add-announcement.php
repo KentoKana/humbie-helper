@@ -25,8 +25,8 @@ $projectId = $_SESSION['project_id'];
             <input type="text" class="form-control" name="announcement" >
         </div>
         <div>
-            <button type="submit" class="btn btn-primary" name="addAnnounce">Announce</button>
-            <a href="../project/project-details.php" class="btn">Cancel</a>
+            <button type="submit" class="jg-add-details btn" name="addAnnounce">Announce</button>
+            <a href="../project/project-details.php" class="jg-add-details btn">Cancel</a>
         </div>
     </form>
 </main>
