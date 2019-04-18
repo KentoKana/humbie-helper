@@ -16,8 +16,8 @@ ini_set('display_errors', 1);
             </ul>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" name="deleteAnnouncement" value="Delete">
-            <a href="project-details.php" class="btn">Cancel</a>
+            <input type="submit" class="jg-add-details btn" name="deleteAnnouncement" value="Delete">
+            <a href="project-details.php" class="jg-add-details btn">Cancel</a>
         </div>
     </form>
 </main>

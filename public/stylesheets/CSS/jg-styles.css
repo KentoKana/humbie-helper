@@ -50,6 +50,7 @@ body .jg-add-details a {
 }
 body .jg-add-details:hover {
   background-color: #1c2833;
+  color: #e5e338;
 }
 body .jg-add-details:hover a {
   color: #e5e338;

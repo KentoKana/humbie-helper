@@ -7,7 +7,7 @@ $projectId = $_SESSION['project_id'];
 ?>
 <main id="jg-main" class="m-4">
     <h1 class="text-center pt-3">All Files</h1>
-    <a href="upload-files.php">Upload New File</a>
+    <a href="upload-files.php" class="jg-add-details btn">Upload New File</a>
     <div class="text-center px-5 py-2">
         <table class="table">
             <thead class="jg_table__thead">
@@ -31,13 +31,13 @@ $projectId = $_SESSION['project_id'];
                     <td>
                         <form action="" method="post">
                             <input type="hidden" name="id" value="<?php echo $file['id']; ?>">
-                            <a href="download-file.php?id=<?php echo $file['id'];?>" class="btn btn-primary">Download</a>
+                            <a href="download-file.php?id=<?php echo $file['id'];?>" class="jg-add-details btn">Download</a>
                         </form>
                     </td>
                     <td>
                         <form action="" method="post">
                             <input type="hidden" name="id" value="<?php echo $file['id']; ?>">
-                            <a href="delete-file.php?id=<?php echo $file['id'];?>" class="btn btn-primary">Delete</a>
+                            <a href="delete-file.php?id=<?php echo $file['id'];?>" class="jg-add-details btn">Delete</a>
                         </form>
                     </td>
                 </tr>

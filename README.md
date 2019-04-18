@@ -97,6 +97,11 @@ on.
 - The FAQ page/modal displays a list of categories that a student can select to help them better filter their questions
 - When the student selects a category, ajax calls the questions associated with that category and displays them in the middle of the page without refreshing the whole page
 
+### - Files Worked On
+- Models folder: FAQ.php, Faq_categories.php, Project.php, Note.php
+- Controllers folder: faq-controller.php, note-controller.php, project-controller.php
+- Views Folder: Project (all files), Notes(all files), faq(all files)
+
 ### Mark
 ### - Task List Feature
 - WIP

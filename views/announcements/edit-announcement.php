@@ -9,11 +9,15 @@ ini_set('display_errors', 1);
     <h2 class="my-4">Edit Announcement</h2>
     <form action="" method="POST">
         <div class="form-group">
+            <label for="form__username-field">Title: </label>
+            <input type="text" class="form__username-field form-control" value="<?php echo $annouceById->announcement_title ?>" name="announcementTitle">
+        </div>
+        <div class="form-group">
             <label for="form__username-field">Announcement: </label>
             <input type="text" class="form__username-field form-control" value="<?php echo $annouceById->announcement ?>" name="announcement">
         </div>
         <div class="form-group">
-            <button type="submit" name="editAnnouncement" class="btn btn-primary">Submit</button>
+            <button type="submit" name="editAnnouncement" class="btn jg-add-details">Submit</button>
             <a href="../project/project-details.php"></a>
         </div>
     </form>

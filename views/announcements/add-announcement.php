@@ -17,12 +17,16 @@ $projectId = $_SESSION['project_id'];
     <h2 class="my-4">Add New Announcement</h2>
     <form action="" method="POST">
         <div class="form-group">
-            <label for="form__username-field">Announcement: </label>
-            <input type="text" class="form__username-field form-control" name="announcement" >
+            <label for="announcementTitle">Title: </label>
+            <input type="text" class="form-control" name="announcementTitle" >
+        </div>
+        <div class="form-group">
+            <label for="announcement">Announcement: </label>
+            <input type="text" class="form-control" name="announcement" >
         </div>
         <div>
-            <button type="submit" class="btn btn-primary" name="addAnnounce">Announce</button>
-            <a href="../project/project-details.php" class="btn">Cancel</a>
+            <button type="submit" class="jg-add-details btn" name="addAnnounce">Announce</button>
+            <a href="../project/project-details.php" class="jg-add-details btn">Cancel</a>
         </div>
     </form>
 </main>
