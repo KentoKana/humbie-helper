@@ -36,7 +36,7 @@ if(isset($_POST['delete'])){
     $errormsg .= "Problem delteting the category. Please try again.";
   }
 }
-// controller file that writes all the logic for the view pages and grabs the required information from the models 
+// controller file that writes all the logic for the view pages and grabs the required information from the models
 
 
 //Logic for adding a new FAQ to FAQ table
@@ -55,3 +55,21 @@ if(isset($_POST['addFaq'])){
       }
     }
   }
+
+  //Logic for editng an FAQ
+  if(isset($_POST['editFaq'])){
+    $faq_id = $_SESSION['faq_id'];
+    $category_id = $_POST['category_id'];
+    $question = $_POST['question'];
+    $answer = $_POST['answer'];
+    if(empty($question || $answer)){
+      $errormsg .= "Sorry you cannot have a blank field. Please fill
+      in all fields and try again";} else{
+        $c = $f->update_faq($faq_id, $category_id, $question, $answer, $db);
+        if($c){
+          header('Location:list-faq-page.php');
+        }else{
+          $errormsg .= "Trouble editing FAQ. Please try again";
+        }
+      }
+    }

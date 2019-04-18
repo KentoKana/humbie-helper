@@ -131,40 +131,60 @@ $categories = $ca->get_categories($db);
                     <!-- Deadlines tab -->
                     <div class="tab-pane fade" id="pills-deadlines" role="tabpanel"
                         aria-labelledby="pills-deadlines-tab">
-                        <div class="card" style="width: 25rem;">
-
-                            <?php
+                      <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item jg-add-details">
+                            <a href="../deadline/add-deadline.php"> + Add New Deadline </a>
+                        </li>
+                      </ul>
+                      <div class="card" style="width: 25rem;">
+                          <?php
                                     $deadlines = $d->listDeadlines($project_id);
                                     foreach($deadlines as $deadline):
                                     ?>
                             <div class="card mt-2 m-auto" style="width: 18rem;">
-                                <form id="jg-deadline_form" action="" method="POST">
-                                  <a id="jg-deadline_edit" href="../deadline/edit-deadline.php?id=<?=$deadline['id']?>">Edit</a>
-                                    <input type="hidden" name="deadlineId" value="<?=$deadline['id']?>">
-                                    <button name="delDeadline" type="submit">Delete</button>
 
-                                </form>
                                 <div class="card-body text-center">
                                     <h5 class="card-title"> <?= $deadline['event_name'] ?></h5>
                                     <h6 class="card-subtitle mb-2 text-muted">
                                         <?= date('Y-m-d', strtotime($deadline['event_date'])); ?></h6>
                                     <p class="card-text"><?= $deadline['event_description'] ?></p>
+                                    <form id="jg-deadline_form" action="" method="POST">
+                                      <a href="../deadline/edit-deadline.php?id=<?=$deadline['id']?>" class="jg-add-details btn">Edit</a>
+                                        <input type="hidden" name="deadlineId" value="<?=$deadline['id']?>">
+                                        <button name="delDeadline" class="jg-add-details btn" type="submit">Delete</button>
+
+                                    </form>
                                 </div>
                             </div>
                             <?php endforeach; ?>
-                            <ul class="list-group list-group-flush text-center">
-                                <li class="list-group-item jg-add-details">
-                                    <a href="../deadline/add-deadline.php">
-                                        + Add New Deadline
-                                    </a></li>
-                            </ul>
+
                         </div>
 
                         </div>
 
                     <!-- Tools Tab -->
                     <div class="tab-pane fade" id="pills-tools" role="tabpanel" aria-labelledby="pills-tools-tab">
-                        <div class="card text-center" style="width: 18rem; display: inline-block">
+                      <div class="d-flex flex-row">
+                        <div class="card text-center m-2 p-1" style="width: 18rem; display: inline-block">
+                          <h5 class="card-title">More Tools</h5>
+                          <table class="table table-striped">
+                              <tbody>
+                              <tr>
+                                  <td><a href="<?=RVIEWS . '/agenda/list.php'?>">Agenda Tool</a></td>
+                              </tr>
+                              <tr>
+                                  <td><a href="<?=RVIEWS . '/files/list-files.php'?>">Share Files</a></td>
+                              </tr>
+                              <tr>
+                                  <td><a href="<?=RVIEWS . '/notes/list-notes.php'?>">Notes Tool</a></td>
+                              </tr>
+                              <tr>
+                                  <td><a href="<?=RVIEWS . '/minutes/list.php'?>">Minutes Tool</a></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="card text-center m-2" style="width: 20rem; display: inline-block">
                             <div>
                                 <div class="timer-col-wrap">
                                   <h5 class="card-title">Time Tracker</h5>
@@ -174,8 +194,8 @@ $categories = $ca->get_categories($db);
                                         </div>
                                         <h2 id="timer">00 : 00 : 00</h2>
                                         <div class="timer-buttons">
-                                            <button type="button" class="button __button" id="toggle">Start</button>
-                                            <button type="button" class="button __button" id="reset">Reset</button>
+                                            <button type="button" class="button __button jg-add-details" id="toggle">Start</button>
+                                            <button type="button" class="button __button jg-add-details" id="reset">Reset</button>
                                         </div>
 
                                         <input type="hidden" name="time" id="timeInMilli">
@@ -183,25 +203,15 @@ $categories = $ca->get_categories($db);
                                             value="<?=$_SESSION['studentId'];?>">
                                         <input type="hidden" name="projectId" id="projectId"
                                             value="<?=$_SESSION['project_id'];?>">
-                                        <button type="submit" id="saveTime">Add to Timesheet</button>
+                                        <button class="jg-add-details"type="submit" id="saveTime">Add to Timesheet</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card text-center" style="width: 18rem; display: inline-block">
-                          <h5 class="card-title">More Tools</h5>
-                            <div>
-                                <a href="<?=RVIEWS . '/agenda/list.php'?>">Agenda Tool</a>
-                            </div>
-                            <div>
-                                <a href="<?=RVIEWS . '/files/list-files.php'?>">Share Files</a>
-                            </div>
-                            <div>
-                                <a href="<?=RVIEWS . '/notes/list-notes.php'?>">Notes Tool</a>
-                            </div>
-                        </div>
+
                     </div>
+                  </div>
 
                     <!-- Project Details -->
                     <div class="tab-pane fade" id="pills-projectDetails" role="tabpanel"
@@ -211,24 +221,24 @@ $categories = $ca->get_categories($db);
                                 <h5 class="card-title">Project Description</h5>
                                 <p class="card-text"><?=$single_project->project_description?></p>
                                 <div class="jg-card-footer">
-                                    <a href="edit-project.php" class="edit-link">Edit This Project</a> <br />
-                                    <a href="delete-project.php" class="text-danger">Delete This Project</a>
-                                    <a href="#"></a>
+                                  <a href="edit-project.php" class="jg-add-details btn">Edit</a>
+                                  <a href="delete-project.php" class="jg-add-details btn">Delete</a>
                                 </div>
                             </div>
-                            <div class="card m-4 text-center" style="width: 18rem;">
+                            <div class="card m-4 text-center p-1" style="width: 18rem;">
                                 <h5 class="card-title">Students In This Project</h5>
-                                <ul class="list-group list-group-flush text-center">
-
+                                <table class="table table-striped">
+                                  <tbody>
                                     <?php
                                 foreach($students as $student):?>
-                                    <li class="jg-list"> <?=$student->student_fname . ' ' . $student->student_lname?>
-                                    </li>
+                                <tr>
+                                    <td> <?=$student->student_fname . ' ' . $student->student_lname?>
+                                    </td>
+                                  </tr>
                                     <?php endforeach; ?>
-                                    <li class="list-group-item jg-add-details"><a
-                                            href="project-student-list.php"> + Add
-                                            Student to Project</a></li>
-                                </ul>
+                                  </tbody>
+                                </table>
+                                <a class="jg-add-details" href="project-student-list.php"> + Add Students to Project</a></li>
                             </div>
                         </div>
                     </div>

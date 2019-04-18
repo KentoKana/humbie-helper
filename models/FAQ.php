@@ -55,7 +55,19 @@ public function add_faq($category_id, $question, $answer, $dbcon)
   return $count;
 }
 
-// A user can update an FAQ entry in the database 
+public function get_faq($id, $dbcon)
+{
+  $query = "SELECT * FROM faq WHERE id = :id";
+  $stm = $dbcon -> prepare($query);
+  $stm->bindParam(':id', $id);
+  $stm -> execute();
+
+  $faq = $stm-> fetch(PDO::FETCH_OBJ);
+  return $faq;
+
+}
+
+// A user can update an FAQ entry in the database
 public function update_faq($id, $category_id, $question, $answer, $dbcon)
 {
 
@@ -69,7 +81,7 @@ public function update_faq($id, $category_id, $question, $answer, $dbcon)
   $stm -> bindParam(':category_id', $category_id);
   $stm -> bindParam(':question', $question);
   $stm -> bindParam(':answer', $answer);
-  $pst->bindParam(':id', $id);
+  $stm->bindParam(':id', $id);
 
 
   $count = $stm->execute();
