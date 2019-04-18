@@ -15,6 +15,7 @@ html {
   display: inline-block;
   vertical-align: top;
   margin-left: 20px;
+  margin-bottom: 20px;
   pointer: move;
 }
 
@@ -31,8 +32,7 @@ html {
   margin: 0 0 10px;
 }
 
-.options {
-  margin-bottom: 20px;
+.task-options {
   padding: 20px;
 }
 

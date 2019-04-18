@@ -7,6 +7,7 @@ require_once CONTROLLERS.'/timer-controller.php';
 require_once CONTROLLERS.'/faq-controller.php';
 require_once CONTROLLERS.'/quote-controller.php';
 require_once CONTROLLERS.'/announcement-controller.php';
+require_once CONTROLLERS.'/taskcards-controller.php';
 
 //require_once CONTROLLERS.'/student-controller.php';
 $project_id = $_SESSION['project_id'];
@@ -61,51 +62,21 @@ $categories = $ca->get_categories($db);
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-12 d-flex justify-content-center">
+            <div class="col-lg-12 d-flex justify-content-left">
                 <div class="tab-content m-2" id="pills-tabContent">
 
                     <!-- Project Tab  -->
-                    <div class="tab-pane fade show active" id="pills-project" role="tabpanel"
-                        aria-labelledby="pills-project-tab">
-                        <div class="options">
-                            <button type="button" name="addTask" class="btn btn-success">Add a Task List</button>
-                        </div>
-                        <div class="tasklist">
-                            <div class="tasklist__wrapper">
-                                <div class="tasklist__header">
-                                    <div class="tasklist__title">
-                                        <h2>To do:</h2>
-                                    </div>
-                                </div>
-                                <div class="tasklist__body tasklist__nested">
-                                    <div class="task-card" data-index="1"> Item 1 </div>
-                                    <div class="task-card" data-index="2"> Item 2 </div>
-                                    <div class="task-card" data-index="3"> Item 3 </div>
-                                    <div class="task-card" data-index="4"> Item 4 </div>
-                                </div>
-                                <div class="tasklist__footer">
-                                    <button type="button" name="new_card" value="1">Add new card</button>
-                                </div>
-                            </div>
-                            <div class="tasklist__wrapper">
-                                <div class="tasklist__header">
-                                    <div class="tasklist__title">
-                                        <h2>Doing:</h2>
-                                    </div>
-                                </div>
-                                <div class="tasklist__body tasklist__nested"></div>
-                                <div class="tasklist__footer"></div>
-                            </div>
-                            <div class="tasklist__wrapper">
-                                <div class="tasklist__header">
-                                    <div class="tasklist__title">
-                                        <h2>Done:</h2>
-                                    </div>
-                                </div>
-                                <div class="tasklist__body tasklist__nested"></div>
-                                <div class="tasklist__footer"></div>
-                            </div>
-                        </div>
+                    <div class="tab-pane fade show active" id="pills-project" role="tabpanel" aria-labelledby="pills-project-tab">
+                      <div class="sandbox">
+
+                      </div>
+                        <?php
+                          $params = [
+                            'projectId' => $projectId,
+                            'db' => $db
+                          ];
+                          displayTasks($params);
+                        ?>
                     </div>
                     <!-- Announcements Tab  -->
                     <div class="tab-pane fade" id="pills-announcements" role="tabpanel"
@@ -236,6 +207,40 @@ $categories = $ca->get_categories($db);
         </div>
 
 
+
+
+      <!-- Task Modal -->
+        <div class="modal fade" id="addTaskCard" tabindex="-1" role="dialog" aria-labelledby="addTaskCardLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addTaskCardLabel">Add</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="tcTitle" class="col-form-label">Title:</label>
+                    <input type="text" class="form-control" id="tcTitle">
+                  </div>
+                  <div class="form-group">
+                    <label for="tcDescription" class="col-form-label">Description:</label>
+                    <textarea class="form-control" id="tcDescription"></textarea>
+                    <input type="hidden" name="tcIndex" id="tcIndex" value="">
+                    <input type="hidden" name="projId" id="projId" value="<?=$project_id;?>">
+                    <input type="hidden" name="addType" id="addType" value="">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="jg-button-primary btn-add"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
     <!-- Button trigger modal -->
     <div id="jg-humbie-button-block">
         <img id="humbie-button-img" src="<?=IMG?>/images/Humbie.png" alt="Humbie the hippo">
@@ -244,7 +249,8 @@ $categories = $ca->get_categories($db);
     </button>
   </div>
 
-    <!-- Modal -->
+
+    <!-- Humbie Modal -->
 
     <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
