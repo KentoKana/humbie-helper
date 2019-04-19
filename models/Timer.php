@@ -120,6 +120,13 @@ class Timer
 
 		return $stmt->execute();  
 	}
+
+	//Validation message for adding/editing students.
+	public static function validateData($setter, $msg) {
+		if($setter === false) {
+			return "<div class='text-danger'>" . $msg . "</div>";
+		}
+	}
 	
 	//Delete Student Method
 	public function deleteTime($timerId) 
