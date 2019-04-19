@@ -137,3 +137,8 @@ on.
 - This will be part of the projects feature
 - A list of all announcements for a particular project will be displayed in project details
 - Currently signed in student would be able to edit and delete only their own announcements from list
+
+### Files Worked On
+- Controllers: announcement-controller, quote-controller and upload controller
+- Models: announcement_db, quote_db, upload_db
+- Views: project details + all views in 'announcements', 'quotes' and 'files' folders.
