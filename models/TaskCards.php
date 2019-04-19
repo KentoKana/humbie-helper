@@ -136,6 +136,17 @@ class TaskCards
       return intval($result[0]["MAX(id)"]);
     }
 
+    public function getTaskCount()
+    {
+      $dbcon = $this->getDb();
+      $query = "SELECT MAX(id) FROM tasklists";
+      $preparedStatement = $dbcon->prepare($query);
+      $preparedStatement->execute();
+      $result = $preparedStatement->fetchAll(PDO::FETCH_ASSOC);
+
+      return intval($result[0]["MAX(id)"]);
+    }
+
     public function getAllTasks()
     {
         $dbcon = $this->getDb();
@@ -154,7 +165,7 @@ class TaskCards
         $taskList = "";
         $dbcon = $this->getDb();
         $myTasks = $this->getAllTasks();
-        $taskId = 1;
+        $ctr = 1;
         $taskList .= "<div class='tasklist'>";
         foreach($myTasks as $task => $t)
         {
@@ -166,13 +177,17 @@ class TaskCards
             $taskList .= $this->generateCards($this->getAllCards($t->id));
             $taskList .= "</div>";
             $taskList .= "<div class='tasklist__footer'>";
-            if($t->id == 1){
+            if($ctr == 1){
                 $cardID = $this->getCardCount() + 1;
                 $taskList .= sprintf("<button type='button' name='new_card' id='newCard' class='jg-button-primary' value='%d' data-toggle='modal' data-target='#addTaskCard' data-title='Add Card'>Add new card</button>", $cardID);
             }
             $taskList .= "</div></div>";
-            $taskId = $t->id == 0 ? $taskId : $t->id + 1;
+
+            // increase counter
+            $ctr++;
         }
+        //get the last task id
+        $taskId = $this->getTaskCount() + 1;
         $taskList .= "</div>";
         $taskOpt = sprintf('<div class="task-options"><button type="button" name="addTask" id="newTaskList" class="btn btn-success" value="%d" data-toggle="modal" data-target="#addTaskCard" data-title="Add Task">Add a Task List</button></div>', $taskId);
         $taskList = $taskOpt . $taskList;
