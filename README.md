@@ -12,10 +12,11 @@
 - Kento K.
 - Ryan R.
 
-### Current Bugs
-- ~~Session not persisting~~ FIXED
-- Mysql Server Error : Mysql has gone away
-  - I already reported this bug in my hosting (Mark)
+#External libraries used:
+- Bootstrap 4.0
+- jQuery 3.3.1
+- SortableJS
+- CKEditor
 
 ## What this project is
 
@@ -29,7 +30,32 @@ Humbie Helper is a web application specifically created to help the future stude
 
 The app is currently in the development stage. Please read the "Milestones" section for more details.
 
-## Milestones (Last update: April 6 2019)
+## Files Worked On:
+
+### Kento
+- Models folder: Student.php, views folder navigation.php Deadline.php, Timer.php
+- Views folder: index.php, projects folder (project-details.php), student folder in views, deadline folder in views, timer folder in views.
+- Controllers folder: student-controller, deadline-controller, timer-controller
+- Others: functions.php inside lib folder, kk-ajax.js, stopwatch.js
+
+### Jenna 
+- Models folder: FAQ.php, Faq_categories.php, Project.php, Note.php
+- Views Folder: Project (all files), Notes(all files), faq(all files)
+- Controllers folder: faq-controller.php, note-controller.php, project-controller.php
+
+
+### Mark
+- Models folder: Minutes.php, Agenda.php, TaskCards.php, Tasks.php
+- Views Folder: projects folder (project-details.php), minutes folder, agenda folder
+- Controllers folder: minutes-controller.php, agenda-controller.php, task-cards-controller.php
+- Others: task-script.js
+
+### Ryan
+- Models: announcement_db, quote_db, upload_db
+- Views: project details + all views in 'announcements', 'quotes' and 'files' folders.
+- Controllers: announcement-controller, quote-controller and upload controller
+
+## Milestones (Last update: April 19 2019)
 
 ### Kento
 ### - Timer Create, Read and Delete Logic added via AJAX
@@ -97,11 +123,6 @@ on.
 - The FAQ page/modal displays a list of categories that a student can select to help them better filter their questions
 - When the student selects a category, ajax calls the questions associated with that category and displays them in the middle of the page without refreshing the whole page
 
-### - Files Worked On
-- Models folder: FAQ.php, Faq_categories.php, Project.php, Note.php
-- Controllers folder: faq-controller.php, note-controller.php, project-controller.php
-- Views Folder: Project (all files), Notes(all files), faq(all files)
-
 ### Mark
 ### - Task List Feature
 - WIP
@@ -137,8 +158,3 @@ on.
 - This will be part of the projects feature
 - A list of all announcements for a particular project will be displayed in project details
 - Currently signed in student would be able to edit and delete only their own announcements from list
-
-### Files Worked On
-- Controllers: announcement-controller, quote-controller and upload controller
-- Models: announcement_db, quote_db, upload_db
-- Views: project details + all views in 'announcements', 'quotes' and 'files' folders.

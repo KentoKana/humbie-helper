@@ -48,6 +48,8 @@ function stop() {
 function reset() {
     time = 0;
     timer.innerHTML = '00 : 00 : 00';
+    document.getElementById('validateTask').innerHTML = "";
+
     stop();
 };
 
@@ -140,20 +142,3 @@ function validateTaskName() {
 }
 
 document.getElementById("saveTime").onclick = validateTaskName;
-
-//Detects spacebar key press to trigger start() or stop() function.
-// document.body.onkeydown = function (e) {
-//     // e.preventDefault();
-//     if (e.keyCode === 32 && !isOn) {
-//         toggleTimer.innerHTML = 'Stop';
-//         start();
-//     } else if (e.keyCode === 32 && isOn) {
-//         toggleTimer.innerHTML = 'Start';
-//         stop();
-//     } else if (e.keyCode === 16) {
-//         toggleTimer.innerHTML = 'Start';
-//         stop();
-//         reset();
-//     }
-// }
-
