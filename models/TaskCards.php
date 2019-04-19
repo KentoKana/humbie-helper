@@ -169,8 +169,8 @@ class TaskCards
         $taskList .= "<div class='tasklist'>";
         foreach($myTasks as $task => $t)
         {
-            $taskList .= "<div class='tasklist__wrapper filtered'>";
-            $taskList .= "<div class='tasklist__header filtered'>";
+            $taskList .= "<div class='tasklist__wrapper'>";
+            $taskList .= "<div class='tasklist__header'>";
             $taskList .= sprintf("<div class='tasklist__title'><h2>%s:</h2></div>", $t->task_name);
             $taskList .= "</div>";
             $taskList .= sprintf("<div class='tasklist__body tasklist__nested' id='taskListNested%s' data-task='%d'>", $t->task_index, $t->id);

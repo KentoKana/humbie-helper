@@ -17,6 +17,7 @@ html {
   margin-left: 20px;
   margin-bottom: 20px;
   pointer: move;
+  min-height: 200px;
 }
 
 .task-card {

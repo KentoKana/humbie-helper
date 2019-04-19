@@ -107,7 +107,6 @@ function initDrag(){
           animation: 150,
           filter: ".filtered",
           fallbackOnBody: true,
-          swapThreshold: 0.65,
           onEnd: function(e) {
               var siblingCount = parseInt(e.item.parentElement.childElementCount);
               var siblings = e.item.parentElement.childNodes;
@@ -128,8 +127,6 @@ function initDrag(){
                   // push the values into the object
                   sorted.sort.push(new sortObj(taskCardId, taskId, cardId, cardIndex));
               }
-              console.log(sorted);
-
               $.post('../../controllers/taskcards-controller.php?method=sort', {params: sorted}, function(data){
                 $('.sandbox').html(data);
               });
