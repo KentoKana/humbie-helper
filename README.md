@@ -12,7 +12,7 @@
 - Kento K.
 - Ryan R.
 
-#External libraries used:
+# External libraries used:
 - Bootstrap 4.0
 - jQuery 3.3.1
 - SortableJS
@@ -62,7 +62,7 @@ The app is currently in the development stage. Please read the "Milestones" sect
 - Though validation is still needed, the base logic for the timer feature is implemented.
 - User can start timer, and save the time spent on a specific task.
 - User can view their timesheet for the specific project.
-- Next step is implementing validations, ability to see total time spent on a project, and add an update functionality for saving task name.
+- Validations implemented on timer feature!
 
 ### - Started populating the Tools tab in project-details view.
 - Students now have access to the agenda tool through the tools tab.
