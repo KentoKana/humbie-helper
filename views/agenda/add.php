@@ -5,7 +5,7 @@ require_once MODELS . '/Database.php';
 require_once LIB . '/functions.php';
 require_once CONTROLLERS . '/agenda-controller.php';
 ?>
-<div class="container">
+<div class="container my-5" id="jg-main">
   <div class="col-8 mx-auto">
     <div class="my-3">
       <?php

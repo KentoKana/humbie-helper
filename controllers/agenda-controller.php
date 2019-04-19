@@ -68,12 +68,13 @@ function listA($settings)
   $a = new Agenda($settings);
   $list_agenda = $a->listAgenda();
   $list = "";
+
   if($list_agenda)
   {
     foreach($list_agenda as $agenda => $a)
     {
       $list .= "<tr>";
-      $list .= sprintf('<td scope="row"><a href="view.php?a=%d">%s</a></td>', $a->id, $a->agenda_title );
+      $list .= sprintf('<td scope="row"><a href="view.php?a=%d">%s</a></td>', $a->id, $a->agenda_title);
       $list .= sprintf('<td scope="row" class="text-md-center">%s</td>', $a->agenda_date );
       $list .= '<td  scope="row" class="text-md-right">';
       $list .= sprintf('<a href="edit.php?a=%d" class="btn btn-dark">Edit</a>', $a->id);
@@ -83,6 +84,7 @@ function listA($settings)
       $list .= "</tr>";
     }
   }
+
   return $list;
 }
 

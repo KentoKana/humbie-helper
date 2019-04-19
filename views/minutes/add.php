@@ -36,7 +36,7 @@ if(isset($_POST['save_button']))
   }
 }
 ?>
-<div class="container">
+<div class="container my-5" id="jg-main">
   <div class="col-8 mx-auto">
     <h1>Create Minutes of the Meeting</h1>
     <form action="" method="post" class="mt-3">

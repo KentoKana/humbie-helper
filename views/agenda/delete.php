@@ -9,7 +9,7 @@ if(isset($_GET['a']))
   $db = Database::getDatabase();
   $params = [
     "aId" => $id,
-    "db" = > $db
+    "db" => $db
   ];
   $result = deleteA($params);
 }

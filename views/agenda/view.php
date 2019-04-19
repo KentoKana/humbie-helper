@@ -24,19 +24,19 @@ else
 
 require_once VIEWS . '/header.php';
 ?>
-<div class="container">
+<div class="container my-5" id="jg-main">
   <div class="col-10 mx-auto">
     <div class="row">
       <div class="options text-md-left col-md-6">
         <a href="list.php" class="btn btn-link">Back to List</a>
       </div>
-      <div class="options text-md-right">
+      <div class="options text-md-right col-md-6">
         <a href="edit.php?a=<?=$aID;?>" class="btn btn-dark">Edit</a>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#send_agenda">Send</button>
         <a href="delete.php?a=<?=$aID;?>" class="btn btn-danger">Delete</a>
       </div>
     </div>
-    <div class="minutes col-md-8 mx-auto my-5">
+    <div class="minutes col-md-12 mx-auto my-5">
         <?php
           echo view($params);
          ?>

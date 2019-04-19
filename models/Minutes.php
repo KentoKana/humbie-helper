@@ -1,4 +1,5 @@
 <?php
+require_once MODELS . '/Database.php';
 class Minutes
 {
   private $project_id;

@@ -1,20 +1,22 @@
 <?php
+require_once MODELS . '/Database.php';
 class Agenda
 {
   private $project_id;
   private $student_id;
-  private $agendas_id;
-  private $agendas_title;
-  private $agendas_description;
+  private $agenda_id;
+  private $agenda_title;
+  private $agenda_description;
   private $db;
 
   public function __construct($params)
   {
     $this->setPId(isset($params["pId"]) ? $params["pId"] : null);
     $this->setAId(isset($params["aId"]) ? $params["aId"] : null);
+    $this->setSId(isset($params["sId"]) ? $params["sId"] : null);
     $this->setTitle(isset($params["title"]) ? $params["title"] : null);
     $this->setDesc(isset($params["desc"]) ? $params["desc"] : null);
-    $this->setDesc(isset($params["db"]) ? $params["db"] : null);
+    $this->setDb(isset($params["db"]) ? $params["db"] : null);
   }
 
   // set
@@ -30,17 +32,17 @@ class Agenda
 
   public function setAId($value)
   {
-    $this->agendas_id = $value;
+    $this->agenda_id = $value;
   }
 
   public function setTitle($value)
   {
-    $this->agendas_title = $value;
+    $this->agenda_title = $value;
   }
 
   public function setDesc($value)
   {
-    $this->agendas_description = $value;
+    $this->agenda_description = $value;
   }
 
   public function setDb($value)
@@ -61,17 +63,17 @@ class Agenda
 
   public function getAId()
   {
-    return $this->agendas_id;
+    return $this->agenda_id;
   }
 
   public function getTitle()
   {
-    return $this->agendas_title;
+    return $this->agenda_title;
   }
 
   public function getDesc()
   {
-    return $this->agendas_description;
+    return $this->agenda_description;
   }
 
   public function getDb()
@@ -79,11 +81,10 @@ class Agenda
     return $this->db;
   }
 
-
   public function listAgenda()
   {
     $dbContext = $this->getDb();
-    $query = "SELECT DISTINCT a.id, agendas_title, agendas_date, a.project_id FROM agendas a LEFT JOIN projects_students p ON a.project_id = p.project_id WHERE p.project_id = :project_id AND p.student_id = :student_id";
+    $query = "SELECT DISTINCT a.id, agenda_title, agenda_date, a.project_id FROM agendas a LEFT JOIN projects_students p ON a.project_id = p.project_id WHERE p.project_id = :project_id AND p.student_id = :student_id";
     $stmt = $dbContext->prepare($query);
     $pID = $this->getPId();
     $sID = $this->getSId();
@@ -98,11 +99,11 @@ class Agenda
   public function viewAgenda()
   {
     $dbContext = $this->getDb();
-    $query = "SELECT * FROM agendas WHERE id = :agendas_id AND project_id = :project_id";
+    $query = "SELECT * FROM agendas WHERE id = :agenda_id AND project_id = :project_id";
     $stmt = $dbContext->prepare($query);
-    $aID = $this->getmId();
+    $aID = $this->getAId();
     $pID = $this->getPId();
-    $stmt->bindParam(":agendas_id", $aID);
+    $stmt->bindParam(":agenda_id", $aID);
     $stmt->bindParam(":project_id", $pID);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -113,13 +114,13 @@ class Agenda
   public function addAgenda()
   {
     $dbContext = $this->getDb();
-    $query = "INSERT INTO agendas (agendas_title, agendas_description, project_id) VALUES (:agendas_title, :agendas_description, :project_id)";
+    $query = "INSERT INTO agendas (agenda_title, agenda_description, project_id) VALUES (:agenda_title, :agenda_description, :project_id)";
     $stmt = $dbContext->prepare($query);
     $title = $this->getTitle();
     $desc = $this->getDesc();
     $pID = $this->getPId();
-    $stmt->bindParam(":agendas_title", $title);
-    $stmt->bindParam(":agendas_description", $desc);
+    $stmt->bindParam(":agenda_title", $title);
+    $stmt->bindParam(":agenda_description", $desc);
     $stmt->bindParam(":project_id", $pID);
 
     $result = $stmt->execute();
@@ -129,14 +130,14 @@ class Agenda
   public function editAgenda()
   {
       $dbContext = $this->getDb();
-      $query = "UPDATE agendas SET agendas_title = :agendas_title, agendas_description = :agendas_description WHERE id = :agendas_id";
+      $query = "UPDATE agendas SET agenda_title = :agenda_title, agenda_description = :agenda_description WHERE id = :agenda_id";
       $stmt = $dbContext->prepare($query);
       $title = $this->getTitle();
       $desc = $this->getDesc();
-      $aID = $this->getMId();
-      $stmt->bindParam(":agendas_title", $title);
-      $stmt->bindParam(":agendas_description", $desc);
-      $stmt->bindParam(":agendas_id", $aID);
+      $aID = $this->getAId();
+      $stmt->bindParam(":agenda_title", $title);
+      $stmt->bindParam(":agenda_description", $desc);
+      $stmt->bindParam(":agenda_id", $aID);
 
       $result = $stmt->execute();
 
@@ -146,10 +147,10 @@ class Agenda
   public function deleteAgenda()
   {
     $dbContext = $this->getDb();
-    $query = "DELETE FROM agendas WHERE id = :agendas_id";
+    $query = "DELETE FROM agendas WHERE id = :agenda_id";
     $stmt = $dbContext->prepare($query);
     $aID = $this->getmId();
-    $stmt->bindParam(":agendas_id", $aID);
+    $stmt->bindParam(":agenda_id", $aID);
 
     $result = $stmt->execute();
 

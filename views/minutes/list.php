@@ -4,7 +4,7 @@ require_once MODELS . '/Database.php';
 require_once CONTROLLERS . '/minutes-controller.php';
 require_once LIB . '/functions.php';
 ?>
-<div class="container">
+<div class="container my-5" id="jg-main">
   <div id="msg">
     <?php
       if(isset($_GET['deleted']))

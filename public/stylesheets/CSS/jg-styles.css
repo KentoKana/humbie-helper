@@ -50,7 +50,6 @@ body .jg-add-details a {
 }
 body .jg-add-details:hover {
   background-color: #1c2833;
-  color: #e5e338;
 }
 body .jg-add-details:hover a {
   color: #e5e338;
@@ -253,6 +252,10 @@ body #jg-humbie-button-img {
 #close {
   text-align: right;
   padding-right: 10px;
+}
+
+.container#jg-main {
+  padding: 15px;
 }
 
 /*# sourceMappingURL=jg-styles.css.map */

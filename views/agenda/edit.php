@@ -12,7 +12,8 @@ if(isset($_GET['a']))
   $pID = $_SESSION['project_id'];
   $params = [
     "pId" => $pID,
-    "aId" => $aID
+    "aId" => $aID,
+    "db" => $db
   ];
 
   $editView = editView($params);
@@ -33,18 +34,19 @@ if(isset($_GET['edited']))
 // place header after redirect statements
 require_once VIEWS . '/header.php';
 ?>
-<div class="container">
+<div class="container my-5" id="jg-main">
   <div class="col-8 mx-auto">
     <div class="my-3">
       <?php
         if(isset($_POST['save_button'])) {
           if(isset($_POST['agenda_title']) && !empty($_POST['agenda_title']))
           {
+
             $parameters = [
               "aId" => $aID,
               "title" => $_POST['agenda_title'],
               "desc" => htmlspecialchars($_POST['editor1']),
-              "db" = > $db
+              "db" => $db
             ];
 
             edit($parameters);
@@ -64,7 +66,7 @@ require_once VIEWS . '/header.php';
       </div>
       <label for="wysiwyg_editor">Description</label>
       <textarea name="editor1" id="wysiwyg_editor" rows="8" cols="80" class="form-control">
-          <?= isset($_POST['editor1']) ? $_POST['editor1'] : htmlspecialchars_decode($editView[0]->minutes_description); ?>
+          <?= isset($_POST['editor1']) ? $_POST['editor1'] : htmlspecialchars_decode($editView[0]->agenda_description); ?>
       </textarea>
       <div class="form-group text-md-right">
         <button type="submit" name="save_button" class="btn btn-primary">Save</button>

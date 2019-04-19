@@ -12,7 +12,8 @@ if(isset($_GET['m']))
   $pID = $_SESSION['project_id'];
   $params = [
     "pId" => $pID,
-    "mId" => $mID
+    "mId" => $mID,
+    "db" => $db
   ];
 
   $editView = editView($params);
@@ -33,20 +34,21 @@ if(isset($_GET['edited']))
 // place header after redirect statements
 require_once VIEWS . '/header.php';
 ?>
-<div class="container">
+<div class="container my-5" id="jg-main">
   <div class="col-8 mx-auto">
     <div class="my-3">
       <?php
       if(isset($_POST['save_button']))
       {
-        if(isset($_POST['agenda_title']) && !empty($_POST['agenda_title']))
+        if(isset($_POST['minutes_title']) && !empty($_POST['minutes_title']))
         {
           $parameters = [
             "mId" => $mID,
             "title" => $_POST['minutes_title'],
             "desc" => htmlspecialchars($_POST['editor1']),
-            "db" = > $db
+            "db" => $db
           ];
+
           edit($parameters);
         }
         else
