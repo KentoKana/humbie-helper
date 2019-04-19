@@ -128,19 +128,32 @@ function printToDOM() {
 toggleTimer.onclick = toggleWatchStart;
 resetTimer.onclick = reset;
 
-//Detects spacebar key press to trigger start() or stop() function.
-document.body.onkeydown = function (e) {
-    // e.preventDefault();
-    if (e.keyCode === 32 && !isOn) {
-        toggleTimer.innerHTML = 'Stop';
-        start();
-    } else if (e.keyCode === 32 && isOn) {
-        toggleTimer.innerHTML = 'Start';
-        stop();
-    } else if (e.keyCode === 16) {
-        toggleTimer.innerHTML = 'Start';
-        stop();
-        reset();
+//Client-side Timer Validation
+const taskName = document.getElementById('taskName');
+function validateTaskName() {
+    if(taskName.value === "") {
+        document.getElementById('validateTask').innerHTML = "<span class='text-danger'>Please enter a value.</span>";
+        return false;
+    } else {
+        document.getElementById('validateTask').innerHTML = "<span class='text-success'>Successfully added to timesheet!</span>";
     }
 }
+
+document.getElementById("saveTime").onclick = validateTaskName;
+
+//Detects spacebar key press to trigger start() or stop() function.
+// document.body.onkeydown = function (e) {
+//     // e.preventDefault();
+//     if (e.keyCode === 32 && !isOn) {
+//         toggleTimer.innerHTML = 'Stop';
+//         start();
+//     } else if (e.keyCode === 32 && isOn) {
+//         toggleTimer.innerHTML = 'Start';
+//         stop();
+//     } else if (e.keyCode === 16) {
+//         toggleTimer.innerHTML = 'Start';
+//         stop();
+//         reset();
+//     }
+// }
 

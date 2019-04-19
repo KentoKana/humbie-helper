@@ -162,6 +162,8 @@ $categories = $ca->get_categories($db);
                                     <form action="" method="POST">
                                         <div>
                                             <input type="text" name="taskName" id="taskName">
+                                            <div id="validateTask"></div>
+                                            <?php if(isset($_POST[''])) {echo Student::validateData($student->setFName($_POST['fname']), "Invalid First Name." );} ?>
                                         </div>
                                         <h2 id="timer">00 : 00 : 00</h2>
                                         <div class="timer-buttons">

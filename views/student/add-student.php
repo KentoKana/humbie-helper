@@ -27,7 +27,7 @@ if (isset($_SESSION['username'])) {
                 </div>
                 <input type="text" id="form__fname" class="form__input text-center" name="fname"
                     value="<?php if(isset($_POST['addStudent'])) { echo $_POST['fname'];}?>" placeholder="First Name">
-                <?php if(isset($_POST['addStudent'])) {echo Student::validateData($student->setFName($_POST['fname']), "Invalid First Name." );} ?>
+                <?php if(isset($_POST['time'])) {echo Student::validateData($t->setTask($_POST['time']), "Please enter a task name." );} ?>
             </div>
             <div class="mt-2">
             <!-- Last Name -->
