@@ -1,22 +1,28 @@
-<?php require '../../config.php';
-include VIEWS . '/header.php';
+<?php
+require '../../config.php';
+require_once MODELS . '/Database.php';
 require_once CONTROLLERS . '/minutes-controller.php';
+require_once LIB . '/functions.php';
 
 $mID = $piD = 0;
+$db = Database::getDatabase();
 $params = [];
-if(isset($_GET['m']) && isset($_GET['p']))
+if(isset($_GET['m']))
 {
   $mID = $_GET['m'];
-  $pID = $_GET['p'];
+  $pID = $_SESSION['project_id'];
   $params = [
     "pId" => $pID,
-    "mId" => $mID
+    "mId" => $mID,
+    "db" => $db
   ];
 }
 else
 {
   header("Location: " . RVIEWS. "/minutes/list.php");
 }
+
+require_once VIEWS . '/header.php';
 ?>
 <div class="container">
   <div class="col-10 mx-auto">
@@ -25,12 +31,11 @@ else
         <a href="list.php" class="btn btn-link">Back to List</a>
       </div>
       <div class="options text-md-right col-md-6">
-        <a href="edit.php?m=<?=$mID;?>&p=<?=$pID;?>" class="btn btn-dark">Edit</a>
+        <a href="edit.php?m=<?=$mID;?>>" class="btn btn-dark">Edit</a>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#send_minutes">Send</button>
         <a href="delete.php?m=<?=$mID;?>" class="btn btn-danger">Delete</a>
       </div>
     </div>
-
     <div class="minutes col-md-8 mx-auto my-5">
         <?php
           echo view($params);

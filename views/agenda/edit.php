@@ -1,53 +1,58 @@
 <?php
 require_once '../../config.php';
-require_once VIEWS . '/header.php';
 require_once MODELS . '/Database.php';
-require_once MODELS . '/Agenda.php';
 require_once CONTROLLERS . '/agenda-controller.php';
+require_once LIB . '/functions.php';
 
-if(isset($_GET['a']) && isset($_GET['p']))
+$aID = $piD = 0;
+$db = Database::getDatabase();
+if(isset($_GET['a']))
 {
-    $agendaid = $_GET['a'];
-    $projectid = $_GET['p'];
+  $aID = $_GET['a'];
+  $pID = $_SESSION['project_id'];
+  $params = [
+    "pId" => $pID,
+    "aId" => $aID
+  ];
 
-    $title = $old = $old_items = $new = $new_items = $other = $other_items = "";
-    $agendaOBJ;
-
-    $result = showEditView($agendaid, $projectid);
-    foreach ($result as $key => $value) {
-      $title = $value->agenda_title;
-      $agendaOBJ = json_decode($value->agenda_description);
-    }
-
-      if(isset($agendaOBJ->old_business))
-      {
-        $old = $agendaOBJ->old_business;
-        $old_items = implode('|', $old);
-      }
-
-      if(isset($agendaOBJ->new_business))
-      {
-        $new = $agendaOBJ->new_business;
-        $new_items = implode('|', $new);
-      }
-
-      if(isset($agendaOBJ->other_business))
-      {
-        $other = $agendaOBJ->other_business;
-        $other_items = implode('|', $other);
-      }
+  $editView = editView($params);
 }
 else
 {
     header("Location: " . RVIEWS. "/agenda/list.php");
 }
+
+if(isset($_GET['edited']))
+{
+  if($_GET['edited'] == 'failed')
+  {
+    echo genStatusMsg("danger", "Unknown error was encountered, please try again!");
+  }
+}
+
+// place header after redirect statements
+require_once VIEWS . '/header.php';
 ?>
 <div class="container">
   <div class="col-8 mx-auto">
     <div class="my-3">
       <?php
         if(isset($_POST['save_button'])) {
-          echo editView();
+          if(isset($_POST['agenda_title']) && !empty($_POST['agenda_title']))
+          {
+            $parameters = [
+              "aId" => $aID,
+              "title" => $_POST['agenda_title'],
+              "desc" => htmlspecialchars($_POST['editor1']),
+              "db" = > $db
+            ];
+
+            edit($parameters);
+          }
+          else
+          {
+            return genStatusMsg("danger", "Menu title is required!");
+          }
         }
        ?>
     </div>
@@ -55,34 +60,12 @@ else
     <form action="" method="post" class="mt-3">
       <div class="form-group">
         <label for="agenda_title">Title</label>
-        <input type="text" name="agenda_title" id="agenda_title" class="form-control" value="<?= $title ?>">
+        <input type="text" name="agenda_title" id="agenda_title" class="form-control" value="<?= isset($_POST['agenda_title']) ? $_POST['agenda_title'] : $editView[0]->agenda_title; ?>">
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="agenda_date">Date</label>
-          <input type="text" name="agenda_date" class="form-control" value="<?= $agendaOBJ->agenda_date; ?>">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="agenda_time">Time</label>
-          <input type="text" name="agenda_time" class="form-control" value="<?= $agendaOBJ->agenda_time; ?>">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="agenda_location">Location</label>
-        <input type="text" name="agenda_location" class="form-control" value="<?= $agendaOBJ->agenda_location; ?>">
-      </div>
-      <div class="form-group">
-        <label for="agenda_date">Old Business (separate items with a pipe | )</label>
-        <textarea name="old_business" rows="8" cols="80" class="form-control"><?=$old_items;?></textarea>
-      </div>
-      <div class="form-group">
-        <label for="agenda_date">New Business (separate items with a pipe | )</label>
-        <textarea name="new_business" rows="8" cols="80" class="form-control"><?=$new_items;?></textarea>
-      </div>
-      <div class="form-group">
-        <label for="agenda_date">Other Business (separate items with a pipe | )</label>
-        <textarea name="other_business" rows="8" cols="80" class="form-control"><?=$other_items;?></textarea>
-      </div>
+      <label for="wysiwyg_editor">Description</label>
+      <textarea name="editor1" id="wysiwyg_editor" rows="8" cols="80" class="form-control">
+          <?= isset($_POST['editor1']) ? $_POST['editor1'] : htmlspecialchars_decode($editView[0]->minutes_description); ?>
+      </textarea>
       <div class="form-group text-md-right">
         <button type="submit" name="save_button" class="btn btn-primary">Save</button>
         <a href="list.php" class="btn btn-danger">Cancel</a>
@@ -90,5 +73,4 @@ else
     </form>
   </div>
 </div>
-<?php
-require_once VIEWS . '/footer.php'; ?>
+<?php require_once VIEWS . '/footer.php'; ?>

@@ -1,12 +1,15 @@
-<?php require '../../config.php';
-include VIEWS . '/header.php';
+<?php
+require '../../config.php';
+require_once MODELS . '/Database.php';
 require_once CONTROLLERS . '/minutes-controller.php';
+require_once LIB . '/functions.php';
 
 $mID = $piD = 0;
-if(isset($_GET['m']) && isset($_GET['p']))
+$db = Database::getDatabase();
+if(isset($_GET['m']))
 {
   $mID = $_GET['m'];
-  $pID = $_GET['p'];
+  $pID = $_SESSION['project_id'];
   $params = [
     "pId" => $pID,
     "mId" => $mID
@@ -27,23 +30,33 @@ if(isset($_GET['edited']))
   }
 }
 
-if(isset($_POST['save_button']))
-{
-  $parameters = [
-    "mId" => $mID,
-    "title" => $_POST['minutes_title'],
-    "desc" => htmlspecialchars($_POST['editor1'])
-  ];
-
-  edit($parameters);
-}
+// place header after redirect statements
+require_once VIEWS . '/header.php';
 ?>
 <div class="container">
   <div class="col-8 mx-auto">
-    <div class="row">
-        <a href="list.php" class="btn btn-link tex-md-right">Back to List</a>
+    <div class="my-3">
+      <?php
+      if(isset($_POST['save_button']))
+      {
+        if(isset($_POST['agenda_title']) && !empty($_POST['agenda_title']))
+        {
+          $parameters = [
+            "mId" => $mID,
+            "title" => $_POST['minutes_title'],
+            "desc" => htmlspecialchars($_POST['editor1']),
+            "db" = > $db
+          ];
+          edit($parameters);
+        }
+        else
+        {
+          return genStatusMsg("danger", "Menu title is required!");
+        }
+      }
+      ?>
     </div>
-    <h1>Edit</h1>
+    <h1>Edit Minutes</h1>
     <form action="" method="post" class="mt-3">
       <div class="form-group">
         <label for="minutes_title">Title</label>

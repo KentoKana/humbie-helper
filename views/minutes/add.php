@@ -1,10 +1,12 @@
-<?php require_once '../../config.php';
+<?php
+require_once '../../config.php';
 require_once VIEWS . '/header.php';
 require_once CONTROLLERS . '/minutes-controller.php';
+require_once MODELS . '/Database.php';
+require_once LIB . '/functions.php';
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 $project_id = $student_id = 0;
+$db = Database::getDatabase();
 $parameters = [];
 
 if(isset($_SESSION))
@@ -22,7 +24,8 @@ if(isset($_POST['save_button']))
     $parameters = [
       "pId" => $project_id,
       "title" => $title,
-      "desc" => $content
+      "desc" => $content,
+      "db" => $db
     ];
 
     add($parameters);

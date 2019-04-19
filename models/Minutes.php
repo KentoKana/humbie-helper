@@ -1,18 +1,21 @@
 <?php
-require_once MODELS . '/Database.php';
 class Minutes
 {
   private $project_id;
+  private $student_id;
   private $minutes_id;
   private $minutes_title;
   private $minutes_description;
+  private $db;
 
   public function __construct($params)
   {
     $this->setPId(isset($params["pId"]) ? $params["pId"] : null);
+    $this->setSId(isset($params["sId"]) ? $params["sId"] : null);
     $this->setMId(isset($params["mId"]) ? $params["mId"] : null);
     $this->setTitle(isset($params["title"]) ? $params["title"] : null);
     $this->setDesc(isset($params["desc"]) ? $params["desc"] : null);
+    $this->setDb(isset($params["db"]) ? $params["db"] : null);
   }
 
   // set
@@ -21,7 +24,12 @@ class Minutes
     $this->project_id = $value;
   }
 
-  public function setmId($value)
+  public function setSId($value)
+  {
+    $this->student_id = $value;
+  }
+
+  public function setMId($value)
   {
     $this->minutes_id = $value;
   }
@@ -36,13 +44,23 @@ class Minutes
     $this->minutes_description = $value;
   }
 
+  public function setDb($value)
+  {
+    $this->db = $value;
+  }
+
   // get
   public function getPId()
   {
     return $this->project_id;
   }
 
-  public function getmId()
+  public function getSId()
+  {
+    return $this->student_id;
+  }
+
+  public function getMId()
   {
     return $this->minutes_id;
   }
@@ -57,14 +75,21 @@ class Minutes
     return $this->minutes_description;
   }
 
+  public function getDb()
+  {
+    return $this->db;
+  }
+
 
   public function listMinutes()
   {
-    $dbContext = Database::getDatabase();
-    $query = "SELECT DISTINCT m.id, minutes_title, minutes_date, m.project_id FROM minutes m LEFT JOIN projects_students p ON m.project_id = p.project_id WHERE p.project_id = :project_id";
+    $dbContext = $this->getDb();
+    $query = "SELECT DISTINCT m.id, minutes_title, minutes_date, m.project_id FROM minutes m LEFT JOIN projects_students p ON m.project_id = p.project_id WHERE p.project_id = :project_id AND p.student_id = :student_id";
     $stmt = $dbContext->prepare($query);
     $pID = $this->getPId();
+    $sID = $this->getSId();
     $stmt->bindParam(":project_id", $pID);
+    $stmt->bindParam(":student_id", $sID);
     $stmt->execute();
     $result = $stmt->fetchALL(PDO::FETCH_OBJ);
 
@@ -73,10 +98,10 @@ class Minutes
 
   public function viewMinutes()
   {
-    $dbContext = Database::getDatabase();
+    $dbContext = $this->getDb();
     $query = "SELECT * FROM minutes WHERE id = :minutes_id AND project_id = :project_id";
     $stmt = $dbContext->prepare($query);
-    $mID = $this->getmId();
+    $mID = $this->getMId();
     $pID = $this->getPId();
     $stmt->bindParam(":minutes_id", $mID);
     $stmt->bindParam(":project_id", $pID);
@@ -88,7 +113,7 @@ class Minutes
 
   public function addMinutes()
   {
-    $dbContext = Database::getDatabase();
+    $dbContext = $this->getDb();
     $query = "INSERT INTO minutes (minutes_title, minutes_description, project_id) VALUES (:minutes_title, :minutes_description, :project_id)";
     $stmt = $dbContext->prepare($query);
     $title = $this->getTitle();
@@ -104,7 +129,7 @@ class Minutes
 
   public function editMinutes()
   {
-      $dbContext = Database::getDatabase();
+      $dbContext = $this->getDb();
       $query = "UPDATE minutes SET minutes_title = :minutes_title, minutes_description = :minutes_description WHERE id = :minutes_id";
       $stmt = $dbContext->prepare($query);
       $title = $this->getTitle();
@@ -121,11 +146,10 @@ class Minutes
 
   public function deleteMinutes()
   {
-    $dbContext = Database::getDatabase();
-    // $query = "UPDATE minutes SET isArchived = 1 WHERE id = :minutes_id";
+    $dbContext = $this->getDb();
     $query = "DELETE FROM minutes WHERE id = :minutes_id";
     $stmt = $dbContext->prepare($query);
-    $mID = $this->getmId();
+    $mID = $this->getMId();
     $stmt->bindParam(":minutes_id", $mID);
 
     $result = $stmt->execute();

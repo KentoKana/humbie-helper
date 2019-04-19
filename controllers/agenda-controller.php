@@ -1,186 +1,97 @@
 <?php
-require_once LIB . '/functions.php';
-function generateList($id)
+require_once MODELS . '/Agenda.php';
+
+function add($settings)
 {
-  $dbContext = Database::getDatabase();
-  $myAgenda = new Agenda();
-  $result = $myAgenda->listAgenda($id, $dbContext);
-  $list = "";
+  $a = new Agenda($settings);
+  $add_new = $a->addAgenda();
 
-  foreach($result as $key => $val){
-      $list .= "<tr>";
-      $list .= sprintf('<td scope="row"><a href="view.php?a=%d&p=%d">%s</a></td>', $val->id, $val->project_id, $val->agenda_title );
-      $list .= sprintf('<td scope="row" class="text-md-center">%s</td>', $val->agenda_date );
-      $list .= '<td  scope="row" class="text-md-right">';
-      $list .= sprintf('<a href="edit.php?a=%d&p=%d" class="btn btn-dark">Edit</a>', $val->id, $val->project_id);
-      $list .= ' <a href="#" class="btn btn-primary">Send</a>';
-      $list .= sprintf(' <a href="delete.php?a=%d" class="btn btn-danger">Delete</a></td>', $val->id);
-      $list .= "</td>";
-      $list .= "</tr>";
-  }
-
-  return $list;
-}
-
-function generateView($agendaid, $projectid)
-{
-    $dbContext = Database::getDatabase();
-    $myAgenda = new Agenda();
-    $result = $myAgenda->viewAgenda($agendaid, $projectid,$dbContext);
-    $renderOBJ = "";
-    $descOBJ;
-    $old = $new = $other = "";
-
-      foreach($result as $key=>$val)
-      {
-        $renderOBJ .= '<div class="agenda__header">';
-        $renderOBJ .= sprintf("<h1>%s</h1>", $val->agenda_title);
-        $descOBJ = json_decode($val->agenda_description);
-        $renderOBJ .= sprintf('<span class="d-block">Date: <strong>%s</strong></span>', $descOBJ->agenda_date);
-        $renderOBJ .= sprintf('<span class="d-block">Location: <strong>%s</strong></span>', $descOBJ->agenda_location);
-        $renderOBJ .= '</div>'; // close header
-        $renderOBJ .= '<div class="agenda__body mt-4">';
-
-        // check for old/new/other businesses
-
-          if($descOBJ->old_business[0] !== "")
-          {
-            $old = $descOBJ->old_business;
-            $renderOBJ .= "<h2>Old Business</h2>";
-            $renderOBJ .= "<ul>";
-            foreach ($old as $o)
-            {
-              $renderOBJ .= sprintf('<li>%s</li>', $o);
-            }
-            $renderOBJ .= "</ul>";
-          }
-
-          if($descOBJ->new_business[0] !== "")
-          {
-            $new = $descOBJ->new_business;
-            $renderOBJ .= "<h2>New Business</h2>";
-            $renderOBJ .= "<ul>";
-            foreach ($new as $n)
-            {
-              $renderOBJ .= sprintf('<li>%s</li>', $n);
-            }
-            $renderOBJ .= "</ul>";
-          }
-
-          if($descOBJ->other_business[0] !== "")
-          {
-            $other = $descOBJ->other_business;
-            $renderOBJ .= "<h2>Other Business</h2>";
-            $renderOBJ .= "<ul>";
-            foreach ($other as $ot)
-            {
-              $renderOBJ .= sprintf('<li>%s</li>', $ot);
-            }
-            $renderOBJ .= "</ul>";
-          }
-
-        $renderOBJ .= "</div>"; //close the body
-      }
-
-    return $renderOBJ;
-}
-
-function addView()
-{
-  if(isset($_POST['agenda_title']) && !empty($_POST['agenda_title']))
+  if($add_new)
   {
-    $agenda = $_POST['agenda_title'];
-    $old_business = explode("|", $_POST['old_business']);
-    $new_business = explode("|", $_POST['new_business']);
-    $other_business = explode("|", $_POST['other_business']);
-
-    $data = array(
-        "agenda_date" => $_POST['agenda_date'],
-        "agenda_time" => $_POST['agenda_time'],
-        "agenda_location" => $_POST['agenda_location'],
-        "old_business" => $old_business,
-        "new_business" => $new_business,
-        "other_business" => $other_business,
-    );
-
-    $agenda_description = json_encode($data);
-    $project_id = 7;
-
-    $dbContext = Database::getDatabase();
-    $myAgenda = new Agenda();
-    $addAgenda = $myAgenda->addAgenda($agenda, $agenda_description, $project_id, $dbContext);
-
-    if($addAgenda)
-    {
-        return header("Location: " . RVIEWS . "/agenda/list.php?added=success");
-    }
-    else
-    {
-        return gheader("Location: " . RVIEWS . "/agenda/list.php?added=failed");
-    }
+    return header("Location: " . RVIEWS . "/agenda/list.php?added=success");
   }
   else
   {
-    return genStatusMsg("danger", "Agenda title is required!");
+    return gheader("Location: " . RVIEWS . "/agenda/add.php?added=failed");
   }
 }
 
-function showEditView($agendaid, $projectid)
+function edit($settings)
 {
-  $dbContext = Database::getDatabase();
-  $myAgenda = new Agenda();
-  $result = $myAgenda->viewAgenda($agendaid, $projectid, $dbContext);
+  $a = new Agenda($settings);
+  $edit_agenda = $a->editAgenda();
 
-  return $result;
+  if($edit_agenda)
+  {
+    return header("Location: " . RVIEWS . "/agenda/list.php?edited=success");
+  }
+  else
+  {
+    return header("Location: " . RVIEWS . "/agenda/edit.php?edited=failed");
+  }
 }
 
-function editView()
+function editView($settings)
 {
-    if(isset($_POST['agenda_title']) && !empty($_POST['agenda_title']))
-    {
-      $agenda = $_POST['agenda_title'];
-      $old_business = explode("|", $_POST['old_business']);
-      $new_business = explode("|", $_POST['new_business']);
-      $other_business = explode("|", $_POST['other_business']);
-      $agendaid = $_GET['a'];
-      $data = array(
-          "agenda_date" => $_POST['agenda_date'],
-          "agenda_time" => $_POST['agenda_time'],
-          "agenda_location" => $_POST['agenda_location'],
-          "old_business" => $old_business,
-          "new_business" => $new_business,
-          "other_business" => $other_business,
-      );
+  $a = new Agenda($settings);
+  $edit_view = $a->viewAgenda();
 
-      $agenda_description = json_encode($data);
-
-      $dbContext = Database::getDatabase();
-      $myAgenda = new Agenda();
-      $editAgenda = $myAgenda->editAgenda($agenda, $agenda_description, $agendaid, $dbContext);
-
-      if($editAgenda)
-      {
-          return genStatusMsg("success", "You have successfully Edited this Agenda!");
-      }
-      else
-      {
-          return genStatusMsg("danger", "We have encountered an Unknown error please try again!");
-      }
-    }
-    else
-    {
-      return genStatusMsg("danger", "Agenda title is required!");
-    }
-
+  if($edit_view)
+  {
+    return $edit_view;
+  }
+  else
+  {
+    return header("Location: " . RVIEWS . "/agenda/edit.php?added=failed");
+  }
 }
 
-function deleteView($agendaid)
+function view($settings)
 {
-  $dbContext = Database::getDatabase();
-  $myAgenda = new Agenda();
+  $a = new Agenda($settings);
+  $view_agenda = $a->viewAgenda();
+  $view = "";
+  $html = $formatted_html = "";
+  if($view_agenda)
+  {
+    foreach($view_agenda as $agenda => $a)
+    {
+      $view .= sprintf('<div class="agenda__header"><h1>%s</h1></div>', $a->agenda_title);
+      $view .= sprintf('<div class="agenda__body mt-4">%s</div>', htmlspecialchars_decode($a->agenda_description));
+    }
+  }
+  return $view;
+}
 
-  $deleteAgenda = $myAgenda->deleteAgenda($agendaid, $dbContext);
-  if($deleteAgenda)
+function listA($settings)
+{
+  $a = new Agenda($settings);
+  $list_agenda = $a->listAgenda();
+  $list = "";
+  if($list_agenda)
+  {
+    foreach($list_agenda as $agenda => $a)
+    {
+      $list .= "<tr>";
+      $list .= sprintf('<td scope="row"><a href="view.php?a=%d">%s</a></td>', $a->id, $a->agenda_title );
+      $list .= sprintf('<td scope="row" class="text-md-center">%s</td>', $a->agenda_date );
+      $list .= '<td  scope="row" class="text-md-right">';
+      $list .= sprintf('<a href="edit.php?a=%d" class="btn btn-dark">Edit</a>', $a->id);
+      $list .= ' <a href="#" class="btn btn-primary">Send</a>';
+      $list .= sprintf(' <a href="delete.php?a=%d" class="btn btn-danger">Delete</a></td>', $a->id);
+      $list .= "</td>";
+      $list .= "</tr>";
+    }
+  }
+  return $list;
+}
+
+function deleteA($settings)
+{
+  $m = new Agenda($settings);
+  $del_agenda = $a->deleteAgenda();
+
+  if($del_agenda)
   {
       return header("Location: " . RVIEWS . "/agenda/list.php?deleted=success");
   }

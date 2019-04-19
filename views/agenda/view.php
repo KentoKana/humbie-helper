@@ -1,31 +1,45 @@
 <?php
 require_once '../../config.php';
-require_once VIEWS . '/header.php';
-require_once MODELS . '/Agenda.php';
 require_once MODELS . '/Database.php';
 require_once CONTROLLERS . '/agenda-controller.php';
+require_once LIB . '/functions.php';
 
-if(isset($_GET['a']) && isset($_GET['p']))
+$aID = $piD = 0;
+$db = Database::getDatabase();
+$params = [];
+if(isset($_GET['a']))
 {
-    $agendaid = $_GET['a'];
-    $projectid = $_GET['p'];
+    $aID = $_GET['a'];
+    $pID = $_SESSION['project_id'];
+    $params = [
+      "pId" => $pID,
+      "aId" => $aID,
+      "db" => $db
+    ];
 }
 else
 {
     header("Location: " . RVIEWS. "/agenda/list.php");
 }
+
+require_once VIEWS . '/header.php';
 ?>
 <div class="container">
   <div class="col-10 mx-auto">
-    <div class="options text-md-right">
-      <a href="edit.php?a=<?=$agendaid;?>&p=<?=$projectid;?>" class="btn btn-dark">Edit</a>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#send_agenda">Send</button>
-      <a href="delete.php?a=<?=$agendaid;?>&p=<?=$projectid;?>" class="btn btn-danger">Delete</a>
+    <div class="row">
+      <div class="options text-md-left col-md-6">
+        <a href="list.php" class="btn btn-link">Back to List</a>
+      </div>
+      <div class="options text-md-right">
+        <a href="edit.php?a=<?=$aID;?>" class="btn btn-dark">Edit</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#send_agenda">Send</button>
+        <a href="delete.php?a=<?=$aID;?>" class="btn btn-danger">Delete</a>
+      </div>
     </div>
-    <div class="agenda col-md-8 mx-auto">
-      <?php
-        echo generateView($agendaid, $projectid);
-       ?>
+    <div class="minutes col-md-8 mx-auto my-5">
+        <?php
+          echo view($params);
+         ?>
     </div>
   </div>
   <div class="modal" tabindex="-1" role="dialog" id="send_agenda">

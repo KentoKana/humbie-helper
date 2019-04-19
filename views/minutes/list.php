@@ -1,19 +1,8 @@
 <?php require_once '../../config.php';
 require_once VIEWS . '/header.php';
+require_once MODELS . '/Database.php';
 require_once CONTROLLERS . '/minutes-controller.php';
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-$project_id = $student_id = 0;
-$parameters = [];
-
-if(isset($_SESSION))
-{
-  $project_id = $_SESSION['project_id'];
-  $params = [
-    "pId" => $project_id
-  ];
-}
+require_once LIB . '/functions.php';
 ?>
 <div class="container">
   <div id="msg">
@@ -68,6 +57,19 @@ if(isset($_SESSION))
       </thead>
       <tbody>
         <?php
+            $project_id = $student_id = 0;
+            $parameters = [];
+
+            if(isset($_SESSION))
+            {
+              $project_id = $_SESSION['project_id'];
+              $student_id = $_SESSION['studentId'];
+              $params = [
+                "pId" => $project_id,
+                "sId" => $student_id,
+                "db" => Database::getDatabase()
+              ];
+            }
            echo listM($params);
         ?>
       </tbody>

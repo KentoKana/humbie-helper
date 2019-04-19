@@ -1,5 +1,4 @@
 <?php
-require_once LIB . '/functions.php';
 require_once MODELS . '/Minutes.php';
 
 function add($settings)
@@ -13,7 +12,7 @@ function add($settings)
   }
   else
   {
-    return gheader("Location: " . RVIEWS . "/minutes/add.php?added=failed");
+    return header("Location: " . RVIEWS . "/minutes/add.php?added=failed");
   }
 }
 
@@ -74,10 +73,10 @@ function listM($settings)
     foreach($list_minutes as $minutes => $min)
     {
       $list .= "<tr>";
-      $list .= sprintf('<td scope="row"><a href="view.php?m=%d&p=%d">%s</a></td>', $min->id, $min->project_id, $min->minutes_title );
+      $list .= sprintf('<td scope="row"><a href="view.php?m=%d">%s</a></td>', $min->id, $min->minutes_title);
       $list .= sprintf('<td scope="row" class="text-md-center">%s</td>', $min->minutes_date );
       $list .= '<td  scope="row" class="text-md-right">';
-      $list .= sprintf('<a href="edit.php?m=%d&p=%d" class="btn btn-dark">Edit</a>', $min->id, $min->project_id);
+      $list .= sprintf('<a href="edit.php?m=%d" class="btn btn-dark">Edit</a>', $min->id);
       $list .= ' <a href="#" class="btn btn-primary">Send</a>';
       $list .= sprintf(' <a href="delete.php?m=%d" class="btn btn-danger">Delete</a></td>', $min->id);
       $list .= "</td>";

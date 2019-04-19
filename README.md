@@ -104,7 +104,10 @@ on.
 
 ### Mark
 ### - Task List Feature
-- WIP
+- Fully Implemented Crud on the taskList
+- User can now add tasks and cards
+- User can sort the cards within and between tasks
+
 ### - Minutes feature
 - Removed json_encode as a way to process data for CREATE, UPDATE, and VIEW. I used a WYSIWG editor instead to give more freedom to users.
 - Deleting the agenda deletes the entry permanently, Removed isArchived Flag

@@ -2,7 +2,6 @@
 require_once '../../config.php';
 require_once VIEWS . '/header.php';
 require_once MODELS . '/Database.php';
-require_once MODELS . '/Agenda.php';
 require_once CONTROLLERS . '/agenda-controller.php';
 require_once LIB . '/functions.php';
 ?>
@@ -59,9 +58,20 @@ require_once LIB . '/functions.php';
       </thead>
       <tbody>
         <?php
-          // this should be session but since our modules aren't integrated yet I using an Id tied to my user account
-          $id = 7;
-          echo generateList($id);
+        $project_id = $student_id = 0;
+        $parameters = [];
+
+        if(isset($_SESSION))
+        {
+          $project_id = $_SESSION['project_id'];
+          $student_id = $_SESSION['studentId'];
+          $params = [
+            "pId" => $project_id,
+            "sId" => $student_id,
+            "db" => Database::getDatabase()
+          ];
+        }
+          echo listA($params);
         ?>
       </tbody>
     </table>
