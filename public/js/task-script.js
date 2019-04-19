@@ -89,6 +89,15 @@ function initDrag(){
     //     });
     // }
 
+    // create a constructor for reusable object
+    function sortObj(tcId, tId, cId, cIdx)
+    {
+      this.taskCardId = tcId;
+      this.taskId = tId;
+      this.cardId = cId;
+      this.cardIndex = cIdx;
+    }
+
     const tasks = document.querySelectorAll('.tasklist__nested');
     for(let task of tasks)
     {
@@ -102,20 +111,22 @@ function initDrag(){
           onEnd: function(e) {
               var siblingCount = parseInt(e.item.parentElement.childElementCount);
               var siblings = e.item.parentElement.childNodes;
-              var taskIndex = e.item.parentElement.attributes[2].value;
+              var taskId = e.item.parentElement.attributes[2].value;
+              var taskCardId, cardIndex, cardId;
               var sorted = {
-                  sort: {
-                    cardIndex: [],
-                    taskCardId: [],
-                    taskIndex: [],
-                  }
+                  sort: []
               };
+
               for(let ctr = 0; ctr < siblingCount; ctr++)
               {
+                  // add 1 because default is 0
                   siblings[ctr].attributes[2].value = ctr + 1;
-                  sorted.sort.taskIndex.push(taskIndex);
-                  sorted.sort.taskCardId.push(siblings[ctr].attributes[1].value)
-                  sorted.sort.cardIndex.push(siblings[ctr].attributes[2].value)
+                  taskCardId = siblings[ctr].attributes[1].value;
+                  cardIndex = siblings[ctr].attributes[2].value;
+                  cardId = siblings[ctr].attributes[3].value;
+
+                  // push the values into the object
+                  sorted.sort.push(new sortObj(taskCardId, taskId, cardId, cardIndex));
               }
               console.log(sorted);
 

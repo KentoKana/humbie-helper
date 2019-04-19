@@ -197,7 +197,7 @@ class TaskCards
         $cardList = "";
         foreach($cards as $card => $c)
         {
-            $cardList .= sprintf("<div class='task-card' data-id='%d' data-index='%d'>", $c->id, $c->card_index);
+            $cardList .= sprintf("<div class='task-card' data-id='%d' data-cidx='%d' data-cid='%d'>", $c->id, $c->card_index, $c->card_id);
             $cardList .= sprintf("<div class='card__title'>%s</div>", $c->card_name);
             $cardList .= sprintf("<div class='card__description'>%s</div>", $c->card_description);
             $cardList .= "</div>";
@@ -284,41 +284,59 @@ class TaskCards
 
     public function saveSort()
     {
-      // $dbcon = $this->getDb();
-      // $sort_query = "UPDATE cards set card_index = :card_index WHERE id = :card_id";
-      // $sort_bridge = "UPDATE task_cards set card_index = :card_index, task_index = :task_index WHERE id = :task_cards_id";
-      // $prepareQuery = $dbcon->prepare($sort_query);
-      $results ="";
-
+      $dbcon = $this->getDb();
+      $sort_query = "UPDATE cards SET card_index = :card_index WHERE id = :card_id";
+      $sort_bridge = "UPDATE task_cards SET task_id = :task_id WHERE id = :task_cards_id";
+      $prepareQuery = $dbcon->prepare($sort_query);
+      $prepareBridge = $dbcon->prepare($sort_bridge);
+      $results = [];
+      $cIdx = $cId = $tId = $tcId = 0;
       $params = $this->getSortParam();
 
-      if($params){
-        foreach ($params as $key => $value) {
-          $results .= $value[0] . $value[1] . $value[2];
-        }
-        return $results;
-      }else{
-        return "nopoo";
-      }
+      // bulk update rows using PDO
+      // reference: https://stackoverflow.com/questions/26959784/pdo-php-the-fastest-way-to-update-or-insert-multiple-rows
 
-      // update multiple rows
-      // reference https://developer.hyvor.com/php/prepared-statements
-      //
-      // foreach($params as $param => $p)
-      // {
-      //     if (
-      //     	$prepareQuery &&
-      //     	$prepareQuery->bindParam(":card_index", $p->card_index) &&
-      //     	$prepareQuery->bindParam(":card_id", $p->card_id) &&
-      //     	$prepareQuery->execute() &&
-      //     	$prepareQuery->affected_rows === 1)
-      //     {
-      //     	$results[] = 'Updated';
-      //     } else {
-      //     	$results[] = 'Not updated';
-      //     }
-      // }
-      //
-      // return $results;
+
+      if($params)
+      {
+        foreach ($params as $key => $value)
+        {
+          try
+          {
+            // store and execute
+            // cast string to array
+            $cIdx = (int)$value['cardIndex'];
+            $cid = (int)$value['cardId'];
+
+            //prepare statement
+            $prepareQuery->bindParam(":card_index", $cIdx);
+            $prepareQuery->bindParam(":card_id", $cId);
+            $prepareQuery->execute();
+
+            // store and execute
+            // cast string to array
+            $tid = (int)$value['taskId'];
+            $tcId = (int)$value['taskCardId'];
+
+            //prepare statement
+            $prepareBridge->bindParam(":task_id", $tid);
+            $prepareBridge->bindParam(":task_cards_id", $tcId);
+
+            $prepareBridge->execute();
+          }
+          catch(Exception $err)
+          {
+            if($err)
+            {
+              array_push($results, $err);
+            }
+          }
+        }
+      }
+      else
+      {
+        array_push($results, "Unknow error has occurred");
+      }
+      return $results;
     }
 }

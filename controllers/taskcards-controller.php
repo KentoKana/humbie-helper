@@ -64,7 +64,7 @@ function addTasks($p)
       $newTask .= "<div class='tasklist__header filtered'>";
       $newTask .= sprintf("<div class='tasklist__title'><h2>%s:</h2></div>", $t->task_name);
       $newTask .= "</div>";
-      $newTask .= sprintf("<div class='tasklist__body tasklist__nested' data-task='%d'></div>", $t->task_index);
+      $newTask .= sprintf("<div class='tasklist__body tasklist__nested' data-task='%d'></div>", $t->id);
       $newTask .= "<div class='tasklist__footer'>";
       if($t->id == 1){
           $newTask .= sprintf("<button type='button' name='new_card' class='jg-button-primary' value='%d' data-toggle='modal' data-target='#addTaskCard' data-title='Add Card'>Add new card</button>", $t->id);
@@ -109,5 +109,8 @@ function sortCards($p)
 {
   $tasks = new TaskCards($p);
   $sort = $tasks->saveSort();
-  echo $sort;
+  if($sort)
+  {
+      echo json_encode($sort);
+  }
 }
