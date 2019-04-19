@@ -2,6 +2,11 @@
 ## Version 1.0
 <img src="https://github.com/2019-Winter-HTTP-5202-0NB/project-backstreet-boys-and-jenna/blob/master/assets/images/Humbie.png" alt="Humbie Logo" width="150">
 
+### Link to website:
+- https://humbiehelper.skriptkaiju.com//
+- Username: HumbieUser
+- Password: Test123
+
 
 ## A helper for students of Humber College Web Development Program!
 
