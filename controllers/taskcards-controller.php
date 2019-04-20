@@ -38,7 +38,7 @@ function addCard($p)
   {
     foreach($addCard as $card=> $c)
     {
-      $append .= sprintf("<div class='task-card' data-id='%d' data-index='%d'>", $c->id, $c->card_index);
+      $append .= sprintf("<div class='task-card' data-id='%d' data-cidx='%d' data-cid='%d'>", $c->tcId, $c->card_index, $c->id);
       $append .= sprintf("<div class='card__title'>%s</div>", $c->card_name);
       $append .= sprintf("<div class='card__description'>%s</div>", $c->card_description);
     }
@@ -56,7 +56,7 @@ function addTasks($p)
   $tasks = new TaskCards($p);
   $addTask = $tasks->addTask();
   $newTask = "";
-
+  $ctr = 1;
   if($addTask)
   {
     foreach ($addTask as $tasks => $t) {
@@ -66,10 +66,11 @@ function addTasks($p)
       $newTask .= "</div>";
       $newTask .= sprintf("<div class='tasklist__body tasklist__nested' data-task='%d'></div>", $t->id);
       $newTask .= "<div class='tasklist__footer'>";
-      if($t->id == 1){
+      if($ctr == 1){
           $newTask .= sprintf("<button type='button' name='new_card' class='jg-button-primary' value='%d' data-toggle='modal' data-target='#addTaskCard' data-title='Add Card'>Add new card</button>", $t->id);
       }
       $newTask .= "</div></div>";
+      $ctr++;
     }
   }
   else

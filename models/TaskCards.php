@@ -7,10 +7,12 @@ class TaskCards
     private $taskCardName;
     private $taskCardDescription;
     private $taskCardIndex;
+    private $taskId;
     private $taskCardID;
     private $sortParam;
     private $db;
 
+    // this will set the parameters then the class is colled
     public function __construct($params)
     {
       $this->setStudentId(isset($params['studentId']) ? $params['studentId'] : null);
@@ -18,6 +20,7 @@ class TaskCards
       $this->setTCName(isset($params['tcName']) ? $params['tcName'] : null);
       $this->setTCDesc(isset($params['tcDesc']) ? $params['tcDesc'] : null);
       $this->setTCIndex(isset($params['tcIndex']) ? $params['tcIndex'] : null);
+      $this->setTaskId(isset($params['tId']) ? $params['tId'] : null);
       $this->setTCId(isset($params['tcId']) ? $params['tcId'] : null);
       $this->setSortParam(isset($params['sort']) ? $params['sort'] : null);
       $this->setDb(isset($params['db']) ? $params['db'] : Database::getDatabase());
@@ -56,6 +59,11 @@ class TaskCards
     public function setTCId($value)
     {
       $this->taskCardId = $value;
+    }
+
+    public function setTaskId($value)
+    {
+      $this->taskId = $value;
     }
 
     public function setSortParam($value)
@@ -98,6 +106,11 @@ class TaskCards
       return $this->taskCardId;
     }
 
+    public function getTaskId()
+    {
+      return $this->taskId;
+    }
+
     public function getSortParam()
     {
       return $this->sortParam;
@@ -117,7 +130,7 @@ class TaskCards
     public function getLastCard()
     {
       $dbcon = $this->getDb();
-      $query = "SELECT * FROM cards WHERE id = (SELECT MAX(id) from cards)";
+      $query = "SELECT c.id, tc.id as tcId, card_name, card_description, card_index FROM cards c JOIN task_cards tc on c.id = tc.card_id WHERE c.id = (SELECT MAX(id) from cards)";
       $preparedStatement = $dbcon->prepare($query);
       $preparedStatement->execute();
       $result = $preparedStatement->fetchAll(PDO::FETCH_OBJ);
@@ -167,6 +180,9 @@ class TaskCards
         $myTasks = $this->getAllTasks();
         $ctr = 1;
         $taskList .= "<div class='tasklist'>";
+        // echo "<pre>";
+        // print_r($this->getLastCard());
+        // echo "</pre>";
         foreach($myTasks as $task => $t)
         {
             $taskList .= "<div class='tasklist__wrapper'>";
@@ -197,7 +213,7 @@ class TaskCards
     public function getAllCards($taskId)
     {
         $dbcon = $this->getDb();
-        $query = "SELECT * FROM cards LEFT JOIN task_cards ON cards.id = task_cards.card_id WHERE task_id = :taskId";
+        $query = "SELECT * FROM cards LEFT JOIN task_cards ON cards.id = task_cards.card_id WHERE task_id = :taskId ORDER BY card_index";
         $prepare = $dbcon->prepare($query);
         $prepare->bindParam(':taskId', $taskId);
         $prepare->execute();
@@ -261,7 +277,7 @@ class TaskCards
       $tn = $this->getTCName();
       $td = $this->getTCDesc();
       $tcIdx = $this->getTCIndex();
-      $tId = $this->getTCId();
+      $tId = $this->getTaskId();
 
       //prepare the statements
       $prepareAdd = $dbcon->prepare($addQuery);
@@ -300,18 +316,17 @@ class TaskCards
     public function saveSort()
     {
       $dbcon = $this->getDb();
-      $sort_query = "UPDATE cards SET card_index = :card_index WHERE id = :card_id";
-      $sort_bridge = "UPDATE task_cards SET task_id = :task_id WHERE id = :task_cards_id";
-      $prepareQuery = $dbcon->prepare($sort_query);
-      $prepareBridge = $dbcon->prepare($sort_bridge);
       $results = [];
       $cIdx = $cId = $tId = $tcId = 0;
       $params = $this->getSortParam();
 
       // bulk update rows using PDO
       // reference: https://stackoverflow.com/questions/26959784/pdo-php-the-fastest-way-to-update-or-insert-multiple-rows
+      $sort_query = "UPDATE cards SET card_index = :card_index WHERE id = :card_id";
+      $sort_bridge = "UPDATE task_cards SET task_id = :task_id WHERE id = :task_cards_id";
 
-
+      $prepareQuery = $dbcon->prepare($sort_query);
+      $prepareBridge = $dbcon->prepare($sort_bridge);
       if($params)
       {
         foreach ($params as $key => $value)
@@ -326,7 +341,11 @@ class TaskCards
             //prepare statement
             $prepareQuery->bindParam(":card_index", $cIdx);
             $prepareQuery->bindParam(":card_id", $cId);
-            $prepareQuery->execute();
+
+            if($prepareQuery->execute())
+            {
+              echo "execute";
+            }
 
             // store and execute
             // cast string to array

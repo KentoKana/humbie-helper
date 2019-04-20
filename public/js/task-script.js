@@ -1,3 +1,7 @@
+const first = $('.tasklist').find('.tasklist__body')[0];
+const firstTaskVal = first.attributes[2].value;
+const firstTaskID = '#' + first.attributes[1].value;
+
 function initDrag(){
   $('#addTaskCard').on('show.bs.modal', function (event) {
       var type = "";
@@ -10,6 +14,10 @@ function initDrag(){
       modal.find('.btn-add').text(title);
       // add the current index
       modal.find('#tcIndex').val(button.val());
+
+      //get the taskid of the first task
+      modal.find('#taskId').val(firstTaskVal);
+
       // add type
       switch(title)
       {
@@ -30,13 +38,14 @@ function initDrag(){
     var index = $('#tcIndex').val();
     var pid = $('#projId').val();
     var type = $('#addType').val();
+    var tId = $('#taskId').val();
 
     var params = {
       'tcName' : title,
       'tcDesc' : desc,
       'tcIndex' : index,
       'projectId': pid,
-      'tcId' : 1
+      'tId' : tId
     };
 
 
@@ -46,7 +55,7 @@ function initDrag(){
         if(data)
         {
           // append to task list
-          $('#taskListNested1').append(data);
+          $(firstTaskID).append(data);
 
           // add 1 to the task counter
           var incrementBtnVal = $('#newCard');
@@ -98,12 +107,15 @@ function initDrag(){
       this.cardIndex = cIdx;
     }
 
+
     const tasks = document.querySelectorAll('.tasklist__nested');
     for(let task of tasks)
     {
         new Sortable(task, {
           group: "nested",
           sort: true,
+          scroll: true,
+          bubbleScroll: true,
           animation: 150,
           filter: ".filtered",
           fallbackOnBody: true,
@@ -120,10 +132,10 @@ function initDrag(){
               {
                   // add 1 because default is 0
                   siblings[ctr].attributes[2].value = ctr + 1;
+                  console.log(siblings[ctr].attributes[2].value);
                   taskCardId = siblings[ctr].attributes[1].value;
                   cardIndex = siblings[ctr].attributes[2].value;
                   cardId = siblings[ctr].attributes[3].value;
-
                   // push the values into the object
                   sorted.sort.push(new sortObj(taskCardId, taskId, cardId, cardIndex));
               }

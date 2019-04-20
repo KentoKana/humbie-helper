@@ -242,13 +242,14 @@ $categories = $ca->get_categories($db);
                     <label for="tcDescription" class="col-form-label">Description:</label>
                     <textarea class="form-control" id="tcDescription"></textarea>
                     <input type="hidden" name="tcIndex" id="tcIndex" value="">
+                    <input type="hidden" name="taskId" id="taskId" value="">
                     <input type="hidden" name="projId" id="projId" value="<?=$project_id;?>">
                     <input type="hidden" name="addType" id="addType" value="">
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="jg-button-primary btn-add"></button>
+                <button type="button" class="jg-button-primary btn-add">Add Card</button>
               </div>
             </div>
           </div>

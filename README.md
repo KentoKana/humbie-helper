@@ -104,9 +104,10 @@ on.
 
 ### Mark
 ### - Task List Feature
-- Fully Implemented Crud on the taskList
+- Implemented create and read on the taskList
 - User can now add tasks and cards
-- User can sort the cards within and between tasks
+- User can assign the cards between tasks
+- sorting is buggy
 
 ### - Minutes feature
 - Removed json_encode as a way to process data for CREATE, UPDATE, and VIEW. I used a WYSIWG editor instead to give more freedom to users.
@@ -114,7 +115,7 @@ on.
 
 ### - Agenda feature
 - Login Credentials:
-- username: porkalmighty
+- username: macario
 - password: 123456
 
 - adding an agenda is currently tied to my account id (7) because of session bug.
