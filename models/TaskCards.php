@@ -317,7 +317,7 @@ class TaskCards
     {
       $dbcon = $this->getDb();
       $results = [];
-      $cIdx = $cId = $tId = $tcId = 0;
+      $tId = $tcId = 0;
       $params = $this->getSortParam();
 
       // bulk update rows using PDO
@@ -334,13 +334,10 @@ class TaskCards
           try
           {
             // store and execute
-            // cast string to array
-            $cIdx = (int)$value['cardIndex'];
-            $cid = (int)$value['cardId'];
 
             //prepare statement
-            $prepareQuery->bindParam(":card_index", $cIdx);
-            $prepareQuery->bindParam(":card_id", $cId);
+            $prepareQuery->bindParam(":card_index", $value['cardIndex']);
+            $prepareQuery->bindParam(":card_id", $value['cardId']);
             $prepareQuery->execute();
 
             // store and execute

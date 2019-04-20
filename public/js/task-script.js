@@ -136,6 +136,7 @@ function initDrag(){
                   taskCardId = siblings[ctr].attributes[1].value;
                   cardIndex = siblings[ctr].attributes[2].value;
                   cardId = siblings[ctr].attributes[3].value;
+                  console.log(cardId);
                   // push the values into the object
                   sorted.sort.push(new sortObj(taskCardId, taskId, cardId, cardIndex));
               }
