@@ -43,7 +43,7 @@ The app is currently in the development stage. Please read the "Milestones" sect
 - Controllers folder: student-controller, deadline-controller, timer-controller
 - Others: functions.php inside lib folder, kk-ajax.js, stopwatch.js
 
-### Jenna 
+### Jenna
 - Models folder: FAQ.php, Faq_categories.php, Project.php, Note.php
 - Views Folder: Project (all files), Notes(all files), faq(all files)
 - Controllers folder: faq-controller.php, note-controller.php, project-controller.php
@@ -133,7 +133,7 @@ on.
 - Implemented create and read on the taskList
 - User can now add tasks and cards
 - User can assign the cards between tasks
-- sorting is buggy
+- ~~sorting is buggy~~ Sorting now fully fixed
 
 ### - Minutes feature
 - Removed json_encode as a way to process data for CREATE, UPDATE, and VIEW. I used a WYSIWG editor instead to give more freedom to users.
