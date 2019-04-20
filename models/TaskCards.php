@@ -341,11 +341,7 @@ class TaskCards
             //prepare statement
             $prepareQuery->bindParam(":card_index", $cIdx);
             $prepareQuery->bindParam(":card_id", $cId);
-
-            if($prepareQuery->execute())
-            {
-              echo "execute";
-            }
+            $prepareQuery->execute();
 
             // store and execute
             // cast string to array
