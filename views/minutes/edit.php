@@ -6,6 +6,7 @@ require_once LIB . '/functions.php';
 
 $mID = $piD = 0;
 $db = Database::getDatabase();
+$err = "";
 if(isset($_GET['m']))
 {
   $mID = $_GET['m'];
@@ -23,11 +24,31 @@ else
   header("Location: " . RVIEWS. "/minutes/list.php");
 }
 
+if(isset($_POST['save_button']))
+{
+  if(isset($_POST['minutes_title']) && !empty($_POST['minutes_title']))
+  {
+    $parameters = [
+      "mId" => $mID,
+      "title" => $_POST['minutes_title'],
+      "desc" => htmlspecialchars($_POST['editor1']),
+      "db" => $db
+    ];
+
+    edit($parameters);
+  }
+  else
+  {
+    $err = genStatusMsg("danger", "Menu title is required!");
+  }
+}
+
+
 if(isset($_GET['edited']))
 {
   if($_GET['edited'] == 'failed')
   {
-    echo genStatusMsg("danger", "Unknown error was encountered, please try again!");
+    $err = genStatusMsg("danger", "Unknown error was encountered, please try again!");
   }
 }
 
@@ -38,24 +59,7 @@ require_once VIEWS . '/header.php';
   <div class="col-8 mx-auto">
     <div class="my-3">
       <?php
-      if(isset($_POST['save_button']))
-      {
-        if(isset($_POST['minutes_title']) && !empty($_POST['minutes_title']))
-        {
-          $parameters = [
-            "mId" => $mID,
-            "title" => $_POST['minutes_title'],
-            "desc" => htmlspecialchars($_POST['editor1']),
-            "db" => $db
-          ];
-
-          edit($parameters);
-        }
-        else
-        {
-          return genStatusMsg("danger", "Menu title is required!");
-        }
-      }
+        echo $err;
       ?>
     </div>
     <h1>Edit Minutes</h1>

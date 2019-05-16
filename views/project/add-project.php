@@ -1,8 +1,7 @@
 <?php require './../../config.php';
-include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
 $_SESSION['studentId'];
-
+require_once VIEWS . '/header.php';
 ?>
 
 <main id="jg-main" class="m-4">
@@ -17,7 +16,7 @@ $_SESSION['studentId'];
                     <label for="project-name">Project Name:</label>
                 </div>
                 <div>
-                    <input type="text" class="form__input-field" name="project-name" value="<?php
+                    <input type="text" class="form__input-field form-control" name="project-name" value="<?php
                       if(isset($_POST['project-name'])){
                         echo $project_name;}
                         ?>"/>
@@ -26,12 +25,12 @@ $_SESSION['studentId'];
                     <label for="project-description">Project Description:</label>
                 </div>
                 <div>
-                    <textarea class="form-control"name="project-description" rows="3"><?php
+                    <textarea class="form-control" name="project-description" rows="3"><?php
                     if(isset($_POST['project-description'])){
                         echo $project_description;
                       }?></textarea>
                 </div>
-                <button class="jg-button-primary" name="addProj" type="submit">Submit</button>
+                <button class="jg-button-primary btn" name="addProj" type="submit">Submit</button>
             </form>
         </div>
 

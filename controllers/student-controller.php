@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+require_once(MODELS.'/Database.php');
 require_once(MODELS.'/Student.php');
 require_once(LIB. '/functions.php');
 
@@ -58,14 +59,14 @@ if (isset($_POST['editStudent'])) {
     $student->setEmail($_POST['email']);
     $student->setPhone($_POST['phone']);
     $password = "";
-    
+
     //If password field is left empty in the edit view, get the existing password of the user.
     //Otherwise, set a new password.
     //https://stackoverflow.com/questions/9154719/check-whether-post-value-is-empty
     if(trim($_POST['password']) === "") {
         $password = $student->getStudentPass($_SESSION['username'])[0];
 
-        var_dump($password);
+        //var_dump($password);
      } else {
         $student->setPassword($_POST['password']);
         $password = $student->getPassword();
@@ -80,14 +81,13 @@ if (isset($_POST['editStudent'])) {
 
     //ID from URL Querystring
     $id = $_SESSION['studentId'];
-
     //Try catch for updating student.
     try {
         $student->updateStudent($fname, $lname, $email, $phone, $password, $id);
-        header("Location:". RVIEWS ."/student/edit-student.php?id=" . $_SESSION['id'] . "&updateStat=success");
+        header("Location:". RVIEWS ."/student/edit-student.php?id=" . $id . "&updateStat=success");
 
     } catch (PDOException $e){
-        header("Location:". RVIEWS ."/student/edit-student.php?id=" . $_GET['id'] . "&updateStat=failure");
+        header("Location:". RVIEWS ."/student/edit-student.php?id=" . $id . "&updateStat=failure");
         // echo $e;
     }
 }

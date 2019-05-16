@@ -1,5 +1,4 @@
 <?php
-require_once('Database.php');
 //Direct to another page if this URL is detected.
 
 class Student
@@ -13,11 +12,11 @@ class Student
 	private $username;
 	private $password;
 
-	public function __construct($dbh) 
+	public function __construct($dbh)
 	{
 		$this->dbh = $dbh;
 	}
-	
+
 	//Setters & Getters
 	public function setFName($fname) {
 		if($fname === "") {
@@ -85,7 +84,7 @@ class Student
 	}
 
 	//List Student Method
-	public function listStudents() 
+	public function listStudents()
 	{
 		$selectStmt = "SELECT * FROM students";
 		$stmt = $this->dbh->prepare($selectStmt);
@@ -101,7 +100,7 @@ class Student
 		return $stmt->fetch();
 	}
 
-	public function getStudentIdByUserName($username) 
+	public function getStudentIdByUserName($username)
 	{
 		$selectStmt = "SELECT id FROM students WHERE username = :username";
 		$stmt = $this->dbh->prepare($selectStmt);
@@ -121,7 +120,7 @@ class Student
 	}
 
 	//Get Single Student Method
-	public function getStudent($id) 
+	public function getStudent($id)
 	{
 		$selectStmt = "SELECT * FROM students WHERE id = :id";
 		$stmt = $this->dbh->prepare($selectStmt);
@@ -131,11 +130,11 @@ class Student
 	}
 
 	//Add Student Method
-	public function addStudent($fname, $lname, $email, $phone, $username, $password) 
+	public function addStudent($fname, $lname, $email, $phone, $username, $password)
 	{
 		$insertStmt = "INSERT INTO students VALUES (null, :fname, :lname, :email, :phone, :username, :pass, 1,0)";
 		//Define query (in this case, reference the insertStmt)
-		$stmt = $this->dbh->prepare($insertStmt);  
+		$stmt = $this->dbh->prepare($insertStmt);
 
 		//Bind param with values
 		$stmt->bindParam(':fname', $fname);
@@ -145,15 +144,15 @@ class Student
 		$stmt->bindParam(':username', $username);
 		$stmt->bindParam(':pass', $password);
 
-		return $stmt->execute();  
+		return $stmt->execute();
 	}
 
 	//Update Student Method
-	public function updateStudent($fname, $lname, $email, $phone, $password, $id) 
+	public function updateStudent($fname, $lname, $email, $phone, $password, $id)
 	{
 		$updateStmt = "UPDATE students SET student_fname = :fname, student_lname = :lname, student_email = :email, student_phone = :phone, password = :pass WHERE id = :id";
 		//Define query (in this case, reference the insertStmt)
-		$stmt = $this->dbh->prepare($updateStmt);  
+		$stmt = $this->dbh->prepare($updateStmt);
 
 		//Bind param with values
 		$stmt->bindParam(':fname', $fname);
@@ -164,14 +163,14 @@ class Student
 		$stmt->bindParam(':pass', $password);
 		$stmt->bindParam(':id', $id);
 
-		return $stmt->execute();  
+		return $stmt->execute();
 	}
-	
+
 	//Delete Student Method
-	public function deleteStudent($id) 
+	public function deleteStudent($id)
 	{
 		$deleteStmt = "DELETE FROM students WHERE id = :studentID";
-		$stmt = $this->dbh->prepare($deleteStmt);  
+		$stmt = $this->dbh->prepare($deleteStmt);
 		$stmt->bindParam(':studentID', $id);
 		return $stmt->execute();
 	}
@@ -182,10 +181,10 @@ class Student
 // Test Scripts
 // $student->updateStudent('Update', 'Kanazawa', '123@eg.com', '1111111111', 'kento', 'password',1);
 // foreach ($student->listStudents() as $row) {
-// 	echo $row['student_fname'] . "<br />" . 
-// 		 $row['student_lname'] . "<br />" . 
+// 	echo $row['student_fname'] . "<br />" .
+// 		 $row['student_lname'] . "<br />" .
 // 		 $row['student_email'] . "<br />" .
-// 		 $row['student_phone'] . "<br /><br />"; 
+// 		 $row['student_phone'] . "<br /><br />";
 // }
 
 ?>

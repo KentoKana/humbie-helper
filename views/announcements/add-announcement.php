@@ -1,11 +1,11 @@
 <?php
 require_once '../../config.php';
-require_once VIEWS . '/header.php';
 require_once CONTROLLERS . '/quote-controller.php';
 require_once CONTROLLERS . '/announcement-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $projectId = $_SESSION['project_id'];
+require_once VIEWS . '/header.php';
 ?>
 <div class="alert alert-info alert-dismissible fade show" role="alert">
     <?php echo $randQuote->quote . " - " . $randQuote->quote_author; ?>
@@ -13,8 +13,9 @@ $projectId = $_SESSION['project_id'];
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<main class="filler pt-5">
+<main class="filler p-5">
     <div class="container" id="jg-main">
+      <div class="col-md-6 mx-auto">
         <h2 class= "p-5 text-center">Add New Announcement</h2>
         <form action="" method="POST">
             <div class="form-group">
@@ -30,6 +31,7 @@ $projectId = $_SESSION['project_id'];
                 <a href="../project/project-details.php" class="jg-add-details btn">Cancel</a>
             </div>
         </form>
+      </div>
     </div>
 </main>
 <?php include VIEWS . '/footer.php'; ?>

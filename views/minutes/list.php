@@ -1,10 +1,10 @@
 <?php require_once '../../config.php';
-require_once VIEWS . '/header.php';
 require_once MODELS . '/Database.php';
 require_once CONTROLLERS . '/minutes-controller.php';
 require_once LIB . '/functions.php';
+require_once VIEWS . '/header.php';
 ?>
-<div class="container my-5" id="jg-main">
+<div class="p-2" id="jg-main">
   <div id="msg">
     <?php
       if(isset($_GET['deleted']))
@@ -45,7 +45,7 @@ require_once LIB . '/functions.php';
     ?>
   </div>
   <div class="col-10 mx-auto my-5">
-    <a href="add.php" class="btn btn-success float-right">Add new minutes</a>
+    <a href="add.php" class="btn jg-add-details float-right">Add new minutes</a>
     <h2>Minutes</h2>
     <table class="table">
       <thead class="thead-dark">

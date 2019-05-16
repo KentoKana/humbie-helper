@@ -1,7 +1,7 @@
 <?php
 require_once '../../config.php';
-require_once VIEWS . '/header.php';
 require_once CONTROLLERS . '/announcement-controller.php';
+require_once VIEWS . '/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 

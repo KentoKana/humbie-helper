@@ -1,11 +1,11 @@
 <?php
 require_once '../../config.php';
-require_once VIEWS . '/header.php';
 require_once CONTROLLERS . '/minutes-controller.php';
 require_once MODELS . '/Database.php';
 require_once LIB . '/functions.php';
 
 $project_id = $student_id = 0;
+$err = "";
 $db = Database::getDatabase();
 $parameters = [];
 
@@ -32,12 +32,18 @@ if(isset($_POST['save_button']))
   }
   else
   {
-    return genStatusMsg("danger", "Menu title is required!");
+    $err = genStatusMsg("danger", "Menu title is required!");
   }
 }
+require_once VIEWS . '/header.php';
 ?>
 <div class="container my-5" id="jg-main">
   <div class="col-8 mx-auto">
+    <div class="my-3">
+      <?php
+        echo $err;
+      ?>
+    </div>
     <h1>Create Minutes of the Meeting</h1>
     <form action="" method="post" class="mt-3">
       <div class="form-group">

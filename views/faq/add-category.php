@@ -1,8 +1,7 @@
-<?php require './../../config.php';
-include VIEWS.'/header.php';
+<?php
+require './../../config.php';
 require_once CONTROLLERS.'/faq-controller.php';
-
-
+require_once VIEWS.'/header.php';
 ?>
 
 <main id="jg-main" class="m-4">

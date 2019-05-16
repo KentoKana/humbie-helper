@@ -1,0 +1,10 @@
+[22-Apr-2019 00:18:47 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/views/header.php:8) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/minutes-controller.php on line 11
+[22-Apr-2019 00:18:51 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/views/header.php:8) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/minutes-controller.php on line 11
+[22-Apr-2019 14:18:35 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/views/header.php:8) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/minutes-controller.php on line 26
+[22-Apr-2019 14:30:21 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/views/header.php:8) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/minutes-controller.php on line 26
+[22-Apr-2019 14:31:32 UTC] PHP Notice:  Undefined variable: err in /home/skrip748/humbiehelper.skriptkaiju.com/views/minutes/edit.php on line 61
+[22-Apr-2019 14:31:37 UTC] PHP Notice:  Undefined variable: err in /home/skrip748/humbiehelper.skriptkaiju.com/views/minutes/edit.php on line 61
+[22-Apr-2019 14:31:43 UTC] PHP Notice:  Undefined variable: err in /home/skrip748/humbiehelper.skriptkaiju.com/views/minutes/edit.php on line 61
+[09-May-2019 17:30:13 UTC] PHP Notice:  Undefined variable: err in /home/skrip748/humbiehelper.skriptkaiju.com/views/minutes/add.php on line 43
+[09-May-2019 18:48:51 UTC] PHP Notice:  Undefined index: project_id in /home/skrip748/humbiehelper.skriptkaiju.com/views/minutes/list.php on line 65
+[09-May-2019 18:48:51 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/minutes/list.php on line 66

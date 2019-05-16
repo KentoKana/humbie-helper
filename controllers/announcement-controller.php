@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+require_once MODELS . '/Database.php';
 require_once MODELS . '/announcement_db.php';
 $studentId = $_SESSION['studentId'];
 $projectId = $_SESSION['project_id'];
@@ -20,16 +21,18 @@ $announcementTitle = filter_input(INPUT_POST, 'announcementTitle', FILTER_SANITI
 
 //Adding New Annoucement
 if (isset($_POST['addAnnounce'])) {
-    $count = $a->addAnnouncement($announcementTime, $announcement, $announcementTitle, $studentId, $_SESSION['project_id'], $db);
+    $count = $a->addAnnouncement($announcementTime, $announcement, $announcementTitle, $studentId, $projectId, $db);
     if($count){
         header('Location:' . RVIEWS . '/project/project-details.php');
     } else {
         echo "Problem Annoucing.";
+        print_r($count);
     }
 }
 //Udate Existing Annoucemenmt
 if (isset($_POST['editAnnouncement'])) {
-    $count = $a->editAnnouncement($id, $announcementTime, $announcement, $announcementTitle, $studentId, $_SESSION['project_id'], $db);
+    $count = $a->editAnnouncement($id, $announcementTime, $announcement, $announcementTitle, $studentId, $projectId, $db);
+    print_r($count);
     if($count){
         header('Location:' . RVIEWS . '/project/project-details.php');
     } else {

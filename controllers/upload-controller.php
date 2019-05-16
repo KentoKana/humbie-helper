@@ -20,7 +20,7 @@ if (isset($_FILES['uploadFile'])){
     // get user entered upload name
     $fileName = filter_input(INPUT_POST, 'fileName', FILTER_SANITIZE_STRING);
     // get name of file with extension
-    $filePath = $_FILES['uploadFile']['name']; 
+    $filePath = $_FILES['uploadFile']['name'];
     // list of accepted file extensions
     $extensions = array('jpg', 'jpeg', 'gif', 'png', 'docx', 'pdf', 'pptx', 'doc', 'txt', 'sql', 'zip');
     // isolate extention of upload file
@@ -28,9 +28,8 @@ if (isset($_FILES['uploadFile'])){
     $fileExtension = end($fileExt);
     // check if extention matches something in array then move to uploaded folder
     if(!in_array($fileExtension, $extensions)){
-        echo 'Invalid file extention. Accepted: jpg, jpeg, gif, png, doc, docx, pptx, ppt, txt, sql, pdf and zip';
+        echo 'Invalid file extension. Accepted: jpg, jpeg, gif, png, doc, docx, pptx, ppt, txt, sql, pdf and zip';
     } else {
-        echo 'file uploaded';
         move_uploaded_file ($_FILES['uploadFile']['tmp_name'], 'uploaded/'.$_FILES['uploadFile']['name']);
         $count = $f->addFile($fileName, $filePath, $_SESSION['project_id'], $db);
         if($count){
@@ -47,11 +46,12 @@ if (isset($_POST['deleteFile'])) {
     // path to uploaded folder
     $folderPath = realpath('uploaded/');
     // adding above for full path
-    $fullPath = $folderPath . "\\" . $filePath;
+    $fullPath = $folderPath . "/" . $filePath;
+
     // delete file from server
-    unlink($fullPath);
+
     // check if file deleted
-    if (!unlink($toDelete)) {
+    if (unlink($fullPath)) {
         header('Location: list-files.php');
     } else {
         echo "Problem deleting file.";
@@ -63,7 +63,7 @@ if (isset($_POST['deleteFile'])) {
 if (isset($_POST['downloadFile'])) {
     $filePath = $fileById->file_path;
     $folderPath = realpath('uploaded/');
-    $fullPath = $folderPath . "\\" . $filePath;
+    $fullPath = $folderPath . "/" . $filePath;
     // check if file exits
     if(!file_exists($folderPath)){
         echo "Problem finding file.";
@@ -73,10 +73,10 @@ if (isset($_POST['downloadFile'])) {
         header("Content-Disposition: attachment; filename=$filePath");
         header("Content-Type: application/zip");
         header("Content-Transfer-Encoding: binary");
-    
+
         // read the file from disk
         readfile($filePath);
     }
 }
 // pagination logic
-//$totalFiles = 
+//$totalFiles =

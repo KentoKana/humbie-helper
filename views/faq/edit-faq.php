@@ -1,5 +1,4 @@
 <?php require './../../config.php';
-include VIEWS.'/header.php';
 require_once CONTROLLERS.'/faq-controller.php';
 
 $faq_id = 2;
@@ -7,7 +6,7 @@ $_SESSION['faq_id'] = $faq_id;
 $faq = $f->get_faq($faq_id, $db);
 $categories = $ca->get_categories($db);
 
-
+require_once VIEWS.'/header.php';
 ?>
 
 <main id="jg-main" class="m-4">

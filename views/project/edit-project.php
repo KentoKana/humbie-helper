@@ -1,6 +1,5 @@
 <?php
 require './../../config.php';
-include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
 //require_once CONTROLLERS.'/student-controller.php';
 $project_id = $_SESSION['project_id'];
@@ -8,7 +7,7 @@ $single_project= $project->singleProject($project_id, $db);
 $description = $single_project->project_description;
 $name = $single_project->project_name;
 
-
+require_once VIEWS . '/header.php';
 ?>
 
 <main id="jg-main" class="m-4">
@@ -22,7 +21,7 @@ $name = $single_project->project_name;
                     <label for="project-name">Project Name:</label>
                 </div>
                 <div>
-                    <input type="text" class="form__input-field" name="edit-name" value="<?=$name?>">
+                    <input type="text" class="form__input-field form-control" name="edit-name" value="<?=$name?>">
                 </div>
                 <div>
                     <label for="project-description">Project Description:</label>
@@ -30,7 +29,7 @@ $name = $single_project->project_name;
                 <div>
                     <textarea class="form-control" rows="3" name="edit-description"><?=$description?></textarea>
                 </div>
-                <button class="jg-form__submit" name="updateProj" type="submit">Submit</button>
+                <button class="jg-form__submit btn" name="updateProj" type="submit">Submit</button>
             </form>
         </div>
 

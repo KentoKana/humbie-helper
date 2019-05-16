@@ -1,11 +1,7 @@
 <?php require './../../config.php';
-include VIEWS.'/header.php';
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
-
-
+require_once VIEWS.'/header.php';
 ?>
 
 <div id="jg-main" class="m-4 p-5">

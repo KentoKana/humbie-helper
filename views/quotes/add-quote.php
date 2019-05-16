@@ -1,9 +1,9 @@
 <?php
 require_once '../../config.php';
-require_once VIEWS . '/header.php';
 require_once CONTROLLERS . '/quote-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+require_once VIEWS . '/header.php';
 ?>
 <main id="jg-main" class="m-4">
     <h1 class="text-center pt-3">Add Motivation Quote</h2>

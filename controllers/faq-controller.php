@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once(MODELS.'/Faq.php');
+require_once(MODELS.'/FAQ.php');
 require_once(MODELS.'/Faq_categories.php');
 require_once(LIB. '/functions.php');
 

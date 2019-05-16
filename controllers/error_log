@@ -1,0 +1,59 @@
+[20-Apr-2019 16:02:02 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'time_taken' cannot be null' in /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php:102
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php(102): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/timer-controller.php(30): Timer->addTimer(NULL, '10', NULL, '14')
+#2 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php on line 102
+[22-Apr-2019 02:16:27 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'task_name' cannot be null' in /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php:102
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php(102): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/timer-controller.php(30): Timer->addTimer('4281', '10', NULL, '14')
+#2 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php on line 102
+[22-Apr-2019 13:22:42 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'task_name' cannot be null' in /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php:102
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php(102): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/timer-controller.php(30): Timer->addTimer('6268', '16', NULL, '34')
+#2 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php on line 102
+[23-Apr-2019 12:44:37 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`skrip748_humbiehelper`.`task_cards`, CONSTRAINT `task_cards_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `tasklists` (`id`))' in /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php:299
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php(299): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/taskcards-controller.php(38): TaskCards->addCard()
+#2 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/taskcards-controller.php(16): addCard(Array)
+#3 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php on line 299
+[23-Apr-2019 12:56:34 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`skrip748_humbiehelper`.`task_cards`, CONSTRAINT `task_cards_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `tasklists` (`id`))' in /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php:299
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php(299): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/taskcards-controller.php(38): TaskCards->addCard()
+#2 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/taskcards-controller.php(16): addCard(Array)
+#3 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php on line 299
+[23-Apr-2019 12:57:39 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`skrip748_humbiehelper`.`task_cards`, CONSTRAINT `task_cards_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `tasklists` (`id`))' in /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php:299
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php(299): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/taskcards-controller.php(38): TaskCards->addCard()
+#2 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/taskcards-controller.php(16): addCard(Array)
+#3 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php on line 299
+[23-Apr-2019 12:57:53 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`skrip748_humbiehelper`.`task_cards`, CONSTRAINT `task_cards_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `tasklists` (`id`))' in /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php:299
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php(299): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/taskcards-controller.php(38): TaskCards->addCard()
+#2 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/taskcards-controller.php(16): addCard(Array)
+#3 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php on line 299
+[23-Apr-2019 13:03:03 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`skrip748_humbiehelper`.`task_cards`, CONSTRAINT `task_cards_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `tasklists` (`id`))' in /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php:299
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php(299): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/taskcards-controller.php(38): TaskCards->addCard()
+#2 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/taskcards-controller.php(16): addCard(Array)
+#3 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/TaskCards.php on line 299
+[05-May-2019 19:36:47 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'task_name' cannot be null' in /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php:102
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php(102): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/timer-controller.php(30): Timer->addTimer('4317', '10', NULL, '14')
+#2 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/Timer.php on line 102

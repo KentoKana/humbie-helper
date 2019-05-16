@@ -1,5 +1,4 @@
 <?php
-require_once('Database.php');
 //Direct to another page if this URL is detected.
 
 class Deadline
@@ -11,11 +10,11 @@ class Deadline
 	private $description;
 	private $projectId;
 
-	public function __construct($dbh) 
+	public function __construct($dbh)
 	{
 		$this->dbh = $dbh;
 	}
-	
+
 	//Setters & Getters
 	public function setName($name) {
 		if($name === "") {
@@ -52,7 +51,7 @@ class Deadline
 		}
 	}
 
-	public function listDeadlines($id) 
+	public function listDeadlines($id)
 	{
 		$selectStmt = "SELECT * FROM project_deadlines WHERE project_id = :id";
         $stmt = $this->dbh->prepare($selectStmt);
@@ -61,7 +60,7 @@ class Deadline
 		return $stmt->fetchAll();
 	}
 
-	public function getDeadline($id) 
+	public function getDeadline($id)
 	{
 		$selectStmt = "SELECT * FROM project_deadlines WHERE id = :id";
         $stmt = $this->dbh->prepare($selectStmt);
@@ -70,28 +69,27 @@ class Deadline
 		return $stmt->fetchAll();
 	}
 
-	public function addDeadline($name, $date, $description, $projectId) 
+	public function addDeadline($name, $date, $description, $projectId)
 	{
 		$insertStmt = "INSERT INTO project_deadlines VALUES (Default, :dName, :dDate, :dDesc, :projectId)";
 		//Define query (in this case, reference the insertStmt)
-		$stmt = $this->dbh->prepare($insertStmt);  
+		$stmt = $this->dbh->prepare($insertStmt);
 
 		//Bind param with values
 		$stmt->bindParam(':dName', $name);
 		$stmt->bindParam(':dDate', $date);
 		$stmt->bindParam(':dDesc', $description);
 		$stmt->bindParam(':projectId', $projectId);
-		
-		echo "success";
-		return $stmt->execute();  
+
+		return $stmt->execute();
 	}
 
 	//Update Student Method
-	public function updateDeadline($name, $date, $desc, $id) 
+	public function updateDeadline($name, $date, $desc, $id)
 	{
 		$updateStmt = "UPDATE project_deadlines SET event_name = :name, event_date = :date, event_description = :eventDesc WHERE id = :id";
 		//Define query (in this case, reference the insertStmt)
-		$stmt = $this->dbh->prepare($updateStmt);  
+		$stmt = $this->dbh->prepare($updateStmt);
 
 		//Bind param with values
 		$stmt->bindParam(':name', $name);
@@ -99,14 +97,14 @@ class Deadline
 		$stmt->bindParam(':eventDesc', $desc);
 		$stmt->bindParam(':id', $id);
 
-		return $stmt->execute();  
+		return $stmt->execute();
 	}
-	
+
 	//Delete Student Method
-	public function delDeadline($id) 
+	public function delDeadline($id)
 	{
 		$deleteStmt = "DELETE FROM project_deadlines WHERE id = :deadlineId";
-		$stmt = $this->dbh->prepare($deleteStmt);  
+		$stmt = $this->dbh->prepare($deleteStmt);
 		$stmt->bindParam(':deadlineId', $id);
 		return $stmt->execute();
 	}
@@ -117,10 +115,10 @@ class Deadline
 // Test Scripts
 // $student->updateStudent('Update', 'Kanazawa', '123@eg.com', '1111111111', 'kento', 'password',1);
 // foreach ($student->listStudents() as $row) {
-// 	echo $row['student_fname'] . "<br />" . 
-// 		 $row['student_lname'] . "<br />" . 
+// 	echo $row['student_fname'] . "<br />" .
+// 		 $row['student_lname'] . "<br />" .
 // 		 $row['student_email'] . "<br />" .
-// 		 $row['student_phone'] . "<br /><br />"; 
+// 		 $row['student_phone'] . "<br /><br />";
 // }
 
 ?>

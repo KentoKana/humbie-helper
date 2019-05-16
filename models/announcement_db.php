@@ -1,5 +1,4 @@
 <?php
-require_once 'Database.php';
 class Announcement
 {
     // list All Announcements
@@ -14,7 +13,7 @@ class Announcement
     }
     // return Specified Announcement
     public function getAnnouncementById($id, $db){
-        $query = "SELECT * FROM announcements 
+        $query = "SELECT * FROM announcements
                   WHERE id = :id";
         $statement = $db->prepare($query);
         $statement->bindParam(':id', $id);
@@ -24,7 +23,7 @@ class Announcement
     // create New Announcement
     public function addAnnouncement($announcementTime, $announcement, $announcementTitle, $studentId, $projectId, $db)
     {
-        $query = "INSERT INTO announcements (announcement_time, announcement, announcement_title, student_id, project_id) 
+        $query = "INSERT INTO announcements (announcement_time, announcement, announcement_title, student_id, project_id)
                   VALUES (:announcement_time, :announcement, :announcement_title, :student_id, :project_id) ";
         $statement = $db->prepare($query);
         $statement->bindParam(':announcement_time', $announcementTime);
@@ -33,12 +32,14 @@ class Announcement
         $statement->bindParam(':student_id', $studentId);
         $statement->bindParam(':project_id', $projectId);
         $count = $statement->execute();
+
+        return $count;
     }
     // update Announcement
     public function editAnnouncement($id, $announcementTime, $announcement, $announcementTitle, $studentId, $projectId, $db)
     {
-        $query = "UPDATE announcements 
-                  SET announcement_time = :announcement_time, 
+        $query = "UPDATE announcements
+                  SET announcement_time = :announcement_time,
                       announcement = :announcement,
                       announcement_title = :announcement_title,
                       student_id = :student_id,
@@ -57,7 +58,7 @@ class Announcement
     // delete Announcement
     public function deleteAnnouncement($id, $db)
     {
-        $query = "DELETE FROM announcements 
+        $query = "DELETE FROM announcements
                   WHERE id = :id";
         $statement = $db->prepare($query);
         $statement->bindParam(':id', $id);

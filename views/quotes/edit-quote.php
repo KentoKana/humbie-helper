@@ -1,10 +1,10 @@
 <?php
 require_once '../../config.php';
-require_once VIEWS . '/header.php';
 require_once MODELS . '/quote_db.php' ;
 require_once CONTROLLERS . '/quote-controller.php' ;
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+require_once VIEWS . '/header.php';
 ?>
 <main id="jg-main" class="m-4">
     <h2 class="text-center pt-3">Edit Quote</h2>
@@ -13,7 +13,7 @@ ini_set('display_errors', 1);
         <!-- Author Edit Feild -->
         <div>
             <label for="quote_author">Quote Author:</label>
-            <input type="text" name="quote_author" 
+            <input type="text" name="quote_author"
             value="<?php echo $quotebyid->quote_author; ?>" />
         </div>
         <!-- Quote Edit Feild -->

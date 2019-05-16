@@ -1,9 +1,10 @@
 <?php
 require '../../config.php';
-include VIEWS.'/header.php';
+
 require_once CONTROLLERS.'/student-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+require_once VIEWS.'/header.php';
 ?>
 
 <main id="jg-main" class="m-4">
@@ -20,17 +21,17 @@ ini_set('display_errors', 1);
           <th> Delete </th>
         </tr>
         <form action="#" method="POST">
-          <?php 
+          <?php
           $student->listStudents();
           foreach ($student->listStudents() as $row) {
             echo "<tr>" .
-            "<td class='m-3'>" . $row['student_fname'] . "</td>" . 
-            "<td>" . $row['student_lname'] . "</td>" . 
+            "<td class='m-3'>" . $row['student_fname'] . "</td>" .
+            "<td>" . $row['student_lname'] . "</td>" .
             // "<td>" . $row['student_email'] . "</td>" .
-            // "<td>" . $row['student_phone'] . "</td>" . 
-            "<td>" . "<a href='/project-backstreet-boys-and-jenna/views/student/edit-student.php?id=" . $row['id'] . "'>Edit</a></td>" . 
+            // "<td>" . $row['student_phone'] . "</td>" .
+            "<td>" . "<a href='/project-backstreet-boys-and-jenna/views/student/edit-student.php?id=" . $row['id'] . "'>Edit</a></td>" .
             "<input type='hidden' name='delId' value='" . $row['id'] . "'>" .
-            "<td>" . "<button type='submit' name='deleteStudent'>Delete</button></td>" . 
+            "<td>" . "<button type='submit' name='deleteStudent'>Delete</button></td>" .
             "</tr>";
           }?>
         </form>

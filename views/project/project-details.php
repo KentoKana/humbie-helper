@@ -1,6 +1,5 @@
 <?php
 require './../../config.php';
-include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
 require_once CONTROLLERS.'/deadline-controller.php';
 require_once CONTROLLERS.'/timer-controller.php';
@@ -14,6 +13,7 @@ $project_id = $_SESSION['project_id'];
 $single_project = $project->singleProject($project_id, $db);
 $students = $project->listStudentsInProject($project_id, $db);
 $categories = $ca->get_categories($db);
+require_once VIEWS . '/header.php';
 ?>
 <div class="alert alert-info alert-dismissible fade show" role="alert">
     <?php echo $randQuote->quote . " - " . $randQuote->quote_author; ?>
@@ -34,7 +34,7 @@ $categories = $ca->get_categories($db);
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="pills-project-tab" data-toggle="pill" href="#pills-project"
-                                role="tab" aria-controls="pills-project" aria-selected="true">Project</a>
+                                role="tab" aria-controls="pills-project" aria-selected="true">Task List</a>
                         </li>
 
                         <li class="nav-item">
@@ -62,7 +62,7 @@ $categories = $ca->get_categories($db);
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-12 d-flex justify-content-left">
+            <div class="col-lg-12 d-flex justify-content-center">
                 <div class="tab-content m-2" id="pills-tabContent">
 
                     <!-- Project Tab  -->
@@ -81,13 +81,13 @@ $categories = $ca->get_categories($db);
                     <!-- Announcements Tab  -->
                     <div class="tab-pane fade" id="pills-announcements" role="tabpanel"
                         aria-labelledby="pills-announcements-tab">
-                        <ul class="list-group list-group-flush text-center">
+                        <ul class="list-group list-group-flush text-center col-md-6 mx-auto">
                             <li class="list-group-item jg-add-details">
                                 <a href="../announcements/add-announcement.php"> + Add New Announcement </a>
                             </li>
                         </ul>
                         <?php foreach ($myAnnounce as $announcement) { ?>
-                        <div class="card mt-2" style="width: 30rem;">
+                        <div class="card mt-2 col-md-6 mx-auto" >
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $announcement->announcement_title; ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $announcement->announcement_time; ?></h6>
@@ -102,17 +102,16 @@ $categories = $ca->get_categories($db);
                     <!-- Deadlines tab -->
                     <div class="tab-pane fade" id="pills-deadlines" role="tabpanel"
                         aria-labelledby="pills-deadlines-tab">
-                      <ul class="list-group list-group-flush text-center">
+                      <ul class="list-group list-group-flush text-center col-md-6 mx-auto">
                         <li class="list-group-item jg-add-details">
                             <a href="../deadline/add-deadline.php"> + Add New Deadline </a>
                         </li>
                       </ul>
-                      <div class="card" style="width: 25rem;">
                           <?php
                                     $deadlines = $d->listDeadlines($project_id);
                                     foreach($deadlines as $deadline):
                                     ?>
-                            <div class="card mt-2 m-auto" style="width: 18rem;">
+                            <div class="card mt-2 mx-auto col-md-6" >
 
                                 <div class="card-body text-center">
                                     <h5 class="card-title"> <?= $deadline['event_name'] ?></h5>
@@ -128,15 +127,12 @@ $categories = $ca->get_categories($db);
                                 </div>
                             </div>
                             <?php endforeach; ?>
-
-                        </div>
-
                         </div>
 
                     <!-- Tools Tab -->
                     <div class="tab-pane fade" id="pills-tools" role="tabpanel" aria-labelledby="pills-tools-tab">
-                      <div class="d-flex flex-row">
-                        <div class="card text-center m-2 p-1" style="width: 18rem; display: inline-block">
+                      <div class="d-flex flex-row mobile">
+                        <div class="card text-center m-2 p-1 col-md-6 m-2 p-4">
                           <h5 class="card-title">More Tools</h5>
                           <table class="table table-striped">
                               <tbody>
@@ -155,7 +151,7 @@ $categories = $ca->get_categories($db);
                             </tbody>
                           </table>
                         </div>
-                        <div class="card text-center m-2" style="width: 20rem; display: inline-block">
+                        <div class="card text-center m-2 col-md-6 m-2 p-4">
                             <div>
                                 <div class="timer-col-wrap">
                                   <h5 class="card-title">Time Tracker</h5>
@@ -167,8 +163,8 @@ $categories = $ca->get_categories($db);
                                         </div>
                                         <h2 id="timer">00 : 00 : 00</h2>
                                         <div class="timer-buttons">
-                                            <button type="button" class="button __button jg-add-details" id="toggle">Start</button>
-                                            <button type="button" class="button __button jg-add-details" id="reset">Reset</button>
+                                            <button type="button" class="button__button jg-add-details btn" id="toggle">Start</button>
+                                            <button type="button" class="button__button jg-add-details btn" id="reset">Reset</button>
                                         </div>
 
                                         <input type="hidden" name="time" id="timeInMilli">
@@ -176,7 +172,7 @@ $categories = $ca->get_categories($db);
                                             value="<?=$_SESSION['studentId'];?>">
                                         <input type="hidden" name="projectId" id="projectId"
                                             value="<?=$_SESSION['project_id'];?>">
-                                        <button class="jg-add-details"type="submit" id="saveTime">Add to Timesheet</button>
+                                        <button class="jg-add-details btn" type="submit" id="saveTime">Add to Timesheet</button>
                                     </form>
                                 </div>
                             </div>
@@ -189,8 +185,8 @@ $categories = $ca->get_categories($db);
                     <!-- Project Details -->
                     <div class="tab-pane fade" id="pills-projectDetails" role="tabpanel"
                         aria-labelledby="pills-projectDetails-tab">
-                        <div class="d-flex flex-row">
-                            <div class="card text-center m-4" style="width: 20rem;">
+                        <div class="d-flex flex-row mobile">
+                            <div class="card text-center col-md-6 m-2 p-4">
                                 <h5 class="card-title">Project Description</h5>
                                 <p class="card-text"><?=$single_project->project_description?></p>
                                 <div class="jg-card-footer">
@@ -198,7 +194,7 @@ $categories = $ca->get_categories($db);
                                   <a href="delete-project.php" class="jg-add-details btn">Delete</a>
                                 </div>
                             </div>
-                            <div class="card m-4 text-center p-1" style="width: 18rem;">
+                            <div class="card text-center col-md-6 m-2 p-4">
                                 <h5 class="card-title">Students In This Project</h5>
                                 <table class="table table-striped">
                                   <tbody>
@@ -211,7 +207,7 @@ $categories = $ca->get_categories($db);
                                     <?php endforeach; ?>
                                   </tbody>
                                 </table>
-                                <a class="jg-add-details" href="project-student-list.php"> + Add Students to Project</a></li>
+                                <a class="jg-add-details p-3" href="project-student-list.php"> + Add Students to Project</a></li>
                             </div>
                         </div>
                     </div>
@@ -249,7 +245,7 @@ $categories = $ca->get_categories($db);
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="jg-button-primary btn-add">Add Card</button>
+                <button type="button" class="btn jg-button-primary btn-add">Add Card</button>
               </div>
             </div>
           </div>

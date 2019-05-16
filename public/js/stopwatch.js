@@ -1,3 +1,5 @@
+if($("#toggle").length)
+{
 //=======================Stopwatch logic===========================//
 
 
@@ -142,3 +144,4 @@ function validateTaskName() {
 }
 
 document.getElementById("saveTime").onclick = validateTaskName;
+}

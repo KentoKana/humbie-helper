@@ -1,12 +1,13 @@
 <?php
 require_once '../../config.php';
-require_once VIEWS . '/header.php';
 require_once CONTROLLERS . '/announcement-controller.php';
+require_once VIEWS . '/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
-<main class="filler pt-5">
+<main class="filler p-5">
     <div class="container" id="jg-main">
+      <div class="col-md-6 mx-auto">
         <h2 class="text-center p-5">Edit Announcement</h2>
         <form action="" method="POST">
             <div class="form-group">
@@ -22,6 +23,7 @@ ini_set('display_errors', 1);
                 <a href="../project/project-details.php" class="jg-add-details btn">Cancel</a>
             </div>
         </form>
+      </div>
     </div>
 </main>
 <?php include VIEWS.'/footer.php'; ?>

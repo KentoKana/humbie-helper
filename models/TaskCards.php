@@ -195,7 +195,7 @@ class TaskCards
             $taskList .= "<div class='tasklist__footer'>";
             if($ctr == 1){
                 $cardID = $this->getCardCount() + 1;
-                $taskList .= sprintf("<button type='button' name='new_card' id='newCard' class='jg-button-primary' value='%d' data-toggle='modal' data-target='#addTaskCard' data-title='Add Card'>Add new card</button>", $cardID);
+                $taskList .= sprintf("<button type='button' name='new_card' id='newCard' class='jg-button-primary btn' value='%d' data-toggle='modal' data-target='#addTaskCard' data-title='Add Card'>Add new card</button>", $cardID);
             }
             $taskList .= "</div></div>";
 
@@ -205,7 +205,7 @@ class TaskCards
         //get the last task id
         $taskId = $this->getTaskCount() + 1;
         $taskList .= "</div>";
-        $taskOpt = sprintf('<div class="task-options"><button type="button" name="addTask" id="newTaskList" class="btn btn-success" value="%d" data-toggle="modal" data-target="#addTaskCard" data-title="Add Task">Add a Task List</button></div>', $taskId);
+        $taskOpt = sprintf('<div class="task-options"><button type="button" name="addTask" id="newTaskList" class="btn jg-add-details" value="%d" data-toggle="modal" data-target="#addTaskCard" data-title="Add Task">Add a Task List</button></div>', $taskId);
         $taskList = $taskOpt . $taskList;
         return $taskList;
     }

@@ -1,16 +1,14 @@
 <?php
 require '../../config.php';
-include VIEWS.'/header.php';
-require_once CONTROLLERS.'/student-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+require_once CONTROLLERS.'/student-controller.php';
 if(!isset($_SESSION['username'])) {
     header("Location:/project-backstreet-boys-and-jenna");
 }
-
 // echo $student->getStudentPass($_SESSION['username'])[0];
 $id = $_SESSION['studentId'];
+require_once VIEWS.'/header.php';
 ?>
 
 <main id="jg-main" class="m-4">
@@ -27,48 +25,49 @@ $id = $_SESSION['studentId'];
         }
         ?>
     </div>
-    <div class="form form-group text-center">
+    <div class="container">
+      <div class="col-md-6 text-center mx-auto">
         <h1 class="m-3">Update Student</h1>
 
         <form action="" method="POST">
 
-            <div class="mt-2">
+            <div class="mt-2 form-group">
                 <div>
                     <label for="form__fname">First Name:</label>
                 </div>
-                <input type="text" id="form__fname" class="form__input text-center" name="fname"
+                <input type="text" id="form__fname" class="form__input text-center form-control" name="fname"
                     placeholder="First Name" value="<?= $student->getStudent($id)['student_fname']; ?>">
             </div>
 
-            <div class="mt-2">
+            <div class="mt-2 form-group">
                 <div>
                     <label for="form__lname">Last Name:</label>
                 </div>
-                <input type="text" id="form__lname" class="form__input text-center" name="lname" placeholder="Last Name"
+                <input type="text" id="form__lname" class="form__input text-center form-control" name="lname" placeholder="Last Name"
                     value="<?= $student->getStudent($_SESSION['studentId'])['student_lname']; ?>">
             </div>
 
-            <div class="mt-2">
+            <div class="mt-2 form-group">
                 <div>
                     <label for="form__email">Email:</label>
                 </div>
-                <input type="text" id="form__email" class="form__input text-center" name="email" placeholder="Email"
+                <input type="text" id="form__email" class="form__input text-center form-control" name="email" placeholder="Email"
                     value="<?= $student->getStudent($id)['student_email']; ?>">
             </div>
 
-            <div class="mt-2">
+            <div class="mt-2 form-group">
                 <div>
                     <label for="form_phone">Phone Number:</label>
                 </div>
-                <input type="text" id="form__phone" class="form__input text-center" name="phone"
+                <input type="text" id="form__phone" class="form__input text-center form-control" name="phone"
                     placeholder="Phone Number" value="<?= $student->getStudent($id)['student_phone']; ?>">
             </div>
 
-            <div class="mt-2">
+            <div class="mt-2 form-group">
                 <div>
                     <label for="form__password">Password:</label>
                 </div>
-                <input type="password" id="form__password" class="form__input text-center" name="password"
+                <input type="password" id="form__password" class="form__input text-center form-control" name="password"
                     placeholder="Password">
             </div>
             <div>
@@ -76,9 +75,10 @@ $id = $_SESSION['studentId'];
             </div>
 
             <div>
-                <button class="m-3" type="submit" name="editStudent">Update!</button>
+                <button class="m-3 jg-button-primary btn btn-lg" type="submit" name="editStudent">Update!</button>
             </div>
         </form>
+      </div>
     </div>
 </main>
 <?php include VIEWS.'/footer.php'; ?>

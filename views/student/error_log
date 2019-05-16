@@ -1,0 +1,124 @@
+[20-Apr-2019 15:11:35 UTC] PHP Fatal error:  Class 'Database' not found in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 7
+[20-Apr-2019 15:14:03 UTC] PHP Fatal error:  Class 'Database' not found in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 7
+[20-Apr-2019 15:16:50 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/views/header.php:8) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/project-controller.php on line 81
+[20-Apr-2019 15:18:22 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/views/header.php:8) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/project-controller.php on line 81
+[20-Apr-2019 15:25:47 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[20-Apr-2019 15:25:47 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[20-Apr-2019 15:25:47 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[20-Apr-2019 15:25:47 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[20-Apr-2019 15:25:48 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[20-Apr-2019 15:25:48 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[20-Apr-2019 15:25:48 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[20-Apr-2019 15:25:48 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[21-Apr-2019 00:07:16 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[21-Apr-2019 00:07:16 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/views/header.php:8) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 02:18:21 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 02:18:21 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/views/header.php:8) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 02:18:34 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 02:18:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/views/header.php:8) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 02:19:27 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 02:19:27 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/views/header.php:8) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:20:49 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:20:49 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php:88) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:21:17 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/edit-student.php on line 12
+[22-Apr-2019 13:21:17 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/edit-student.php on line 48
+[22-Apr-2019 13:21:41 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:21:41 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php:88) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:21:53 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:21:53 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php:69) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:22:38 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:22:38 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php:88) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:25:34 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:25:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php:69) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:26:32 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:26:32 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php:69) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:27:52 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:27:52 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php:69) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:36:15 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:36:15 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php:88) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:36:55 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 2
+[22-Apr-2019 13:36:55 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 89
+[22-Apr-2019 13:36:55 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php:2) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 89
+[22-Apr-2019 13:37:22 UTC] PHP Notice:  Undefined index: id in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 13:37:22 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php:84) in /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php on line 88
+[22-Apr-2019 15:54:04 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[22-Apr-2019 15:54:04 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[22-Apr-2019 15:54:04 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[22-Apr-2019 15:54:04 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[22-Apr-2019 15:54:08 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/edit-student.php on line 10
+[22-Apr-2019 15:54:08 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/edit-student.php on line 46
+[22-Apr-2019 15:54:09 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[22-Apr-2019 15:54:09 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[22-Apr-2019 15:54:09 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[22-Apr-2019 15:54:09 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[22-Apr-2019 16:26:32 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/edit-student.php on line 10
+[22-Apr-2019 16:26:32 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/edit-student.php on line 46
+[23-Apr-2019 12:02:46 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`skrip748_humbiehelper`.`projects_students`, CONSTRAINT `projects_students_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`))' in /home/skrip748/humbiehelper.skriptkaiju.com/models/Student.php:175
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/Student.php(175): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php(98): Student->deleteStudent('27')
+#2 /home/skrip748/humbiehelper.skriptkaiju.com/views/student/list-students.php(4): require_once('/home/skrip748/...')
+#3 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/Student.php on line 175
+[23-Apr-2019 12:02:52 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`skrip748_humbiehelper`.`projects_students`, CONSTRAINT `projects_students_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`))' in /home/skrip748/humbiehelper.skriptkaiju.com/models/Student.php:175
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/Student.php(175): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php(98): Student->deleteStudent('27')
+#2 /home/skrip748/humbiehelper.skriptkaiju.com/views/student/list-students.php(4): require_once('/home/skrip748/...')
+#3 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/Student.php on line 175
+[23-Apr-2019 12:02:57 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`skrip748_humbiehelper`.`projects_students`, CONSTRAINT `projects_students_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`))' in /home/skrip748/humbiehelper.skriptkaiju.com/models/Student.php:175
+Stack trace:
+#0 /home/skrip748/humbiehelper.skriptkaiju.com/models/Student.php(175): PDOStatement->execute()
+#1 /home/skrip748/humbiehelper.skriptkaiju.com/controllers/student-controller.php(98): Student->deleteStudent('27')
+#2 /home/skrip748/humbiehelper.skriptkaiju.com/views/student/list-students.php(4): require_once('/home/skrip748/...')
+#3 {main}
+  thrown in /home/skrip748/humbiehelper.skriptkaiju.com/models/Student.php on line 175
+[06-May-2019 17:45:33 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[06-May-2019 17:45:33 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[06-May-2019 17:45:33 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[06-May-2019 17:45:33 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[09-May-2019 19:09:07 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[09-May-2019 19:09:07 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[09-May-2019 19:09:07 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[09-May-2019 19:09:07 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[10-May-2019 21:06:59 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[10-May-2019 21:06:59 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[10-May-2019 21:06:59 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[10-May-2019 21:06:59 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[10-May-2019 23:51:50 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[10-May-2019 23:51:50 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[10-May-2019 23:51:50 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[10-May-2019 23:51:50 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[11-May-2019 00:39:59 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[11-May-2019 00:39:59 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[11-May-2019 00:39:59 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[11-May-2019 00:39:59 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[11-May-2019 16:12:44 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[11-May-2019 16:12:44 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[11-May-2019 16:12:44 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[11-May-2019 16:12:44 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[12-May-2019 22:31:25 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[12-May-2019 22:31:25 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[12-May-2019 22:31:25 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[12-May-2019 22:31:25 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[12-May-2019 23:29:40 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[12-May-2019 23:29:40 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[12-May-2019 23:29:40 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[12-May-2019 23:29:40 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[13-May-2019 00:16:42 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[13-May-2019 00:16:42 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[13-May-2019 00:16:42 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[13-May-2019 00:16:42 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[13-May-2019 15:27:00 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[13-May-2019 15:27:00 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[13-May-2019 15:27:00 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[13-May-2019 15:27:00 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[13-May-2019 16:49:52 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[13-May-2019 16:49:52 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[13-May-2019 16:49:52 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[13-May-2019 16:49:52 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142
+[14-May-2019 14:46:00 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 15
+[14-May-2019 14:46:00 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 16
+[14-May-2019 14:46:00 UTC] PHP Notice:  Undefined index: username in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 20
+[14-May-2019 14:46:00 UTC] PHP Notice:  Undefined index: studentId in /home/skrip748/humbiehelper.skriptkaiju.com/views/student/user-profile.php on line 142

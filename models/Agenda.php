@@ -149,7 +149,7 @@ class Agenda
     $dbContext = $this->getDb();
     $query = "DELETE FROM agendas WHERE id = :agenda_id";
     $stmt = $dbContext->prepare($query);
-    $aID = $this->getmId();
+    $aID = $this->getAId();
     $stmt->bindParam(":agenda_id", $aID);
 
     $result = $stmt->execute();

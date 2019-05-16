@@ -1,6 +1,5 @@
 <?php
 require './../../config.php';
-include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
 
 //require_once CONTROLLERS.'/student-controller.php';
@@ -12,7 +11,7 @@ $student_id = $_SESSION['studentId'];
 
 $projects = $project->listProjects($student_id, $db);
 
-
+require_once VIEWS . '/header.php';
 ?>
 
 <main id="jg-main" class="m-4">

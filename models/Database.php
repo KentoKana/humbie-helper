@@ -1,11 +1,9 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 //Direct to another page if this URL is detected.
 class Database
 {
 	//Data Source Name
-	private static $dsn = "mysql:host=skriptkaiju.com:3306;dbname=skrip748_humbiehelper";
+	private static $dsn = "mysql:host=localhost;dbname=skrip748_humbiehelper";
 	private static $username = "skrip748_humbie";
 	private static $password = "_ys(2[JV.S;M";
 	private static $errMsg;

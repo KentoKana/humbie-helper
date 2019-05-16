@@ -1,6 +1,8 @@
 <?php
-require_once(realpath(dirname(__DIR__).'\models\TaskCards.php'));
-require_once(realpath(dirname(__DIR__).'\lib\functions.php'));
+// require_once(realpath(dirname(__DIR__).'\models\TaskCards.php'));
+// require_once(realpath(dirname(__DIR__).'\lib\functions.php'));
+require_once($_SERVER['DOCUMENT_ROOT'] . '/models/TaskCards.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/lib/functions.php');
 if(isset($_POST['params']))
 {
   // set the parameters from the posted jquery
@@ -67,7 +69,7 @@ function addTasks($p)
       $newTask .= sprintf("<div class='tasklist__body tasklist__nested' data-task='%d'></div>", $t->id);
       $newTask .= "<div class='tasklist__footer'>";
       if($ctr == 1){
-          $newTask .= sprintf("<button type='button' name='new_card' class='jg-button-primary' value='%d' data-toggle='modal' data-target='#addTaskCard' data-title='Add Card'>Add new card</button>", $t->id);
+          $newTask .= sprintf("<button type='button' name='new_card' class='jg-button-primary btn' value='%d' data-toggle='modal' data-target='#addTaskCard' data-title='Add Card'>Add new card</button>", $t->id);
       }
       $newTask .= "</div></div>";
       $ctr++;

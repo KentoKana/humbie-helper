@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+require_once(MODELS.'/Database.php');
 require_once(MODELS.'/Deadline.php');
 require_once(LIB. '/functions.php');
 
@@ -18,7 +19,7 @@ if(isset($_POST['addDeadline'])){
     $desc = $d->getDescription();
 
     $d->addDeadline($name, $date, $desc, $_SESSION['project_id']);
-    
+
     header('Location:' . RVIEWS . '/project/project-details.php');
 
 }

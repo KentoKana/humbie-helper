@@ -1,7 +1,8 @@
 <?php
+require_once MODELS . '/Database.php';
 require_once MODELS . '/Student.php';
-$s = new Student(Database::getDatabase());
-
+$db = Database::getDatabase();
+$s = new Student($db);
 $errorMsg = "";
 
 if (isset($_POST['login'])) {

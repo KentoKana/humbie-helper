@@ -1,6 +1,5 @@
 <?php
 require '../../config.php';
-require VIEWS . '/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once CONTROLLERS.'/student-controller.php';
@@ -15,12 +14,13 @@ if(!isset($_SESSION['username'])) {
 
 $s = $student->getStudent($_SESSION['studentId']);
 $projects = $project->listProjects($_SESSION['studentId'], $db);
+require_once VIEWS.'/header.php';
 ?>
 <main id="jg-main" class="m-4">
     <h1 class="text-center m-3">Welcome, <?= $_SESSION['username'];?>!</h1>
 
     <div class="container">
-        <div class="row">
+        <div class="row project-details">
             <div class="col-lg-12 d-flex justify-content-center jg_sub-header">
                 <div>
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -65,21 +65,21 @@ $projects = $project->listProjects($_SESSION['studentId'], $db);
                                     <td>
                                         <form action="" method='post'>
                                             <input type='hidden' name="project_id" value="<?=$project->id?>" />
-                                            <input class='jg-table__button' type='submit' name='details'
+                                            <input class='jg-table__button btn' type='submit' name='details'
                                                 value='Project Details' />
                                         </form>
                                     </td>
                                     <td>
                                         <form action="" method='post'>
                                             <input type='hidden' name="project_id" value="<?=$project->id?>" />
-                                            <input class='jg-table__button' type='submit' name='edit'
+                                            <input class='jg-table__button btn' type='submit' name='edit'
                                                 value='Edit Project' />
                                         </form>
                                     </td>
                                     <td>
                                         <form action="" method='post'>
                                             <input type='hidden' name="project_id" value="<?=$project->id?>" />
-                                            <input class='jg-table__button' type='submit' name='delete'
+                                            <input class='jg-table__button btn' type='submit' name='delete'
                                                 value='Delete Project' />
                                         </form>
                                     </td>
@@ -96,7 +96,7 @@ $projects = $project->listProjects($_SESSION['studentId'], $db);
 
                     <!-- Your Info Tab  -->
                     <div class="tab-pane fade" id="pills-yourInfo" role="tabpanel" aria-labelledby="pills-yourInfo-tab">
-                        <div class="card mt-2" style="width: 20rem;">
+                        <div class="card my-2 col-md-6 mx-auto">
                             <div class="card-body text-left">
                                 <table class="table">
                                     <tbody>
@@ -134,7 +134,7 @@ $projects = $project->listProjects($_SESSION['studentId'], $db);
                     <!-- Timesheet Tab  -->
                     <div class="tab-pane fade" id="pills-timesheet" role="tabpanel"
                         aria-labelledby="pills-timesheet-tab">
-                        <div class="card mt-2 text-center" style="width: 20rem;">
+                        <div class="card mt-2 text-center col-md-6 m-2 p-4 mx-auto">
                             <h5>View Timesheet For: </h5>
                             <div class="card-body text-left">
                                 <div>

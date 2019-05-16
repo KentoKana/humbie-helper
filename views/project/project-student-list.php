@@ -1,11 +1,9 @@
 <?php
 require './../../config.php';
-include VIEWS.'/header.php';
 require_once CONTROLLERS.'/project-controller.php';
-
 $_SESSION['project_id'];
 
-
+require_once VIEWS . '/header.php';
 ?>
 
 
@@ -33,7 +31,7 @@ $_SESSION['project_id'];
                 ?>
             </tbody>
         </table>
-        <button class="jg-button-primary" name="addStudents" type="submit">Add Students</button>
+        <button class="jg-button-primary btn" name="addStudents" type="submit">Add Students</button>
         </form>
     </div>
 </main>

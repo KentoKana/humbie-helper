@@ -8,11 +8,11 @@ function add($settings)
 
   if($add_new)
   {
-    return header("Location: " . RVIEWS . "/agenda/list.php?added=success");
+    header("Location: " . RVIEWS . "/agenda/list.php?added=success");
   }
   else
   {
-    return gheader("Location: " . RVIEWS . "/agenda/add.php?added=failed");
+    header("Location: " . RVIEWS . "/agenda/add.php?added=failed");
   }
 }
 
@@ -23,11 +23,11 @@ function edit($settings)
 
   if($edit_agenda)
   {
-    return header("Location: " . RVIEWS . "/agenda/list.php?edited=success");
+    header("Location: " . RVIEWS . "/agenda/list.php?edited=success");
   }
   else
   {
-    return header("Location: " . RVIEWS . "/agenda/edit.php?edited=failed");
+    header("Location: " . RVIEWS . "/agenda/edit.php?edited=failed");
   }
 }
 
@@ -42,7 +42,7 @@ function editView($settings)
   }
   else
   {
-    return header("Location: " . RVIEWS . "/agenda/edit.php?added=failed");
+    header("Location: " . RVIEWS . "/agenda/edit.php?added=failed");
   }
 }
 
@@ -90,15 +90,15 @@ function listA($settings)
 
 function deleteA($settings)
 {
-  $m = new Agenda($settings);
+  $a = new Agenda($settings);
   $del_agenda = $a->deleteAgenda();
 
   if($del_agenda)
   {
-      return header("Location: " . RVIEWS . "/agenda/list.php?deleted=success");
+      header("Location: " . RVIEWS . "/agenda/list.php?deleted=success");
   }
   else
   {
-      return header("Location: " . RVIEWS . "/agenda/list.php?deleted=failed");
+      header("Location: " . RVIEWS . "/agenda/list.php?deleted=failed");
   }
 }

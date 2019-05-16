@@ -1,13 +1,10 @@
 <?php require './../../config.php';
-include VIEWS.'/header.php';
 require_once CONTROLLERS.'/note-controller.php';
-
 $_SESSION['project_id'];
-
 $note_id = $_SESSION['note_id'];
 $note= $n->getNote($note_id, $db);
 
-
+require_once VIEWS . '/header.php';
 ?>
 <main id="jg-main" class="m-4">
   <h1 class="text-center pt-3"><?=$note->notes_title?></h1>

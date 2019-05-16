@@ -1,5 +1,4 @@
 <?php require './../../config.php';
-include VIEWS.'/header.php';
 require_once CONTROLLERS.'/note-controller.php';
 
 error_reporting(E_ALL);
@@ -8,7 +7,7 @@ ini_set('display_errors', 1);
 //$_SESSION['studentId'];
 $_SESSION['project_id'];
 $project_id = $_SESSION['project_id'];
-
+require_once VIEWS . '/header.php';
 ?>
 <main id="jg-main" class="m-4">
   <!--Here is a table to display all notes associated with a project -->
@@ -52,7 +51,7 @@ $project_id = $_SESSION['project_id'];
           </tbody>
         </tbody>
       </table>
-      <button class="jg-button-primary"><a href="<?=RVIEWS . '/notes/add-note.php'?>">Add New Note </a></button>
+      <button class="btn jg-button-primary"><a href="<?=RVIEWS . '/notes/add-note.php'?>">Add New Note </a></button>
     </div>
 </main>
 

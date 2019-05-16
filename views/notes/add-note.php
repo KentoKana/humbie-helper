@@ -1,14 +1,10 @@
 <?php require './../../config.php';
-include VIEWS.'/header.php';
 require_once CONTROLLERS.'/note-controller.php';
-
 $_SESSION['studentId'];
 $_SESSION['project_id'];
-
 $project_id = $_SESSION['project_id'];
 
-
-
+require_once VIEWS . '/header.php';
 ?>
 <main id="jg-main" class="m-4">
   <!--Form to add a new note to the database -->
@@ -19,7 +15,7 @@ $project_id = $_SESSION['project_id'];
     <form action="" method="POST">
       <div>
         <label for="file-name"> Title: </label>
-        <input type="text" class="jg_form__text" name="note_title" value="<?php
+        <input type="text" class="jg_form__text form-control" name="note_title" value="<?php
           if(isset($_POST['note_title'])){
             echo $note_title;}
             ?>" />
@@ -30,7 +26,7 @@ $project_id = $_SESSION['project_id'];
           echo $note_content;}
           ?> </textarea>
     </div>
-      <button class="jg-form__submit" type="submit" name="addNote">Save Note!</button>
+      <button class="jg-form__submit btn" type="submit" name="addNote">Save Note!</button>
     </form>
   </div>
 </main>

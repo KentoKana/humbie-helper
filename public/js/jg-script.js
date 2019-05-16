@@ -4,7 +4,7 @@ $(document).ready(function(){
   function load_questions(id)
   {
     $.ajax({
-      url:"get-questions.php",
+      url:"../../views/faq/get-questions.php",
       method:"POST",
       data:{id:id},
       success:function(data)
@@ -21,4 +21,7 @@ $(document).ready(function(){
     load_questions(cat_id);
   })
 });
-CKEDITOR.replace( 'editor1' );
+if($("textarea[name='editor1']").length)
+{
+  CKEDITOR.replace( 'editor1' );
+}

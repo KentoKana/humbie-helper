@@ -1,6 +1,5 @@
 <?php
 require './../../config.php';
-include VIEWS.'/header.php';
 //require_once CONTROLLERS.'/student-controller.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -18,9 +17,11 @@ if(isset($_SESSION['project_id'])){
   $count = $p->deleteProject($project_id, $db);
 
   if($count){
-    header('Location:project-details.php');
+    header('Location:'. RVIEWS .'/student/user-profile.php');
   }else {
     "Problem deleting project";
   }
 
 }
+
+require_once VIEWS . '/header.php';
